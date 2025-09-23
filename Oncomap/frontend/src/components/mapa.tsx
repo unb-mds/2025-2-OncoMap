@@ -1,7 +1,8 @@
 import React, { useState, useCallback, useMemo } from 'react';
-import DeckGL, { ViewState } from '@deck.gl/react';
+import DeckGL from '@deck.gl/react';
+import type { ViewState } from '@deck.gl/core';
 import { GeoJsonLayer } from '@deck.gl/layers';
-import { PickingInfo } from '@deck.gl/core';
+import type { PickingInfo } from '@deck.gl/core';
 import { StaticMap } from 'react-map-gl';
 
 import { regioesGeoJson } from '../data/regioes';
