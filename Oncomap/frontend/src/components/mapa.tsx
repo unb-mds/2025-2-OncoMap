@@ -10,13 +10,11 @@ import  type { Feature } from 'geojson';
 
 // --- DEFINIÇÃO DE TIPOS ---
 
-// Reutilizando o tipo das propriedades do estado que definimos no outro arquivo
-// ou podemos redefinir aqui se preferir.
+// CORREÇÃO 1: Usando 'codarea' para corresponder aos seus arquivos JSON
 interface EstadoProperties {
-  nome: string;
+  codarea: string;
   regiao?: string;
   centroide?: [number, number];
-  id?: string | number; // Adicionando id para comparação no hover
   [key: string]: any;
 }
 
@@ -24,7 +22,8 @@ type EstadoFeature = Feature<any, EstadoProperties>;
 
 // --- CONFIGURAÇÕES ---
 
-const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
+// CORREÇÃO 2: Usando a sintaxe do Vite para variáveis de ambiente
+const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 
 const INITIAL_VIEW_STATE: ViewState = {
   longitude: -54,
@@ -91,8 +90,9 @@ const Interactive3DMap: React.FC = () => {
       filled: true,
       extruded: true,
       lineWidthMinPixels: 1,
+      // CORREÇÃO 1: Comparando por 'codarea' no hover
       getFillColor: feature =>
-        hoveredState && feature.properties.nome === hoveredState.properties.nome
+        hoveredState && feature.properties.codarea === hoveredState.properties.codarea
           ? [255, 140, 0, 150]
           : [80, 120, 150, 100],
       getLineColor: [255, 255, 255],
