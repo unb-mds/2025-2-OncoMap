@@ -1,16 +1,15 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import DeckGL from '@deck.gl/react';
-import type { ViewState } from '@deck.gl/core';
+import type { MapViewState } from '@deck.gl/core';
 import { GeoJsonLayer } from '@deck.gl/layers';
 import type { PickingInfo } from '@deck.gl/core';
 import { StaticMap } from 'react-map-gl';
 
-import { regioesGeoJson } from '../data/regioes';
-import  type { Feature } from 'geojson';
+import { regioesGeoJson } from '../data/regioes'; // Certifique-se que o caminho está correto
+import type { Feature } from 'geojson';
 
 // --- DEFINIÇÃO DE TIPOS ---
 
-// CORREÇÃO 1: Usando 'codarea' para corresponder aos seus arquivos JSON
 interface EstadoProperties {
   codarea: string;
   regiao?: string;
@@ -22,10 +21,10 @@ type EstadoFeature = Feature<any, EstadoProperties>;
 
 // --- CONFIGURAÇÕES ---
 
-// CORREÇÃO 2: Usando a sintaxe do Vite para variáveis de ambiente
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 
-const INITIAL_VIEW_STATE: ViewState = {
+// CORREÇÃO 1: Usando o tipo MapViewState
+const INITIAL_VIEW_STATE: MapViewState = {
   longitude: -54,
   latitude: -15,
   zoom: 3.5,
@@ -33,7 +32,8 @@ const INITIAL_VIEW_STATE: ViewState = {
   bearing: 0,
 };
 
-const REGION_CENTERS: Record<string, Partial<ViewState>> = {
+// A tipagem aqui funciona com Partial<MapViewState>
+const REGION_CENTERS: Record<string, Partial<MapViewState>> = {
   norte: { longitude: -60, latitude: -5, zoom: 4.5 },
   nordeste: { longitude: -42, latitude: -8, zoom: 4.8 },
   centroOeste: { longitude: -54, latitude: -15, zoom: 4.8 },
@@ -44,7 +44,8 @@ const REGION_CENTERS: Record<string, Partial<ViewState>> = {
 // --- COMPONENTE ---
 
 const Interactive3DMap: React.FC = () => {
-  const [viewState, setViewState] = useState<ViewState>(INITIAL_VIEW_STATE);
+  // CORREÇÃO 1: Usando o tipo MapViewState
+  const [viewState, setViewState] = useState<MapViewState>(INITIAL_VIEW_STATE);
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
   const [hoveredState, setHoveredState] = useState<EstadoFeature | null>(null);
 
@@ -90,7 +91,6 @@ const Interactive3DMap: React.FC = () => {
       filled: true,
       extruded: true,
       lineWidthMinPixels: 1,
-      // CORREÇÃO 1: Comparando por 'codarea' no hover
       getFillColor: feature =>
         hoveredState && feature.properties.codarea === hoveredState.properties.codarea
           ? [255, 140, 0, 150]
@@ -134,7 +134,7 @@ const Interactive3DMap: React.FC = () => {
         controller={true}
         layers={layers}
         viewState={viewState}
-        onViewStateChange={({ viewState }) => setViewState(viewState)}
+        onViewStateChange={({ viewState }) => setViewState(viewState as MapViewState)}
       >
         <StaticMap
           mapboxApiAccessToken={MAPBOX_TOKEN}
