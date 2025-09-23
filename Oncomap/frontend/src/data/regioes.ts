@@ -1,6 +1,6 @@
 // src/geojson/regioes.ts
 
-import { Feature, FeatureCollection, Geometry } from 'geojson';
+import type { Feature, FeatureCollection, Geometry } from 'geojson';
 
 // (Importe seus arquivos .json de cada estado normalmente)
 import AC from './estados/macroregions-ac-12.json';
@@ -19,9 +19,6 @@ import PB from './estados/macroregions-pb-25.json';
 import PI from './estados/macroregions-pi-22.json';
 import MA from './estados/macroregions-ma-21.json';
 import PA from './estados/macroregions-pa-15.json';
-import AP from './estados/macroregions-ap-16.json';
-import RO from './estados/macroregions-ro-11.json';
-import RR from './estados/macroregions-rr-14.json';
 import TO from './estados/macroregions-to-17.json';
 import AL from './estados/macroregions-al-27.json';
 import SE from './estados/macroregions-se-28.json';
@@ -35,7 +32,7 @@ import DF from './estados/macroregions-df-53.json';
 
 // Tipagem para as propriedades customizadas que esperamos em cada estado
 interface EstadoProperties {
-  nome: string;
+  codarea: string;
   regiao?: string; // A região será adicionada dinamicamente
   centroide?: [number, number];
   [key: string]: any; // Permite outras propriedades que possam existir
@@ -73,28 +70,44 @@ export const regioesGeoJson: Record<string, EstadoFeatureCollection> = {
   norte: {
     type: 'FeatureCollection',
     features: addRegionToFeatures(
-      [...AC.features, ...AM.features] as EstadoFeature[],
+      [...AC.features, ...AM.features, ...PA.features] as EstadoFeature[],
       'norte'
     ),
   },
   nordeste: {
     type: 'FeatureCollection',
     features: addRegionToFeatures(
-      [/* ...features dos estados do nordeste */] as EstadoFeature[],
+      [
+        ...BA.features,
+        ...PE.features,
+        ...CE.features,
+        ...RN.features,
+        ...PB.features,
+        ...PI.features,
+        ...MA.features,
+        ...AL.features,
+        ...SE.features
+      ] as EstadoFeature[],
       'nordeste'
     ),
   },
   centroOeste: {
     type: 'FeatureCollection',
     features: addRegionToFeatures(
-      [/* ...features dos estados do centro-oeste */] as EstadoFeature[],
+      [
+        ...GO.features,
+        ...MT.features,
+        ...MS.features,
+        ...DF.features,
+        ...TO.features
+      ] as EstadoFeature[],
       'centroOeste'
     ),
   },
   sudeste: {
     type: 'FeatureCollection',
     features: addRegionToFeatures(
-      [...SP.features, ...RJ.features] as EstadoFeature[],
+      [...SP.features, ...RJ.features, ...MG.features] as EstadoFeature[],
       'sudeste'
     ),
   },
