@@ -10,13 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@deck.gl/core": "^9.1.14",
+    "@deck.gl/layers": "^9.1.14",
+    "@deck.gl/react": "^9.1.14",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-map-gl": "^8.0.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
     "@types/geojson": "^7946.0.16",
-    "@types/react": "^19.1.10",
+    "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.7",
     "@vitejs/plugin-react-swc": "^4.0.0",
     "eslint": "^9.33.0",
