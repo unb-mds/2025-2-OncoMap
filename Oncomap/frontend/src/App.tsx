@@ -1,8 +1,7 @@
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import './style/App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import HomePage from './pages/HomePage'
-import MapaPege from "./pages/MapaPage";  
+import MapaPege from "./pages/MapaPage"
 
 function App() {
   return (

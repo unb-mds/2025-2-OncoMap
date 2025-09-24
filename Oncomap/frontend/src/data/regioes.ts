@@ -26,6 +26,10 @@ import GO from './estados/macroregions-go-52.json';
 import MT from './estados/macroregions-mt-51.json';
 import MS from './estados/macroregions-ms-50.json';
 import DF from './estados/macroregions-df-53.json';
+import RO from './estados/macroregions-ro-11.json';
+import RR from './estados/macroregions-rr-14.json';
+import AP from './estados/macroregions-ap-16.json';
+import ES from './estados/macroregions-es-32.json';
 
 
 // --- DEFINIÇÃO DE TIPOS ---
@@ -70,7 +74,15 @@ export const regioesGeoJson: Record<string, EstadoFeatureCollection> = {
   norte: {
     type: 'FeatureCollection',
     features: addRegionToFeatures(
-      [...AC.features, ...AM.features, ...PA.features] as EstadoFeature[],
+      [
+        ...AC.features, 
+        ...AM.features, 
+        ...PA.features,
+        ...TO.features,
+        ...RO.features,
+        ...RR.features,
+        ...AP.features
+      ] as EstadoFeature[],
       'norte'
     ),
   },
@@ -98,8 +110,7 @@ export const regioesGeoJson: Record<string, EstadoFeatureCollection> = {
         ...GO.features,
         ...MT.features,
         ...MS.features,
-        ...DF.features,
-        ...TO.features
+        ...DF.features
       ] as EstadoFeature[],
       'centroOeste'
     ),
@@ -107,14 +118,23 @@ export const regioesGeoJson: Record<string, EstadoFeatureCollection> = {
   sudeste: {
     type: 'FeatureCollection',
     features: addRegionToFeatures(
-      [...SP.features, ...RJ.features, ...MG.features] as EstadoFeature[],
+      [
+        ...SP.features, 
+        ...RJ.features, 
+        ...MG.features,
+        ...ES.features
+      ] as EstadoFeature[],
       'sudeste'
     ),
   },
   sul: {
     type: 'FeatureCollection',
     features: addRegionToFeatures(
-      [...PR.features, ...SC.features, ...RS.features] as EstadoFeature[],
+      [
+        ...PR.features, 
+        ...SC.features, 
+        ...RS.features
+      ] as EstadoFeature[],
       'sul'
     ),
   },

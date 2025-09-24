@@ -25,8 +25,8 @@ const INITIAL_VIEW_STATE: MapViewState = {
   longitude: -54,
   latitude: -15,
   zoom: 3.5,
-  pitch: 30,
-  bearing: 0,
+  pitch: 20, // Inclinação para o efeito 3D
+  bearing: 0, 
 };
 
 const REGION_CENTERS: Record<string, Partial<MapViewState>> = {
@@ -82,7 +82,7 @@ const MapaInterativo3D: React.FC = () => {
       pickable: true,
       stroked: true,
       filled: true,
-      extruded: true,
+      extruded: true, 
       lineWidthMinPixels: 1,
 
       

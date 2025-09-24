@@ -1,6 +1,6 @@
 import MapaInterativo3D from "../components/mapa"
 import { Link } from "react-router-dom";
-import './MapaPage.css';
+import '../style/MapaPage.css';
 
 
 const MapaPege = () => {
