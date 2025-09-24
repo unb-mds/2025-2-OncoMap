@@ -7,7 +7,7 @@ import StaticMap from 'react-map-gl';
 import { regioesGeoJson } from '../data/regioes';
 
 // --- DEFINIÇÃO DE TIPOS ---
-// ✅ Aqui definimos apenas as propriedades do estado:
+
 interface EstadoProperties {
   codarea: string;
   regiao?: string;
@@ -17,6 +17,7 @@ interface EstadoProperties {
 
 // ✅ E aqui criamos o tipo Feature com essas propriedades:
 type EstadoFeature = Feature<Geometry, EstadoProperties>;
+
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN as string;
 
@@ -73,7 +74,7 @@ const Interactive3DMap: React.FC = () => {
   }, []);
 
   const layers = [
-    new GeoJsonLayer<EstadoFeature>({
+    new GeoJsonLayer<EstadoProperties>({
       id: 'geojson-layer',
       data: selectedRegion
         ? (regioesGeoJson[selectedRegion].features as EstadoFeature[])
@@ -84,9 +85,9 @@ const Interactive3DMap: React.FC = () => {
       extruded: true,
       lineWidthMinPixels: 1,
 
-      // ✅ Tipagem correta do parâmetro
-      getFillColor: (f: EstadoFeature) =>
-        hoveredState && f.properties.codarea === hoveredState.properties.codarea
+      
+      getFillColor: (f: Feature<Geometry, EstadoProperties>) =>
+        hoveredState?.properties.codarea === f.properties.codarea
           ? [255, 140, 0, 150]
           : [80, 120, 150, 100],
 
