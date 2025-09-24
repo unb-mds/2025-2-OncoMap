@@ -3,8 +3,7 @@ import DeckGL from '@deck.gl/react';
 import type { MapViewState } from '@deck.gl/core';
 import { GeoJsonLayer } from '@deck.gl/layers';
 import type { PickingInfo } from '@deck.gl/core';
-import { StaticMap } from 'react-map-gl';
-
+import StaticMap from 'react-map-gl'; // Sem chaves { }
 import { regioesGeoJson } from '../data/regioes'; // Certifique-se que o caminho está correto
 import type { Feature } from 'geojson';
 
