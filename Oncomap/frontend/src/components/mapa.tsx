@@ -92,7 +92,7 @@ const MapaInterativo3D: React.FC = () => {
           : [80, 120, 150, 100],
 
       getLineColor: [255, 255, 255],
-      getElevation: 10000,
+      getElevation: 20000,
       updateTriggers: {
         getFillColor: [hoveredState],
       },
