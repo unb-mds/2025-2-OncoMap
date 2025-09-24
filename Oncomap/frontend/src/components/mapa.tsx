@@ -15,7 +15,7 @@ interface EstadoProperties {
   [key: string]: any;
 }
 
-// ✅ E aqui criamos o tipo Feature com essas propriedades:
+// E aqui criamos o tipo Feature com essas propriedades:
 type EstadoFeature = Feature<Geometry, EstadoProperties>;
 
 
