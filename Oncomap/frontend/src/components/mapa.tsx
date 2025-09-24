@@ -1,15 +1,15 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import DeckGL from '@deck.gl/react';
+import type { Feature, Geometry } from 'geojson';
 import type { MapViewState } from '@deck.gl/core';
 import { GeoJsonLayer } from '@deck.gl/layers';
 import type { PickingInfo } from '@deck.gl/core';
 import StaticMap from 'react-map-gl'; // Sem chaves { }
-import { regioesGeoJson } from '../data/regioes'; // Certifique-se que o caminho está correto
-import type { Feature } from 'geojson';
+import { regioesGeoJson } from '../data/regioes.ts'
 
 // --- DEFINIÇÃO DE TIPOS ---
 
-interface EstadoProperties {
+interface EstadoProperties extend{
   codarea: string;
   regiao?: string;
   centroide?: [number, number];
@@ -18,7 +18,6 @@ interface EstadoProperties {
 
 type EstadoFeature = Feature<any, EstadoProperties>;
 
-// --- CONFIGURAÇÕES ---
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 
@@ -136,7 +135,7 @@ const Interactive3DMap: React.FC = () => {
         onViewStateChange={({ viewState }) => setViewState(viewState as MapViewState)}
       >
         <StaticMap
-          mapboxApiAccessToken={MAPBOX_TOKEN}
+          mapboxAccessToken={MAPBOX_TOKEN}
           mapStyle="mapbox://styles/mapbox/light-v10"
         />
       </DeckGL>
