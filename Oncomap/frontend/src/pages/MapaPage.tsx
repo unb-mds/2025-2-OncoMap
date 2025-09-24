@@ -1,13 +1,21 @@
 import MapaInterativo3D from "../components/mapa"
 import { Link } from "react-router-dom";
+import './MapaPage.css';
 
 
 const MapaPege = () => {
     return(
         <div className="mapa-page">
-            <h1>MapaPage</h1>
-            <Link to="/">Ir para Home</Link>
-            <MapaInterativo3D/>
+            <div className="header">
+                <h1>Oncomap</h1>
+                <nav>
+                    <Link to="/">Home</Link>
+                </nav>
+            </div>
+            <div className="mapa-container">
+                <MapaInterativo3D />    
+            </div>
+
         </div>
     )
 }
