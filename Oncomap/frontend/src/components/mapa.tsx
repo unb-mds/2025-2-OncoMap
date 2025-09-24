@@ -1,27 +1,25 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import DeckGL from '@deck.gl/react';
 import type { Feature, Geometry } from 'geojson';
-import type { MapViewState } from '@deck.gl/core';
+import type { MapViewState, PickingInfo } from '@deck.gl/core';
 import { GeoJsonLayer } from '@deck.gl/layers';
-import type { PickingInfo } from '@deck.gl/core';
-import StaticMap from 'react-map-gl'; // Sem chaves { }
-import { regioesGeoJson } from '../data/regioes.ts'
+import StaticMap from 'react-map-gl';
+import { regioesGeoJson } from '../data/regioes';
 
 // --- DEFINIÇÃO DE TIPOS ---
-
-interface EstadoProperties extend{
+// ✅ Aqui definimos apenas as propriedades do estado:
+interface EstadoProperties {
   codarea: string;
   regiao?: string;
   centroide?: [number, number];
   [key: string]: any;
 }
 
-type EstadoFeature = Feature<any, EstadoProperties>;
+// ✅ E aqui criamos o tipo Feature com essas propriedades:
+type EstadoFeature = Feature<Geometry, EstadoProperties>;
 
+const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN as string;
 
-const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
-
-// CORREÇÃO 1: Usando o tipo MapViewState
 const INITIAL_VIEW_STATE: MapViewState = {
   longitude: -54,
   latitude: -15,
@@ -30,7 +28,6 @@ const INITIAL_VIEW_STATE: MapViewState = {
   bearing: 0,
 };
 
-// A tipagem aqui funciona com Partial<MapViewState>
 const REGION_CENTERS: Record<string, Partial<MapViewState>> = {
   norte: { longitude: -60, latitude: -5, zoom: 4.5 },
   nordeste: { longitude: -42, latitude: -8, zoom: 4.8 },
@@ -39,16 +36,13 @@ const REGION_CENTERS: Record<string, Partial<MapViewState>> = {
   sul: { longitude: -52, latitude: -28, zoom: 5.2 },
 };
 
-// --- COMPONENTE ---
-
 const Interactive3DMap: React.FC = () => {
-  // CORREÇÃO 1: Usando o tipo MapViewState
   const [viewState, setViewState] = useState<MapViewState>(INITIAL_VIEW_STATE);
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
   const [hoveredState, setHoveredState] = useState<EstadoFeature | null>(null);
 
   const allStatesFeatures = useMemo<EstadoFeature[]>(
-    () => Object.values(regioesGeoJson).flatMap(region => region.features),
+    () => Object.values(regioesGeoJson).flatMap(region => region.features as EstadoFeature[]),
     []
   );
 
@@ -56,7 +50,7 @@ const Interactive3DMap: React.FC = () => {
     setSelectedRegion(null);
     setViewState(vs => ({ ...vs, ...INITIAL_VIEW_STATE, transitionDuration: 1000 }));
   }, []);
-  
+
   const handleRegionClick = useCallback((regionKey: string) => {
     setSelectedRegion(regionKey);
     setViewState(currentViewState => ({
@@ -82,17 +76,20 @@ const Interactive3DMap: React.FC = () => {
     new GeoJsonLayer<EstadoFeature>({
       id: 'geojson-layer',
       data: selectedRegion
-        ? regioesGeoJson[selectedRegion].features
+        ? (regioesGeoJson[selectedRegion].features as EstadoFeature[])
         : allStatesFeatures,
       pickable: true,
       stroked: true,
       filled: true,
       extruded: true,
       lineWidthMinPixels: 1,
-      getFillColor: feature =>
-        hoveredState && feature.properties.codarea === hoveredState.properties.codarea
+
+      // ✅ Tipagem correta do parâmetro
+      getFillColor: (f: EstadoFeature) =>
+        hoveredState && f.properties.codarea === hoveredState.properties.codarea
           ? [255, 140, 0, 150]
           : [80, 120, 150, 100],
+
       getLineColor: [255, 255, 255],
       getElevation: 10000,
       updateTriggers: {
