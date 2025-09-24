@@ -37,7 +37,7 @@ const REGION_CENTERS: Record<string, Partial<MapViewState>> = {
   sul: { longitude: -52, latitude: -28, zoom: 5.2 },
 };
 
-const Interactive3DMap: React.FC = () => {
+const MapaInterativo3D: React.FC = () => {
   const [viewState, setViewState] = useState<MapViewState>(INITIAL_VIEW_STATE);
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
   const [hoveredState, setHoveredState] = useState<EstadoFeature | null>(null);
@@ -141,4 +141,4 @@ const Interactive3DMap: React.FC = () => {
   );
 };
 
-export default Interactive3DMap;
+export default MapaInterativo3D;
