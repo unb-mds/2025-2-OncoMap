@@ -4,28 +4,15 @@ import '../style/HomePage.css';
 const HomePage= () => {
     return (
         <div>
-            <div className="navbar">
+            <section id="inicio">
 
-                <h2>Oncomap</h2>
-                <nav>
-                    <Link to="/Mapa">inicio</Link>
-                    <Link to="/">Sobre</Link>
-                    <Link to="/">Quem somos</Link>
-                </nav>
-                <button>
-                    <Link to="/Mapa">Explorar</Link>
-                </button>
+            </section>
+            <section id="sobre">
 
-            </div>
-            <div className="Sobre">
+            </section>
+            <section id="quem-somos">
 
-            </div>
-            <div className="Quem-somos">
-
-            </div>
-            <div className="footer">
-
-            </div>
+            </section>
         </div>
     )
 }
