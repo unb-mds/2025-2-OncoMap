@@ -41,11 +41,9 @@ const Navbar = () =>{
 
                 </ul>
             </nav>
-            <div className="mapa-button">
-                <button>
-                    <Link to="/mapa" onClick={() => setMenuOpen(false)}>Mapa</Link>
-                </button>
-            </div>
+            <Link to="/mapa" className="mapa-button-link" onClick={() => setMenuOpen(false)}>
+                Explorar
+            </Link>
         </header>
     )
 }
