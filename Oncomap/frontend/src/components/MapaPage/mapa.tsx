@@ -88,10 +88,10 @@ const MapaInterativo3D: React.FC = () => {
       
       getFillColor: (f: Feature<Geometry, EstadoProperties>) =>
         hoveredState?.properties.codarea === f.properties.codarea
-          ? [255, 140, 0, 150]
+          ? [13, 75, 85, 255]
           : [80, 120, 150, 100],
 
-      getLineColor: [255, 255, 255],
+      getLineColor: [255, 255, 255, 255],
       getElevation: 20000,
       updateTriggers: {
         getFillColor: [hoveredState],

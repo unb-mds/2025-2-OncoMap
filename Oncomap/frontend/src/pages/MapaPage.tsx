@@ -1,15 +1,15 @@
 import MapaInterativo3D from "../components/MapaPage/mapa"
-import { Link } from "react-router-dom";
+import Footer from "../components/Geral/footer";
 import '../style/MapaPage.css';
 
 
 const MapaPege = () => {
     return(
-        <div className="mapa-page">
-            <div className="mapa-container">
+        <div className="mapa-page-container">
+            <div className="map-wrapper">
                 <MapaInterativo3D />    
             </div>
-
+            <Footer />
         </div>
     )
 }

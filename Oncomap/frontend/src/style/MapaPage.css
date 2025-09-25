@@ -1,20 +1,14 @@
-.mapa-page{
+.mapa-page-container {
   display: flex;
-  flex-direction: column;
-  height: 100vh;
-  overflow: hidden;
-  background-color: #f0f0f0;
+  flex-direction: column; 
+  min-height: 100vh;      
+  background-color: #f0f2f5; 
 }
 
-.header{
-  padding: 10px 20px;
-  background-color: #fff;
-  border-bottom: 1px solid #ccc;
-
+.map-wrapper {
+  flex-grow: 1; 
+  display: flex;
+  align-items: center;    
+  justify-content: center; 
+  padding: 2rem; 
 }
-
-.mapa-container{
-  flex-grow: 1;
-  position: relative;
-}
-
