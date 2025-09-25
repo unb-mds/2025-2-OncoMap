@@ -1,7 +1,7 @@
 // src/components/Sidebar.tsx
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import '../style/Sidebar.css';
+import '../../style/Sidebar.css';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
