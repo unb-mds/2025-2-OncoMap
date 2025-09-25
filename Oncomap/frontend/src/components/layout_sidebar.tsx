@@ -5,7 +5,7 @@ const Layout = () => {
     return (    
         <div>
             <Sidebar />
-            <main>
+            <main style={{ marginLeft: '60px'}}>
                 <Outlet />
             </main>
         </div>

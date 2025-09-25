@@ -8,9 +8,10 @@ function App() {
   return (
       <Router>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="mapa" element={<MapaPege />} />  
+        <Route path="/" element={<HomePage/>}/>
+        <Route element={<Layout />}>
+          <Route path="/mapa" element={<MapaPege/>}/>
+          /* adicionar outras rotas quando as paginas estiverem prontas */
         </Route>
       </Routes>
     </Router>
