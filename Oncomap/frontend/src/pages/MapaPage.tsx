@@ -1,4 +1,4 @@
-import MapaInterativo3D from "../components/mapa"
+import MapaInterativo3D from "../components/MapaPage/mapa"
 import { Link } from "react-router-dom";
 import '../style/MapaPage.css';
 

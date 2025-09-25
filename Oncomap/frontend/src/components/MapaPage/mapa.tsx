@@ -4,7 +4,7 @@ import type { Feature, Geometry } from 'geojson';
 import type { MapViewState, PickingInfo } from '@deck.gl/core';
 import { GeoJsonLayer } from '@deck.gl/layers';
 import StaticMap from 'react-map-gl';
-import { regioesGeoJson } from '../data/regioes';
+import { regioesGeoJson } from '../../data/regioes';
 
 // --- DEFINIÇÃO DE TIPOS ---
 
