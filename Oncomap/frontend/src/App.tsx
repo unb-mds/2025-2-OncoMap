@@ -2,7 +2,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import HomePage from './pages/HomePage'
 import MapaPege from "./pages/MapaPage"
-import Layout from "./components/layout_navbar"
+import Layout from "./components/layout_sidebar"
 
 function App() {
   return (
