@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link"; 
-import '../style/Navbar.css';
+import '../../style/Navbar.css';
       
 
 const Navbar = () =>{
