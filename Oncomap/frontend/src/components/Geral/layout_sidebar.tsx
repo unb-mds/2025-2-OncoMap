@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Sidebar from "./MapaPage/sidebar";
+import Sidebar from "../MapaPage/sidebar";
 
 const Layout = () => {
     return (    
