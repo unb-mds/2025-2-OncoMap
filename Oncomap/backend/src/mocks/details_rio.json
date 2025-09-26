@@ -1,0 +1,32 @@
+[
+  {
+    "category_name": "Medicamentos",
+    "total_value_by_category": "4567188.00",
+    "mentions": [
+      {
+        "date": "2024-05-24",
+        "value": 4567188.00,
+        "excerpt": "ONCO PROD DISTRIBUIDORA DE PRODUTOS HOSPITALARES E ONCOLOGICOS LTDA. CNPJ: 04.307.650/0012-98. Valor Total Adjudicado: R$ 4.567.188,00. ITEM 01 ESPECIFICAÇÃO: DUPILUMABE 200 MG...",
+        "url": "https://querido-diario.nyc3.cdn.digitaloceanspaces.com/3304557/2024-05-24/ecc20afb89c0492a9f5cd1b5553213737b06f2eb.pdf"
+      }
+    ]
+  },
+  {
+    "category_name": "Serviços de Saúde",
+    "total_value_by_category": "280385.84",
+    "mentions": [
+      {
+        "date": "2024-01-11",
+        "value": 16261.26,
+        "excerpt": "CENTRO DE EXCELENCIA DE RADIOTERAPIA DO RIO DE JANEIRO SA / RTONCO RJ. Valor: R$ 16.261,26",
+        "url": "https://querido-diario.nyc3.cdn.digitaloceanspaces.com/3304557/2024-01-11/0d1c9b131c30d16bdfb57e0e5829d046185feee2.pdf"
+      },
+      {
+        "date": "2024-04-29",
+        "value": 264124.58,
+        "excerpt": "ONCOCLINICA CENTRO DE TRATAMENTO ONCOLOGICO SA. OBJETO: PROJETO “MÚSICA PARATODOS”. VALOR: R$ 264.124,58",
+        "url": "https://querido-diario.nyc3.cdn.digitaloceanspaces.com/3304557/2024-04-29/11671b3a7e0979baf3261a9513af8b068796cfc7.pdf"
+      }
+    ]
+  }
+]

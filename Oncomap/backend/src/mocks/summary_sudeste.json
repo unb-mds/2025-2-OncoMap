@@ -1,0 +1,17 @@
+[
+  {
+    "municipality_name": "São Paulo",
+    "ibge_code": "3550308",
+    "total_value": 12540300.50
+  },
+  {
+    "municipality_name": "Rio de Janeiro",
+    "ibge_code": "3304557",
+    "total_value": 7890123.75
+  },
+  {
+    "municipality_name": "Belo Horizonte",
+    "ibge_code": "3106200",
+    "total_value": 4500678.20
+  }
+]
