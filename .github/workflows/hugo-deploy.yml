@@ -1,0 +1,67 @@
+name: Build and Deploy Hugo Site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main      # Aciona quando há novidades no projeto (para atualizar dados)
+      - gh-pages  # Aciona quando há mudanças no layout do site
+
+permissions:
+  contents: write # Necessário para publicar o site
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    
+    steps:
+      # 1. Faz o checkout EXPLICITAMENTE da branch 'gh-pages'
+      # Mesmo que o gatilho venha da 'main', ignoramos os arquivos da 'main'
+      # e baixamos a 'gh-pages' porque é lá que está a estrutura do Hugo.
+      - name: Checkout Hugo Source Code
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository }}
+          submodules: true 
+          fetch-depth: 0    # Importante para o Hugo ler histórico do Git
+          ref: gh-pages     # <--- O SEGREDO: Força o uso da branch do site
+
+      # 2. Instala o Hugo
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 'latest'
+          extended: true
+
+      # 3. Configura Python para seus scripts
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Python dependencies
+        run: pip install requests
+
+      # 4. Executa scripts de busca de dados
+      # Usa o token do GitHub para evitar erros de limite de requisições na API
+      - name: Fetch Data Scripts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python ./scripts/fetch_issues.py
+          python ./scripts/fetch_milestones.py
+          python ./scripts/fetch_atas.py
+
+      # 5. Constrói o site estático
+      - name: Build Hugo Site
+        run: hugo --minify
+
+      # 6. Publica o resultado na branch de deploy
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages-deploy # Branch final onde o site hospedado fica
+          publish_dir: ./public
+          commit_message: "Auto-deploy triggered by commit on ${{ github.ref_name }}"
