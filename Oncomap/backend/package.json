@@ -17,14 +17,18 @@
   },
   "devDependencies": {
     "eslint": "^9.35.0",
+    "jest": "^30.2.0",
     "nodemon": "^3.1.10",
-    "prettier": "^3.6.2"
+    "prettier": "^3.6.2",
+    "supertest": "^7.1.4"
   },
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
     "setup": "sudo bash setup-ubuntu.sh",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "db:setup": "node src/scripts/setup_municipalities.js",
     "db:collect": "node src/scripts/collector.js",
     "db:enrich": "node src/scripts/enrichment.js",
