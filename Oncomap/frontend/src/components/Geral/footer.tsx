@@ -15,26 +15,16 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="footer-column">
-          <h4>Contato</h4>
-          <p>
-            Phone: +55 (XX) XXXX-XXXX<br />
-            Email: contato@oncomap.com<br />
-            Address: Rua Fictícia, 123
-          </p>
-        </div>
 
         <div className="footer-column">
           <h4>Siga-nos</h4>
           <ul>
-            <li><a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-            <li><a href="#" target="_blank" rel="noopener noreferrer">Twitter</a></li>
-            <li><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank" rel="noopener noreferrer">GitHub</a></li>
           </ul>
         </div>
 
         <div className="footer-column">
-          <h4>Onco Mapa</h4>
+          <h4>OncoMap</h4>
           <p>Transparência nos investimentos em saúde oncológica</p>
         </div>
 
@@ -42,7 +32,6 @@ const Footer = () => {
 
       <div className="footer-bottom">
         <p>© 2025 OncoMap - Todos os direitos reservados.</p>
-        <p>Contact us: +55 (XX) XXXX-XXXX</p>
       </div>
     </footer>
   );

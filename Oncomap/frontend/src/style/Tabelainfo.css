@@ -18,6 +18,7 @@
   width: 100%; 
   min-height: 100%;
   box-sizing: border-box;
+  border-radius: 15px;
   font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
   display: flex;
