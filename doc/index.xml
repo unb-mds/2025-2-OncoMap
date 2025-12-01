@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Documentação do Projeto OncoMap on OncoMap</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/</link><description>Recent content in Documentação do Projeto OncoMap on OncoMap</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Sat, 29 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://unb-mds.github.io/2025-2-OncoMap/doc/index.xml" rel="self" type="application/rss+xml"/><item><title>Introdução e Visão Geral da Documentação</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/introducao/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/introducao/</guid><description/></item><item><title>Apis</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/api/apis/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/api/apis/</guid><description>&lt;h1 id="apis"&gt;APIs&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h2 id="-contexto"&gt;📖 Contexto&lt;/h2&gt;
+&lt;p&gt;Uma &lt;strong&gt;API (Application Programming Interface)&lt;/strong&gt; é um conjunto de regras e protocolos que permite que diferentes sistemas, serviços ou aplicações se comuniquem entre si.
+Elas são a base da integração moderna de software, permitindo reuso de funcionalidades, comunicação entre microsserviços e integração com serviços de terceiros.&lt;/p&gt;
+&lt;p&gt;No projeto, precisamos avaliar quais tipos de APIs podem ser utilizados, como funcionam e quais ferramentas ajudam no desenvolvimento, teste e documentação.&lt;/p&gt;</description></item><item><title>Arquitetura Backend</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/node.js/arquitetura_backend/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/node.js/arquitetura_backend/</guid><description>&lt;h1 id="tecnologia-sugerida"&gt;Tecnologia Sugerida&lt;/h1&gt;
+&lt;h2 id="linguagem-nodejs"&gt;Linguagem: Node.js&lt;/h2&gt;
+&lt;p&gt;O &lt;strong&gt;Node.js&lt;/strong&gt; foi escolhido como linguagem de desenvolvimento por ser: -
+Baseado em &lt;strong&gt;JavaScript&lt;/strong&gt;, a linguagem mais popular e com ampla
+comunidade de suporte.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Assíncrono e orientado a eventos&lt;/strong&gt;, permitindo alta performance em
+aplicações que exigem muitas requisições simultâneas.&lt;/li&gt;
+&lt;li&gt;Excelente para &lt;strong&gt;aplicações backend modernas&lt;/strong&gt;, especialmente em
+cenários de APIs e microsserviços.&lt;/li&gt;
+&lt;li&gt;Grande ecossistema de pacotes via &lt;strong&gt;NPM&lt;/strong&gt;, acelerando o
+desenvolvimento.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="framework-express"&gt;Framework: Express&lt;/h2&gt;
+&lt;p&gt;O &lt;strong&gt;Express.js&lt;/strong&gt; foi selecionado como framework por:&lt;/p&gt;</description></item><item><title>Arquitetura Tecnologia Front</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/react.js/arquitetura_tecnologia_front/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/react.js/arquitetura_tecnologia_front/</guid><description>&lt;h2 id="tecnologia-sugerida"&gt;Tecnologia sugerida&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Framework:&lt;/strong&gt; &lt;a href="https://react.dev/"&gt;React.js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Motivos da escolha:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Grande comunidade e suporte.&lt;/li&gt;
+&lt;li&gt;Componentização → facilita a reutilização de código.&lt;/li&gt;
+&lt;li&gt;Ecossistema maduro (bibliotecas, roteamento, estilização, state management).&lt;/li&gt;
+&lt;li&gt;Bom desempenho e facilidade de integração com backends em &lt;strong&gt;Python (Flask, FastAPI, etc.)&lt;/strong&gt; ou qualquer API REST/GraphQL.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="arquitetura-sugerida"&gt;Arquitetura sugerida&lt;/h2&gt;
+&lt;p&gt;Estrutura organizada para separar responsabilidades entre &lt;strong&gt;componentes, páginas, módulos, serviços e utilitários&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;src/&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;assets/&lt;/strong&gt; # Arquivos estáticos (imagens, ícones, fontes, etc.)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;components/&lt;/strong&gt; # Componentes reutilizáveis (botões, inputs, modais&amp;hellip;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;pages/&lt;/strong&gt; # Páginas ligadas às rotas (Login, Home, Dashboard)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;modules/&lt;/strong&gt; # Organização por domínio/funcionalidade&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;auth/&lt;/strong&gt; # Módulo de autenticação (login, cadastro, hooks, services)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;dashboard/&lt;/strong&gt; # Módulo de dashboard (widgets, gráficos, páginas)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;context/&lt;/strong&gt; # Context API para estados globais (ex: usuário, tema)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;hooks/&lt;/strong&gt; # Custom hooks globais (ex: useFetch, useTheme)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ervices/&lt;/strong&gt; # Serviços globais de comunicação com API&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;routes/&lt;/strong&gt; # Configuração central de rotas&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;styles/&lt;/strong&gt; # Estilos globais (CSS/Tailwind/Styled Components)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;utils/&lt;/strong&gt; # Funções auxiliares (formatadores, validadores, máscaras)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;App.jsx&lt;/strong&gt; # Componente raiz da aplicação&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;main.jsx&lt;/strong&gt; # Ponto de entrada (ReactDOM)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="benefícios-da-arquitetura"&gt;Benefícios da arquitetura&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Clareza&lt;/strong&gt;: cada pasta tem uma responsabilidade bem definida.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Escalabilidade&lt;/strong&gt;: fácil adicionar novos módulos/funcionalidades sem bagunçar a estrutura.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reutilização&lt;/strong&gt;: componentes e hooks genéricos podem ser usados em qualquer lugar.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Separação de camadas&lt;/strong&gt;: UI (componentes/páginas) e lógica (services/hooks/context) ficam bem organizadas.&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Arraynode</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/node.js/arraynode/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/node.js/arraynode/</guid><description>&lt;h1 id="-resumo-das-ferramentas-do-nodejs--javascript"&gt;📑 Resumo das ferramentas do Node.js / JavaScript&lt;/h1&gt;
+&lt;h2 id="-métodos-de-arrays"&gt;🔹 Métodos de Arrays&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;.length&lt;/code&gt;&lt;/strong&gt;
+Retorna o tamanho (quantidade de elementos) do array.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;arr&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;console&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;log&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;arr&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;length&lt;/span&gt;); &lt;span style="color:#75715e"&gt;// 3
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;.push()&lt;/code&gt;&lt;/strong&gt;
+Adiciona um ou mais elementos no final do array.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;arr&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;push&lt;/span&gt;(&lt;span style="color:#ae81ff"&gt;4&lt;/span&gt;); &lt;span style="color:#75715e"&gt;// [1, 2, 3, 4]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;.pop()&lt;/code&gt;&lt;/strong&gt;
+Remove o último elemento do array e o retorna.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;arr&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;pop&lt;/span&gt;(); &lt;span style="color:#75715e"&gt;// retorna 4 → [1, 2, 3]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;.slice(início, fim)&lt;/code&gt;&lt;/strong&gt;
+Cria uma cópia parcial do array, sem alterar o original.&lt;/p&gt;</description></item><item><title>Bancos De Dados</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/bancos_de_dados/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/bancos_de_dados/</guid><description>&lt;h1 id="bancos-de-dados"&gt;Bancos de Dados&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h2 id="-contexto"&gt;📖 Contexto&lt;/h2&gt;
+&lt;p&gt;Antes de iniciar a implementação, precisamos decidir o banco de dados.&lt;br&gt;
+Como a linguagem do projeto ainda não foi definida, avaliaremos opções considerando:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Maturidade&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Flexibilidade&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custo&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Desempenho&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ecossistema de drivers/ORMs&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Facilidade de operação (self-hosted vs. gerenciado)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="o-que-é-um-banco-de-dados-resumo"&gt;O que é um Banco de Dados (resumo)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Relacionais (SQL):&lt;/strong&gt; modelo tabular, transações ACID, SQL (ex.: PostgreSQL, MySQL, SQLite).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Não relacionais (NoSQL):&lt;/strong&gt; modelos flexíveis (documentos, chave-valor, grafo etc.) para casos de uso específicos (ex.: MongoDB, Redis).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="compatibilidade-por-linguagem-driversorms-populares"&gt;Compatibilidade por Linguagem (drivers/ORMs populares)&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; lista não exaustiva; todos são multiplataforma.&lt;/p&gt;</description></item><item><title>Diagrama De Fishbone</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/metodologias/fishbone/diagrama-de-fishbone/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/metodologias/fishbone/diagrama-de-fishbone/</guid><description>&lt;h1 id="diagrama-fishbone-ishikawa"&gt;Diagrama Fishbone (Ishikawa)&lt;/h1&gt;
+&lt;h2 id="sumário"&gt;Sumário&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Objetivo do documento&lt;/li&gt;
+&lt;li&gt;O que é o Diagrama Fishbone&lt;/li&gt;
+&lt;li&gt;Quando e por que usar&lt;/li&gt;
+&lt;li&gt;Elementos do diagrama&lt;/li&gt;
+&lt;li&gt;Modelos de categorias (6M, 4P, 4S, etc.)&lt;/li&gt;
+&lt;li&gt;Passo a passo para construção&lt;/li&gt;
+&lt;li&gt;Técnica combinada: Fishbone + 5 Porquês&lt;/li&gt;
+&lt;li&gt;Exemplo prático detalhado&lt;/li&gt;
+&lt;li&gt;Boas práticas e dicas&lt;/li&gt;
+&lt;li&gt;Checklist final&lt;/li&gt;
+&lt;li&gt;Refêrencias&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id="1-objetivo-do-documento"&gt;1. Objetivo do documento&lt;/h2&gt;
+&lt;p&gt;Este documento tem como objetivo explicar de forma clara, prática e aplicada o &lt;strong&gt;Diagrama Fishbone (ou Diagrama de Ishikawa)&lt;/strong&gt;, para que equipes e indivíduos possam conduzir análises de causa‑raiz, documentar hipóteses e definir ações corretivas.&lt;/p&gt;</description></item><item><title>Doc</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/metodologias/documento_de_visao/doc-/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/metodologias/documento_de_visao/doc-/</guid><description>&lt;ol&gt;
+&lt;li&gt;Introdução&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Objetivo: Apresentar o projeto de forma clara, objetiva e concisa.&lt;/p&gt;
+&lt;p&gt;O que incluir&lt;/p&gt;
+&lt;p&gt;Tema: Uma frase curta que define o assunto do projeto.
+Ex.: “Sistema de gerenciamento de tarefas acadêmicas.”&lt;/p&gt;
+&lt;p&gt;Objetivo do projeto:&lt;/p&gt;
+&lt;p&gt;Geral: declaração sucinta do propósito.&lt;/p&gt;
+&lt;p&gt;Específicos: lista de metas mensuráveis (ex.: permitir cadastro de usuários; gerar relatórios semanais).&lt;/p&gt;
+&lt;p&gt;Delimitação do problema (escopo):&lt;/p&gt;
+&lt;p&gt;Dentro do projeto: funcionalidades principais que serão entregues.&lt;/p&gt;
+&lt;p&gt;Fora do projeto: explicitamente o que não será contemplado nesta fase.&lt;/p&gt;</description></item><item><title>Docker</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/docker/docker/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/docker/docker/</guid><description>&lt;h1 id="configuração-do-docker-e-docker-compose"&gt;Configuração do Docker e Docker Compose&lt;/h1&gt;
+&lt;p&gt;Este guia descreve como criar e executar containers para o projeto &lt;strong&gt;React (frontend)&lt;/strong&gt; e &lt;strong&gt;Node.js (backend)&lt;/strong&gt; utilizando &lt;strong&gt;Docker&lt;/strong&gt; e &lt;strong&gt;Docker Compose&lt;/strong&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="1-pré-requisitos"&gt;1. Pré-requisitos&lt;/h2&gt;
+&lt;p&gt;Antes de começar, instale em sua máquina:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://docs.docker.com/get-docker/"&gt;Docker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.docker.com/compose/install/"&gt;Docker Compose&lt;/a&gt; (já incluso no Docker Desktop em muitas distribuições)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Verifique a instalação:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker --version
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker compose version
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="2-estrutura-básica-de-arquivos"&gt;2. Estrutura básica de arquivos&lt;/h2&gt;
+&lt;p&gt;No diretório raiz do projeto, será necessario:&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;.
+├── backend/
+│ ├── Dockerfile
+│ └── package.json
+├── frontend/
+│ ├── Dockerfile
+│ └── package.json
+├── docker-compose.yml
+└── .env (opcional para variáveis de ambiente)
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h2 id="3-criando-os-dockerfiles"&gt;3. Criando os Dockerfiles&lt;/h2&gt;
+&lt;h3 id="backend-nodejs"&gt;Backend (Node.js)&lt;/h3&gt;
+&lt;p&gt;Arquivo: &lt;strong&gt;backend/Dockerfile&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Estudonode</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/node.js/estudonode/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/node.js/estudonode/</guid><description>&lt;h1 id="estudo-nodejs"&gt;Estudo Node.js&lt;/h1&gt;
+&lt;h2 id="tipos-de-dados"&gt;Tipos de dados&lt;/h2&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;Tipo&lt;/th&gt;
+ &lt;th&gt;Descrição&lt;/th&gt;
+ &lt;th&gt;Exemplo&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;Number&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;Números inteiros ou decimais&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;let idade = 25;&lt;/code&gt; &lt;code&gt;let preco = 19.99;&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;String&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;Texto, caracteres entre aspas&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;let nome = &amp;quot;Artur&amp;quot;;&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;Boolean&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;Verdadeiro ou falso&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;let ativo = true;&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;Undefined&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;Variável declarada mas sem valor&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;let valor;&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;Null&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;Valor intencionalmente vazio&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;let resultado = null;&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;BigInt&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;Números muito grandes&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;let numeroGrande = 12345678901234567890n;&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;Symbol&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;Valor único e imutável, geralmente para identificação&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;let id = Symbol(&amp;quot;id&amp;quot;);&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="tipos-de-referência"&gt;Tipos de referência&lt;/h2&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;Tipo&lt;/th&gt;
+ &lt;th&gt;Descrição&lt;/th&gt;
+ &lt;th&gt;Exemplo&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;Object&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;Estrutura que armazena múltiplos valores e propriedades&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;let pessoa = { nome: &amp;quot;Ana&amp;quot;, idade: 30 };&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;Array&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;Lista de valores&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;let frutas = [&amp;quot;maçã&amp;quot;, &amp;quot;banana&amp;quot;, &amp;quot;laranja&amp;quot;];&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;• Objetos e arrays são amplamente usados para armazenar dados de usuários, configurações e respostas de APIs.&lt;/p&gt;</description></item><item><title>Etapa1 Fundamentos React</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/react.js/etapa1-fundamentos_react/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/react.js/etapa1-fundamentos_react/</guid><description>&lt;h1 id="etapa-1--estrutura-básica-de-um-projeto-react"&gt;Etapa 1 &amp;ndash; Estrutura básica de um projeto React&lt;/h1&gt;
+&lt;p&gt;Nesta etapa você aprende como funciona a base de um projeto React.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="1-estrutura-típica-de-um-projeto"&gt;1. Estrutura típica de um projeto&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;meu-projeto/
+├── src/
+│ ├── components/ # Componentes reutilizáveis
+│ │ └── Header.jsx
+│ ├── pages/ # Páginas do app
+│ │ └── HomePage.jsx
+│ ├── App.jsx # Componente principal
+│ └── index.js # Ponto de entrada
+├── public/
+│ └── index.html
+└── package.json # Configurações e dependências
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id="2-criando-um-componente-simples"&gt;2. Criando um componente simples&lt;/h2&gt;
+&lt;p&gt;Exemplo de um &lt;strong&gt;componente funcional&lt;/strong&gt; em React:&lt;/p&gt;</description></item><item><title>Etapa2 React Comunicacao</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/react.js/etapa2-react_comunicacao/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/react.js/etapa2-react_comunicacao/</guid><description>&lt;h1 id="etapa-2--comunicação-entre-componentes-props-state-e-eventos"&gt;Etapa 2 — Comunicação entre componentes (Props, State e Eventos)&lt;/h1&gt;
+&lt;p&gt;Bem-vindo(a) à etapa onde o React começa a &lt;strong&gt;ficar interativo&lt;/strong&gt;. Aqui você vai aprender &lt;strong&gt;como os componentes conversam entre si&lt;/strong&gt; e &lt;strong&gt;como a interface reage às ações do usuário&lt;/strong&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="1-props--passando-dados-do-pai-para-o-filho"&gt;1) Props — passando dados do pai para o filho&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;O que são?&lt;/strong&gt;&lt;br&gt;
+&lt;em&gt;Props&lt;/em&gt; (propriedades) são &lt;strong&gt;dados que o componente pai envia para o componente filho&lt;/strong&gt;.&lt;br&gt;
+Dentro do filho, as props são &lt;strong&gt;somente leitura&lt;/strong&gt; (imutáveis).&lt;/p&gt;</description></item><item><title>Etapa3 Renderizacao</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/react.js/etapa3-renderizacao/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/react.js/etapa3-renderizacao/</guid><description>&lt;h1 id="etapa-3--renderização-dinâmica"&gt;Etapa 3 – Renderização dinâmica&lt;/h1&gt;
+&lt;p&gt;Nesta etapa você aprenderá como tornar a interface &lt;strong&gt;dinâmica&lt;/strong&gt;: mostrar ou esconder elementos com base no estado, renderizar listas de dados corretamente usando &lt;code&gt;map()&lt;/code&gt; e &lt;code&gt;key&lt;/code&gt;, e criar &lt;strong&gt;formulários controlados&lt;/strong&gt; onde os campos ficam sincronizados com o &lt;code&gt;state&lt;/code&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="1-renderização-condicional"&gt;1) Renderização condicional&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;O que é?&lt;/strong&gt;&lt;br&gt;
+Renderização condicional é a técnica de mostrar componentes diferentes (ou nada) dependendo de condições (normalmente valores do &lt;code&gt;state&lt;/code&gt;).&lt;/p&gt;
+&lt;h3 id="formas-comuns"&gt;Formas comuns&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Operador ternário&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-jsx" data-lang="jsx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{&lt;span style="color:#a6e22e"&gt;condicao&lt;/span&gt; &lt;span style="color:#f92672"&gt;?&lt;/span&gt; &amp;lt;&lt;span style="color:#f92672"&gt;ComponenteA&lt;/span&gt; /&amp;gt; &lt;span style="color:#f92672"&gt;:&lt;/span&gt; &amp;lt;&lt;span style="color:#f92672"&gt;ComponenteB&lt;/span&gt; /&amp;gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
+&lt;li&gt;&lt;strong&gt;Short-circuit com &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt;&lt;/strong&gt; (renderiza quando a condição é verdadeira)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-jsx" data-lang="jsx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{&lt;span style="color:#a6e22e"&gt;mostrar&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &amp;lt;&lt;span style="color:#f92672"&gt;p&lt;/span&gt;&amp;gt;&lt;span style="color:#a6e22e"&gt;Esse&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;texto&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;aparece&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;só&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;quando&lt;/span&gt; &lt;span style="color:#e6db74"&gt;`mostrar`&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;&amp;lt;/&lt;span style="color:#f92672"&gt;p&lt;/span&gt;&amp;gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="3"&gt;
+&lt;li&gt;&lt;strong&gt;Retornar &lt;code&gt;null&lt;/code&gt;&lt;/strong&gt; dentro de um componente para não renderizá-lo:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-jsx" data-lang="jsx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;function&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Aviso&lt;/span&gt;({ &lt;span style="color:#a6e22e"&gt;ativo&lt;/span&gt; }) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (&lt;span style="color:#f92672"&gt;!&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;ativo&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;null&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &amp;lt;&lt;span style="color:#f92672"&gt;div&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;className&lt;/span&gt;&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;aviso&amp;#34;&lt;/span&gt;&amp;gt;&lt;span style="color:#a6e22e"&gt;Atenção&lt;/span&gt;&lt;span style="color:#f92672"&gt;!&lt;/span&gt;&amp;lt;/&lt;span style="color:#f92672"&gt;div&lt;/span&gt;&amp;gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="exemplo-mostraresconder-painel"&gt;Exemplo: mostrar/esconder painel&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-jsx" data-lang="jsx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;import&lt;/span&gt; { &lt;span style="color:#a6e22e"&gt;useState&lt;/span&gt; } &lt;span style="color:#a6e22e"&gt;from&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;react&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;function&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Painel&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; [&lt;span style="color:#a6e22e"&gt;mostrar&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;setMostrar&lt;/span&gt;] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;useState&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;false&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;&lt;span style="color:#f92672"&gt;div&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;&lt;span style="color:#f92672"&gt;button&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;onClick&lt;/span&gt;&lt;span style="color:#f92672"&gt;=&lt;/span&gt;{() =&amp;gt; &lt;span style="color:#a6e22e"&gt;setMostrar&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;m&lt;/span&gt; =&amp;gt; &lt;span style="color:#f92672"&gt;!&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;m&lt;/span&gt;)}&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#a6e22e"&gt;mostrar&lt;/span&gt; &lt;span style="color:#f92672"&gt;?&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;Esconder painel&amp;#34;&lt;/span&gt; &lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;Mostrar painel&amp;#34;&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;/&lt;span style="color:#f92672"&gt;button&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#a6e22e"&gt;mostrar&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;amp;&amp;amp;&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;&lt;span style="color:#f92672"&gt;div&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;className&lt;/span&gt;&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;painel&amp;#34;&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;&lt;span style="color:#f92672"&gt;h2&lt;/span&gt;&amp;gt;&lt;span style="color:#a6e22e"&gt;Painel&lt;/span&gt;&amp;lt;/&lt;span style="color:#f92672"&gt;h2&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;&lt;span style="color:#f92672"&gt;p&lt;/span&gt;&amp;gt;&lt;span style="color:#a6e22e"&gt;Conteúdo&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;visível&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;apenas&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;quando&lt;/span&gt; &lt;span style="color:#e6db74"&gt;`mostrar`&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;é&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;.&amp;lt;/&lt;span style="color:#f92672"&gt;p&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;/&lt;span style="color:#f92672"&gt;div&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; )}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;/&lt;span style="color:#f92672"&gt;div&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; );
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="2-listas-e-key"&gt;2) Listas e &lt;code&gt;key&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Por que usar &lt;code&gt;key&lt;/code&gt;?&lt;/strong&gt;&lt;br&gt;
+Quando você renderiza listas com &lt;code&gt;.map()&lt;/code&gt;, o React precisa de uma &lt;strong&gt;chave única&lt;/strong&gt; por item para identificar quais elementos mudaram, foram adicionados ou removidos. Isso ajuda o React a fazer atualizações eficientes.&lt;/p&gt;</description></item><item><title>Etapa4 Hooks Essenciais</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/react.js/etapa4-hooks_essenciais/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/react.js/etapa4-hooks_essenciais/</guid><description>&lt;h1 id="etapa-4--hooks-essenciais-useeffect-e-custom-hooks"&gt;Etapa 4 — Hooks essenciais (useEffect e Custom Hooks)&lt;/h1&gt;
+&lt;p&gt;Nesta etapa você vai aprender dois tópicos fundamentais do React moderno:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;useEffect&lt;/strong&gt; — como lidar com efeitos colaterais (buscar dados, timers, eventos do DOM, etc).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Hooks&lt;/strong&gt; — como criar hooks reutilizáveis para encapsular lógica.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id="1-o-que-são-hooks"&gt;1) O que são Hooks?&lt;/h2&gt;
+&lt;p&gt;Hooks são funções que permitem “ligar” recursos do React (state, ciclo de vida, contexto) em componentes funcionais. Exemplos nativos: &lt;code&gt;useState&lt;/code&gt;, &lt;code&gt;useEffect&lt;/code&gt;, &lt;code&gt;useRef&lt;/code&gt;, &lt;code&gt;useContext&lt;/code&gt;, &lt;code&gt;useMemo&lt;/code&gt;, &lt;code&gt;useCallback&lt;/code&gt;.&lt;br&gt;
+&lt;strong&gt;Regras importantes (&amp;ldquo;Rules of Hooks&amp;rdquo;)&lt;/strong&gt;:&lt;/p&gt;</description></item><item><title>Etapa5 Estrutura App</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/react.js/etapa5-estrutura_app/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/react.js/etapa5-estrutura_app/</guid><description>&lt;h1 id="etapa-5--estrutura-do-app-react-router--context-api"&gt;Etapa 5 — Estrutura do app (React Router &amp;amp; Context API)&lt;/h1&gt;
+&lt;p&gt;Nesta etapa você vai aprender a estruturar a aplicação em &lt;strong&gt;páginas/rotas&lt;/strong&gt; com o &lt;strong&gt;React Router&lt;/strong&gt; e a compartilhar estado entre vários componentes com a &lt;strong&gt;Context API&lt;/strong&gt;. Vou explicar tudo como para um iniciante, com exemplos práticos e boas práticas.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="1-organização-de-pastas-sugerida"&gt;1) Organização de pastas sugerida&lt;/h2&gt;
+&lt;p&gt;Exemplo de estrutura para um projeto React pequeno/médio:&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;src/
+├── App.jsx
+├── index.jsx
+├── pages/
+│ ├── Home.jsx
+│ ├── Login.jsx
+│ └── Profile.jsx
+├── components/
+│ ├── Header.jsx
+│ └── Footer.jsx
+├── routes/ # opcional: rotas organizadas aqui
+│ └── AppRoutes.jsx
+├── context/
+│ ├── AuthContext.jsx
+│ └── CartContext.jsx
+├── hooks/
+│ └── useLocalStorage.js
+└── services/
+ └── api.js
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;em&gt;Colocar providers em &lt;code&gt;context/&lt;/code&gt; e hooks reutilizáveis em &lt;code&gt;hooks/&lt;/code&gt; ajuda a manter o projeto organizado.&lt;/em&gt;&lt;/p&gt;</description></item><item><title>Etapa6 Organizacao Boas Praticas</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/react.js/etapa6-organizacao_boas_praticas/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/react.js/etapa6-organizacao_boas_praticas/</guid><description>&lt;h1 id="etapa-6--organização-e-boas-práticas-para-iniciantes-em-react"&gt;Etapa 6 — Organização e Boas Práticas (para iniciantes em React)&lt;/h1&gt;
+&lt;p&gt;Nesta etapa você aprende &lt;strong&gt;como organizar seu projeto&lt;/strong&gt; e seguir boas práticas que deixam o código mais fácil de ler, escalar e manter. Tudo explicado de forma simples, com exemplos práticos.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="1-estrutura-de-pastas-recomendada"&gt;1) Estrutura de pastas recomendada&lt;/h2&gt;
+&lt;p&gt;Para projetos pequenos a médios, uma estrutura simples e clara ajuda muito:&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;src/
+├── components/ # Componentes reutilizáveis e pequenos
+│ ├── Button/
+│ │ ├── Button.jsx
+│ │ └── Button.module.css
+│ └── Header.jsx
+├── pages/ # Páginas (rotas)
+│ ├── Home.jsx
+│ └── Profile.jsx
+├── hooks/ # Custom hooks (useFetch, useLocalStorage...)
+├── context/ # Providers / Context API
+├── services/ # chamadas API, helpers de rede
+├── styles/ # estilos globais (variables.css, reset.css)
+├── utils/ # funções utilitárias
+├── assets/ # imagens, fontes, ícones
+├── routes/ # definição de rotas (opcional)
+└── App.jsx
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Dica: prefira &lt;strong&gt;pastas pequenas e com responsabilidade única&lt;/strong&gt; (cada pasta com um propósito claro).&lt;/p&gt;</description></item><item><title>Excessoesnode</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/node.js/excessoesnode/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/node.js/excessoesnode/</guid><description>&lt;h1 id="funcionalidades-do-nodejs"&gt;Funcionalidades do Node.js&lt;/h1&gt;
+&lt;p&gt;Aqui estão algumas funcionalidades e recursos do Node.js explicados
+brevemente, com exemplos.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="processargv"&gt;&lt;code&gt;process.argv&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Permite acessar os argumentos passados na linha de comando ao executar
+um script Node.js.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// exemplo.js
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;console&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;log&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;process&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;argv&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Executando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;node exemplo.js ola mundo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Saída:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;['node', '/caminho/exemplo.js', 'ola', 'mundo']
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id="fs-biblioteca"&gt;&lt;code&gt;fs&lt;/code&gt; (biblioteca)&lt;/h2&gt;
+&lt;p&gt;Módulo do Node.js para manipulação de arquivos.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;fs&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;require&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#39;fs&amp;#39;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;fs&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;readFile&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#39;arquivo.txt&amp;#39;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#39;utf8&amp;#39;&lt;/span&gt;, (&lt;span style="color:#a6e22e"&gt;err&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;data&lt;/span&gt;) =&amp;gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (&lt;span style="color:#a6e22e"&gt;err&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;throw&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;err&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;console&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;log&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;data&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;});
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="readfile"&gt;&lt;code&gt;readFile&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Função da biblioteca &lt;code&gt;fs&lt;/code&gt; para ler arquivos.&lt;/p&gt;</description></item><item><title>Git E Github</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/metodologias/git_e_github/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/metodologias/git_e_github/</guid><description>&lt;h1 id="git-e-github"&gt;Git e GitHub&lt;/h1&gt;
+&lt;p&gt;Git é um sistema de controle de versão distribuído amplamente utilizado no desenvolvimento de software. Ele permite rastrear e gerenciar mudanças em projetos, armazenar o histórico de alterações, facilitar o trabalho em equipe e garantir maior segurança ao código.&lt;/p&gt;
+&lt;p&gt;GitHub é uma plataforma de hospedagem de código-fonte que utiliza o Git como base. Funciona como um espaço na nuvem para armazenar repositórios, possibilitando acessar e compartilhar projetos facilmente. No GitHub, você pode usar diversos recursos que tornam o desenvolvimento colaborativo mais eficiente, como:&lt;/p&gt;</description></item><item><title>Guia Ambiente</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/react.js/guia_ambiente/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/react.js/guia_ambiente/</guid><description>&lt;h1 id="frontend"&gt;Frontend&lt;/h1&gt;
+&lt;h2 id="instalando-vite-e-criando-um-projeto-react"&gt;Instalando Vite e Criando um Projeto React&lt;/h2&gt;
+&lt;p&gt;Este guia explica como instalar o &lt;strong&gt;Vite&lt;/strong&gt; e iniciar um novo projeto
+&lt;strong&gt;React&lt;/strong&gt; passo a passo.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="pré-requisitos"&gt;Pré-requisitos&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Node.js&lt;/strong&gt; (versão LTS recomendada &amp;ndash; 20 ou superior).&lt;br&gt;
+Verifique se está instalado:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;node -v
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;npm -v
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Caso não esteja instalado, baixe pelo &lt;a href="https://nodejs.org"&gt;site
+oficial&lt;/a&gt; ou use o gerenciador de pacotes da sua
+distribuição Linux.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="criar-o-projeto-com-vite"&gt;Criar o projeto com Vite&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Abra o terminal na pasta onde deseja criar o projeto.&lt;/p&gt;</description></item><item><title>Ideia De Documento De Visao</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/metodologias/documento_de_visao/ideia-de-documento-de-visao/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/metodologias/documento_de_visao/ideia-de-documento-de-visao/</guid><description>&lt;h1 id="-documentação-base---cldf"&gt;📑 Documentação base - CLDF&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Módulo:&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;Sprint:&lt;/strong&gt; | &lt;strong&gt;BDD:&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;Empresa cliente:&lt;/strong&gt; | &lt;strong&gt;Responsável cliente:&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;Analista:&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="1-introdução-ao-documento"&gt;1. Introdução ao documento&lt;/h2&gt;
+&lt;h3 id="11-objetivo-do-projeto"&gt;1.1 Objetivo do Projeto&lt;/h3&gt;
+&lt;h3 id="12-delimitação-do-problema"&gt;1.2 Delimitação do problema&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id="2-descrição-geral-do-sistema"&gt;2. Descrição geral do sistema&lt;/h2&gt;
+&lt;h3 id="21-usuários-do-sistema"&gt;2.1 Usuários do sistema&lt;/h3&gt;
+&lt;h3 id="22-regras-de-negócio"&gt;2.2 Regras de negócio&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id="3-descrição-da-sprint"&gt;3. Descrição da sprint&lt;/h2&gt;
+&lt;h3 id="31-escopo"&gt;3.1 Escopo&lt;/h3&gt;
+&lt;h3 id="32-delimitação"&gt;3.2 Delimitação&lt;/h3&gt;
+&lt;h3 id="33-o-que-não-pertence-ao-escopo"&gt;3.3 O que não pertence ao escopo&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id="4-fator-de-impacto"&gt;4. Fator de impacto&lt;/h2&gt;
+&lt;h3 id="41-detalhamento"&gt;4.1 Detalhamento&lt;/h3&gt;
+&lt;h3 id="42-componentização"&gt;4.2 Componentização&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id="5-requisitos-do-sistema"&gt;5. Requisitos do sistema&lt;/h2&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;RF&lt;/th&gt;
+ &lt;th&gt;RNF&lt;/th&gt;
+ &lt;th&gt;Descrição&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id="6-diagramas"&gt;6. Diagramas&lt;/h2&gt;
+&lt;h3 id="61-diagrama-de-caso-de-uso"&gt;6.1 Diagrama de Caso de Uso&lt;/h3&gt;
+&lt;h3 id="62-diagrama-de-atividade"&gt;6.2 Diagrama de Atividade&lt;/h3&gt;
+&lt;h3 id="63-diagrama-de-classe"&gt;6.3 Diagrama de Classe&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id="7-modelo-de-dados"&gt;7. Modelo de dados&lt;/h2&gt;
+&lt;h3 id="71-mer-modelo-entidade-relacionamento"&gt;7.1 MER (Modelo Entidade Relacionamento)&lt;/h3&gt;
+&lt;h3 id="72-alterações-no-banco-de-dados"&gt;7.2 Alterações no banco de dados&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id="8-sistemas-e-componentes-externos-utilizados"&gt;8. Sistemas e componentes externos utilizados&lt;/h2&gt;
+&lt;h3 id="81-diagramas-de-fronteira"&gt;8.1 Diagramas de Fronteira&lt;/h3&gt;
+&lt;h3 id="82-diagramas-de-componentes"&gt;8.2 Diagramas de Componentes&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id="9-cenários"&gt;9. Cenários&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Contexto&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Kanban</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/metodologias/kanban/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/metodologias/kanban/</guid><description>&lt;p&gt;1.Resumo
+Kanban é uma forma visual e prática de gerenciar trabalho, ajudando a ver o que está sendo feito, o que falta e onde estão os gargalos, para melhorar a produtividade e a organização.&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;Explicação:
+Kanban é um método de organização do trabalho que ajuda equipes e indivíduos a visualizar tarefas, controlar fluxo e aumentar a eficiência.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;3.Coceitos:
+Visualização do fluxo de trabalho
+O trabalho é representado em um quadro (Kanban board).
+Cada atividade é um cartão.
+O quadro é dividido em colunas que representam etapas do processo (ex.: A Fazer → Em Progresso → Concluído).
+Limitação do trabalho em progresso (WIP – Work in Progress)
+Define-se um limite de quantas tarefas podem estar em andamento ao mesmo tempo.
+Isso evita sobrecarga e melhora a produtividade.
+Fluxo contínuo
+A ideia é que o trabalho flua de forma suave pelas etapas, sem gargalos.
+Feedback e melhoria contínua
+A equipe analisa regularmente o quadro para identificar problemas, otimizar processos e entregar valor mais rápido.&lt;/p&gt;</description></item><item><title>Levantamentorequisitos</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/requisitos/levantamentorequisitos/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/requisitos/levantamentorequisitos/</guid><description>&lt;h1 id="requisitos-funcionais-rf"&gt;Requisitos Funcionais (RF)&lt;/h1&gt;
+&lt;p&gt;Os Requisitos Funcionais descrevem as ações e funcionalidades que o sistema deve executar para que o objetivo do projeto seja atingido. Para o &amp;ldquo;Radar de investimento de saúde oncológica&amp;rdquo;, os principais RF estão divididos nas seguintes categorias:&lt;/p&gt;
+&lt;h3 id="requisitos-de-busca-e-análise"&gt;Requisitos de Busca e Análise&lt;/h3&gt;
+&lt;p&gt;O sistema precisa ser capaz de identificar e extrair informações específicas dos diários oficiais. Para isso podem ser levantados alguns requisitos, como:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;O sistema deve permitir a busca por &lt;strong&gt;palavras-chave&lt;/strong&gt; relacionadas à saúde oncológica (ex: &amp;ldquo;oncologia&amp;rdquo;, &amp;ldquo;câncer&amp;rdquo;, &amp;ldquo;quimioterapia&amp;rdquo;, &amp;ldquo;radioterapia&amp;rdquo;).&lt;/li&gt;
+&lt;li&gt;O sistema deve permitir a aplicação de &lt;strong&gt;filtros&lt;/strong&gt; para restringir a busca por município, estado e período de tempo (data).&lt;/li&gt;
+&lt;li&gt;O sistema deve ser capaz de &lt;strong&gt;extrair valores monetários&lt;/strong&gt; de licitações e contratos identificados.&lt;/li&gt;
+&lt;li&gt;O sistema deve processar os dados para &lt;strong&gt;classificá-los&lt;/strong&gt; por tipo de investimento (Medicamentos, Equipamentos, Obras, etc.), conforme o detalhamento da análise de domínio.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="requisitos-de-visualização-e-relatórios"&gt;Requisitos de Visualização e Relatórios&lt;/h3&gt;
+&lt;p&gt;O sistema deve apresentar os dados de forma que sejam facilmente compreensíveis para o usuário final. Para isso podem ser levantados alguns requisitos, como:&lt;/p&gt;</description></item><item><title>Linux</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/metodologias/linux/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/metodologias/linux/</guid><description>&lt;h1 id="linux-e-ubuntu"&gt;Linux e Ubuntu&lt;/h1&gt;
+&lt;p&gt;Linux é um sistema operacional de código aberto baseado no kernel Linux. Ele é amplamente usado em servidores, dispositivos móveis (como o Android) e também em desktops. Sua principal característica é a estabilidade, segurança e flexibilidade.&lt;/p&gt;
+&lt;p&gt;O &lt;strong&gt;Ubuntu&lt;/strong&gt; é uma das distribuições Linux mais populares, sendo amigável para iniciantes e muito utilizada em ambientes de desenvolvimento. Ele é baseado no Debian e conta com suporte da Canonical, oferecendo atualizações regulares e uma vasta comunidade.&lt;/p&gt;</description></item><item><title>Objetosnode</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/node.js/objetosnode/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/node.js/objetosnode/</guid><description>&lt;h1 id="-resumo-de-objetos-do-nodejs--javascript"&gt;📑 Resumo de Objetos do Node.js / JavaScript&lt;/h1&gt;
+&lt;h2 id="-manipulação-de-objetos"&gt;🔹 Manipulação de Objetos&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;for...in&lt;/code&gt;&lt;/strong&gt;
+Percorre todas as propriedades enumeráveis de um objeto (incluindo herdadas da cadeia de protótipos). &lt;br&gt;
+Útil para iterar chaves de um objeto.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;user&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; { &lt;span style="color:#a6e22e"&gt;name&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;Ana&amp;#34;&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;age&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;25&lt;/span&gt; };
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; (&lt;span style="color:#66d9ef"&gt;let&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;key&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;in&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;user&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;console&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;log&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;key&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;user&lt;/span&gt;[&lt;span style="color:#a6e22e"&gt;key&lt;/span&gt;]); &lt;span style="color:#75715e"&gt;// name Ana / age 25
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;typeof&lt;/code&gt;&lt;/strong&gt;
+Retorna uma string com o tipo de um valor ou variável.
+Em objetos, retorna &amp;ldquo;object&amp;rdquo;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;typeof&lt;/span&gt; { &lt;span style="color:#a6e22e"&gt;a&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; }; &lt;span style="color:#75715e"&gt;// &amp;#34;object&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;typeof&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;null&lt;/span&gt;; &lt;span style="color:#75715e"&gt;// &amp;#34;object&amp;#34; (curiosidade histórica do JS)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;Object.keys()&lt;/code&gt;&lt;/strong&gt;
+Retorna um array com as chaves próprias de um objeto.&lt;/p&gt;</description></item><item><title>Poonode</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/node.js/poonode/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/node.js/poonode/</guid><description>&lt;h1 id="funcionalidades-do-nodejsjavascript"&gt;Funcionalidades do Node.js/JavaScript&lt;/h1&gt;
+&lt;h2 id="1-bind"&gt;1. &lt;code&gt;.bind&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Cria uma nova função com o &lt;code&gt;this&lt;/code&gt; fixado ao valor especificado.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;function&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;saudacao&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;console&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;log&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;`Olá, &lt;/span&gt;&lt;span style="color:#e6db74"&gt;${&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;this&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;nome&lt;/span&gt;&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;`&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;pessoa&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; { &lt;span style="color:#a6e22e"&gt;nome&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;Artur&amp;#34;&lt;/span&gt; };
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;saudacaoPessoa&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;saudacao&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;bind&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;pessoa&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;saudacaoPessoa&lt;/span&gt;(); &lt;span style="color:#75715e"&gt;// &amp;#34;Olá, Artur&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="2-call"&gt;2. &lt;code&gt;.call&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Executa uma função, especificando o valor de &lt;code&gt;this&lt;/code&gt; e argumentos individualmente.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;function&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;apresentar&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;cidade&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;console&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;log&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;`&lt;/span&gt;&lt;span style="color:#e6db74"&gt;${&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;this&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;nome&lt;/span&gt;&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt; mora em &lt;/span&gt;&lt;span style="color:#e6db74"&gt;${&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;cidade&lt;/span&gt;&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;`&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;pessoa&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; { &lt;span style="color:#a6e22e"&gt;nome&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;Maria&amp;#34;&lt;/span&gt; };
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;apresentar&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;call&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;pessoa&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;Recife&amp;#34;&lt;/span&gt;); &lt;span style="color:#75715e"&gt;// &amp;#34;Maria mora em Recife&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="3-apply"&gt;3. &lt;code&gt;.apply&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Parecido com &lt;code&gt;.call&lt;/code&gt;, mas os argumentos são passados em &lt;strong&gt;array&lt;/strong&gt;.&lt;/p&gt;</description></item><item><title>Queridodiarioapi</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/api/queridodiarioapi/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/api/queridodiarioapi/</guid><description>&lt;h1 id="querido-diário-api---documentação-para-issue"&gt;Querido Diário API - Documentação para Issue&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h2 id="-contexto"&gt;📖 Contexto&lt;/h2&gt;
+&lt;p&gt;No projeto &lt;strong&gt;Radar de investimento em saúde oncológica nos municípios&lt;/strong&gt;, utilizaremos a API pública do &lt;strong&gt;Querido Diário&lt;/strong&gt;, que disponibiliza os diários oficiais municipais de forma acessível para consulta e análise.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="api-do-querido-diário"&gt;API do Querido Diário&lt;/h2&gt;
+&lt;p&gt;A API do &lt;strong&gt;Querido Diário&lt;/strong&gt; segue o modelo &lt;strong&gt;REST&lt;/strong&gt;, baseada em requisições HTTP, retornando dados no formato &lt;strong&gt;JSON&lt;/strong&gt;. Ela permite consultar e filtrar publicações dos diários oficiais de diferentes municípios brasileiros.&lt;/p&gt;</description></item><item><title>Requisitos</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/requisitos/requisitos/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/requisitos/requisitos/</guid><description>&lt;h1 id="requisitos-de-software"&gt;Requisitos de Software&lt;/h1&gt;
+&lt;h2 id="levantamento-de-requisitos"&gt;Levantamento de Requisitos&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Requisitos&lt;/strong&gt; são indispensáveis na fase inicial de um projeto. Eles são a base para o levantamento de funcionalidades e restrições que um sistema precisa ter. Essa etapa é crucial, pois serve para:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Descrever os serviços&lt;/strong&gt; que serão realizados no projeto.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Verificar a viabilidade&lt;/strong&gt; da implementação das necessidades do cliente.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Alocar funções&lt;/strong&gt; para os membros da equipe de desenvolvimento.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;O levantamento de requisitos nas etapas iniciais é a fundação para todas as outras fases do desenvolvimento.&lt;/p&gt;</description></item><item><title>Requisitos Funcionais</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/requisitos/requisitos-funcionais/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/requisitos/requisitos-funcionais/</guid><description>&lt;h1 id="-requisitos-funcionais-de-software"&gt;📌 Requisitos Funcionais de Software&lt;/h1&gt;
+&lt;p&gt;Os &lt;strong&gt;requisitos funcionais&lt;/strong&gt; descrevem &lt;strong&gt;o que um sistema deve fazer&lt;/strong&gt;.&lt;br&gt;
+Eles especificam as &lt;strong&gt;funções, comportamentos e serviços&lt;/strong&gt; que o software precisa oferecer para atender às necessidades do usuário ou do cliente.&lt;/p&gt;
+&lt;p&gt;👉 Em outras palavras, eles respondem à pergunta:&lt;br&gt;
+&lt;strong&gt;“Quais tarefas o sistema deve executar?”&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="-características-principais"&gt;✨ Características Principais&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Definem funcionalidades&lt;/strong&gt; – descrevem ações que o sistema realizará.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Exemplo: &lt;code&gt;O sistema deve permitir que o usuário faça login com e-mail e senha.&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;São observáveis&lt;/strong&gt; – é possível verificar se o requisito foi atendido.&lt;/p&gt;</description></item><item><title>Requisitos Naofuncionais</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/requisitos/requisitos_naofuncionais/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/requisitos/requisitos_naofuncionais/</guid><description>&lt;h1 id="requisitos"&gt;Requisitos&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h2 id="entendendo-o-domínio-do-problema"&gt;Entendendo o domínio do problema&lt;/h2&gt;
+&lt;p&gt;Para ocorrer o levantamento dos requisitos é necessário que aconteça, antes, um aprofundamento no que consiste o projeto. O querido diário é uma gigante fonte de dados integrada sobre os diários oficiais municipais brasileiros, o que facilita bastante muita coisa, pois, junta a grande quantidade de municípios e sites governamentais, e além disso, junta a grande variedade de formatos desses diários, já que não exite uma regulamentação para uma padronização.&lt;/p&gt;</description></item><item><title>Requisitosprojeto</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/requisitos/requisitosprojeto/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/requisitos/requisitosprojeto/</guid><description>&lt;h1 id="documento-de-requisitos-de-software-radar-de-investimento-de-saúde-oncológica"&gt;Documento de Requisitos de Software: Radar de Investimento de Saúde Oncológica&lt;/h1&gt;
+&lt;h2 id="versão-010-escopo-do-mvp"&gt;Versão: 0.1.0 (Escopo do MVP)&lt;/h2&gt;
+&lt;h2 id="data-09-de-setembro-de-2025"&gt;Data: 09 de Setembro de 2025&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Visão Geral do Projeto&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;O projeto &lt;strong&gt;Radar de Investimento de Saúde Oncológica&lt;/strong&gt; visa analisar e dar transparência aos investimentos públicos em saúde oncológica nos municípios brasileiros. A solução irá extrair, padronizar e organizar dados da plataforma &lt;strong&gt;Querido Diário&lt;/strong&gt;, que agrega uma vasta quantidade de diários oficiais municipais em formatos não padronizados.&lt;/p&gt;</description></item><item><title>Scrum</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/metodologias/scrum/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/metodologias/scrum/</guid><description>&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Resumo Rápido
+Scrum é um framework ágil focado em entregar valor de forma incremental e frequente, ideal para projetos com incerteza (requisitos que mudam, descoberta contínua). O trabalho é organizado em ciclos curtos chamados Sprints, com papéis, eventos e artefatos bem definidos para promover transparência, inspeção e adaptação.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;O que é Scrum&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Objetivo: Permitir que times pequenos e auto-organizados entreguem incrementos de produto que gerem valor regularmente.
+Quando usar: Projetos complexos, produtos em evolução ou quando o feedback constante do usuário é essencial.&lt;/p&gt;</description></item><item><title>Template</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/metodologias/fishbone/template/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/metodologias/fishbone/template/</guid><description>&lt;p&gt;Diagrama Fishbone — Template (Markdown)&lt;/p&gt;
+&lt;p&gt;Problema: Descreva aqui o problema em uma frase curta e objetiva&lt;/p&gt;
+&lt;p&gt;Informações rápidas&lt;/p&gt;
+&lt;p&gt;Data:&lt;/p&gt;
+&lt;p&gt;Responsável pela análise:&lt;/p&gt;
+&lt;p&gt;Contexto / Área:&lt;/p&gt;
+&lt;p&gt;Categorias escolhidas&lt;/p&gt;
+&lt;p&gt;Escolha as categorias que melhor se aplicam ao seu caso (ex.: 6M, 4P, 4S, ou personalizadas).&lt;/p&gt;
+&lt;p&gt;Categoria 1: __________&lt;/p&gt;
+&lt;p&gt;Category 2: __________&lt;/p&gt;
+&lt;p&gt;Category 3: __________&lt;/p&gt;
+&lt;p&gt;Category 4: __________&lt;/p&gt;
+&lt;p&gt;Brainstorm de causas
+Categoria 1 — nome da categoria&lt;/p&gt;
+&lt;p&gt;Causa A&lt;/p&gt;
+&lt;p&gt;Subcausa A1&lt;/p&gt;
+&lt;p&gt;Subcausa A2&lt;/p&gt;
+&lt;p&gt;Causa B&lt;/p&gt;</description></item><item><title>Testspostman</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/api/testspostman/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/api/testspostman/</guid><description>&lt;h1 id="análise-de-arquitetura-de-dados-para-o-projeto-oncomap"&gt;Análise de Arquitetura de Dados para o Projeto OncoMap&lt;/h1&gt;
+&lt;h3 id="issue-definição-da-estratégia-de-tratamento-de-dados"&gt;Issue: Definição da estratégia de tratamento de dados&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id="-descrição--objetivo"&gt;📖 Descrição / Objetivo&lt;/h2&gt;
+&lt;p&gt;Este documento detalha a pesquisa e os testes realizados para determinar a arquitetura de tratamento de dados mais eficiente para o projeto OncoMap. O objetivo principal é garantir que a plataforma interativa tenha um tempo de resposta rápido para o usuário final, mesmo ao consultar grandes volumes de dados, como os de uma região inteira do Brasil.&lt;/p&gt;</description></item><item><title>Typescript</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/typescript/typescript/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/typescript/typescript/</guid><description>&lt;h1 id="estudo-de-typescript"&gt;Estudo de TypeScript&lt;/h1&gt;
+&lt;p&gt;O &lt;strong&gt;TypeScript&lt;/strong&gt; é um superset do JavaScript que adiciona &lt;strong&gt;tipagem estática&lt;/strong&gt; e recursos avançados para facilitar o desenvolvimento de aplicações mais seguras e organizadas.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="1-configuração-inicial"&gt;1. Configuração Inicial&lt;/h2&gt;
+&lt;p&gt;Instalar TypeScript globalmente:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;npm install -g typescript
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Verificar versão:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;tsc -v
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Criar arquivo de configuração:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;tsc --init
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="2-tipos-básicos"&gt;2. Tipos Básicos&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-ts" data-lang="ts"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;let&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;dados&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;unknown&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;dados&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;texto&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;dados&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;42&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="3-funções"&gt;3. Funções&lt;/h2&gt;
+&lt;h3 id="tipagem-de-parâmetros-e-retorno"&gt;Tipagem de parâmetros e retorno&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-ts" data-lang="ts"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;function&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;soma&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;a&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;number&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;b&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;number&lt;/span&gt;)&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;number&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;a&lt;/span&gt; &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;b&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="parâmetros-opcionais-e-padrão"&gt;Parâmetros opcionais e padrão&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-ts" data-lang="ts"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;function&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;saudacao&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;nome&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt;, &lt;span style="color:#a6e22e"&gt;saudacao&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;Olá&amp;#34;&lt;/span&gt;)&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#e6db74"&gt;`&lt;/span&gt;&lt;span style="color:#e6db74"&gt;${&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;saudacao&lt;/span&gt;&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;, &lt;/span&gt;&lt;span style="color:#e6db74"&gt;${&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;nome&lt;/span&gt;&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;`&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="4-objetos-e-interfaces"&gt;4. Objetos e Interfaces&lt;/h2&gt;
+&lt;h3 id="tipando-objetos"&gt;Tipando objetos&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-ts" data-lang="ts"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;let&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;pessoa&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; { &lt;span style="color:#a6e22e"&gt;nome&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt;; &lt;span style="color:#a6e22e"&gt;idade&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;number&lt;/span&gt; } &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;nome&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;João&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;idade&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;25&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="interfaces"&gt;Interfaces&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-ts" data-lang="ts"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;interface&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Usuario&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;id&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;number&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;nome&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;ativo?&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;boolean&lt;/span&gt;; &lt;span style="color:#75715e"&gt;// opcional
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;let&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;usuario1&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;Usuario&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;id&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;1&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;nome&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;Carlos&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="5-classes"&gt;5. Classes&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-ts" data-lang="ts"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Animal&lt;/span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;nome&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;contructor&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;nome&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;string&lt;/span&gt;){
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;this&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;nome&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;nome&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;fazersom&lt;/span&gt;()&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;console&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;log&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;Som genérico...&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;cachorro&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;extend&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Animal&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;fazersom&lt;/span&gt;()&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;void&lt;/span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;console&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;log&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;Au Au&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;let&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;dog&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;new&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;cachorro&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#34;Rex&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;dog&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;fazersom&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="6-generics"&gt;6. Generics&lt;/h2&gt;
+&lt;p&gt;Generics permitem reutilizar código de foma tipada.&lt;/p&gt;</description></item><item><title>Typescript React</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/typescript/typescript_react/</link><pubDate>Sat, 29 Nov 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/frontend/typescript/typescript_react/</guid><description>&lt;h2 id="react--typescript"&gt;React + Typescript&lt;/h2&gt;
+&lt;p&gt;O React e o TypeScript juntos oferecem uma combinação poderosa: a flexibilidade do React com a segurança da tipagem estática do TypeScript. Isso ajuda a evitar erros comuns e melhora a produtividade.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="1-vantagens-de-usar-typescript-com-react"&gt;1. Vantagens de usar Typescript com React&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Autocompletar inteligente (IntelliSense):&lt;/strong&gt; sugere propriedades e métodos corretos.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Detecção precoce de erros:&lt;/strong&gt; evita passar props ou estados com tipos errados.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Melhor manutenção de código:&lt;/strong&gt; facilita trabalhar em equipes grandes.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Documentação implícita:&lt;/strong&gt; os tipos funcionam como uma forma de documentação.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Maior escalabilidade:&lt;/strong&gt; útil em projetos médios e grandes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="2-configuração-do-projeto"&gt;2. Configuração do Projeto&lt;/h2&gt;
+&lt;p&gt;Criar um projeto React com TypeScript:&lt;/p&gt;</description></item></channel></rss>

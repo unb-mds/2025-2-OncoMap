@@ -1,0 +1,75 @@
+<!doctype html><html lang=pt-br><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Guia Ambiente | OncoMap</title><link rel=stylesheet href=https://unb-mds.github.io/2025-2-OncoMap/css/doc-page-bundle.min.css></head><body><nav class=navbar><a class=navbar-brand href=https://unb-mds.github.io/2025-2-OncoMap/>OncoMap</a><ul class=navbar-links><li><a href=https://unb-mds.github.io/2025-2-OncoMap/>Início</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/sprints/>Sprints</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/requisitos/>Requisitos</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/arquitetura/>Arquitetura</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/diversos/>Diversos</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/doc/>Documentação</a></li></ul><div class=navbar-right><a href=https://github.com/unb-mds/2025-2-OncoMap target=_blank>GitHub</a></div></nav><section class=hero><div class=container><h1>Guia Ambiente</h1></div></section><main><div class="container page-single"><div class=content><h1 id=frontend>Frontend</h1><h2 id=instalando-vite-e-criando-um-projeto-react>Instalando Vite e Criando um Projeto React</h2><p>Este guia explica como instalar o <strong>Vite</strong> e iniciar um novo projeto
+<strong>React</strong> passo a passo.</p><hr><h2 id=pré-requisitos>Pré-requisitos</h2><ul><li><p><strong>Node.js</strong> (versão LTS recomendada &ndash; 20 ou superior).<br>Verifique se está instalado:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>node -v
+</span></span><span style=display:flex><span>npm -v
+</span></span></code></pre></div><p>Caso não esteja instalado, baixe pelo <a href=https://nodejs.org>site
+oficial</a> ou use o gerenciador de pacotes da sua
+distribuição Linux.</p></li></ul><hr><h2 id=criar-o-projeto-com-vite>Criar o projeto com Vite</h2><ol><li><p>Abra o terminal na pasta onde deseja criar o projeto.</p></li><li><p>Execute:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>npm create vite@latest nome-do-projeto
+</span></span></code></pre></div></li><li><p>Escolha:</p><ul><li><strong>Framework</strong>: <code>React</code></li><li><strong>Variante</strong>: <code>JavaScript</code> ou <code>TypeScript</code> (conforme sua
+preferência).</li></ul></li><li><p>Entre na pasta do projeto:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cd nome-do-projeto
+</span></span></code></pre></div></li><li><p>Instale as dependências:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>npm install
+</span></span></code></pre></div></li></ol><hr><h2 id=estrutura-inicial-do-projeto-com-vite>Estrutura inicial do projeto com vite</h2><pre><code>nome-do-projeto/
+├─ public/           # Arquivos públicos (favicon, logos)
+├─ src/              # Código-fonte React
+│  ├─ App.jsx/tsx    # Componente principal
+│  ├─ main.jsx/tsx   # Ponto de entrada da aplicação
+│  └─ index.css      # Estilos globais
+├─ package.json      # Dependências e scripts
+└─ vite.config.js    # Configuração do Vite
+</code></pre><hr><h2 id=dicas-úteis>Dicas úteis</h2><ul><li>Extensão <strong>ES7+ React/Redux snippets</strong> no VS Code para criar
+componentes rapidamente.</li><li>Use <strong>Prettier</strong> para formatar automaticamente o código.</li></ul><hr><h1 id=backend>Backend</h1><h2 id=criar-diretório-do-backend>Criar diretório do backend</h2><pre><code>``` bash
+mkdir backend
+cd backend
+```
+</code></pre><hr><h2 id=inicializar-projeto-nodejs>Inicializar projeto Node.js</h2><pre><code>``` bash
+npm init -y
+```
+</code></pre><hr><h2 id=instalar-dependências>Instalar dependências</h2><pre><code>``` bash
+npm install express cors dotenv
+npm install -D nodemon
+```
+</code></pre><hr><h2 id=criar-a-pasta-src-e-subpastas>Criar a pasta src e subpastas</h2><pre><code>```bash
+mkdir src
+mkdir src/controllers
+mkdir src/routes
+mkdir src/models
+```
+</code></pre><hr><h2 id=criar-arquivo-principal-srcindexjs>Criar arquivo principal (src/index.js)</h2><pre><code>```bash
+touch src/index.js
+```
+</code></pre><hr><h2 id=conteúdo-para-o-arquivo-srcindexjs>Conteúdo para o arquivo src/index.js</h2><pre><code>```bash
+const express = require('express');
+const cors = require('cors');
+require('dotenv').config();
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+// Middlewares
+app.use(cors());
+app.use(express.json());
+
+// Rotas
+app.get('/api/health', (req, res) =&gt; {
+res.json({ message: 'Backend está funcionando!' });
+});
+
+// Iniciar servidor
+app.listen(PORT, () =&gt; {
+console.log(`🚀 Servidor rodando na porta ${PORT}`);
+});
+```
+--------------------------------------------------------------
+</code></pre><h2 id=criar-o-arquivo-de-variáveis-de-ambiente>Criar o arquivo de variáveis de ambiente</h2><pre><code>```bash
+touch .env
+```
+</code></pre><hr><h2 id=conteúdo-para-o-arquivo-env>Conteúdo para o arquivo .env</h2><pre><code>```bash
+PORT=5000
+NODE_ENV=development
+```
+</code></pre><hr><h2 id=rodar-o-servidor-de-desenvolvimento>Rodar o servidor de desenvolvimento</h2><p>Frontend:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cd frontend
+</span></span><span style=display:flex><span>npm run dev
+</span></span></code></pre></div><p>O terminal mostrará algo como:</p><pre><code>Local:   http://localhost:5173/
+</code></pre><p>Abra esse endereço no navegador para visualizar o projeto rodando.</p><p>Backend:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cd backend
+</span></span><span style=display:flex><span>npm run dev
+</span></span></code></pre></div><p>O terminal mostrará algo como:</p><pre><code>Local: http://localhost:5000/
+</code></pre><p>Abra esse endereço no navegador para visualizar o projeto rodando.</p><hr></div></div></main><footer class=footer><div class=container><div class=footer-grid><div class="footer-column about"><h3>OncoMap</h3><p>Mapa de investimento em saúde oncológica</p></div><div class="footer-column links"><h3>Links Úteis</h3><ul><li><a href=https://unb-mds.github.io/2025-2-OncoMap/>Início</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/sprints>Sprints</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/requisitos/>Requisitos</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/arquitetura/>Arquitetura</a></li></ul></div><div class="footer-column contact"><h3>Contato</h3><ul><li><a href=https://github.com/unb-mds/2025-2-OncoMap target=_blank>GitHub</a></li></ul></div></div></div><div class=footer-bottom><div class=container><p>&copy; 2025 OncoMap. Todos os direitos reservados.</p><p>Desenvolvido pela equipe UnB-MDS</p></div></div></footer><script src=https://unb-mds.github.io/2025-2-OncoMap/js/app.js></script></body></html>

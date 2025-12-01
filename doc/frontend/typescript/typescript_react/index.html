@@ -1,0 +1,95 @@
+<!doctype html><html lang=pt-br><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Typescript React | OncoMap</title><link rel=stylesheet href=https://unb-mds.github.io/2025-2-OncoMap/css/doc-page-bundle.min.css></head><body><nav class=navbar><a class=navbar-brand href=https://unb-mds.github.io/2025-2-OncoMap/>OncoMap</a><ul class=navbar-links><li><a href=https://unb-mds.github.io/2025-2-OncoMap/>Início</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/sprints/>Sprints</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/requisitos/>Requisitos</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/arquitetura/>Arquitetura</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/diversos/>Diversos</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/doc/>Documentação</a></li></ul><div class=navbar-right><a href=https://github.com/unb-mds/2025-2-OncoMap target=_blank>GitHub</a></div></nav><section class=hero><div class=container><h1>Typescript React</h1></div></section><main><div class="container page-single"><div class=content><h2 id=react--typescript>React + Typescript</h2><p>O React e o TypeScript juntos oferecem uma combinação poderosa: a flexibilidade do React com a segurança da tipagem estática do TypeScript. Isso ajuda a evitar erros comuns e melhora a produtividade.</p><hr><h2 id=1-vantagens-de-usar-typescript-com-react>1. Vantagens de usar Typescript com React</h2><ul><li><strong>Autocompletar inteligente (IntelliSense):</strong> sugere propriedades e métodos corretos.</li><li><strong>Detecção precoce de erros:</strong> evita passar props ou estados com tipos errados.</li><li><strong>Melhor manutenção de código:</strong> facilita trabalhar em equipes grandes.</li><li><strong>Documentação implícita:</strong> os tipos funcionam como uma forma de documentação.</li><li><strong>Maior escalabilidade:</strong> útil em projetos médios e grandes.</li></ul><hr><h2 id=2-configuração-do-projeto>2. Configuração do Projeto</h2><p>Criar um projeto React com TypeScript:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>npx create-react-app meu-app --template typescript
+</span></span></code></pre></div><p>Ou com Vite (mais rápido):</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>npm create vite@latest meu-app -- --template react-ts
+</span></span></code></pre></div><p>Isso já cria a estrutura com suporte a TypeScript (<code>.tsx</code>).</p><hr><h2 id=3-componentes-com-typescript>3. Componentes com TypeScript</h2><h3 id=componente-de-função>Componente de Função</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>React</span> <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;react&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>Props</span> <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span><span style=color:#a6e22e>nome</span>: <span style=color:#66d9ef>string</span>;
+</span></span><span style=display:flex><span><span style=color:#a6e22e>idade?</span>: <span style=color:#66d9ef>number</span>; <span style=color:#75715e>// opcional
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>Saudacao</span>: <span style=color:#66d9ef>React.FC</span>&lt;<span style=color:#f92672>Props</span>&gt; <span style=color:#f92672>=</span> ({ <span style=color:#a6e22e>nome</span>, <span style=color:#a6e22e>idade</span> }) <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span><span style=color:#66d9ef>return</span> (
+</span></span><span style=display:flex><span>&lt;<span style=color:#f92672>div</span>&gt;
+</span></span><span style=display:flex><span>&lt;<span style=color:#f92672>h1</span>&gt;<span style=color:#a6e22e>Olá</span>, {<span style=color:#a6e22e>nome</span>}<span style=color:#f92672>!</span>&lt;/<span style=color:#f92672>h1</span>&gt;
+</span></span><span style=display:flex><span>{<span style=color:#a6e22e>idade</span> <span style=color:#f92672>&amp;&amp;</span> &lt;<span style=color:#f92672>p</span>&gt;<span style=color:#a6e22e>Idade</span><span style=color:#f92672>:</span> {<span style=color:#a6e22e>idade</span>}&lt;/<span style=color:#f92672>p</span>&gt;}
+</span></span><span style=display:flex><span>&lt;/<span style=color:#f92672>div</span>&gt;
+</span></span><span style=display:flex><span>);
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>Saudacao</span>;
+</span></span></code></pre></div><hr><h2 id=4-estado-e-hooks>4. Estado e Hooks</h2><h3 id=usestate-com-typescript>useState com TypeScript</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>React</span>, { <span style=color:#a6e22e>useState</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;react&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>Contador</span>: <span style=color:#66d9ef>React.FC</span> <span style=color:#f92672>=</span> () <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>contador</span>, <span style=color:#a6e22e>setContador</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>&lt;<span style=color:#f92672>number</span>&gt;(<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>return</span> (
+</span></span><span style=display:flex><span>&lt;<span style=color:#f92672>div</span>&gt;
+</span></span><span style=display:flex><span>&lt;<span style=color:#f92672>p</span>&gt;<span style=color:#a6e22e>Valor</span><span style=color:#f92672>:</span> {<span style=color:#a6e22e>contador</span>}&lt;/<span style=color:#f92672>p</span>&gt;
+</span></span><span style=display:flex><span>&lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() <span style=color:#f92672>=&gt;</span> <span style=color:#a6e22e>setContador</span>(<span style=color:#a6e22e>contador</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>)}&gt;<span style=color:#f92672>+</span>&lt;/<span style=color:#f92672>button</span>&gt;
+</span></span><span style=display:flex><span>&lt;/<span style=color:#f92672>div</span>&gt;
+</span></span><span style=display:flex><span>);
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>Contador</span>;
+</span></span></code></pre></div><h3 id=useeffect-com-tipos>useEffect com tipos</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>React</span>, { <span style=color:#a6e22e>useState</span>, <span style=color:#a6e22e>useEffect</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;react&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>Relogio</span>: <span style=color:#66d9ef>React.FC</span> <span style=color:#f92672>=</span> () <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>hora</span>, <span style=color:#a6e22e>setHora</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>&lt;<span style=color:#f92672>Date</span>&gt;(<span style=color:#66d9ef>new</span> Date());
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>useEffect</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>timer</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>setInterval</span>(() <span style=color:#f92672>=&gt;</span> <span style=color:#a6e22e>setHora</span>(<span style=color:#66d9ef>new</span> Date()), <span style=color:#ae81ff>1000</span>);
+</span></span><span style=display:flex><span><span style=color:#66d9ef>return</span> () <span style=color:#f92672>=&gt;</span> <span style=color:#a6e22e>clearInterval</span>(<span style=color:#a6e22e>timer</span>);
+</span></span><span style=display:flex><span>}, []);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>return</span> &lt;<span style=color:#f92672>h2</span>&gt;{<span style=color:#a6e22e>hora</span>.<span style=color:#a6e22e>toLocaleTimeString</span>()}&lt;/<span style=color:#f92672>h2</span>&gt;;
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>Relogio</span>;
+</span></span></code></pre></div><hr><h2 id=5-tipando-eventos>5. Tipando Eventos</h2><p>const Formulario: React.FC = () => {
+const handleSubmit = (event: React.FormEvent<htmlformelement>) => {
+event.preventDefault();
+console.log(&ldquo;Form enviado!&rdquo;);
+};</p><p>return (</p><form onsubmit=handleSubmit><button type=submit>Enviar</button></form>);
+};
+```<hr><h2 id=6-tipando-requisições-com-fetch-ou-axios>6. Tipando Requisições (com Fetch ou Axios)</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>React</span>, { <span style=color:#a6e22e>useState</span>, <span style=color:#a6e22e>useEffect</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;react&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>interface</span> <span style=color:#a6e22e>Post</span> {
+</span></span><span style=display:flex><span><span style=color:#a6e22e>id</span>: <span style=color:#66d9ef>number</span>;
+</span></span><span style=display:flex><span><span style=color:#a6e22e>title</span>: <span style=color:#66d9ef>string</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>Posts</span>: <span style=color:#66d9ef>React.FC</span> <span style=color:#f92672>=</span> () <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>posts</span>, <span style=color:#a6e22e>setPosts</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>&lt;<span style=color:#f92672>Post</span><span style=color:#960050;background-color:#1e0010>[]</span>&gt;([]);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>useEffect</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span><span style=color:#a6e22e>fetch</span>(<span style=color:#e6db74>&#34;https://jsonplaceholder.typicode.com/posts&#34;</span>)
+</span></span><span style=display:flex><span>.<span style=color:#a6e22e>then</span>((<span style=color:#a6e22e>res</span>) <span style=color:#f92672>=&gt;</span> <span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>json</span>())
+</span></span><span style=display:flex><span>.<span style=color:#a6e22e>then</span>((<span style=color:#a6e22e>data</span>: <span style=color:#66d9ef>Post</span>[]) <span style=color:#f92672>=&gt;</span> <span style=color:#a6e22e>setPosts</span>(<span style=color:#a6e22e>data</span>));
+</span></span><span style=display:flex><span>}, []);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>return</span> (
+</span></span><span style=display:flex><span>&lt;<span style=color:#f92672>ul</span>&gt;
+</span></span><span style=display:flex><span>{<span style=color:#a6e22e>posts</span>.<span style=color:#a6e22e>map</span>((<span style=color:#a6e22e>post</span>) <span style=color:#f92672>=&gt;</span> (
+</span></span><span style=display:flex><span>&lt;<span style=color:#f92672>li</span> <span style=color:#a6e22e>key</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>post</span>.<span style=color:#a6e22e>id</span>}&gt;{<span style=color:#a6e22e>post</span>.<span style=color:#a6e22e>title</span>}&lt;/<span style=color:#f92672>li</span>&gt;
+</span></span><span style=display:flex><span>))}
+</span></span><span style=display:flex><span>&lt;/<span style=color:#f92672>ul</span>&gt;
+</span></span><span style=display:flex><span>);
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>Posts</span>;
+</span></span></code></pre></div><hr><h2 id=7-conclusão>7. Conclusão</h2><p>Usar <strong>React + TypeScript</strong> ajuda a:</p><ul><li>Escrever componentes mais seguros.</li><li>Evitar erros de tipagem em props e estados.</li><li>Aumentar a produtividade com melhor suporte de editor.</li></ul><blockquote><p>Dica: sempre comece tipando props e estados, e vá expandindo para context, hooks personalizados e reducers conforme o projeto cresce.</p></blockquote></div></div></main><footer class=footer><div class=container><div class=footer-grid><div class="footer-column about"><h3>OncoMap</h3><p>Mapa de investimento em saúde oncológica</p></div><div class="footer-column links"><h3>Links Úteis</h3><ul><li><a href=https://unb-mds.github.io/2025-2-OncoMap/>Início</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/sprints>Sprints</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/requisitos/>Requisitos</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/arquitetura/>Arquitetura</a></li></ul></div><div class="footer-column contact"><h3>Contato</h3><ul><li><a href=https://github.com/unb-mds/2025-2-OncoMap target=_blank>GitHub</a></li></ul></div></div></div><div class=footer-bottom><div class=container><p>&copy; 2025 OncoMap. Todos os direitos reservados.</p><p>Desenvolvido pela equipe UnB-MDS</p></div></div></footer><script src=https://unb-mds.github.io/2025-2-OncoMap/js/app.js></script></body></html>

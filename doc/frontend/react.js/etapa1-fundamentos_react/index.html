@@ -1,0 +1,49 @@
+<!doctype html><html lang=pt-br><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Etapa1 Fundamentos React | OncoMap</title><link rel=stylesheet href=https://unb-mds.github.io/2025-2-OncoMap/css/doc-page-bundle.min.css></head><body><nav class=navbar><a class=navbar-brand href=https://unb-mds.github.io/2025-2-OncoMap/>OncoMap</a><ul class=navbar-links><li><a href=https://unb-mds.github.io/2025-2-OncoMap/>Início</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/sprints/>Sprints</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/requisitos/>Requisitos</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/arquitetura/>Arquitetura</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/diversos/>Diversos</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/doc/>Documentação</a></li></ul><div class=navbar-right><a href=https://github.com/unb-mds/2025-2-OncoMap target=_blank>GitHub</a></div></nav><section class=hero><div class=container><h1>Etapa1 Fundamentos React</h1></div></section><main><div class="container page-single"><div class=content><h1 id=etapa-1--estrutura-básica-de-um-projeto-react>Etapa 1 &ndash; Estrutura básica de um projeto React</h1><p>Nesta etapa você aprende como funciona a base de um projeto React.</p><hr><h2 id=1-estrutura-típica-de-um-projeto>1. Estrutura típica de um projeto</h2><pre><code>meu-projeto/
+├── src/
+│   ├── components/   # Componentes reutilizáveis
+│   │   └── Header.jsx
+│   ├── pages/        # Páginas do app
+│   │   └── HomePage.jsx
+│   ├── App.jsx       # Componente principal
+│   └── index.js      # Ponto de entrada
+├── public/
+│   └── index.html
+└── package.json      # Configurações e dependências
+</code></pre><hr><h2 id=2-criando-um-componente-simples>2. Criando um componente simples</h2><p>Exemplo de um <strong>componente funcional</strong> em React:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#75715e>// Header.jsx
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Header</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=color:#f92672>header</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=color:#f92672>h1</span>&gt;<span style=color:#a6e22e>Bem</span><span style=color:#f92672>-</span><span style=color:#a6e22e>vindo</span> <span style=color:#a6e22e>ao</span> <span style=color:#a6e22e>meu</span> <span style=color:#a6e22e>site</span>&lt;/<span style=color:#f92672>h1</span>&gt;
+</span></span><span style=display:flex><span>    &lt;/<span style=color:#f92672>header</span>&gt;
+</span></span><span style=display:flex><span>  );
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>Header</span>; <span style=color:#75715e>// Permite usar em outros arquivos
+</span></span></span></code></pre></div><hr><h2 id=3-usando-um-componente-dentro-de-outro>3. Usando um componente dentro de outro</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#75715e>// App.jsx
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>Header</span> <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;./components/Header&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>App</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=color:#f92672>div</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=color:#f92672>Header</span> /&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=color:#f92672>p</span>&gt;<span style=color:#a6e22e>Esse</span> <span style=color:#a6e22e>é</span> <span style=color:#a6e22e>o</span> <span style=color:#a6e22e>conteúdo</span> <span style=color:#a6e22e>principal</span>&lt;/<span style=color:#f92672>p</span>&gt;
+</span></span><span style=display:flex><span>    &lt;/<span style=color:#f92672>div</span>&gt;
+</span></span><span style=display:flex><span>  );
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>App</span>;
+</span></span></code></pre></div><hr><h2 id=4-diferença-entre-export-default-e-export-nomeado>4. Diferença entre export default e export nomeado</h2><ul><li><strong>Export default</strong> → usado quando você quer exportar <strong>um único item
+principal</strong> por arquivo.</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#75715e>// Header.jsx
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>Header</span>;
+</span></span></code></pre></div><p>Importando:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>Header</span> <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;./Header&#34;</span>;
+</span></span></code></pre></div><ul><li><strong>Export nomeado</strong> → usado quando há <strong>várias exportações</strong> no mesmo
+arquivo.</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Button</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> &lt;<span style=color:#f92672>button</span>&gt;<span style=color:#a6e22e>Clique</span>&lt;/<span style=color:#f92672>button</span>&gt;;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Input</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> &lt;<span style=color:#f92672>input</span> /&gt;;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Importando:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>Button</span>, <span style=color:#a6e22e>Input</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;./FormElements&#34;</span>;
+</span></span></code></pre></div><hr><p>✅ Agora você já entende a <strong>estrutura básica</strong> e como criar e exportar
+componentes em React.</p></div></div></main><footer class=footer><div class=container><div class=footer-grid><div class="footer-column about"><h3>OncoMap</h3><p>Mapa de investimento em saúde oncológica</p></div><div class="footer-column links"><h3>Links Úteis</h3><ul><li><a href=https://unb-mds.github.io/2025-2-OncoMap/>Início</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/sprints>Sprints</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/requisitos/>Requisitos</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/arquitetura/>Arquitetura</a></li></ul></div><div class="footer-column contact"><h3>Contato</h3><ul><li><a href=https://github.com/unb-mds/2025-2-OncoMap target=_blank>GitHub</a></li></ul></div></div></div><div class=footer-bottom><div class=container><p>&copy; 2025 OncoMap. Todos os direitos reservados.</p><p>Desenvolvido pela equipe UnB-MDS</p></div></div></footer><script src=https://unb-mds.github.io/2025-2-OncoMap/js/app.js></script></body></html>

@@ -1,0 +1,51 @@
+<!doctype html><html lang=pt-br><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Scrum | OncoMap</title><link rel=stylesheet href=https://unb-mds.github.io/2025-2-OncoMap/css/doc-page-bundle.min.css></head><body><nav class=navbar><a class=navbar-brand href=https://unb-mds.github.io/2025-2-OncoMap/>OncoMap</a><ul class=navbar-links><li><a href=https://unb-mds.github.io/2025-2-OncoMap/>Início</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/sprints/>Sprints</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/requisitos/>Requisitos</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/arquitetura/>Arquitetura</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/diversos/>Diversos</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/doc/>Documentação</a></li></ul><div class=navbar-right><a href=https://github.com/unb-mds/2025-2-OncoMap target=_blank>GitHub</a></div></nav><section class=hero><div class=container><h1>Scrum</h1></div></section><main><div class="container page-single"><div class=content><ol><li><p>Resumo Rápido
+Scrum é um framework ágil focado em entregar valor de forma incremental e frequente, ideal para projetos com incerteza (requisitos que mudam, descoberta contínua). O trabalho é organizado em ciclos curtos chamados Sprints, com papéis, eventos e artefatos bem definidos para promover transparência, inspeção e adaptação.</p></li><li><p>O que é Scrum</p></li></ol><p>Objetivo: Permitir que times pequenos e auto-organizados entreguem incrementos de produto que gerem valor regularmente.
+Quando usar: Projetos complexos, produtos em evolução ou quando o feedback constante do usuário é essencial.</p><ol start=3><li>Pilares</li></ol><p>Transparência: Tudo relevante sobre o trabalho deve ser visível (backlog, progresso, impedimentos)
+Inspeção: Eventos regulares permitem checar se o trabalho e o caminho estão corretos
+Adaptação: A equipe ajusta produto e processo quando encontra desvios ou novas informações
+Esses pilares sustentam a cadeia de decisões curtas e ciclos iterativos.</p><ol start=4><li>Papéis e Responsabilidades</li></ol><p>Papel Foco Principais Responsabilidades
+Product Owner (PO) Negócio/Valor Dono da visão do produto, prioriza o backlog, decide trade-offs de negócio
+Scrum Master (SM) Processo Facilita o processo, remove impedimentos, protege o time de interferências externas
+Time de Desenvolvimento Execução Multidisciplinar, auto-organizado, decide como entregar os itens do backlog</p><ol start=5><li>Eventos (Time-boxed)</li></ol><p>Evento Propósito Duração
+Sprint Período fixo com objetivo claro (Sprint Goal) 1-4 semanas
+Sprint Planning Define o que será alcançado e como será feito 4h (para sprint de 2 semanas)
+Daily Scrum Sincronização rápida para inspecionar progresso 15 min diários
+Sprint Review Demonstração do incremento para stakeholders 1-2h (para sprint de 2 semanas)
+Sprint Retrospective Reflexão sobre o processo e planejamento de melhorias 1-2h (para sprint de 2 semanas)
+Esses eventos criam ritmo, visibilidade e mecanismos formais de inspeção/adaptação.</p><ol start=6><li>Artefatos Principais</li></ol><p>Product Backlog: Lista priorizada de necessidades (sempre evoluindo)
+Sprint Backlog: Itens selecionados para o Sprint + plano técnico/tarefas
+Incremento: Conjunto de itens prontos que formam um potencial produto utilizável
+Artefatos devem ter transparência (quem lê sabe estado e prioridade).</p><ol start=7><li>Exemplos Práticos (Fluxo de 2 Semanas)</li></ol><p>Antes do Sprint: PO prioriza backlog; SM garante definição de pronto básica
+Sprint Planning (4h para 2 semanas): Escolher 6-10 itens, escrever Sprint Goal
+Execução (dias 1-10): Daily às 10h (15 min); pareamentos, revisões de PR, testes
+Dia 10 - Review: Demo para stakeholders; atualizar backlog com feedback
+Dia 11 - Retro: Identificar 1-2 ações para o próximo Sprint (ex.: reduzir WIP, automatizar deploy)</p><ol start=8><li>DoR e DoD</li></ol><p>Definition of Ready (DoR) - Antes de entrar no Sprint:
+História com descrição clara
+Critérios de aceitação definidos
+Estimativa concluída
+Dependências mapeadas
+Dados de teste/designs anexados
+Definition of Done (DoD) - Para marcar item como concluído:
+Código revisado
+Testado (unitário+integração)
+Documentação atualizada
+Implementável
+DoR/DoD curtos e visíveis evitam mal-entendidos e retrabalho.</p><p>📊 9. Métricas Úteis</p><p>Velocidade (story points por Sprint): Para planejamento relativo
+Lead/Cycle Time: Quanto tempo um item leva do início até a entrega
+Throughput: Quantos itens completos por Sprint
+Qualidade: Taxa de bugs/defeitos em produção
+Use métricas como insumo para melhoria - não como punição.</p><ol start=10><li><p>Anti-padrões Comuns (O que Evitar)
+Time multitarefa demais (alto WIP) → diminui foco
+PO ausente ou trocando prioridades o tempo todo → cria instabilidade
+SM que vira gerente de tarefas (micromanagement)
+Falta de preparação do backlog → Sprint Planning vira &ldquo;adivinhação&rdquo;
+Identificar e corrigir esses anti-padrões é trabalho contínuo do SM + equipe.</p></li><li><p>Recomendações Práticas para Começar</p></li></ol><p>Comece com Sprints de 2 semanas (bom equilíbrio entre ritmo e previsibilidade)
+Defina DoR/DoD simples e publique no repo/Confluence
+Faça Daily sempre no mesmo horário e com formato ágil (foco no progresso e impedimentos)
+Priorize demonstrar resultado funcional no Review — protótipo > slides
+Na Retro, escolha 1 ação prática para o próximo Sprint (pequena e mensurável)</p><ol start=12><li>Checklist Rápido para o Time (Colar em Issue)</li></ol><p>Existe um Sprint Goal claro?
+Itens do Sprint têm DoR atendida?
+DoD aplicado ao final de cada história?
+Há um responsável por remover impedimentos?
+Feedback da Review foi registrado no backlog?</p><p>Referencias:
+<a href="https://youtu.be/XfvQWnRgxG0?si=dPv34SQETIpaeeTH">https://youtu.be/XfvQWnRgxG0?si=dPv34SQETIpaeeTH</a></p></div></div></main><footer class=footer><div class=container><div class=footer-grid><div class="footer-column about"><h3>OncoMap</h3><p>Mapa de investimento em saúde oncológica</p></div><div class="footer-column links"><h3>Links Úteis</h3><ul><li><a href=https://unb-mds.github.io/2025-2-OncoMap/>Início</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/sprints>Sprints</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/requisitos/>Requisitos</a></li><li><a href=https://unb-mds.github.io/2025-2-OncoMap/arquitetura/>Arquitetura</a></li></ul></div><div class="footer-column contact"><h3>Contato</h3><ul><li><a href=https://github.com/unb-mds/2025-2-OncoMap target=_blank>GitHub</a></li></ul></div></div></div><div class=footer-bottom><div class=container><p>&copy; 2025 OncoMap. Todos os direitos reservados.</p><p>Desenvolvido pela equipe UnB-MDS</p></div></div></footer><script src=https://unb-mds.github.io/2025-2-OncoMap/js/app.js></script></body></html>
