@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { MapContainer, GeoJSON } from 'react-leaflet';
 import type { Feature, FeatureCollection, Geometry } from 'geojson';
@@ -6,6 +5,17 @@ import L, { type Layer } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../../style/MapaPage.css';
 import { regioesGeoJson } from '../../data/regioes';
+
+// --- NOVO: Mapeamento de Códigos IBGE para Nomes dos Estados ---
+const CODIGO_PARA_ESTADO: Record<string, string> = {
+  '11': 'Rondônia', '12': 'Acre', '13': 'Amazonas', '14': 'Roraima',
+  '15': 'Pará', '16': 'Amapá', '17': 'Tocantins',
+  '21': 'Maranhão', '22': 'Piauí', '23': 'Ceará', '24': 'Rio Grande do Norte',
+  '25': 'Paraíba', '26': 'Pernambuco', '27': 'Alagoas', '28': 'Sergipe', '29': 'Bahia',
+  '31': 'Minas Gerais', '32': 'Espírito Santo', '33': 'Rio de Janeiro', '35': 'São Paulo',
+  '41': 'Paraná', '42': 'Santa Catarina', '43': 'Rio Grande do Sul',
+  '50': 'Mato Grosso do Sul', '51': 'Mato Grosso', '52': 'Goiás', '53': 'Distrito Federal'
+};
 
 interface GeoProperties {
   codarea?: string;
@@ -132,9 +142,16 @@ const MapaInterativo: React.FC<MapProps> = ({
     return { fillColor, weight: 1, color: 'white', fillOpacity: 1 };
   };
 
+  // --- FUNÇÃO CORRIGIDA ---
   const onEachStateFeature = (feature: GeoFeature, layer: Layer) => {
     const regiaoDoEstado = feature.properties.regiao || 'Região';
-    const nomeDoEstado = feature.properties.nome || feature.properties.name || 'Estado';
+    
+    // Tenta pegar o nome pelo código IBGE usando a nossa lista
+    const codigo = feature.properties.codarea;
+    const nomeDoEstado = (codigo && CODIGO_PARA_ESTADO[codigo]) 
+      || feature.properties.nome 
+      || feature.properties.name 
+      || 'Estado';
 
     const tooltipContent = selectedRegion
       ? nomeDoEstado 
