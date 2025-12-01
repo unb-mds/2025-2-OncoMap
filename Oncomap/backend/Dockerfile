@@ -1,22 +1,27 @@
-# 1. ESTÁGIO DE BUILD (Usamos uma imagem base do Node)
-# node:20-alpine é uma imagem leve e otimizada
-FROM node:20-alpine AS build
+FROM node:22-alpine
 
-# Define o diretório de trabalho dentro do contêiner
-WORKDIR /usr/src/app
+# 1. Instalar o Chromium e dependências necessárias para renderizar PDF
+RUN apk add --no-cache \
+    chromium \
+    nss \
+    freetype \
+    harfbuzz \
+    ca-certificates \
+    ttf-freefont
 
-# Copia os arquivos de definição de dependências (package.json)
-# Isso otimiza o cache do Docker, pulando a reinstalação se não houver mudanças no package.json.
+# 2. Configurar variáveis de ambiente para o Puppeteer (motor do PDF)
+# Isso diz: "Não baixe o Chrome automático, use o que eu acabei de instalar"
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+
+WORKDIR /app
+
 COPY package*.json ./
 
-# Instala as dependências, usando --only=production se for para a imagem final de produção
 RUN npm install
 
-# Copia o restante dos arquivos do seu backend (incluindo server.js e a pasta src)
 COPY . .
 
-# Expõe a porta que sua aplicação Node.js usa (exemplo: 3000)
 EXPOSE 3000
 
-# Comando para rodar a aplicação quando o contêiner iniciar
-CMD ["node", "server.js"]
+CMD ["npm", "run", "dev"]

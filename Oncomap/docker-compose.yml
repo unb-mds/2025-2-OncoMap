@@ -1,49 +1,28 @@
+
+
 services:
-  # 1. SERVIÇO DE BANCO DE DADOS (PostgreSQL)
-  db:
-    container_name: oncomap-db
-    image: postgres:16-alpine
-    restart: always
+  # --- Serviço do Backend ---
+  api-backend:
+    build: ./backend        # Onde está o Dockerfile do back?
+    container_name: meu-backend
+    ports:
+      - "3000:3000"         # Mapeamento: PORTA_PC : PORTA_CONTAINER
+    volumes:
+      - ./backend:/app      # Volumes: Espelha sua pasta local no container
+      - /app/node_modules   # Evita que o container apague seus node_modules
     environment:
-      POSTGRES_USER: oncomap_user
-      POSTGRES_PASSWORD: oncomap_password
-      POSTGRES_DB: oncomap_db
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - PORT=3000           # Variáveis de ambiente
 
-  # 2. SERVIÇO DE BACKEND (Node.js)
-  backend:
-    container_name: oncomap-backend
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+  # --- Serviço do Frontend ---
+  app-frontend:
+    build: ./frontend       # Onde está o Dockerfile do front?
+    container_name: meu-frontend
     ports:
-      - "3000:3000"
-    restart: always
-    depends_on:
-      - db
+      - "3001:3001"         # Acessaremos no navegador por localhost:3001
+    volumes:
+      - ./frontend:/app     # Hot-reload: salvou arquivo, atualiza no container
+      - /app/node_modules
     environment:
-      # Conecta ao serviço 'db' usando as credenciais definidas acima
-      DATABASE_URL: postgres://oncomap_user:oncomap_password@db:5432/oncomap_db
-    volumes:
-      - ./backend:/usr/src/app
-      - /usr/src/app/node_modules
-
-  # 3. SERVIÇO DE FRONTEND (Nginx/React)
-  frontend:
-    container_name: oncomap-frontend
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    ports:
-      - "80:80"
+      - CHOKIDAR_USEPOLLING=true # Necessário para hot-reload em alguns sistemas (Windows/WSL)
     depends_on:
-      - backend
-    volumes:
-      - ./frontend:/app
-
-# Volume para persistir os dados do banco
-volumes:
-  postgres_data:
+      - api-backend         # O front espera o back iniciar (ordem de boot)

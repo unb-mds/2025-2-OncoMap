@@ -90,6 +90,7 @@ const createPdf = async (htmlContent) => {
         format: 'A4', 
         printBackground: true, 
         margin: { top: "40px", bottom: "60px", left: "25px", right: "25px" },
+        executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || null,
         args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu', '--font-render-hinting=none']
     };
 

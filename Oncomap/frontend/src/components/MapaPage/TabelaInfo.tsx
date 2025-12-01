@@ -40,10 +40,11 @@ const TabelaInfo = ({
   const containerRef = useRef<HTMLDivElement>(null);
   
   // URL base para os relatórios (ajuste conforme seu env se necessário)
-  const API_BASE_URL = `${import.meta.env.VITE_API_URL || "http://localhost:3001"}/api/report`;
+ // Mudei para 3000 (onde o backend vive)
+const API_BASE_URL = `${import.meta.env.VITE_API_URL || "http://localhost:3000"}/api/report`;
 
   const dadosDoEstado = estadoCodarea
-    ? dadosDaRegiao.municipios.find((m) => String(m.codarea) === String(estadoCodarea))
+    ? dadosDaRegiao.municipios?.find((m) => String(m.codarea) === String(estadoCodarea))
     : null;
 
   // Scroll Reset Effect
@@ -105,8 +106,8 @@ const TabelaInfo = ({
     setTermoBuscaMunicipio(nomeMunicipio);
     setSearchedMunicipioName(nomeMunicipio);
     if (dadosDoEstado) {
-      const municipioEncontrado = dadosDoEstado.investimentos.find(
-        inv => inv.nome.toLowerCase() === nomeMunicipio.toLowerCase()
+      const municipioEncontrado = dadosDoEstado.investimentos?.find(
+       inv => inv.nome?.toLowerCase() === nomeMunicipio.toLowerCase()
       );
       if (municipioEncontrado && municipioEncontrado.codarea_municipio) {
         handleVerDetalhes(municipioEncontrado.codarea_municipio);
@@ -307,7 +308,7 @@ const TabelaInfo = ({
   }
 
   // --- 3. VISÃO DA REGIÃO (Nível 1) ---
-  const regionPdfUrl = `${API_BASE_URL}/region/${dadosDaRegiao.regiao.toLowerCase()}/pdf`;
+  const regionPdfUrl = `${API_BASE_URL}/region/${dadosDaRegiao.regiao?.toLowerCase() || ""}/pdf`;
 
   return (
     <div className="info-container" ref={containerRef}>
@@ -323,7 +324,7 @@ const TabelaInfo = ({
             <tr><th>Resumo Regional</th><th className="col-valor-direita">Valor</th></tr>
           </thead>
             <tbody>
-              {dadosDaRegiao.investimentosGerais.map((item, idx) => (
+              {dadosDaRegiao.investimentosGerais?.map((item, idx) => (
                 <tr key={idx}><td>{item.nome}</td><td className="col-valor-direita">{item.valor}</td></tr>
               ))}
             </tbody>
@@ -332,7 +333,7 @@ const TabelaInfo = ({
         <div className="municipios-lista">
           <h3>Estados da Região</h3>
           <div className="grid-estados">
-            {dadosDaRegiao.municipios.map((estado) => (
+            {dadosDaRegiao.municipios?.map((estado) => (
               <div 
                 key={estado.codarea} 
                 className="card-estado"
