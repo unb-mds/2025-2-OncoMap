@@ -9,9 +9,13 @@ const REGION_TO_STATES = {
 
 // Função auxiliar para pegar estados
 const getStatesByRegion = (regionName) => {
-    const key = regionName.toLowerCase().replace('-', '').replace(' ', '');
+    if (!regionName) return [];
+    const key = regionName.toLowerCase().replace('-', '').replace(' ', '').trim();
     // Normaliza chaves como 'centrooeste' ou 'centro-oeste'
-    if (key === 'centrooeste') return REGION_TO_STATES['centro-oeste'];
+    if (key === 'centrooeste' || key === 'centro oeste') {
+            return REGION_TO_STATES['centro-oeste'];
+        }
+
     return REGION_TO_STATES[key] || [];
 };
 
