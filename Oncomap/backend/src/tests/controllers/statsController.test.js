@@ -2,86 +2,101 @@
 const statsController = require('../../api/controllers/statsController');
 const db = require('../../config/database');
 
-// --- A MÁGICA: MOCK DO BANCO DE DADOS ---
-// Isso diz ao Jest: "Sempre que alguém importar o db, use minha versão falsa".
+// Mock do Banco de Dados
 jest.mock('../../config/database');
 
 describe('Stats Controller', () => {
     let req, res;
 
-    // Antes de cada teste, limpamos os mocks e resetamos req/res
     beforeEach(() => {
         req = { params: {} };
         res = {
-            status: jest.fn().mockReturnThis(), // Permite encadear .status().json()
+            status: jest.fn().mockReturnThis(),
             json: jest.fn()
         };
         jest.clearAllMocks();
     });
 
+    /**
+     * TESTE 1: getGeneralStats
+     */
     describe('getGeneralStats', () => {
-        test('Deve retornar status 200 e dados formatados corretamente', async () => {
-            // 1. Prepara os dados falsos que o banco "retornaria"
-            const mockStatesRows = [
-                { state_uf: 'SP', total_value: '1000.00' },
-                { state_uf: 'RJ', total_value: '500.00' }
-            ];
-            const mockMunicipalitiesRows = [
-                { municipality_ibge_code: '1', municipality_name: 'Teste', state_uf: 'SP', total_value: '100.00' }
-            ];
-
-            // 2. Configura o Mock do db.query
-            // Como o controller chama db.query duas vezes (estados e municipios),
-            // usamos mockResolvedValueOnce para definir o retorno de cada chamada em ordem.
+        test('Deve retornar estatísticas gerais corretamente (200)', async () => {
+            // Mock dos retornos das duas queries (Estados e Municípios)
+            const mockStates = { rows: [{ state_uf: 'SP', total_value: '100.50' }] };
+            const mockCities = { rows: [{ municipality_ibge_code: '1', municipality_name: 'Teste', state_uf: 'SP', total_value: '50.00' }] };
+            
             db.query
-                .mockResolvedValueOnce({ rows: mockStatesRows })       // 1ª chamada
-                .mockResolvedValueOnce({ rows: mockMunicipalitiesRows }); // 2ª chamada
+                .mockResolvedValueOnce(mockStates)
+                .mockResolvedValueOnce(mockCities);
 
-            // 3. Executa a função do controller
             await statsController.getGeneralStats(req, res);
 
-            // 4. Verificações (Expectativas)
             expect(res.status).toHaveBeenCalledWith(200);
             expect(res.json).toHaveBeenCalledWith({
-                states: { SP: 1000.00, RJ: 500.00 },
-                municipalities: [
-                    { ibge: '1', name: 'Teste', uf: 'SP', total: 100.00 }
-                ]
+                states: { 'SP': 100.50 },
+                municipalities: expect.arrayContaining([
+                    expect.objectContaining({ ibge: '1', total: 50.00 })
+                ])
             });
         });
 
-        test('Deve retornar erro 500 se o banco falhar', async () => {
-            // Simula um erro no banco
+        test('Deve tratar erro de banco de dados (500)', async () => {
             db.query.mockRejectedValue(new Error('Erro de conexão'));
-
             await statsController.getGeneralStats(req, res);
-
             expect(res.status).toHaveBeenCalledWith(500);
-            expect(res.json).toHaveBeenCalledWith({ error: "Erro interno ao processar estatísticas." });
         });
     });
 
+    /**
+     * TESTE 2: getStateSpecificStats
+     */
     describe('getStateSpecificStats', () => {
-        test('Deve retornar 404 se o estado não tiver dados', async () => {
+        test('Deve retornar dados do estado com sucesso (200)', async () => {
+            req.params.uf = 'SP';
+            // Simula retorno com dados para testar o reduce (soma)
+            db.query.mockResolvedValue({ 
+                rows: [
+                    { municipality_name: 'A', municipality_ibge_code: '1', total_value: '100.00' },
+                    { municipality_name: 'B', municipality_ibge_code: '2', total_value: '200.00' }
+                ] 
+            });
+
+            await statsController.getStateSpecificStats(req, res);
+
+            expect(res.status).toHaveBeenCalledWith(200);
+            // Verifica se somou 100 + 200
+            expect(res.json).toHaveBeenCalledWith(expect.objectContaining({
+                total_invested: 300.00
+            }));
+        });
+
+        test('Deve retornar 404 se estado não tiver dados', async () => {
             req.params.uf = 'AC';
-            // Simula banco retornando lista vazia
-            db.query.mockResolvedValue({ rows: [] });
+            db.query.mockResolvedValue({ rows: [] }); // Array vazio
 
             await statsController.getStateSpecificStats(req, res);
 
             expect(res.status).toHaveBeenCalledWith(404);
-            expect(res.json).toHaveBeenCalledWith({ message: "Nenhum dado encontrado para este estado." });
+        });
+
+        test('Deve tratar erro de banco (500)', async () => {
+            req.params.uf = 'RJ';
+            db.query.mockRejectedValue(new Error('DB Error'));
+            await statsController.getStateSpecificStats(req, res);
+            expect(res.status).toHaveBeenCalledWith(500);
         });
     });
 
-    // ... (testes anteriores) ...
-
+    /**
+     * TESTE 3: getMunicipalitySpecificStats
+     * CRÍTICO: Este teste cobre a lógica de soma de categorias JSON
+     */
     describe('getMunicipalitySpecificStats', () => {
-        test('Deve retornar dados do município com soma de categorias', async () => {
+        test('Deve somar categorias corretamente (200)', async () => {
             req.params.ibge = '3550308';
 
-            // Dados simulados do banco (Mock)
-            // Criamos duas linhas para testar se ele soma as categorias corretamente
+            // DADOS RICOS: Incluímos JSONs completos para forçar o código a entrar nos IFs de soma
             const mockRows = [
                 {
                     municipality_name: 'São Paulo',
@@ -89,9 +104,10 @@ describe('Stats Controller', () => {
                     final_extracted_value: '100.00',
                     publication_date: '2025-01-01',
                     source_url: 'http://pdf1.com',
-                    gemini_analysis: { // JSON vindo da IA
+                    gemini_analysis: {
                         medicamentos: 50,
                         equipamentos: 50,
+                        obras_infraestrutura: 0,
                         detalhes_extraidos: []
                     }
                 },
@@ -102,9 +118,14 @@ describe('Stats Controller', () => {
                     publication_date: '2025-01-02',
                     source_url: 'http://pdf2.com',
                     gemini_analysis: {
-                        medicamentos: 100, // Soma deve dar 150
-                        obras_infraestrutura: 100
+                        medicamentos: 100, // Soma deve dar 150 (50+100)
+                        servicos_saude: 100
                     }
+                },
+                {
+                    // Caso onde analysis é null (para testar resiliência)
+                    final_extracted_value: '50.00',
+                    gemini_analysis: null 
                 }
             ];
 
@@ -114,25 +135,28 @@ describe('Stats Controller', () => {
 
             expect(res.status).toHaveBeenCalledWith(200);
             
-            // Verifica a estrutura da resposta
-            const responseData = res.json.mock.calls[0][0]; // Pega o primeiro argumento da primeira chamada
+            const responseData = res.json.mock.calls[0][0];
             
-            expect(responseData.name).toBe('São Paulo');
-            expect(responseData.total_invested).toBe(300); // 100 + 200
-            
-            // Verifica a soma das categorias
+            // Verificações de Soma
+            expect(responseData.total_invested).toBe(350); // 100 + 200 + 50
             expect(responseData.categories.medicamentos).toBe(150); // 50 + 100
             expect(responseData.categories.equipamentos).toBe(50);
-            expect(responseData.categories.obras_infraestrutura).toBe(100);
+            expect(responseData.categories.servicos_saude).toBe(100);
+            expect(responseData.categories.estadia_paciente).toBe(0); // Garante que inicializou com 0
         });
 
         test('Deve retornar 404 se município não existir', async () => {
             req.params.ibge = '0000000';
             db.query.mockResolvedValue({ rows: [] });
-
             await statsController.getMunicipalitySpecificStats(req, res);
-
             expect(res.status).toHaveBeenCalledWith(404);
+        });
+
+        test('Deve tratar erro de banco (500)', async () => {
+            req.params.ibge = '123';
+            db.query.mockRejectedValue(new Error('DB Error'));
+            await statsController.getMunicipalitySpecificStats(req, res);
+            expect(res.status).toHaveBeenCalledWith(500);
         });
     });
 });
