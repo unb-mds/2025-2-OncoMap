@@ -1,93 +1,84 @@
 // Oncomap/backend/src/scripts/monthly_collector.js
 
-const axios = require('axios');
-const db = require('../config/database'); // Garanta que o caminho está correto
+const puppeteer = require('puppeteer');
+const db = require('../config/database');
 require('dotenv').config();
 
 // --- CONFIGURAÇÕES ---
-const QD_API_URL = "https://queridodiario.ok.org.br/api/gazettes";
-// Palavras-chave que o QD usará para filtrar os diários
+// Nota: Usamos a URL base, os parâmetros montaremos na navegação
+const QD_API_BASE = "https://queridodiario.ok.org.br/api/gazettes";
 const KEYWORDS_QUERYSTRING = 'quimioterapia,radioterapia,oncologia,oncológico,"tratamento de câncer"';
-// Quantos dias para trás o script deve verificar
 const LOOKBACK_DAYS = 30; 
 
-// Função de atraso
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-/**
- * Retorna a data de X dias atrás no formato AAAA-MM-DD
- * @param {number} days - O número de dias para olhar para trás.
- */
 function getStartDate(days) {
     const data = new Date();
     data.setDate(data.getDate() - days);
     return data.toISOString().split('T')[0];
 }
 
-/**
- * Função principal do coletor mensal.
- */
 async function runMonthlyCollector() {
-    console.log('✅ Iniciando o coletor MENSAL...');
+    console.log('✅ Iniciando o coletor MENSAL (Via Puppeteer Browser)...');
     const since = getStartDate(LOOKBACK_DAYS);
+    let browser = null;
 
     try {
-        console.log(`🔎 Buscando diários desde ${since} com as palavras-chave: "${KEYWORDS_QUERYSTRING}"`);
-
-        // 1. Busca dados no Querido Diário
-        // Não filtramos por município, buscamos em todos.
-        // O 'size' é alto para tentar pegar tudo de uma vez.
-        // Para um sistema mais robusto, seria necessário implementar paginação (offset).
-        const response = await axios.get(QD_API_URL, {
-            headers: {
-                // Identidade do Navegador
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-                
-                // Origem e Referência (MUITO IMPORTANTE para evitar 403)
-                'Referer': 'https://queridodiario.ok.org.br/',
-                'Origin': 'https://queridodiario.ok.org.br',
-                
-                // Tipos aceitos
-                'Accept': 'application/json, text/plain, */*',
-                'Accept-Language': 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7',
-                'Accept-Encoding': 'gzip, deflate, br',
-                
-                // Cabeçalhos de Segurança do Chrome (Sec-*)
-                'Sec-Ch-Ua': '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"',
-                'Sec-Ch-Ua-Mobile': '?0',
-                'Sec-Ch-Ua-Platform': '"Windows"',
-                'Sec-Fetch-Dest': 'empty',
-                'Sec-Fetch-Mode': 'cors',
-                'Sec-Fetch-Site': 'same-origin',
-                
-                // Conexão
-                'Connection': 'keep-alive'
-            },
-            params: {
-                querystring: KEYWORDS_QUERYSTRING,
-                published_since: since,
-                size: 500 // Aumente se 30 dias de diários do Brasil todo for mais que isso
-            }
+        console.log(`🔎 Iniciando navegador Chrome...`);
+        
+        // 1. Inicia o Puppeteer com configurações para rodar no Docker/GitHub Actions
+        browser = await puppeteer.launch({
+            headless: "new", // Modo invisível novo
+            args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+                '--disable-dev-shm-usage', // Evita erros de memória em containers
+                '--disable-blink-features=AutomationControlled' // Tenta esconder que é um robô
+            ]
         });
 
-        const gazettes = response.data.gazettes;
+        const page = await browser.newPage();
+
+        // 2. Define um User-Agent real
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36');
+
+        // 3. Monta a URL com os parâmetros query string
+        // Precisamos codificar os caracteres especiais (espaços, aspas) para a URL
+        const params = new URLSearchParams({
+            querystring: KEYWORDS_QUERYSTRING,
+            published_since: since,
+            size: '500'
+        });
+        
+        const fullUrl = `${QD_API_BASE}?${params.toString()}`;
+        console.log(`🔎 Acessando URL da API: ${fullUrl}`);
+
+        // 4. Navega até a API e espera o JSON
+        const response = await page.goto(fullUrl, {
+            waitUntil: 'networkidle0', // Espera a rede acalmar
+            timeout: 60000 // 60 segundos de timeout
+        });
+
+        if (!response.ok()) {
+            throw new Error(`Erro na requisição Puppeteer: Status ${response.status()}`);
+        }
+
+        // 5. Extrai o JSON da resposta
+        const data = await response.json();
+        const gazettes = data.gazettes;
 
         if (!gazettes || gazettes.length === 0) {
             console.log('🎉 Nenhum diário novo com as palavras-chave encontrado no período.');
+            await browser.close();
             return;
         }
 
-        console.log(`ℹ️  Encontrados ${gazettes.length} diários relevantes para inserção.`);
+        console.log(`ℹ️  Encontrados ${gazettes.length} diários relevantes. Inserindo no banco...`);
 
         let insertedCount = 0;
         let skippedCount = 0;
 
-        // 2. Itera e insere no banco
-        // Usamos o padrão "um por um" dos seus outros scripts para consistência
         for (const gazette of gazettes) {
-            
-            // Este INSERT é crucial. Ele já salva o 'txt_url' e o 'source_url'.
-            // Isso elimina a necessidade de rodar 'fill_missing_txt_urls.js' no fluxo mensal.
             const insertQuery = `
                 INSERT INTO mentions (
                     municipality_ibge_code, municipality_name, state_uf,
@@ -105,33 +96,37 @@ async function runMonthlyCollector() {
                 gazette.date,
                 gazette.edition,
                 gazette.is_extra_edition || false,
-                gazette.excerpts.join('\n\n---\n\n'), // Salva os excerpts da API
-                gazette.url,                            // source_url (PDF)
-                gazette.txt_url                         // txt_url (Texto)
+                gazette.excerpts.join('\n\n---\n\n'),
+                gazette.url,
+                gazette.txt_url
             ];
 
             try {
                 const result = await db.query(insertQuery, values);
                 if (result.rowCount > 0) {
                     insertedCount++;
-                    console.log(`  -> Inserido: Diário de ${gazette.territory_name} (ID: ${gazette.url})`);
+                    console.log(`  -> Inserido: ${gazette.territory_name}`);
                 } else {
                     skippedCount++;
                 }
             } catch (dbError) {
-                console.error(`  -> ❌ Erro ao inserir diário ${gazette.url}:`, dbError.message);
+                console.error(`  -> ❌ Erro DB:`, dbError.message);
             }
-            
-            // Pequena pausa para não sobrecarregar o banco
-            await delay(50); 
+            // Pequena pausa não é necessária aqui pois o DB é local/rápido, mas mantemos por segurança
+            // await delay(10); 
         }
 
         console.log('\n🎉 Coleta mensal finalizada!');
-        console.log(`  -> ${insertedCount} novos diários inseridos.`);
-        console.log(`  -> ${skippedCount} diários já existentes (pulados).`);
+        console.log(`  -> ${insertedCount} novos inseridos.`);
+        console.log(`  -> ${skippedCount} já existentes.`);
 
     } catch (error) {
-        console.error("💥 Erro fatal no coletor mensal:", error.message);
+        console.error("💥 Erro fatal no coletor mensal (Puppeteer):", error.message);
+        process.exit(1); // Força erro no Actions
+    } finally {
+        if (browser) {
+            await browser.close();
+        }
     }
 }
 
