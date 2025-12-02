@@ -52,6 +52,7 @@ jobs:
           python ./scripts/fetch_issues.py
           python ./scripts/fetch_milestones.py
           python ./scripts/fetch_atas.py
+          python ./scripts/fetch_doc.py
 
       # 5. Constrói o site estático
       - name: Build Hugo Site
