@@ -39,15 +39,14 @@ const TabelaInfo = ({
 
   const containerRef = useRef<HTMLDivElement>(null);
   
-  // URL base para os relatórios (ajuste conforme seu env se necessário)
- // Mudei para 3000 (onde o backend vive)
+  
 const API_BASE_URL = `${import.meta.env.VITE_API_URL || "https://oncomap-backend-pr8b.onrender.com"}/api/report`;
 
   const dadosDoEstado = estadoCodarea
     ? dadosDaRegiao.municipios?.find((m) => String(m.codarea) === String(estadoCodarea))
     : null;
 
-  // Scroll Reset Effect
+  
   useEffect(() => {
     if (containerRef.current) containerRef.current.scrollTop = 0;
     const painelLateral = document.querySelector('.panel-area');
@@ -55,7 +54,7 @@ const API_BASE_URL = `${import.meta.env.VITE_API_URL || "https://oncomap-backend
     if (containerRef.current) containerRef.current.scrollIntoView({ behavior: 'auto', block: 'start' });
   }, [detalhesMunicipio, estadoCodarea]);
 
-  // Carrega Detalhes do Estado
+  
   useEffect(() => {
     const carregarDetalhesEstado = async () => {
       if (estadoCodarea) {
@@ -115,11 +114,9 @@ const API_BASE_URL = `${import.meta.env.VITE_API_URL || "https://oncomap-backend
     }
   };
 
-  // --- RENDERIZAÇÃO ---
-
-  // 1. TELA DE DETALHES DO MUNICÍPIO (Nível 3)
+  
   if (detalhesMunicipio) {
-    // URL específica para o PDF deste município
+    
     const pdfUrl = `${API_BASE_URL}/municipality/${detalhesMunicipio.ibge}/pdf`;
 
     return (
@@ -180,7 +177,7 @@ const API_BASE_URL = `${import.meta.env.VITE_API_URL || "https://oncomap-backend
             )}
           </ul>
 
-          {/* NOVO BOTÃO USADO AQUI */}
+          
           <PdfButton 
             url={pdfUrl} 
             label="Baixar Relatório Completo (PDF)" 
@@ -190,13 +187,12 @@ const API_BASE_URL = `${import.meta.env.VITE_API_URL || "https://oncomap-backend
     );
   }
 
-  // --- 2. VISÃO DO ESTADO SELECIONADO (Nível 2) ---
+  
   if (dadosDoEstado) {
-    // Define a URL do PDF (Prioriza detalhesEstado se carregado para pegar UF correta)
-    // Se detalhesEstado ainda não carregou, o botão pode ficar desabilitado ou usar fallback
+    
     const pdfUrl = detalhesEstado 
         ? `${API_BASE_URL}/state/${detalhesEstado.uf}/pdf`
-        : '#'; // Evita erro se não carregou
+        : '#'; 
 
     return (
       <div className="info-container" ref={containerRef}>
@@ -295,7 +291,7 @@ const API_BASE_URL = `${import.meta.env.VITE_API_URL || "https://oncomap-backend
             </div>
           )}
 
-          {/* NOVO BOTÃO USADO AQUI */}
+        
           {detalhesEstado && (
             <PdfButton 
               url={pdfUrl} 
@@ -307,7 +303,7 @@ const API_BASE_URL = `${import.meta.env.VITE_API_URL || "https://oncomap-backend
     );
   }
 
-  // --- 3. VISÃO DA REGIÃO (Nível 1) ---
+  
   const regionPdfUrl = `${API_BASE_URL}/region/${dadosDaRegiao.regiao?.toLowerCase() || ""}/pdf`;
 
   return (
@@ -346,7 +342,7 @@ const API_BASE_URL = `${import.meta.env.VITE_API_URL || "https://oncomap-backend
           </div>
         </div>
 
-        {/* NOVO BOTÃO USADO AQUI */}
+      
         <PdfButton 
           url={regionPdfUrl} 
           label="Baixar Relatório Regional (PDF)" 

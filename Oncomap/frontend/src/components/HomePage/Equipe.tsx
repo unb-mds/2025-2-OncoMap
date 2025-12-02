@@ -58,7 +58,7 @@ const CardsEquipe = ({ name, role, img, githubUrl }: typeof teamMembers[0]) => (
   </div>
 );
 
-// Componente principal da seção
+
 const Equipe = () => {
   return (
     <section id="quem-somos" className="container">

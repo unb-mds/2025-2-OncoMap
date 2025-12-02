@@ -1,4 +1,4 @@
-/* src/index.css */
+
 
 body {
   margin: 0;
@@ -21,7 +21,7 @@ body {
 
 .App-content {
   display: flex;
-  gap: 30px; /* Espaço entre o mapa e a tabela */
+  gap: 30px; 
   align-items: flex-start;
   padding: 20px;
 }

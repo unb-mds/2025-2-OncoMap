@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import api from '../../services/api'; // Ajuste o import conforme sua estrutura
+import api from '../../services/api'; 
 import '../../style/PDFBotao.css';
 
 interface PdfButtonProps {

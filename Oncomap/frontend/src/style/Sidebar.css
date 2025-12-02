@@ -1,52 +1,41 @@
-/* src/style/Sidebar.css (Simplificado para o HomeButton) */
 
-/* ⚠️ Este código substitui todo o seu CSS anterior.
-   Ele remove a lógica de .sidebar, .sidebar.open, .sidebar-overlay, etc.
-*/
-
-/* Estilos aplicados ao novo NavLink/Botão */
 .home-button-link { 
-  /* Estilos do botão original */
+
   position: fixed;
   top: 15px;
   left: 15px;
-  z-index: 3000; /* Z-index alto para ficar acima de tudo */
-  
-  /* Usa a cor de fundo do seu antigo toggle/sidebar */
+  z-index: 3000; 
   background: #3DA35D; 
   color: white;
-  
-  /* Estilos de Botão */
   border: none;
   font-size: 1.5rem;
   padding: 0.5rem 1rem;
   border-radius: 50%;
   cursor: pointer;
-  
   width: 25px;
   height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  text-decoration: none; /* Garante que NavLink não tenha sublinhado */
+  text-decoration: none; 
   transition: transform 0.3s ease-in-out, background-color 0.2s;
 }
 
-/* Estilo do Ícone (⌂) */
+
 .home-icon {
-  font-size: 1.5rem; /* O mesmo tamanho do toggle original */
+  font-size: 1.5rem; 
   line-height: 1;
 }
 
-/* Efeitos de Interação */
+
 .home-button-link:hover {
-  background-color: #3E8914; /* Cor de hover do seu antigo link */
+  background-color: #3E8914; 
   color: white;
   transform: scale(1.05);
 }
 
-/* === AJUSTES DE RESPONSIVIDADE (Opcional) === */
+
 @media (max-width: 768px) {
     .home-button-link {
         top: 10px;

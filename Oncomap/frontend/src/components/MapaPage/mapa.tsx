@@ -6,7 +6,7 @@ import 'leaflet/dist/leaflet.css';
 import '../../style/MapaPage.css';
 import { regioesGeoJson } from '../../data/regioes';
 
-// --- NOVO: Mapeamento de Códigos IBGE para Nomes dos Estados ---
+
 const CODIGO_PARA_ESTADO: Record<string, string> = {
   '11': 'Rondônia', '12': 'Acre', '13': 'Amazonas', '14': 'Roraima',
   '15': 'Pará', '16': 'Amapá', '17': 'Tocantins',
@@ -142,11 +142,11 @@ const MapaInterativo: React.FC<MapProps> = ({
     return { fillColor, weight: 1, color: 'white', fillOpacity: 1 };
   };
 
-  // --- FUNÇÃO CORRIGIDA ---
+  
   const onEachStateFeature = (feature: GeoFeature, layer: Layer) => {
     const regiaoDoEstado = feature.properties.regiao || 'Região';
     
-    // Tenta pegar o nome pelo código IBGE usando a nossa lista
+    
     const codigo = feature.properties.codarea;
     const nomeDoEstado = (codigo && CODIGO_PARA_ESTADO[codigo]) 
       || feature.properties.nome 

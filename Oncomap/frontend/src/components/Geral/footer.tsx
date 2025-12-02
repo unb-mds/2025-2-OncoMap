@@ -8,7 +8,6 @@ const Footer = () => {
         <div className="footer-column">
           <h4>Informações</h4>
           <ul>
-            {/* Estes links são para as seções da HomePage */}
             <li><a href="/#inicio">Início</a></li>
             <li><a href="/#sobre">Sobre o projeto</a></li>
             <li><a href="/#quem-somos">Quem somos</a></li>

@@ -1,4 +1,3 @@
-// src/types/apiTypes.ts
 
 export interface HealthResponse {
   message: string;
@@ -7,7 +6,7 @@ export interface HealthResponse {
 export interface Investimento {
   nome: string;
   valor: string;
-  codarea_municipio?: string; // CAMPO NOVO IMPORTANTE
+  codarea_municipio?: string; 
 }
 
 export interface MunicipioComInvestimentos {
