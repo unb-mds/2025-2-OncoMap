@@ -5,7 +5,7 @@ Este documento contém diretrizes para garantir que o processo de contribuição
 
 ## Código de Conduta
 
-Para garantir um ambiente aberto e acolhedor, adotamos um [Código de Conduta](https://github.com/unb-mds/2025-2-OncoMap/blob/main/software_livre/CODE_OF_CONDUCT.md) que se aplica a todos os contribuidores. Por favor, leia-o antes de participar.
+Para garantir um ambiente aberto e acolhedor, adotamos um [Código de Conduta](https://github.com/unb-mds/2025-2-OncoMap/blob/main/CODE_OF_CONDUCT.md) que se aplica a todos os contribuidores. Por favor, leia-o antes de participar.
 
 ## 🚀 Como Rodar o Projeto Localmente
 
