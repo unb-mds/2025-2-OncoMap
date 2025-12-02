@@ -1,29 +1,39 @@
-# Código de Conduta do Contribuidor
+# Diretrizes de Convivência e Conduta
 
-## Nosso Compromisso
+##  Nossa Filosofia
 
-Nós, como membros, contribuidores e líderes, nos comprometemos a fazer da participação em nossa comunidade uma experiência livre de assédio para todos, independentemente de idade, tamanho do corpo, deficiência aparente ou não, etnia, características sexuais, identidade e expressão de gênero, nível de experiência, educação, status socioeconômico, nacionalidade, aparência pessoal, raça, religião ou identidade e orientação sexual.
+Este projeto é construído por pessoas e para pessoas. Acreditamos que a qualidade do nosso código é um reflexo direto da saúde da nossa comunidade. Por isso, nosso objetivo principal é garantir um ambiente colaborativo onde a segurança psicológica e o respeito mútuo sejam a norma, não a exceção.
 
-Comprometemo-nos a agir e interagir de maneiras que contribuam para uma comunidade aberta, acolhedora, diversificada, inclusiva e saudável.
+Queremos que todos — independentemente de experiência técnica, origem, gênero, orientação sexual, crenças ou aparência — sintam-se bem-vindos para contribuir, debater e inovar conosco.
 
-## Nossos Padrões
+##  O Que Esperamos de Você
 
-Exemplos de comportamento que contribuem para um ambiente positivo para a nossa comunidade incluem:
+Para manter nosso ecossistema saudável, encorajamos atitudes que fortalecem os laços da comunidade:
 
-* Demonstrar empatia e bondade com outras pessoas
-* Respeitar opiniões, pontos de vista e experiências diferentes
-* Dar e aceitar feedback construtivo de forma educada
-* Assumir a responsabilidade e pedir desculpas aos afetados por nossos erros, e aprender com a experiência
-* Focar no que é melhor não apenas para nós como indivíduos, mas para a comunidade em geral
+* **Critique ideias, nunca pessoas:** Em revisões de código ou debates, foque estritamente no conteúdo técnico. Divergências são bem-vindas; ataques pessoais, não.
+* **Pratique a empatia técnica:** Lembre-se de que por trás de cada tela existe um ser humano. Seja gentil ao ensinar e humilde ao aprender.
+* **Assuma responsabilidade:** Errar faz parte do desenvolvimento. Se suas ações impactaram alguém negativamente, reconheça, peça desculpas genuínas e mude sua postura.
+* **Busque o bem comum:** Nossas decisões devem priorizar a saúde do projeto e da comunidade acima de interesses individuais ou de ego.
 
-Exemplos de comportamento inaceitável incluem:
+##  O Que Não Toleramos
 
-* Uso de linguagem ou imagens sexualizadas, e atenção ou investidas sexuais de qualquer tipo
-* Comentários insultuosos/depreciativos (Trolling), e ataques pessoais ou políticos
-* Assédio público ou privado
-* Publicar informações privadas de outras pessoas, como um endereço físico ou de e-mail, sem a sua permissão explícita
-* Outras condutas que possam ser razoavelmente consideradas inadequadas em um ambiente profissional
+Acreditamos na tolerância zero para comportamentos que intimidam, excluem ou diminuem outros participantes. Isso inclui, mas não se limita a:
 
-## Responsabilidades de Aplicação
+* **Assédio e Discriminação:** Comentários ofensivos, piadas preconceituosas ou exclusão baseada em características pessoais.
+* **Conduta Sexual Indesejada:** Linguagem sexualizada, imagens inapropriadas ou qualquer tipo de avanço sexual, seja público ou privado.
+* **Comportamento Destrutivo:** *Trolling*, provocações deliberadas, *flaming* (insultos acalorados) ou perseguição (*stalking*).
+* **Violação de Privacidade:** Divulgar dados pessoais de terceiros (*doxxing*) sem consentimento explícito.
 
-Os líderes da comunidade são responsáveis por esclarecer e aplicar nossos padrões de comportamento aceitável e tomarão ações
+Qualquer atitude que seria inaceitável em um ambiente de trabalho presencial também é inaceitável aqui.
+
+##  Moderação e Aplicação
+
+Os mantenedores deste projeto atuam como guardiões destas diretrizes. Eles possuem autonomia para:
+
+1.  Remover, editar ou rejeitar comentários, commits, códigos e edições que violem este código.
+2.  Intervir em discussões que estejam se tornando tóxicas.
+
+As regras aplicam-se a todos os espaços do projeto (repositórios, chats, listas de e-mail) e também quando um membro está representando oficialmente a comunidade em eventos ou redes sociais.
+
+---
+*Este documento é uma adaptação baseada em valores comunitários globais, inspirados pelo Contributor Covenant e pelas diretrizes de diversidade da Mozilla.*
