@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { vi, describe, it, expect, beforeEach, afterEach } from 'vitest';
-import PdfButton from '../src/components/MapaPage/PDFButao';
+import PdfButton from '../src/components/MapaPage/PDFButao'; 
 import api from '../src/services/api';
 
 // --- MOCKS GLOBAIS ---
@@ -27,6 +27,7 @@ describe('Componente PdfButton', () => {
     window.URL.revokeObjectURL = mockRevokeObjectURL;
     window.alert = mockAlert;
     
+    // Retorna uma URL falsa para o Blob
     mockCreateObjectURL.mockReturnValue('blob:http://localhost/fake-url');
   });
 
@@ -45,50 +46,58 @@ describe('Componente PdfButton', () => {
   it('deve realizar o fluxo de download com sucesso ao clicar', async () => {
     vi.mocked(api.get).mockResolvedValue({ data: new Blob(['fake content']) });
 
-    // --- A MÁGICA ACONTECE AQUI ---
+    // --- SETUP PARA INTERCEPTAR O DOWNLOAD ---
     
-    // 1. Guardamos a função original de criar elementos
+    // 1. Guardamos a função original
     const originalCreateElement = document.createElement.bind(document);
 
-    // 2. Criamos um elemento <a> REAL (para o appendChild aceitar)
+    // 2. Criamos um elemento <a> REAL para usar de espião
     const realLink = originalCreateElement('a');
 
-    // 3. Colocamos espiões nos métodos desse elemento real para saber se foram chamados
-    const spyLinkClick = vi.spyOn(realLink, 'click');
+    // 3. Espionamos os métodos desse elemento
     const spyLinkSetAttribute = vi.spyOn(realLink, 'setAttribute');
     const spyLinkRemove = vi.spyOn(realLink, 'remove');
 
-    // 4. Interceptamos a criação de elementos:
-    // Se pedirem um 'a', entregamos o nosso 'realLink' espionado.
-    // Se pedirem qualquer outra coisa (div, span), entregamos o original.
+    // 4. Interceptamos o createElement: se pedirem 'a', entregamos o nosso; senão, o original.
     const spyCreateElement = vi.spyOn(document, 'createElement').mockImplementation((tagName, options) => {
         if (tagName === 'a') return realLink;
         return originalCreateElement(tagName, options); 
     });
 
+    // 5. Espionamos o appendChild para saber se o link foi colocado na tela
     const spyAppendChild = vi.spyOn(document.body, 'appendChild');
 
     render(<PdfButton url="/api/relatorio" label="Baixar PDF" filename="meu-arquivo.pdf" />);
 
+    // --- AÇÃO ---
     const button = screen.getByRole('button');
     fireEvent.click(button);
 
+    // Verifica estado de loading
     expect(screen.getByText('Gerando...')).toBeInTheDocument();
 
+    // Aguarda voltar ao normal
     await waitFor(() => {
       expect(screen.getByText('Baixar PDF')).toBeInTheDocument();
     });
 
-    // VERIFICAÇÕES
+    // --- VERIFICAÇÕES ---
     expect(api.get).toHaveBeenCalledWith('/api/relatorio', { responseType: 'blob' });
     
+    // Verifica se criou o elemento 'a'
     expect(spyCreateElement).toHaveBeenCalledWith('a');
-    expect(spyAppendChild).toHaveBeenCalledWith(realLink); // Agora passa, pois é um Node real
+    
+    // A prova final: Verifica se o link foi adicionado ao corpo da página
+    // (Isso confirma que o código chegou na parte de "clicar" no link)
+    expect(spyAppendChild).toHaveBeenCalledWith(realLink);
 
+    // Verifica se configurou o nome do arquivo
     expect(spyLinkSetAttribute).toHaveBeenCalledWith('download', 'meu-arquivo.pdf');
-    expect(spyLinkClick).toHaveBeenCalled();
+    
+    // Verifica se removeu o link depois
     expect(spyLinkRemove).toHaveBeenCalled();
     
+    // Verifica se limpou a memória do Blob
     expect(mockRevokeObjectURL).toHaveBeenCalled();
   });
 

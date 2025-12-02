@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1764718639110" clover="3.2.0">
-  <project timestamp="1764718639110" name="All files">
-    <metrics statements="269" coveredstatements="163" conditionals="157" coveredconditionals="64" methods="72" coveredmethods="44" elements="498" coveredelements="271" complexity="0" loc="269" ncloc="269" packages="8" files="49" classes="49"/>
-    <package name="components.Geral">
+<coverage generated="1764719270411" clover="3.2.0">
+  <project timestamp="1764719270411" name="All files">
+    <metrics statements="269" coveredstatements="163" conditionals="157" coveredconditionals="64" methods="73" coveredmethods="45" elements="499" coveredelements="272" complexity="0" loc="269" ncloc="269" packages="9" files="50" classes="50"/>
+    <package name="src">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="App.tsx" path="/home/giovani-coelho/Documentos/2025-2-OncoMap/Oncomap/frontend/src/App.tsx">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      </file>
+    </package>
+    <package name="src.components.Geral">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="footer.tsx" path="/home/giovani-coelho/Documentos/2025-2-OncoMap/Oncomap/frontend/src/components/Geral/footer.tsx">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="components.HomePage">
+    <package name="src.components.HomePage">
       <metrics statements="23" coveredstatements="18" conditionals="10" coveredconditionals="4" methods="11" coveredmethods="8"/>
       <file name="Equipe.tsx" path="/home/giovani-coelho/Documentos/2025-2-OncoMap/Oncomap/frontend/src/components/HomePage/Equipe.tsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -47,7 +53,7 @@
         <line num="43" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="components.MapaPage">
+    <package name="src.components.MapaPage">
       <metrics statements="194" coveredstatements="101" conditionals="141" coveredconditionals="54" methods="46" coveredmethods="24"/>
       <file name="PDFButao.tsx" path="/home/giovani-coelho/Documentos/2025-2-OncoMap/Oncomap/frontend/src/components/MapaPage/PDFButao.tsx">
         <metrics statements="19" coveredstatements="19" conditionals="7" coveredconditionals="6" methods="2" coveredmethods="2"/>
@@ -253,7 +259,7 @@
         <line num="231" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="data">
+    <package name="src.data">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="regioes.ts" path="/home/giovani-coelho/Documentos/2025-2-OncoMap/Oncomap/frontend/src/data/regioes.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
@@ -262,7 +268,7 @@
         <line num="65" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="data.estados">
+    <package name="src.data.estados">
       <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="macroregions-ac-12.json" path="/home/giovani-coelho/Documentos/2025-2-OncoMap/Oncomap/frontend/src/data/estados/macroregions-ac-12.json">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -346,7 +352,7 @@
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
-    <package name="pages">
+    <package name="src.pages">
       <metrics statements="36" coveredstatements="31" conditionals="4" coveredconditionals="4" methods="8" coveredmethods="6"/>
       <file name="HomePage.tsx" path="/home/giovani-coelho/Documentos/2025-2-OncoMap/Oncomap/frontend/src/pages/HomePage.tsx">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -391,7 +397,7 @@
         <line num="108" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="services">
+    <package name="src.services">
       <metrics statements="12" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="3"/>
       <file name="api.ts" path="/home/giovani-coelho/Documentos/2025-2-OncoMap/Oncomap/frontend/src/services/api.ts">
         <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="0" coveredmethods="0"/>
@@ -412,7 +418,7 @@
         <line num="33" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="style">
+    <package name="src.style">
       <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="Equipe.css" path="/home/giovani-coelho/Documentos/2025-2-OncoMap/Oncomap/frontend/src/style/Equipe.css">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
