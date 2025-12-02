@@ -3,7 +3,7 @@ body {
     font-family: poppins;
     margin: 0;
     padding: 0;
-    background-color: #18464a;
+    background-color: #134611;
 }
 
 /* A tag <nav> agora tem a classe .navbar */
@@ -117,7 +117,7 @@ main {
 
 
 .footer {
-    background-color: #18464a; /* Cor escura do body */
+    background-color: #134611; /* Cor escura do body */
     color: #f4f7f6;
     padding-top: 3rem; /* Mais espaço no topo */
     font-size: 0.95rem;

@@ -66,7 +66,7 @@
 
 /* O botão "Acessar" */
 .button-access {
-    background-color: #20B2AA; /* Verde claro */
+    background-color: #96E072; /* Verde claro */
     color: #f4f7f6; /* Texto claro */
     padding: 8px 15px;
     border-radius: 5px;
@@ -75,7 +75,7 @@
     transition: background-color 0.2s ease;
 }
 .button-access:hover {
-    background-color: #1a8f88; /* Verde mais escuro */
+    background-color: #3E8914; /* Verde mais escuro */
     text-decoration: none;
 }
 
@@ -92,7 +92,7 @@
 .button-link-ata {
     display: inline-block;
     background-color: #fff; /* Fundo branco, como um botão sutil */
-    color: #20B2AA; /* Texto verde */
+    color: #3E8914; /* Texto verde */
     border: 1px solid #ddd;
     padding: 10px 18px;
     border-radius: 5px;
