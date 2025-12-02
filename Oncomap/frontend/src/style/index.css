@@ -2,8 +2,8 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: #134611; /* Alterado de #213547 para o verde mais escuro da paleta */
-  background-color: #E8FCCF; /* Alterado de #f8f9fa para o verde mais claro */
+  color: #134611; 
+  background-color: #E8FCCF; 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -22,12 +22,12 @@ h1 {
 
 a {
   font-weight: 500;
-  color: #3DA35D; /* Alterado de #646cff para a cor de destaque */
+  color: #3DA35D; 
   text-decoration: inherit;
   transition: color 0.25s;
 }
 a:hover {
-  color: #3E8914; /* Alterado de #535bf2 para o verde médio (hover) */
+  color: #3E8914;
 }
 
 button {
@@ -37,14 +37,13 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  /* Fundo do botão mantido claro para contraste, mas você pode usar #3DA35D */
   background-color: #ffffff; 
-  color: #134611; /* Garante que o texto do botão use a cor escura */
+  color: #134611; 
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #3DA35D; /* Alterado de #646cff para a cor de destaque */
+  border-color: #3DA35D; 
 }
 button:focus,
 button:focus-visible {

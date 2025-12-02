@@ -1,4 +1,4 @@
-// Mapeia a sigla para o nome completo do estado
+
 export const siglaParaNome: { [key: string]: string } = {
   'AC': 'Acre', 'AL': 'Alagoas', 'AP': 'Amapá', 'AM': 'Amazonas',
   'BA': 'Bahia', 'CE': 'Ceará', 'DF': 'Distrito Federal', 'ES': 'Espírito Santo',
@@ -9,8 +9,7 @@ export const siglaParaNome: { [key: string]: string } = {
   'SP': 'São Paulo', 'SE': 'Sergipe', 'TO': 'Tocantins'
 };
 
-// NOVO: Mapeia a sigla para o código numérico da UF (IBGE)
-// É este que usaremos para encontrar os arquivos dos municípios.
+
 export const siglaParaCodigoUF: { [key: string]: string } = {
   'RO': '11', 'AC': '12', 'AM': '13', 'RR': '14', 'PA': '15',
   'AP': '16', 'TO': '17', 'MA': '21', 'PI': '22', 'CE': '23',

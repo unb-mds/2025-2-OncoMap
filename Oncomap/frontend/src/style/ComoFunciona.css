@@ -46,22 +46,22 @@
   text-align: justify; 
 }
 
-/* --- Responsividade --- */
+
 
 @media (max-width: 768px) {
   .about-project-section {
-    margin-top: 50px; /* Reduz o espaço entre seções */
+    margin-top: 50px; 
   }
 
   .about-project-section p {
-    text-align: left; /* Justificado fica ruim de ler no celular, melhor alinhar à esquerda */
+    text-align: left; 
     padding: 0 10px;
   }
 }
 
 @media (max-width: 480px) {
   .features-grid {
-    grid-template-columns: 1fr; /* Força 1 coluna no celular */
+    grid-template-columns: 1fr; 
     gap: 1.5rem;
   }
   

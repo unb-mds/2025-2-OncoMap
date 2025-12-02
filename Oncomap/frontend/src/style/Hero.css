@@ -13,7 +13,7 @@
 
 .hero-content {
   max-width: 1000px; 
-  width: 100%; /* Garante que não exceda a largura em telas pequenas */
+  width: 100%; 
 }
 
 .hero-subtitle {
@@ -57,16 +57,16 @@
   color: #3DA35D; 
 }
 
-/* --- Responsividade --- */
+
 
 @media (max-width: 768px) {
   .hero-section {
-    padding-top: 100px; /* Reduz o espaço superior em tablets/móveis */
+    padding-top: 100px; 
     min-height: 85vh;
   }
 
   .hero-title {
-    font-size: 2.5rem; /* Reduz título de 4rem para 2.5rem */
+    font-size: 2.5rem; 
   }
 
   .hero-description {
@@ -77,7 +77,7 @@
 
 @media (max-width: 480px) {
   .hero-title {
-    font-size: 2rem; /* Ainda menor para celulares estreitos */
+    font-size: 2rem; 
   }
   
   .hero-subtitle {

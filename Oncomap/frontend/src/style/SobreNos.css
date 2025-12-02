@@ -6,7 +6,7 @@
 }
 
 .team-card {
-  background-color: var(--cor-fundo-claro); /* Antes: #ffffff */
+  background-color: var(--cor-fundo-claro); 
   border-radius: 15px;
   padding: 20px;
   text-align: center;
@@ -26,13 +26,13 @@
 }
 
 .team-role {
-  color: var(--cor-hover-secundaria); /* Antes: #3E8914 */
+  color: var(--cor-hover-secundaria); 
   margin: 0 0 15px 0;
 }
 
 .contact-button {
-  background-color: var(--cor-destaque); /* Antes: #3DA35D */
-  color: var(--cor-fundo-claro); /* Mantido branco */
+  background-color: var(--cor-destaque); 
+  color: var(--cor-fundo-claro); 
   border: none;
   padding: 10px 25px;
   border-radius: 20px;
@@ -40,7 +40,7 @@
   font-weight: 600; 
 }
 
-/* --- Responsividade --- */
+
 
 @media (max-width: 768px) {
   .team-grid {

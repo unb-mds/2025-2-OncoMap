@@ -1,4 +1,4 @@
-// src/pages/MapaPage.tsx
+
 
 import React, { useState, useEffect } from 'react';
 import MapaInterativo from "../components/MapaPage/mapa";
@@ -8,7 +8,7 @@ import TabelaInfo from '../components/MapaPage/TabelaInfo';
 import '../style/MapaPage.css';
 import type { FeatureCollection } from 'geojson';
 
-// Integração com Backend
+
 import { mapService } from '../services/mapService';
 import type { DadosRegiao } from '../types/apiTypes';
 
@@ -16,7 +16,7 @@ const MapaPege: React.FC = () => {
     const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
     const [estadoCodarea, setEstadoCodarea] = useState<string | null>(null);
     
-    // Novo Estado: armazena apenas a região carregada do backend
+    
     const [dadosDaRegiao, setDadosDaRegiao] = useState<DadosRegiao | null>(null);
     
     const [loadingDados, setLoadingDados] = useState<boolean>(false);
@@ -25,7 +25,7 @@ const MapaPege: React.FC = () => {
     const [municipiosData, setMunicipiosData] = useState<FeatureCollection | null>(null);
     const [searchedMunicipioName, setSearchedMunicipioName] = useState<string | null>(null);
 
-    // EFEITO: Monitora a mudança de região para buscar dados no backend
+    
     useEffect(() => {
         const fetchRegionData = async () => {
             if (!selectedRegion) {
@@ -37,7 +37,7 @@ const MapaPege: React.FC = () => {
             setFetchError(null);
 
             try {
-                // Chama o serviço criado anteriormente
+                
                 const data = await mapService.getDadosRegiao(selectedRegion);
                 setDadosDaRegiao(data);
             } catch (error) {
@@ -99,7 +99,7 @@ const MapaPege: React.FC = () => {
                     </div>
                   )}
 
-                  {/* A TabelaInfo só aparece se os dados existirem */}
+                  
                   {!loadingDados && !fetchError && dadosDaRegiao && selectedRegion && (
                     <div style={{ width: '100%' }}>
                       <TabelaInfo

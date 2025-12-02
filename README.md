@@ -1,66 +1,58 @@
-# OncoMap - Transparência nos investimentos em saúde oncológica
+# 🩺 OncoMap - Transparência em Saúde Oncológica
 
-![Versão](https://img.shields.io/badge/version-0.1.0-blue)
-![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)
+![Versão](https://img.shields.io/badge/version-1.0.0-blue)
+![Status](https://img.shields.io/badge/Status-Concluído-green)
+![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)
 ![GitHub license](https://img.shields.io/github/license/unb-mds/2025-2-OncoMap)
-![GitHub closed issues](https://img.shields.io/github/issues-closed/unb-mds/2025-2-OncoMap)
-![GitHub contributors](https://img.shields.io/github/contributors/unb-mds/2025-2-OncoMap)
 
-O OncoMap é uma plataforma interativa que tem como objetivo ampliar a transparência e o acesso a informações sobre os investimentos públicos em saúde oncológica nos municípios brasileiros.
+> **Transformando diários oficiais em dados acessíveis sobre o investimento no combate ao câncer.**
 
-A partir da integração de dados coletados pelo projeto Querido Diário — que reúne e organiza publicações dos diários oficiais municipais —, o OncoMap transforma informações fragmentadas e de difícil acesso em uma visualização clara, intuitiva e acessível.
+O **OncoMap** é uma plataforma de inteligência de dados que monitora, extrai e visualiza os investimentos públicos municipais destinados à oncologia no Brasil.
 
-Por meio de um mapa interativo do Brasil, a ferramenta permite explorar como os recursos destinados à saúde oncológica estão distribuídos nos municípios, possibilitando identificar padrões, desigualdades regionais e tendências nos investimentos.
-
-Nosso propósito é oferecer uma base confiável de dados que possa ser utilizada por pesquisadores, jornalistas, gestores públicos e pela sociedade civil, fortalecendo o controle social, a tomada de decisão informada e a busca por um sistema de saúde mais justo e eficiente.
+A partir da integração com o projeto **Querido Diário**, nossa aplicação utiliza **Inteligência Artificial Generativa (Google Gemini)** para ler documentos burocráticos (PDFs e textos de licitações), extrair valores monetários e categorizar gastos, transformando dados não estruturados em *insights* claros para a sociedade.
 
 ---
 
 ## 📝 Sumário
-- [Descrição](#oncomap---transparência-nos-investimentos-em-saúde-oncológica)
-- [Status do Projeto](#-status-do-projeto)
+- [Funcionalidades](#-funcionalidades)
 - [Tecnologias Utilizadas](#️-tecnologias-utilizadas)
-- [Guia de Configuração](#-guia-de-configuração)
-  - [Pré-Requisitos](#-pré-requisitos)
-  - [Instalação e Configuração](#-instalação-e-configuração)
+- [Como Rodar o Projeto (Docker)](#-como-rodar-o-projeto-docker)
+- [Pipeline de Dados e IA](#-pipeline-de-dados-e-ia)
+- [Testes e Qualidade](#-testes-e-qualidade)
 - [Estrutura do Projeto](#-estrutura-do-projeto)
 - [Equipe](#-equipe)
-- [Documentação Extra](#-documentação-extra)
 
 ---
 
-## 🚧 Status do Projeto
+## 🚀 Funcionalidades
 
-O projeto encontra-se na versão **`v0.1.0`**, em estágio inicial de desenvolvimento. O foco de trabalho até o momento tem sido na elaboração da documentação, definição de requisitos, prototipação e na estruturação inicial dos ambientes de frontend e backend. As funcionalidades principais da aplicação estão em fase de desenvolvimento.
+* **🗺️ Mapa Interativo:** Visualização em mapa interativo dos investimentos por estado e município.
+* **📊 Tabela com dados:** Detalhamento dos gastos por categorias (Medicamentos, Equipamentos, Obras, Serviços...).
+* **📄 Relatórios Inteligentes:** Geração automática de PDFs com análises textuais e financeiras criadas por IA sobre o cenário de cada região.
+* **🔍 Transparência Ativa:** Link direto para o documento original (PDF do Diário Oficial) de cada despesa.
 
 ---
 
 ## ✔️ Tecnologias Utilizadas
 
-A seguir estão as principais tecnologias e ferramentas que compõem o OncoMap:
-
-| Categoria | Tecnologia |
-| :----------- | :---------------------------------------------------------------------------------------------------------- |
-| **Frontend** | ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white) |
-| **Backend** | ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=sequelize&logoColor=white) |
-| **Banco de Dados** | ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) |
-| **Ferramentas de Desenvolvimento** | ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white) ![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=white) ![Nodemon](https://img.shields.io/badge/Nodemon-76D04B?style=for-the-badge&logo=nodemon&logoColor=white) |
+| Camada | Tecnologias |
+| :--- | :---------------------------------------------------------------------------------------------------------- |
+| **Frontend** | ![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB) ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white) |
+| **Backend** | ![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white) ![Express](https://img.shields.io/badge/Express.js-404D59?style=flat) ![Puppeteer](https://img.shields.io/badge/Puppeteer-40B5A4?style=flat&logo=puppeteer&logoColor=white) |
+| **Dados & IA** | ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white) ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat&logo=supabase&logoColor=white) ![Gemini](https://img.shields.io/badge/Google%20Gemini-8E75B2?style=flat&logo=googlebard&logoColor=white) |
+| **DevOps & QA** | ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white) ![Jest](https://img.shields.io/badge/Jest-323330?style=flat&logo=Jest&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat&logo=github-actions&logoColor=white) |
 
 ---
 
-## 🛠 Guia de Configuração 
+## 🛠 Como Rodar o Projeto (Docker)
 
-Siga os passos abaixo para ter uma cópia do projeto rodando em sua máquina.
+A maneira mais fácil de rodar a aplicação completa é utilizando **Docker Compose**.
 
-### 📋 Pré-Requisitos
+### Pré-requisitos
+* [Docker](https://www.docker.com/) instalado.
+* Uma chave de API do [Google AI Studio](https://aistudio.google.com/).
 
-Antes de começar, certifique-se de que você tem as seguintes ferramentas instaladas:
-- [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/en/) (versão LTS recomendada)
-- Um gerenciador de pacotes como **NPM** (já vem com o Node.js)
-- Um servidor [PostgreSQL](https://www.postgresql.org/) ativo e rodando na sua máquina.
-
-### 🚀 Instalação e Configuração
+### Passo a Passo
 
 1.  **Clone o repositório:**
     ```bash
@@ -68,84 +60,88 @@ Antes de começar, certifique-se de que você tem as seguintes ferramentas insta
     cd 2025-2-OncoMap
     ```
 
-2.  **Configure o Backend:**
-    a. Navegue até a pasta do backend:
+2. **Instale as dependências:**
     ```bash
-    cd Oncomap/backend
+    npm run install:all
     ```
-    b. Crie um arquivo `.env` a partir do exemplo. Você pode criar o arquivo e colar o conteúdo abaixo, substituindo com suas credenciais do PostgreSQL:
+
+3.  **Configure o Backend:**
+    Crie um arquivo `.env` dentro da pasta `Oncomap/backend/` com o seguinte conteúdo:
     ```ini
-    # Configurações do Servidor
     PORT=3001
-
-    # URL Base da API Externa
-    QUERIDO_DIARIO_API_URL=[https://queridodiario.ok.org.br/api](https://queridodiario.ok.org.br/api)
-
-    # Conexão com o Banco de Dados PostgreSQL
-    DB_USER=seu_usuario_postgres
-    DB_HOST=localhost
-    DB_DATABASE=oncomap_db
-    DB_PASSWORD=sua_senha_postgres
-    DB_PORT=5432
+    
+    # Conexão com o Banco (Supabase - Pooler URL para compatibilidade IPv4)
+    # Formato: postgres://usuario:[senha]@host-pooler:6543/postgres
+    DATABASE_URL=sua_string_de_conexao_aqui
+    
+    # Inteligência Artificial
+    GEMINI_API_KEY=sua_chave_gemini_aqui
+    # (Opcional) Chaves extras para evitar rate-limit
+    GEMINI_API_KEYS=chave1,chave2,chave3
     ```
-    c. Instale as dependências:
+
+4.  **Suba os containers:**
+    Na raiz do projeto (onde está o `docker-compose.yml`), execute:
     ```bash
-    npm install
+    docker-compose up --build
     ```
 
-3.  **Configure o Frontend:**
-    a. Em **outro terminal**, navegue até a pasta do frontend:
-    ```bash
-    # Partindo da raiz do projeto clonado
-    cd Oncomap/frontend
-    ```
-    b. Instale as dependências:
-    ```bash
-    npm install
-    ```
+5.  **Acesse a aplicação:**
+    * **Frontend:** [http://localhost:3000](http://localhost:3000)
+    * **API (Backend):** [http://localhost:3001/api/health](http://localhost:3001/api/health)
 
-4.  **Execute a aplicação:**
-    * **Para rodar o backend:**
-        ```bash
-        # No terminal do diretório /Oncomap/backend
-        npm run dev 
-        ```
-        O servidor, inicializado pelo `server.js`, estará rodando. Para verificar, acesse `http://localhost:3001/api/health` em seu navegador. Você deve ver a mensagem: `{"message":"Backend está funcionando!"}`.
+---
 
-    * **Para rodar o frontend:**
-        ```bash
-        # No terminal do diretório /Oncomap/frontend
-        npm run dev
-        ```
-        Acesse o endereço que aparecer no terminal (geralmente `http://localhost:5173`) para ver a aplicação.
+## ⚙️ Pipeline de Dados e IA
+
+O coração do OncoMap são os scripts de ETL (Extração, Transformação e Carga) que rodam em segundo plano para popular o banco de dados.
+
+1.  **Coleta (`collector.js`):** Busca diários na API externa filtrando por palavras-chave (oncologia, quimioterapia, etc.) e salva os metadados.
+2.  **Enriquecimento PDF (`enrichment_pdf.js`):** Baixa o PDF oficial, extrai o texto completo e usa o **Gemini 2.0 Flash-lite** para identificar valores e empresas contratadas.
+3.  **Enriquecimento TXT (`enrichment_txt.js`):** Atua como *fallback*. Se o PDF falhar, analisa o texto bruto disponível para garantir 100% de cobertura.
+
+*Para rodar os scripts manualmente (fora do Docker):*
+```bash
+cd Oncomap/backend
+node src/scripts/enrichment_pdf.js 1 1000  # Processa do ID 1 ao 1000
+```
+
+---
+## ✅ Testes e Qualidade
+O projeto possui uma suíte de testes automatizados para garantir a estabilidade do backend.
+
+* Cobertura atual: >90% (Controllers, Reports e Utils).
+
+* Rodar testes:
+
+```bash
+cd Oncomap/backend
+npm test
+```
 ---
 
 ## 📁 Estrutura do Projeto
-A estrutura do repositório organiza o código-fonte, a documentação e os artefatos do projeto de forma clara. A arquitetura do backend segue o padrão de camadas para separação de responsabilidades.
-
-```plaintext
+```Plaintext
 .
 └── 2025-2-OncoMap/
-    ├── ATA DE REUNIÕES/
-    ├── doc/
+    ├── .github/workflows/           # CI/CD (Pipeline Mensal)
     ├── Oncomap/
     │   ├── backend/
     │   │   ├── src/
-    │   │   │   ├── api/             # Camada da API: rotas, controllers e middlewares
-    │   │   │   ├── config/          # Arquivos de configuração (ex: conexão com banco)
-    │   │   │   ├── database/        # Models, migrations e seeders do Sequelize
-    │   │   │   ├── scripts/         # Scripts utilitários (ex: coletor de dados da API externa)
-    │   │   │   └── app.js           # Arquivo principal de configuração do Express
-    │   │   ├── .env               # Arquivo de variáveis de ambiente (NÃO versionado)
-    │   │   ├── package.json
-    │   │   └── server.js          # Ponto de entrada da aplicação (inicializa o servidor)
-    │   └── frontend/              # Código da interface do usuário (React + TS)
-    ├── CODE_OF_CONDUCT.md
-    ├── CONTRIBUTING.md
-    ├── LICENSE
-    ├── README.md
-    └── SECURITY.md
+    │   │   │   ├── api/             # Controllers e Rotas (Express)
+    │   │   │   ├── config/          # Configuração de Banco e Env
+    │   │   │   ├── scripts/         # Pipeline de Dados (Coleta + IA)
+    │   │   │   ├── tests/           # Testes Unitários (Jest)
+    │   │   │   └── utils/           # Funções auxiliares
+    │   │   ├── Dockerfile
+    │   │   └── server.js
+    │   └── frontend/                # Aplicação React + Vite
+    │   │   ├── src/
+    │   │   └── Dockerfile
+    ├── docker-compose.yml           # Orquestração dos containers
+    └── README.md
 ```
+---
 
 ## 👥 Equipe
 | [![Felype Carrijo](https://avatars.githubusercontent.com/u/168106790?v=4)](https://github.com/Flyxs) | [![Giovani Coelho](https://avatars.githubusercontent.com/u/176083022?v=4)](https://github.com/Gotc2607) | [![Artur Galdino](https://avatars.githubusercontent.com/u/187340217?v=4)](https://github.com/ArturFGaldino) | [![Luiz](https://avatars.githubusercontent.com/u/212640680?v=4)](https://github.com/Luizz97) | [![João Pedro](https://avatars.githubusercontent.com/u/178330046?v=4)](https://github.com/joaoPedro-201) | [![Gabriel Alexandroni](https://avatars.githubusercontent.com/u/170197026?v=4)](https://github.com/Alexandroni07) |
@@ -159,4 +155,3 @@ A documentação de suporte ao projeto, incluindo protótipos e o mapeamento de 
 
 - **Story Map:** [Acessar o Story Map no Figma](https://www.figma.com/board/8Jsltq8BOL65CsMoRWFjik/Template-MDS--Copy-?node-id=0-1&p=f&t=qNEzS63nFVyC3kB9-0)
 - **Protótipo de Alta Fidelidade:** [Acessar no Figma](https://www.figma.com/design/XyUsffocEKRw7przVsbk0n/Pagina-do-projeto?node-id=0-1&p=f&t=NCglUxCaxCXUAbg9-0)
-- **Protótipo de Baixa Fidelidade:** [Acessar no Figma](https://www.figma.com/design/td5oKsmfHCtT9CSPFzKU13/baixa-fidelidada?node-id=0-1&t=gMAdAvQszOHO9gqo-1)

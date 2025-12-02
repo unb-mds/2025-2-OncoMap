@@ -6,11 +6,11 @@ export interface DetalhesEstado {
   ibge: string;
   name: string;
   total_invested: number;
-  categories: any; // Mesma estrutura de CategoriasInvestimento
+  categories: any; 
 }
 
 export const mapService = {
-  // ... (checkHealth, getMapData, getStats, getDadosRegiao) ...
+  
   checkHealth: async (): Promise<HealthResponse> => {
     const response = await api.get<HealthResponse>('/api/health');
     return response.data;
@@ -27,7 +27,7 @@ export const mapService = {
     return response.data;
   },
 
-  // --- NOVA FUNÇÃO ---
+
   getDetalhesEstado: async (codIbge: string): Promise<DetalhesEstado> => {
     const response = await api.get<DetalhesEstado>(`/api/v1/map/estado/${codIbge}`);
     return response.data;
