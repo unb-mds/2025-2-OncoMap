@@ -39,9 +39,7 @@ jobs:
           node src/scripts/monthly_collector.js
         env:
           # Variáveis de banco de dados
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
 
       # --- PASSO 2: ENRIQUECIMENTO (PDF) ---
       # Este script vai pegar as novas menções inseridas acima e tentar ler o PDF
@@ -51,8 +49,6 @@ jobs:
           node src/scripts/enrichment_pdf.js
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           # CRUCIAL: Sua chave do Gemini precisa estar nos Secrets do GitHub
           GEMINI_API_KEYS: ${{ secrets.GEMINI_API_KEYS }}
 
@@ -64,6 +60,4 @@ jobs:
           node src/scripts/enrichment_txt.js
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           GEMINI_API_KEYS: ${{ secrets.GEMINI_API_KEYS }}
