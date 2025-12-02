@@ -29,7 +29,7 @@
     "react-scroll": "^1.9.3"
   },
   "devDependencies": {
-    "@eslint/js": "^9.33.0",
+    "@eslint/js": "^9.39.1",
     "@types/estree": "^1.0.8",
     "@types/geojson": "^7946.0.16",
     "@types/json-schema": "^7.0.15",
@@ -42,7 +42,7 @@
     "eslint": "^9.33.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
-    "globals": "^16.3.0",
+    "globals": "^16.5.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1",
     "vite": "^7.1.2"
