@@ -1,3 +1,26 @@
+// Oncomap/backend/src/scripts/monthly_collector.js
+
+const puppeteer = require('puppeteer');
+const db = require('../config/database');
+require('dotenv').config();
+
+// --- CONFIGURAÇÕES ---
+const QD_API_BASE = "https://queridodiario.ok.org.br/api/gazettes";
+const KEYWORDS_QUERYSTRING = 'quimioterapia,radioterapia,oncologia,oncológico,"tratamento de câncer"';
+const LOOKBACK_DAYS = 30; 
+
+/**
+ * Retorna a data de X dias atrás no formato AAAA-MM-DD
+ */
+function getStartDate(days) {
+    const data = new Date();
+    data.setDate(data.getDate() - days);
+    return data.toISOString().split('T')[0];
+}
+
+/**
+ * Função principal do coletor mensal.
+ */
 async function runMonthlyCollector() {
     console.log('✅ Iniciando o coletor MENSAL (Técnica "Cavalo de Troia")...');
     const since = getStartDate(LOOKBACK_DAYS);
@@ -13,7 +36,7 @@ async function runMonthlyCollector() {
                 '--disable-setuid-sandbox',
                 '--disable-dev-shm-usage',
                 '--disable-blink-features=AutomationControlled',
-                '--window-size=1920,1080' // Tamanho de tela real ajuda a parecer humano
+                '--window-size=1920,1080'
             ]
         });
 
@@ -61,7 +84,6 @@ async function runMonthlyCollector() {
 
         console.log(`ℹ️  Encontrados ${gazettes.length} diários relevantes. Inserindo no banco...`);
 
-        // ... (O RESTO DO CÓDIGO DE INSERÇÃO NO BANCO CONTINUA IGUAL) ...
         let insertedCount = 0;
         let skippedCount = 0;
 
@@ -114,3 +136,6 @@ async function runMonthlyCollector() {
         }
     }
 }
+
+// Executa a função
+runMonthlyCollector().catch(console.error);
