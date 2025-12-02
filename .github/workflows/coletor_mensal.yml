@@ -10,7 +10,7 @@ on:
 
 jobs:
   run-monthly-pipeline:
-    runs-on: ubuntu-latest
+    runs-on: runs-on: [self-hosted, linux, x64]
     
     # Define um tempo limite para evitar que o processo fique travado para sempre pagando horas
     timeout-minutes: 60 
