@@ -1,9 +1,9 @@
-/* src/style/MapaPage.css */
+
 
 .mapa-page-container {
   width: 100%;
   background-color: #E8FCCF;
-  min-height: 100vh; /* Garante que o fundo cubra a altura total */
+  min-height: 100vh; 
 }
 
 .content-wrapper {

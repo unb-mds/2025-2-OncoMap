@@ -7,7 +7,7 @@
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(3, 280px); /* Layout Original Desktop */
+  grid-template-columns: repeat(3, 280px); 
   justify-content: center;
   gap: 2.5rem;
 }
@@ -75,18 +75,17 @@
   color: white;
 }
 
-/* --- Responsividade --- */
 
 @media (max-width: 992px) {
   .team-grid {
-    /* Muda para 2 colunas em telas médias */
+  
     grid-template-columns: repeat(2, 280px); 
   }
 }
 
 @media (max-width: 650px) {
   .team-grid {
-    /* Muda para 1 coluna em telas pequenas */
+    
     grid-template-columns: repeat(1, 280px);
   }
   

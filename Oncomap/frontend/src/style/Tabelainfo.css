@@ -7,7 +7,7 @@
   --cor-texto-destaque: #ffffff;
   --cor-input-bg: rgba(255, 255, 255, 0.1); 
   --cor-borda-suave: rgba(232, 252, 207, 0.3);
-  --cor-tabela-header: rgba(61, 163, 93, 0.2); /* Restaurado original */
+  --cor-tabela-header: rgba(61, 163, 93, 0.2); 
   --cor-tabela-linha-par: rgba(255, 255, 255, 0.03);
 }
 
@@ -25,7 +25,7 @@
   flex-direction: column;
 }
 
-/* --- Títulos --- */
+
 .titulo-estado {
   text-align: center;
   margin-bottom: 25px;
@@ -37,7 +37,7 @@
   letter-spacing: 0.5px;
 }
 
-/* --- Cabeçalhos de Seção (Usado nos Detalhes) --- */
+
 .secao-titulo {
   margin-top: 25px;
   margin-bottom: 15px;
@@ -51,7 +51,7 @@
   padding-left: 10px;
 }
 
-/* --- Botão Voltar --- */
+
 .close-button {
   background: none;
   border: none;
@@ -73,10 +73,10 @@
   text-decoration: underline;
 }
 
-/* --- Área de Pesquisa (POSIÇÃO CORRIGIDA) --- */
+
 .municipio-search-section {
   margin-bottom: 20px;
-  position: relative; /* Mantém o autocomplete preso aqui */
+  position: relative; 
 }
 
 .search-input-group {
@@ -108,7 +108,7 @@
   box-shadow: 0 0 0 3px rgba(61, 163, 93, 0.3);
 }
 
-/* --- Autocomplete (POSIÇÃO CORRIGIDA) --- */
+
 .municipio-search-results {
   list-style: none;
   padding: 0;
@@ -140,7 +140,6 @@
   padding-left: 20px;
 }
 
-/* --- Tabelas (RESTAURADO ESTILO ORIGINAL ARREDONDADO) --- */
 .tabela-scroll {
   max-height: 400px;
   overflow-y: auto;
@@ -150,13 +149,13 @@
 
 .tabela-investimentos {
   width: 100%;
-  border-collapse: separate; /* Restaurado: separate permite bordas arredondadas */
+  border-collapse: separate; 
   border-spacing: 0;
-  margin-bottom: 25px; /* Restaurado margem */
+  margin-bottom: 25px; 
   font-size: 0.95em;
-  border-radius: 8px; /* Restaurado bordas arredondadas */
+  border-radius: 8px; 
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.2); /* Restaurado fundo da tabela */
+  background-color: rgba(0, 0, 0, 0.2); 
 }
 
 .tabela-investimentos th,
@@ -180,7 +179,7 @@
   color: #eee;
 }
 
-/* Remove borda da última linha para ficar bonito no container arredondado */
+
 .tabela-investimentos tbody tr:last-child td {
   border-bottom: none;
 }
@@ -189,7 +188,6 @@
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* Estilos de alinhamento e cor para valores */
 .col-valor-direita {
   text-align: right;
 }
@@ -205,7 +203,6 @@
   background-color: rgba(61, 163, 93, 0.15);
 }
 
-/* --- ESTILO DA LISTA DE ESTADOS (RESTAURADO COMPLETAMENTE) --- */
 .municipios-lista h3 {
   margin-top: 20px;
   margin-bottom: 15px;
@@ -256,7 +253,7 @@
   color: white;
 }
 
-/* --- NOVOS ESTILOS: VISÃO DETALHADA DO MUNICÍPIO (Correção números gigantes) --- */
+
 
 .card-destaque {
   background: linear-gradient(135deg, rgba(61, 163, 93, 0.25), rgba(19, 70, 17, 0.8));
@@ -266,7 +263,7 @@
   text-align: center;
   margin-bottom: 30px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  overflow: hidden; /* Impede vazamento */
+  overflow: hidden;
 }
 
 .card-destaque h3 {
@@ -292,7 +289,6 @@
   margin: 0;
   color: white;
   text-shadow: 0 2px 5px rgba(0,0,0,0.4);
-  /* CORREÇÃO DO NÚMERO GIGANTE QUE VAZA */
   word-wrap: break-word; 
   word-break: break-word;
   line-height: 1.1;
@@ -304,7 +300,6 @@
   }
 }
 
-/* --- HEADER DETALHES DO ESTADO (DARK) --- */
 .detalhes-estado-header {
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(19, 70, 17, 0.3));
   border: 1px solid var(--cor-destaque);
@@ -373,7 +368,7 @@
   color: var(--cor-texto-claro);
 }
 
-/* --- Lista de Links --- */
+
 .lista-links-scroll {
   max-height: 200px; 
   overflow-y: auto;
@@ -437,7 +432,7 @@
   font-style: italic;
 }
 
-/* --- Botão PDF --- */
+
 .btn-pdf {
   display: block;
   width: 100%;
@@ -469,7 +464,7 @@
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
 }
 
-/* --- Scrollbar --- */
+
 ::-webkit-scrollbar {
   width: 8px;
 }

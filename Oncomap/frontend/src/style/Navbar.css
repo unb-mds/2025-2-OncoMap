@@ -41,7 +41,7 @@
   z-index: 9950;
   color: var(--cor-fundo-claro);
   font-size: 1.8rem;
-  font-weight: 800; /* Mais bold */
+  font-weight: 800; 
   margin: 0;
   white-space: nowrap;
   letter-spacing: -0.5px;
