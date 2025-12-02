@@ -11,13 +11,11 @@ on:
       - '**.md'
 
 jobs:
-  # --- JOB 1: BACKEND ---
   backend-verificacao:
     name: Backend - Lint e Testes
     runs-on: ubuntu-latest
     defaults:
       run:
-        # IMPORTANTE: Caminho ajustado para a sua estrutura de pastas
         working-directory: ./Oncomap/backend
 
     steps:
@@ -27,43 +25,34 @@ jobs:
     - name: Configurar Node.js 20
       uses: actions/setup-node@v4
       with:
-        node-version: '20' # Usando a versão recomendada do projeto
+        node-version: '20'
         cache: 'npm'
         cache-dependency-path: Oncomap/backend/package-lock.json
 
     - name: Instalar dependências
-      # 'npm ci' é mais rápido e seguro para CI do que 'npm install'
       run: npm ci
 
-    # --- NOVO: Passo de Linter ---
     - name: Verificar Estilo de Código (Lint)
       run: npm run lint
-      # Se quiser que o pipeline continue mesmo com erro de lint, adicione:
-      # continue-on-error: true
 
     - name: Rodar Testes
       run: npm test
       env:
-        # Configurações Básicas
         PORT: 3001
         NODE_ENV: test
         
-        # API Pública (Pode ficar hardcoded)
         QUERIDO_DIARIO_API_URL: "https://queridodiario.ok.org.br/API"
 
         DATABASE_URL: ${{ secrets.DATABASE_URL }}
         GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         GEMINI_API_KEYS: ${{ secrets.GEMINI_API_KEYS }}
-        # Se os testes precisarem de uma chave específica única:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEYS }} 
 
-  # --- JOB 2: FRONTEND ---
   frontend-verificacao:
     name: Frontend - Lint, Testes e Build
     runs-on: ubuntu-latest
     defaults:
       run:
-        # Caminho ajustado
         working-directory: ./Oncomap/frontend
 
     steps:
