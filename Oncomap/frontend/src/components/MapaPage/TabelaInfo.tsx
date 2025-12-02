@@ -41,7 +41,7 @@ const TabelaInfo = ({
   
   // URL base para os relatórios (ajuste conforme seu env se necessário)
  // Mudei para 3000 (onde o backend vive)
-const API_BASE_URL = `${import.meta.env.VITE_API_URL || "http://localhost:3000"}/api/report`;
+const API_BASE_URL = `${import.meta.env.VITE_API_URL || "https://oncomap-backend-pr8b.onrender.com"}/api/report`;
 
   const dadosDoEstado = estadoCodarea
     ? dadosDaRegiao.municipios?.find((m) => String(m.codarea) === String(estadoCodarea))
