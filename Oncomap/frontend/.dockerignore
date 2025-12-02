@@ -1,17 +1,11 @@
-# Excluir pastas de dependências
 node_modules
 
-# Excluir o resultado final do build (dist/build)
-# O Dockerfile usa o comando 'npm run build' para GERAR essa pasta
-# dentro do contêiner, então não precisamos copiar a versão local.
 dist
 build 
 
-# Excluir pastas de cache
 .temp
 .cache
 
-# Excluir arquivos de versionamento e IDEs
 .git
 .gitignore
 .vscode

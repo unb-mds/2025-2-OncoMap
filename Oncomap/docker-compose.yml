@@ -1,28 +1,26 @@
 
 
 services:
-  # --- Serviço do Backend ---
   api-backend:
-    build: ./backend        # Onde está o Dockerfile do back?
+    build: ./backend        
     container_name: meu-backend
     ports:
-      - "3000:3000"         # Mapeamento: PORTA_PC : PORTA_CONTAINER
+      - "3000:3000"         
     volumes:
-      - ./backend:/app      # Volumes: Espelha sua pasta local no container
-      - /app/node_modules   # Evita que o container apague seus node_modules
+      - ./backend:/app      
+      - /app/node_modules   
     environment:
-      - PORT=3000           # Variáveis de ambiente
+      - PORT=3000           
 
-  # --- Serviço do Frontend ---
   app-frontend:
-    build: ./frontend       # Onde está o Dockerfile do front?
+    build: ./frontend       
     container_name: meu-frontend
     ports:
-      - "3001:3001"         # Acessaremos no navegador por localhost:3001
+      - "3001:3001"         
     volumes:
-      - ./frontend:/app     # Hot-reload: salvou arquivo, atualiza no container
+      - ./frontend:/app     
       - /app/node_modules
     environment:
-      - CHOKIDAR_USEPOLLING=true # Necessário para hot-reload em alguns sistemas (Windows/WSL)
+      - CHOKIDAR_USEPOLLING=true 
     depends_on:
-      - api-backend         # O front espera o back iniciar (ordem de boot)
+      - api-backend         

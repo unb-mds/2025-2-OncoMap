@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 const BASE = process.env.API_BASE || 'http://localhost:3001';
 
 const parseCurrency = (str) => {
@@ -20,7 +19,6 @@ const fetchJson = async (url) => {
 const run = async () => {
   console.log('Comparador de APIs - começando');
   try {
-    // 1) Região
     const regionSlug = 'norte';
     const regionData = await fetchJson(`${BASE}/api/v1/map/regiao/${regionSlug}`);
     console.log('\nRegião:', regionData.regiao);
@@ -28,7 +26,6 @@ const run = async () => {
     const regionReported = parseCurrency(regionData.investimentosGerais?.[0]?.valor || 0);
     console.log('  - Total reportado (investimentosGerais[0].valor):', regionReported);
 
-    // Sum all nested municipality valores
     let regionSum = 0;
     (regionData.municipios || []).forEach(estado => {
       (estado.investimentos || []).forEach(mun => {
@@ -42,7 +39,6 @@ const run = async () => {
       console.log('  => Região consistente');
     }
 
-    // 2) Escolher um estado presente na lista
     const estado = (regionData.municipios || [])[0];
     if (!estado) {
       console.warn('Nenhum estado retornado pela região para testar estado/município.');
@@ -50,11 +46,9 @@ const run = async () => {
     }
     console.log('\nEstado selecionado:', estado.nome, 'codarea=', estado.codarea);
 
-    // Chamar endpoint de estado (usa código IBGE do estado)
     const stateData = await fetchJson(`${BASE}/api/v1/map/estado/${estado.codarea}`);
     console.log('  - total_invested (estado):', stateData.total_invested);
 
-    // somar valores dos municípios fornecidos pelo frontend (quando possível)
     let stateSumFromRegion = 0;
     estado.investimentos.forEach(m => stateSumFromRegion += parseCurrency(m.valor));
     console.log('  - soma dos municípios (segundo /regiao):', stateSumFromRegion);
@@ -64,7 +58,6 @@ const run = async () => {
       console.log('  => Estado consistente com /regiao');
     }
 
-    // 3) Escolher um município para verificar detalhe
     const municipio = estado.investimentos?.[0];
     if (!municipio || !municipio.codarea_municipio) {
       console.warn('Nenhum município com IBGE disponível para testar detalhes.');
@@ -74,7 +67,6 @@ const run = async () => {
     const munData = await fetchJson(`${BASE}/api/v1/map/municipio/${municipio.codarea_municipio}`);
     console.log('  - total_invested (mun):', munData.total_invested);
 
-    // soma das categorias retornadas
     const cats = munData.categories || {};
     const catsSum = Object.values(cats).reduce((s, v) => s + Number(v || 0), 0);
     console.log('  - soma das categorias (mun):', catsSum);
@@ -84,7 +76,6 @@ const run = async () => {
       console.log('  => Município consistente internamente');
     }
 
-    // 4) Comparar com stats/general (por estado)
     try {
       const stats = await fetchJson(`${BASE}/api/v1/stats/general`);
       const states = stats.states || {};
