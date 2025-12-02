@@ -63,7 +63,27 @@ async function runMonthlyCollector() {
         }
 
         // 5. Extrai o JSON da resposta
-        const data = await response.json();
+// 5. Extrai o conteúdo da página (Texto puro)
+        // Isso funciona tanto se vier JSON quanto se vier HTML de erro
+        const pageContent = await page.evaluate(() => {
+            return document.body.innerText; 
+        });
+
+        // Verificação de Segurança: Se começar com '<', é HTML (Erro/Bloqueio)
+        if (pageContent.trim().startsWith('<')) {
+            console.error("❌ ERRO CRÍTICO: A API retornou HTML em vez de JSON.");
+            console.error("👇 Conteúdo recebido (Preview do bloqueio):");
+            console.error(pageContent.substring(0, 500)); // Mostra o início do erro
+            throw new Error("Resposta da API inválida (HTML detectado)");
+        }
+
+        // Se passou, tenta converter o texto para JSON
+        let data;
+        try {
+            data = JSON.parse(pageContent);
+        } catch (e) {
+            throw new Error(`Falha ao fazer parse do JSON: ${e.message}`);
+        }
         const gazettes = data.gazettes;
 
         if (!gazettes || gazettes.length === 0) {
