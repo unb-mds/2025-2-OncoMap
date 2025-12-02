@@ -64,7 +64,7 @@ npm run dev
 ```
 Isso iniciará o Backend e o Frontend simultaneamente no mesmo terminal.
 
-## 5. Se deseja rodar pelo Docker
+### 5. Se deseja rodar pelo Docker
 Caso prefira rodar via container.
 
 ```bash
