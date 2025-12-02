@@ -40,10 +40,27 @@ async function runMonthlyCollector() {
         // Para um sistema mais robusto, seria necessário implementar paginação (offset).
         const response = await axios.get(QD_API_URL, {
             headers: {
-                // "Finge" ser um navegador Chrome no Windows
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
+                // Identidade do Navegador
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+                
+                // Origem e Referência (MUITO IMPORTANTE para evitar 403)
+                'Referer': 'https://queridodiario.ok.org.br/',
+                'Origin': 'https://queridodiario.ok.org.br',
+                
+                // Tipos aceitos
                 'Accept': 'application/json, text/plain, */*',
                 'Accept-Language': 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7',
+                'Accept-Encoding': 'gzip, deflate, br',
+                
+                // Cabeçalhos de Segurança do Chrome (Sec-*)
+                'Sec-Ch-Ua': '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"',
+                'Sec-Ch-Ua-Mobile': '?0',
+                'Sec-Ch-Ua-Platform': '"Windows"',
+                'Sec-Fetch-Dest': 'empty',
+                'Sec-Fetch-Mode': 'cors',
+                'Sec-Fetch-Site': 'same-origin',
+                
+                // Conexão
                 'Connection': 'keep-alive'
             },
             params: {
