@@ -31,7 +31,8 @@
     "test:coverage": "jest --coverage",
     "db:setup": "node src/scripts/setup_municipalities.js",
     "db:collect": "node src/scripts/collector.js",
-    "db:enrich": "node src/scripts/enrichment.js",
+    "db:enrich:pdf": "node src/scripts/enrichment_pdf.js",
+    "db:enrich:txt": "node src/scripts/enrichment_txt.js",
     "db:update-txt": "node src/scripts/update_txt_urls.js",
     "db:fill-txt": "node src/scripts/fill_txt_data.js",
     "db:enrichment": "node src/scripts/enrichment.js"
