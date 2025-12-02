@@ -506,7 +506,11 @@ O objetivo é dar uma visão geral para o time sobre &lt;strong&gt;como consumir
 &lt;h2 id="-contexto"&gt;📖 Contexto&lt;/h2&gt;
 &lt;p&gt;Uma &lt;strong&gt;API (Application Programming Interface)&lt;/strong&gt; é um conjunto de regras e protocolos que permite que diferentes sistemas, serviços ou aplicações se comuniquem entre si.
 Elas são a base da integração moderna de software, permitindo reuso de funcionalidades, comunicação entre microsserviços e integração com serviços de terceiros.&lt;/p&gt;
-&lt;p&gt;No projeto, precisamos avaliar quais tipos de APIs podem ser utilizados, como funcionam e quais ferramentas ajudam no desenvolvimento, teste e documentação.&lt;/p&gt;</description></item><item><title>Arquitetura Backend</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/node.js/arquitetura_backend/</link><pubDate>Tue, 02 Dec 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/node.js/arquitetura_backend/</guid><description>&lt;h1 id="tecnologia-sugerida"&gt;Tecnologia Sugerida&lt;/h1&gt;
+&lt;p&gt;No projeto, precisamos avaliar quais tipos de APIs podem ser utilizados, como funcionam e quais ferramentas ajudam no desenvolvimento, teste e documentação.&lt;/p&gt;</description></item><item><title>Arquitetura</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/arquitetura/</link><pubDate>Tue, 02 Dec 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/arquitetura/</guid><description>&lt;h1 id="documentação-de-arquitetura-do-projeto-oncomap"&gt;Documentação de Arquitetura do Projeto (OncoMap)&lt;/h1&gt;
+&lt;p&gt;Este documento detalha as decisões técnicas, a estrutura de código, o esquema de dados e o fluxo de inteligência artificial do sistema.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="1-visão-geral-do-sistema-system-context"&gt;1. Visão Geral do Sistema (System Context)&lt;/h2&gt;
+&lt;p&gt;O &lt;strong&gt;OncoMap&lt;/strong&gt; é uma plataforma de inteligência de dados que monitora e visualiza investimentos públicos em oncologia e saúde. O sistema coleta menções em diários oficiais, categoriza os gastos via IA e permite a geração de relatórios de auditoria automatizados.&lt;/p&gt;</description></item><item><title>Arquitetura Backend</title><link>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/node.js/arquitetura_backend/</link><pubDate>Tue, 02 Dec 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/doc/backend/node.js/arquitetura_backend/</guid><description>&lt;h1 id="tecnologia-sugerida"&gt;Tecnologia Sugerida&lt;/h1&gt;
 &lt;h2 id="linguagem-nodejs"&gt;Linguagem: Node.js&lt;/h2&gt;
 &lt;p&gt;O &lt;strong&gt;Node.js&lt;/strong&gt; foi escolhido como linguagem de desenvolvimento por ser: -
 Baseado em &lt;strong&gt;JavaScript&lt;/strong&gt;, a linguagem mais popular e com ampla
@@ -1275,7 +1279,21 @@ ex.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h3 id="-link-do-ambiente--site"&gt;🔗 Link do ambiente / site&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://github.com/unb-mds/2025-2-OncoMap/blob/main/doc/frontend/Docker/Docker.md"&gt;Docker.md&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Documento de visao</title><link>https://unb-mds.github.io/2025-2-OncoMap/issues/issue-15/</link><pubDate>Tue, 02 Dec 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/issues/issue-15/</guid><description>&lt;h3 id="-descrição--objetivo"&gt;📝 Descrição / Objetivo&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://github.com/unb-mds/2025-2-OncoMap/blob/main/doc/frontend/Docker/Docker.md"&gt;Docker.md&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Documentando arquitetura final do projeto</title><link>https://unb-mds.github.io/2025-2-OncoMap/issues/issue-119/</link><pubDate>Tue, 02 Dec 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/issues/issue-119/</guid><description>&lt;h3 id="-descrição--objetivo"&gt;📝 Descrição / Objetivo&lt;/h3&gt;
+&lt;p&gt;Fazendo a documentação final para o projeto do Oncomap&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="-tarefas"&gt;✅ Tarefas&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Documentar a arquitetura do projeto.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id="-critérios-de-aceitação"&gt;📌 Critérios de Aceitação&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked="" disabled="" type="checkbox"&gt; Documentação feita e coerente&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id="-link-do-ambiente--site"&gt;🔗 Link do ambiente / site&lt;/h3&gt;
+&lt;p&gt;[Cole aqui o link]&lt;/p&gt;</description></item><item><title>Documento de visao</title><link>https://unb-mds.github.io/2025-2-OncoMap/issues/issue-15/</link><pubDate>Tue, 02 Dec 2025 00:00:00 +0000</pubDate><guid>https://unb-mds.github.io/2025-2-OncoMap/issues/issue-15/</guid><description>&lt;h3 id="-descrição--objetivo"&gt;📝 Descrição / Objetivo&lt;/h3&gt;
 &lt;p&gt;Criar um documento sobre documento de visão e ideias de template sobre.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id="-tarefas"&gt;✅ Tarefas&lt;/h3&gt;
