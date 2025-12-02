@@ -102,8 +102,13 @@ function extractJsonFromString(text) {
         potentialJson = text.replace(/^```json\s*/, '').replace(/```$/, '').trim();
     }
     if (potentialJson && potentialJson.startsWith('{') && potentialJson.endsWith('}')) {
-       try { JSON.parse(potentialJson); return potentialJson; } catch (e) {}
+    try { 
+        JSON.parse(potentialJson); 
+        return potentialJson; 
+    } catch { 
+        return null; 
     }
+}
     return null;
 }
 
@@ -250,7 +255,7 @@ async function enrichData() {
                             textToAnalyze = response.data;
                             sourceUsed = 'txt';
                             console.log(`  -> Texto baixado (${textToAnalyze.length} caracteres).`);
-                        } catch (txtError) {
+                        } catch {
                             console.warn(`  -> Aviso: Falha ao baixar .txt. Usando excerpt.`);
                             textToAnalyze = mention.excerpt;
                             sourceUsed = 'excerpt (fallback)';
