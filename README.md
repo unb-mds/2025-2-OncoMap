@@ -92,8 +92,8 @@ A maneira mais fácil de rodar a aplicação completa é utilizando **Docker Com
     ```
 
 5.  **Acesse a aplicação:**
-    * **Frontend:** [http://localhost:3000](http://localhost:3000)
-    * **API (Backend):** [http://localhost:3001/api/health](http://localhost:3001/api/health)
+    * **Frontend:** [http://localhost:3000](http://localhost:3001)
+    * **API (Backend):** [http://localhost:3001/api/health](http://localhost:3000/api/health)
 
 ---
 
