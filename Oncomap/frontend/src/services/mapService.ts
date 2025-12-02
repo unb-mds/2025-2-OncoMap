@@ -1,12 +1,18 @@
 import api from './api'; 
-import type { HealthResponse, DadosRegiao, DetalhesMunicipio } from '../types/apiTypes';
+
+import type { 
+  HealthResponse, 
+  DadosRegiao, 
+  DetalhesMunicipio, 
+  CategoriasInvestimento 
+} from '../types/apiTypes';
 
 export interface DetalhesEstado {
   uf: string;
   ibge: string;
   name: string;
   total_invested: number;
-  categories: any; 
+  categories: CategoriasInvestimento; 
 }
 
 export const mapService = {

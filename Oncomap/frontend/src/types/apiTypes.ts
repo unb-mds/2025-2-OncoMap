@@ -26,7 +26,7 @@ export interface MencaoDetalhada {
   date: string;
   value: number;
   url: string;
-  details: any[];
+  details: string[];
 }
 
 export interface CategoriasInvestimento {
