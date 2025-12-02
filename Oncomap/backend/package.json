@@ -16,7 +16,9 @@
     "tiktoken": "^1.0.22"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.1",
     "eslint": "^9.35.0",
+    "globals": "^16.5.0",
     "jest": "^30.2.0",
     "nodemon": "^3.1.10",
     "prettier": "^3.6.2",
@@ -35,7 +37,8 @@
     "db:enrich:txt": "node src/scripts/enrichment_txt.js",
     "db:update-txt": "node src/scripts/update_txt_urls.js",
     "db:fill-txt": "node src/scripts/fill_txt_data.js",
-    "db:enrichment": "node src/scripts/enrichment.js"
+    "db:enrichment": "node src/scripts/enrichment.js",
+    "lint": "eslint src/"
   },
   "keywords": [],
   "author": "",

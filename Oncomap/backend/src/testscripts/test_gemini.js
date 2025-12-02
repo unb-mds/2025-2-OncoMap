@@ -127,7 +127,7 @@ async function processPdfWithGemini(textContent, mentionId) {
         // Tenta extrair o texto da resposta (pode variar um pouco na estrutura)
         try {
             rawResponseText = result.response.text();
-        } catch (e) {
+        } catch {
              if (result.response && result.response.candidates && result.response.candidates[0].content.parts[0].text) {
                 rawResponseText = result.response.candidates[0].content.parts[0].text;
              } else {

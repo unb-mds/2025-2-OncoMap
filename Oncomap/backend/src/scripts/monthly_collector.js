@@ -10,7 +10,6 @@ const QD_API_BASE = "https://queridodiario.ok.org.br/api/gazettes";
 const KEYWORDS_QUERYSTRING = 'quimioterapia,radioterapia,oncologia,oncológico,"tratamento de câncer"';
 const LOOKBACK_DAYS = 30; 
 
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 function getStartDate(days) {
     const data = new Date();

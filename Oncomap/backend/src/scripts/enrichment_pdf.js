@@ -107,8 +107,13 @@ function extractJsonFromString(text) {
         potentialJson = text.replace(/^```json\s*/, '').replace(/```$/, '').trim();
     }
     if (potentialJson && potentialJson.startsWith('{') && potentialJson.endsWith('}')) {
-       try { JSON.parse(potentialJson); return potentialJson; } catch (e) {}
-    }
+   try { 
+       JSON.parse(potentialJson); 
+       return potentialJson; 
+   } catch { 
+       return null; 
+   }
+}
     return null;
 }
 
