@@ -23,7 +23,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "types": ["vitest/globals", "@testing-library/jest-dom"]
+
   },
-    "include": ["src", "tests/TabelaInfo.test.tsx"],
-    "tests": ["tests"]
+    "include": ["src", "tests"]
 }

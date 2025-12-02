@@ -149,11 +149,7 @@ O sistema baseia-se em uma tabela central de fatos chamada `mentions`. As querie
 ```bash
 npm run setup
 ```
-4. Inicialize o Banco de Dados (Essencial na 1ª vez):
-```bash
-npm run db:setup
-```
-5. Inicie o servidor: `npm run dev`
+4. Inicie o servidor: `npm run dev`
 
 ### Rodando o Frontend
 
