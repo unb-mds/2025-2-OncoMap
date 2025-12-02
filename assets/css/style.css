@@ -31,7 +31,7 @@ body {
 .navbar-links {
     list-style: none; /* Remove bolinhas */
     display: flex;
-    gap: 1.5rem; /* Espaço entre os links */
+    gap: 1rem; /* Espaço entre os links */
     margin: 0;
     padding: 0;
 }

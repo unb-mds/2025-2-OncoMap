@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><script src="/2025-2-OncoMap/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=2025-2-OncoMap/livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+        
+            Agile | OncoMap
+        
+    </title>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/2025-2-OncoMap/css/doc-page-bundle.min.css">
+
+
+
+</head>
+<body>
+
+    <nav class="navbar">
+
+    <a class="navbar-brand" href="http://localhost:1313/2025-2-OncoMap/">
+        OncoMap
+    </a>
+
+    <ul class="navbar-links">
+        <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+    </ul>
+
+    <div class="navbar-right">
+        <a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a>
+    </div>
+
+</nav>
+
+    <section class="hero">
+    <div class="container">
+        <h1>Agile</h1>
+        
+        
+        
+        </div>
+</section>
+
+    <main>
+        
+
+    <div class="container page-single">
+        
+        
+        
+        
+        <div class="content">
+            <h1 id="5-documentação-de-projeto-e-gestão-ágil---oncomap">5. Documentação de Projeto e Gestão Ágil - OncoMap</h1>
+<p>Este documento detalha a metodologia de trabalho utilizada pela equipe do <strong>OncoMap</strong>, seguindo princípios ágeis (Scrum/Kanban) para garantir a entrega contínua de valor, a transparência do processo e a qualidade do software.</p>
+<hr>
+<h2 id="51-story-map-mapeamento-da-jornada-do-usuário">5.1. Story Map (Mapeamento da Jornada do Usuário)</h2>
+<p>O Story Map foi a ferramenta principal para visualizar a jornada do usuário e priorizar o desenvolvimento. A estrutura foi dividida em atividades principais (Backbone) e quebrada em tarefas e histórias.
+Story Map pode ser visto mais detalhadamente em: <a href="https://www.figma.com/board/8Jsltq8BOL65CsMoRWFjik/Template-MDS--Copy-?node-id=0-1&amp;p=f">StoryMap</a></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Atividade (Backbone)</th>
+          <th style="text-align: left">Tarefa do Usuário</th>
+          <th style="text-align: left">Histórias de Usuário (Exemplos)</th>
+          <th style="text-align: left">Prioridade (Release)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Explorar Dados</strong></td>
+          <td style="text-align: left">Visualizar o Mapa do Brasil</td>
+          <td style="text-align: left">&ldquo;Como cidadão, quero ver um mapa para identificar visualmente os estados com maior investimento.&rdquo;</td>
+          <td style="text-align: left">MVP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Filtrar por Região/Estado</td>
+          <td style="text-align: left">&ldquo;Como pesquisador, quero filtrar os dados por UF para analisar contextos locais específicos.&rdquo;</td>
+          <td style="text-align: left">MVP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Analisar Detalhes</strong></td>
+          <td style="text-align: left">Ver detalhes do Município</td>
+          <td style="text-align: left">&ldquo;Como gestor público, quero ver o total investido e a quebra por categorias (medicamentos, obras&hellip;) de um município.&rdquo;</td>
+          <td style="text-align: left">MVP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Ler o Diário Oficial</td>
+          <td style="text-align: left">&ldquo;Como jornalista, quero clicar no link do PDF original para verificar a fonte da informação na íntegra.&rdquo;</td>
+          <td style="text-align: left">V1.0</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Exportar e Validar</strong></td>
+          <td style="text-align: left">Baixar Relatórios</td>
+          <td style="text-align: left">&ldquo;Como auditor, quero baixar um PDF formatado com análise textual gerada por IA sobre os gastos.&rdquo;</td>
+          <td style="text-align: left">V2.0</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Validar dados extraídos</td>
+          <td style="text-align: left">&ldquo;Como sistema, quero cruzar dados extraídos de TXT e PDF para garantir a maior acurácia possível.&rdquo;</td>
+          <td style="text-align: left">V2.0</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="52-estrutura-de-requisitos-épicos--features--user-stories">5.2. Estrutura de Requisitos (Épicos → Features → User Stories)</h2>
+<p>Abaixo, a decomposição do escopo do projeto em níveis de granularidade.</p>
+<h3 id="épico-01-coleta-e-processamento-de-dados-backend"><strong>Épico 01: Coleta e Processamento de Dados (Backend)</strong></h3>
+<ul>
+<li><strong>Feature A: Coletor de Diários Oficiais</strong>
+<ul>
+<li><em>US01:</em> Como desenvolvedor, quero um script que busque diários na API do &ldquo;Querido Diário&rdquo; usando palavras-chave oncológicas para popular a base bruta.</li>
+<li><em>Critério de Aceitação:</em> O script deve rodar sem erros de rede (403), salvar no Supabase e evitar duplicatas usando <code>ON CONFLICT</code>.</li>
+</ul>
+</li>
+<li><strong>Feature B: Pipeline de Enriquecimento com IA</strong>
+<ul>
+<li><em>US02:</em> Como analista de dados, quero que o sistema processe PDFs usando o Gemini para extrair valores monetários e categorizar gastos.</li>
+<li><em>Critério de Aceitação:</em> O JSON de saída deve conter categorias (medicamentos, equipamentos, serviços de saúde, estadia do paciente, obras de infraestrutura e outros relacionados.) e o valor total somado.</li>
+</ul>
+</li>
+</ul>
+<h3 id="épico-02-visualização-e-transparência-frontend"><strong>Épico 02: Visualização e Transparência (Frontend)</strong></h3>
+<ul>
+<li><strong>Feature C: Dados em tabelas</strong>
+<ul>
+<li><em>US03:</em> Como usuário, quero visualizar tabelas que mostrem a distribuição dos gastos por categoria em um município selecionado.</li>
+</ul>
+</li>
+<li><strong>Feature D: Relatórios Inteligentes</strong>
+<ul>
+<li><em>US04:</em> Como usuário, quero clicar em um botão &ldquo;Gerar Relatório&rdquo; e receber um PDF formatado com textos explicativos gerados pela IA.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="53-rastreabilidade">5.3. Rastreabilidade</h2>
+<p>Para garantir a organização, utilizamos o GitHub como fonte única da verdade (<em>Single Source of Truth</em>). A rastreabilidade é mantida através do seguinte fluxo:</p>
+<ol>
+<li><strong>Issues:</strong> Cada User Story é cadastrada como uma <em>Issue</em> no GitHub.</li>
+<li><strong>Labels:</strong> Utilizamos labels para categorizar o tipo de trabalho:
+<ul>
+<li><code>backend</code>, <code>frontend</code></li>
+<li><code>bug</code>, <code>feature</code>, <code>documentation</code></li>
+</ul>
+</li>
+<li><strong>Pull Requests (PRs):</strong> Todo PR deve ser explicitamente linkado a uma Issue.
+<ul>
+<li><em>Exemplo:</em> No corpo do PR, utilizamos a keyword &ldquo;Closes #12&rdquo; para fechar automaticamente a Issue correspondente.</li>
+</ul>
+</li>
+<li><strong>Commits:</strong> Mensagens de commit seguem o padrão <a href="https://www.conventionalcommits.org/">Conventional Commits</a>, facilitando a leitura do histórico e geração de changelogs.
+<ul>
+<li><code>feat: adiciona script de chunking para textos longos</code></li>
+<li><code>fix: corrige erro de rate limit na API do Gemini</code></li>
+<li><code>docs: atualiza README com instruções de teste</code></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="54-documentação-das-sprints">5.4. Documentação das Sprints</h2>
+<p>O projeto foi dividido em Sprints (ciclos de trabalho), com as seguintes cerimônias e artefatos gerados:</p>
+<h3 id="-ritos-ágeis">🔄 Ritos Ágeis</h3>
+<ul>
+<li><strong>Sprint Planning:</strong> Realizada no início de cada ciclo para definir o <em>Backlog da Sprint</em>. A equipe estimava a complexidade técnica das tarefas (ex: configurar Docker vs. criar script de teste).</li>
+<li><strong>Daily/Check-points:</strong> Comunicação assíncrona e reuniões rápidas para alinhar o progresso:
+<ul>
+<li>&ldquo;O que fiz ontem (Implementei o Coletor)&rdquo;</li>
+<li>&ldquo;O que farei hoje (Integração com Gemini)&rdquo;</li>
+<li>&ldquo;Impedimentos (Rate limit em API do gemini)&rdquo;</li>
+</ul>
+</li>
+<li><strong>Sprint Review &amp; Retrospectiva:</strong> Ao fim de grandes entregas (ex: finalização do Backend), o grupo analisava o que funcionou e o que precisava melhorar.
+<ul>
+<li><em>Lição Aprendida:</em> &ldquo;O uso de <code>pdf-parse</code> local foi muito superior ao uso do texto pré-processado da API externa.&rdquo;</li>
+<li><em>Melhoria:</em> &ldquo;Precisamos dividir a carga de trabalho entre múltiplas chaves de API para evitar gargalos.&rdquo;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="55--métricas-analisadas-engineering-metrics">5.5. 📊 Métricas Analisadas (Engineering Metrics)</h2>
+<p>Como a gestão das tarefas foi realizada de forma simplificada, o time focou em métricas de engenharia e fluxo de código extraídas diretamente do repositório para medir a produtividade e a qualidade.</p>
+<h4 id="1-cobertura-de-testes-code-coverage">1. Cobertura de Testes (Code Coverage)</h4>
+<p>Esta foi a principal métrica de qualidade técnica (KPI) do projeto. O objetivo era garantir que a lógica crítica do backend estivesse protegida contra regressões.</p>
+<ul>
+<li><strong>Ferramenta:</strong> Jest.</li>
+<li><strong>Meta Inicial:</strong> &gt; 90% nos Controllers e Utils.</li>
+<li><strong>Resultado Final:</strong>
+<ul>
+<li><code>regionMap.js</code>: <strong>100%</strong></li>
+<li><code>statsController.js</code>: <strong>100%</strong></li>
+<li><code>reportController.js</code>: <strong>~86%</strong></li>
+<li><strong>Média Geral (Backend Core):</strong> <strong>&gt;90%</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="2-vazão-de-entregas-throughput-via-prs">2. Vazão de Entregas (Throughput via PRs)</h4>
+<p>Medimos a produtividade do time através da quantidade de <em>Pull Requests</em> (PRs) integrados à branch <code>main</code> por Sprint/Semana.</p>
+<ul>
+<li><strong>Padrão observado:</strong> Sprints iniciais focaram em poucos PRs grandes (Setup). Sprints finais tiveram alto volume de PRs menores e mais focados (Correções e Ajustes de IA), indicando uma melhoria na quebra de tarefas.</li>
+<li><strong>Total de PRs Merged:</strong> [Inserir Número Total de PRs fechados no projeto]</li>
+</ul>
+<h4 id="3-distribuição-de-commits-frequency">3. Distribuição de Commits (Frequency)</h4>
+<p>Acompanhamos a frequência de commits (&ldquo;Pulse&rdquo;) na aba <em>Insights</em> do GitHub para garantir que o trabalho fosse contínuo e não acumulado apenas nas vésperas das entregas.</p>
+<ul>
+<li><strong>Pico de Atividade:</strong> [Mês/Semana de maior trabalho, ex: Setembro/2025].</li>
+<li><strong>Colaboração:</strong> O gráfico de contribuidores demonstrou a atuação ativa de [3] membros no backend e [3] no frontend.</li>
+</ul>
+<hr>
+<h2 id="56-políticas-de-branch-git-flow-adaptado">5.6. Políticas de Branch (Git Flow Adaptado)</h2>
+<p>Adotamos uma estratégia baseada em <strong>Feature Branch Workflow</strong> para manter a estabilidade da branch principal.</p>
+<ul>
+<li><strong><code>main</code></strong>: Código em produção. Deve estar sempre estável, testado e pronto para deploy.</li>
+<li><strong><code>develop</code> (ou <code>dev</code>)</strong>: Branch de integração. Onde as funcionalidades se encontram para testes conjuntos antes de ir para a main.</li>
+<li><strong><code>feature/*</code></strong>: Branches temporárias criadas a partir da <code>dev</code> para cada nova funcionalidade.
+<ul>
+<li>Exemplo: <code>feature/implementar-pdf-parse</code>, <code>feature/criar-rotas-stats</code>.</li>
+</ul>
+</li>
+<li><strong><code>fix/*</code></strong>: Branches para correção de bugs urgentes ou não.
+<ul>
+<li>Exemplo: <code>fix/erro-403-github-actions</code>, <code>fix/ajuste-porta-docker</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Regra de Proteção:</strong> Nenhum commit é feito diretamente na <code>main</code>. Todo código deve passar por um Pull Request (PR), passar pelos testes automatizados (CI) e ser revisado por pelo menos um outro membro do grupo.</p>
+<hr>
+<h2 id="57-checklist-de-pull-request-pr">5.7. Checklist de Pull Request (PR)</h2>
+<p>Para garantir a qualidade do código integrado, todo PR deve seguir estritamente o template abaixo antes de ser aceito (Merge).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#75715e">## 📌 Descrição
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Descreva brevemente o que foi feito neste PR. Seja claro e conciso.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 🔗 Issue Relacionada
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Relacione esta PR com a issue que ela resolve ou à qual se refere.
+</span></span><span style="display:flex;"><span>Closes # [Número da Issue]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## ✅ Tipo de Mudança
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Selecione o tipo de mudança que esta PR introduz. Marque com um &#39;x&#39; dentro dos colchetes, como <span style="color:#e6db74">`[x]`</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">* [ ]</span> <span style="font-weight:bold">**Correção de bug**</span> (Uma mudança que corrige um problema)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">* [ ]</span> <span style="font-weight:bold">**Nova funcionalidade**</span> (Uma mudança que adiciona novas funcionalidades)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">* [ ]</span> <span style="font-weight:bold">**Refatoração**</span> (Uma mudança no código que não corrige um bug nem adiciona funcionalidade)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">* [ ]</span> <span style="font-weight:bold">**Documentação**</span> (Uma mudança que afeta apenas a documentação)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 🔍 Checklist
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Verifique os itens abaixo antes de finalizar a PR. Marque com um &#39;x&#39; dentro dos colchetes, como <span style="color:#e6db74">`[x]`</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">* [ ]</span> <span style="font-weight:bold">**Testes criados/atualizados**</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">* [ ]</span> <span style="font-weight:bold">**Documentação atualizada**</span> (se necessário)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">* [ ]</span> <span style="font-weight:bold">**PR revisada e pronta para merge**</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 📝 Notas Adicionais (Opcional)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Se houver passos específicos para testar ou revisar esta PR, detalhe-os aqui (ex: como reproduzir o bug corrigido, quais rotas testar, configurações necessárias, etc.).
+</span></span></code></pre></div>
+        </div>
+    </div>
+
+
+    </main>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            
+            <div class="footer-column about">
+                <h3>OncoMap</h3>
+                <p>Mapa de investimento em saúde oncológica</p>
+            </div>
+            
+            <div class="footer-column links">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column contact">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2025 OncoMap. Todos os direitos reservados.</p>
+            <p>Desenvolvido pela equipe UnB-MDS</p>
+        </div>
+    </div>
+</footer>
+    
+    <script src="http://localhost:1313/2025-2-OncoMap/js/app.js"></script>
+</body>
+</html>

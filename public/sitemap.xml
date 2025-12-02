@@ -6,10 +6,121 @@
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/doc/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/sprints/</loc>
     <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/agile/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/backend/api/apis/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/arquitetura/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/backend/node.js/arquitetura_backend/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/react.js/arquitetura_tecnologia_front/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/backend/node.js/arraynode/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/backend/bancos_de_dados/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/development/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/metodologias/fishbone/diagrama-de-fishbone/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/metodologias/documento_de_visao/doc-/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/docker/docker/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/backend/node.js/estudonode/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/react.js/etapa1-fundamentos_react/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/react.js/etapa2-react_comunicacao/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/react.js/etapa3-renderizacao/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/react.js/etapa4-hooks_essenciais/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/react.js/etapa5-estrutura_app/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/react.js/etapa6-organizacao_boas_praticas/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/backend/node.js/excessoesnode/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/metodologias/git_e_github/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/react.js/guia_ambiente/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/metodologias/documento_de_visao/ideia-de-documento-de-visao/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/metodologias/kanban/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/requisitos/levantamentorequisitos/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/metodologias/linux/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/backend/node.js/objetosnode/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/backend/node.js/poonode/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/backend/api/queridodiarioapi/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/requisitos/requisitos/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/requisitos/requisitos-funcionais/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/requisitos/requisitos_naofuncionais/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/requisitos/requisitosprojeto/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/metodologias/scrum/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/metodologias/fishbone/template/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/backend/api/testspostman/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/typescript/typescript/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/typescript/typescript_react/</loc>
+    <lastmod>2025-12-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-94/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
@@ -107,18 +218,6 @@
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-11/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/backend/api/apis/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/backend/node.js/arquitetura_backend/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/react.js/arquitetura_tecnologia_front/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/backend/node.js/arraynode/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/atas/ata_sprint_0/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
@@ -170,9 +269,6 @@
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-7/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/backend/bancos_de_dados/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-49/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
@@ -192,15 +288,6 @@
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-13/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/metodologias/fishbone/diagrama-de-fishbone/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/metodologias/documento_de_visao/doc-/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/docker/docker/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-97/</loc>
@@ -227,30 +314,6 @@
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-17/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/backend/node.js/estudonode/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/react.js/etapa1-fundamentos_react/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/react.js/etapa2-react_comunicacao/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/react.js/etapa3-renderizacao/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/react.js/etapa4-hooks_essenciais/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/react.js/etapa5-estrutura_app/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/react.js/etapa6-organizacao_boas_praticas/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/backend/node.js/excessoesnode/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-16/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
@@ -263,16 +326,7 @@
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-1/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/metodologias/git_e_github/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-41/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/react.js/guia_ambiente/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/metodologias/documento_de_visao/ideia-de-documento-de-visao/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-79/</loc>
@@ -281,19 +335,10 @@
     <loc>http://localhost:1313/2025-2-OncoMap/issues/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/metodologias/kanban/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-25/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-20/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/requisitos/levantamentorequisitos/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/metodologias/linux/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-6/</loc>
@@ -311,9 +356,6 @@
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-30/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/backend/node.js/objetosnode/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-29/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
@@ -321,9 +363,6 @@
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-42/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/backend/node.js/poonode/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-28/</loc>
@@ -335,16 +374,7 @@
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-32/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/backend/api/queridodiarioapi/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-48/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/requisitos/requisitos/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/requisitos/requisitos-funcionais/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-9/</loc>
@@ -353,16 +383,7 @@
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-10/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/requisitos/requisitos_naofuncionais/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/requisitos/requisitosprojeto/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-5/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/metodologias/scrum/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-4/</loc>
@@ -377,22 +398,10 @@
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-2/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/metodologias/fishbone/template/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-23/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/issues/issue-14/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/backend/api/testspostman/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/typescript/typescript/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/2025-2-OncoMap/doc/frontend/typescript/typescript_react/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/sprints/sprint-13/</loc>
@@ -439,6 +448,8 @@
     <loc>http://localhost:1313/2025-2-OncoMap/categories/</loc>
   </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/diversos/</loc>
+  </url><url>
+    <loc>http://localhost:1313/2025-2-OncoMap/instala%C3%A7%C3%A3o/</loc>
   </url><url>
     <loc>http://localhost:1313/2025-2-OncoMap/requisitos/</loc>
   </url><url>

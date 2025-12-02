@@ -15,9 +15,12 @@ Nosso propósito é oferecer uma base confiável de dados que possa ser utilizad
 
 ---
 
-## 🚧 Status do Projeto
+## Funcionalidades
 
-O projeto encontra-se na versão `v0.1.0`, em estágio inicial de desenvolvimento. O foco de trabalho até o momento tem sido na elaboração da documentação, definição de requisitos, prototipação e na estruturação inicial dos ambientes de frontend e backend. As funcionalidades principais da aplicação estão em fase de desenvolvimento.
+- **Mapa Interativo:** Visualização em mapa interativo dos investimentos por estado e município.
+- **Tabela com dados:** Detalhamento dos gastos por categorias (Medicamentos, Equipamentos, Obras, Serviços...).
+- **Relatórios Inteligentes:** Geração automática de PDFs com análises textuais e financeiras criadas por IA sobre o cenário de cada região.
+- **Transparência Ativa:** Link direto para o documento original (PDF do Diário Oficial) de cada despesa.
 
 ---
 

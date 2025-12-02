@@ -24,25 +24,27 @@ blocos_de_texto:
       
       ### 🖥️ Frontend (Interface)
       
-      ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-      ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-      ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+      ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) 
+      ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white) 
+      ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
       
       ### ⚙️ Backend (API e Lógica)
       
-      ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-      ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
-      ![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=sequelize&logoColor=white)
+      ![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) 
+      ![Express](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge) 
+      ![Puppeteer](https://img.shields.io/badge/Puppeteer-40B5A4?style=for-the-badge&logo=puppeteer&logoColor=white)
       
-      ### 🗄️ Banco de Dados (Persistência)
+      ### 🗄️ Dados & IA
       
-      ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+      ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white) 
+      ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white) 
+      ![Gemini](https://img.shields.io/badge/Google%20Gemini-8E75B2?style=for-the-badge&logo=googlebard&logoColor=white)
       
-      ### 🛠️ Ferramentas de Desenvolvimento
+      ### 🛠️ DevOps & QA
       
-      ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
-      ![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=white)
-      ![Nodemon](https://img.shields.io/badge/Nodemon-76D04B?style=for-the-badge&logo=nodemon&logoColor=white)
+      ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) 
+      ![Jest](https://img.shields.io/badge/Jest-323330?style=for-the-badge&logo=Jest&logoColor=white) 
+      ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
       
 
   - titulo: "Estrutura de Componentes"
@@ -50,30 +52,23 @@ blocos_de_texto:
       ```
       .
       └── 2025-2-OncoMap/
-          ├── ATA DE REUNIÕES/
-          ├── doc/
+          ├── .github/workflows/           # CI/CD (Pipeline Mensal)
           ├── Oncomap/
           │   ├── backend/
           │   │   ├── src/
-          │   │   │   ├── api/             # Camada da API: rotas, controllers e middlewares
-          │   │   │   ├── config/          # Arquivos de configuração (ex: conexão com banco)
-          │   │   │   ├── database/        # Models, migrations e seeders do Sequelize
-          │   │   │   ├── scripts/         # Scripts utilitários (ex: coletor de dados da API externa)
-          │   │   │   └── app.js           # Arquivo principal de configuração do Express
-          │   │   ├── .env               # Arquivo de variáveis de ambiente (NÃO versionado)
-          │   │   ├── package.json
-          │   │   └── server.js          # Ponto de entrada da aplicação (inicializa o servidor)
-          │   └── frontend/              # Código da interface do usuário (React + TS)
-          ├── CODE_OF_CONDUCT.md
-          ├── CONTRIBUTING.md
-          ├── LICENSE
-          ├── README.md
-          └── SECURITY.md
+          │   │   │   ├── api/             # Controllers e Rotas (Express)
+          │   │   │   ├── config/          # Configuração de Banco e Env
+          │   │   │   ├── scripts/         # Pipeline de Dados (Coleta + IA)
+          │   │   │   ├── tests/           # Testes Unitários (Jest)
+          │   │   │   └── utils/           # Funções auxiliares
+          │   │   ├── Dockerfile
+          │   │   └── server.js
+          │   └── frontend/                # Aplicação React + Vite
+          │   │   ├── src/
+          │   │   └── Dockerfile
+          ├── docker-compose.yml           # Orquestração dos containers
+          └── README.md
       ```
-
-  - titulo: "Padrões Arquiteturais"
-    texto: |
-      (Preencha os padrões arquiteturais aqui...)
 
   - titulo: "Diagrama"
     texto: |

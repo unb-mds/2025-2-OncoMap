@@ -12,17 +12,13 @@
                 <ul>
                     <li><a href="{{ "/" | relURL }}">Início</a></li>
                     <li><a href="{{ "/sprints" | relURL }}">Sprints</a></li>
-                    
-                    {{/* Adicione os links das outras seções */}}
-                    {{ $requisitos := .Site.GetPage "/requisitos" }}
-                    {{ if $requisitos }}
-                        <li><a href="{{ $requisitos.RelPermalink }}">Requisitos</a></li>
-                    {{ end }}
-                    
-                    {{ $arquitetura := .Site.GetPage "/arquitetura" }}
-                    {{ if $arquitetura }}
-                        <li><a href="{{ $arquitetura.RelPermalink }}">Arquitetura</a></li>
-                    {{ end }}
+                    <li><a href="{{ "/" | relURL }}">Início</a></li>
+                    <li><a href="{{ "/requisitos/" | relURL }}">Requisitos</a></li>
+                    <li><a href="{{ "/arquitetura/" | relURL }}">Arquitetura</a></li>
+                    <li><a href="{{ "/instalação/" | relURL }}">Instalação</a></li>
+                    <li><a href="{{ "/doc/" | relURL }}">Documentação</a></li>
+                    <li><a href="{{ "/sprints/" | relURL }}">Sprints</a></li>
+                    <li><a href="{{ "/diversos/" | relURL }}">Diversos</a></li>
                 </ul>
             </div>
             
