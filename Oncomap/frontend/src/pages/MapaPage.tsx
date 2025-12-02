@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import MapaInterativo from "../components/MapaPage/mapa";
 import Footer from "../components/Geral/footer";
@@ -8,14 +6,12 @@ import TabelaInfo from '../components/MapaPage/TabelaInfo';
 import '../style/MapaPage.css';
 import type { FeatureCollection } from 'geojson';
 
-
 import { mapService } from '../services/mapService';
 import type { DadosRegiao } from '../types/apiTypes';
 
 const MapaPege: React.FC = () => {
     const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
     const [estadoCodarea, setEstadoCodarea] = useState<string | null>(null);
-    
     
     const [dadosDaRegiao, setDadosDaRegiao] = useState<DadosRegiao | null>(null);
     
@@ -25,7 +21,6 @@ const MapaPege: React.FC = () => {
     const [municipiosData, setMunicipiosData] = useState<FeatureCollection | null>(null);
     const [searchedMunicipioName, setSearchedMunicipioName] = useState<string | null>(null);
 
-    
     useEffect(() => {
         const fetchRegionData = async () => {
             if (!selectedRegion) {
@@ -37,7 +32,6 @@ const MapaPege: React.FC = () => {
             setFetchError(null);
 
             try {
-                
                 const data = await mapService.getDadosRegiao(selectedRegion);
                 setDadosDaRegiao(data);
             } catch (error) {
@@ -89,7 +83,10 @@ const MapaPege: React.FC = () => {
                     <div className="panel-message error">
                       <strong>Erro ao carregar dados.</strong>
                       <p>{fetchError}</p>
-                      <button onClick={() => setSelectedRegion(null)}>Voltar</button>
+                      <button onClick={() => {
+                          setSelectedRegion(null);
+                          setFetchError(null);
+                      }}>Voltar</button>
                     </div>
                   )}
 
@@ -98,7 +95,6 @@ const MapaPege: React.FC = () => {
                          Selecione uma região no mapa para ver os investimentos.
                     </div>
                   )}
-
                   
                   {!loadingDados && !fetchError && dadosDaRegiao && selectedRegion && (
                     <div style={{ width: '100%' }}>

@@ -1,8 +1,8 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import '../../style/Tabelainfo.css';
 import type { FeatureCollection } from 'geojson';
-import { mapService, type DetalhesEstado } from '../../services/mapService';
-import type { DadosRegiao, DetalhesMunicipio } from '../../types/apiTypes';
+import { mapService } from '../../services/mapService';
+import type { DadosRegiao, DetalhesMunicipio, DetalhesEstado } from '../../types/apiTypes';
 import PdfButton from '../MapaPage/PDFButao'; 
 
 interface TabelaInfoProps {
