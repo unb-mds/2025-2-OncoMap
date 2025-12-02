@@ -50,6 +50,9 @@ A maneira mais fácil de rodar a aplicação completa é utilizando **Docker Com
 
 ### Pré-requisitos
 * [Docker](https://www.docker.com/) instalado.
+```bash
+sudo apt install docker-compose
+```
 * Uma chave de API do [Google AI Studio](https://aistudio.google.com/).
 
 ### Passo a Passo
@@ -88,7 +91,7 @@ A maneira mais fácil de rodar a aplicação completa é utilizando **Docker Com
 4.  **Suba os containers:**
     Na raiz do projeto (onde está o `docker-compose.yml`), execute:
     ```bash
-    docker-compose up --build
+    npm run docker:up
     ```
 
 5.  **Acesse a aplicação:**
@@ -102,8 +105,8 @@ A maneira mais fácil de rodar a aplicação completa é utilizando **Docker Com
 O coração do OncoMap são os scripts de ETL (Extração, Transformação e Carga) que rodam em segundo plano para popular o banco de dados.
 
 1.  **Coleta (`collector.js`):** Busca diários na API externa filtrando por palavras-chave (oncologia, quimioterapia, etc.) e salva os metadados.
-2.  **Enriquecimento PDF (`npm run db:enrich:pdf`):** Baixa o PDF oficial, extrai o texto completo e usa o **Gemini 2.0 Flash-lite** para identificar valores e empresas contratadas.
-3.  **Enriquecimento TXT (`npm run db:enrich:txt`):** Atua como *fallback*. Se o PDF falhar, analisa o texto bruto disponível para garantir 100% de cobertura.
+2.  **Enriquecimento PDF (`enrichment_pdf.js`):** Baixa o PDF oficial, extrai o texto completo e usa o **Gemini 2.0 Flash-lite** para identificar valores e empresas contratadas.
+3.  **Enriquecimento TXT (`enrichment_txt.js`):** Atua como *fallback*. Se o PDF falhar, analisa o texto bruto disponível para garantir 100% de cobertura.
 
 *Para rodar os scripts manualmente (fora do Docker):*
 ```bash
