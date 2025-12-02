@@ -1,22 +1,24 @@
 name: Pipeline Mensal Completo OncoMap
 
 on:
-  # Roda automaticamente às 05:00 UTC do dia 1 de cada mês
+  # Roda automaticamente às 05:00 UTC (02:00 BRT) do dia 1 de cada mês
   schedule:
     - cron: '0 5 1 * *'
   
-  # Permite rodar manualmente para testes
+  # Permite rodar manualmente para testes (botão "Run workflow")
   workflow_dispatch:
 
 jobs:
   run-monthly-pipeline:
+    # --- CONFIGURAÇÃO DO SELF-HOSTED RUNNER ---
+    # Garante que rode na sua máquina local para evitar erro 403
     runs-on: [self-hosted, linux, x64]
     
-    # Define um tempo limite para evitar que o processo fique travado para sempre pagando horas
-    timeout-minutes: 60 
+    # Aumentei o tempo limite para 6 horas (360 min) pois IA e PDF são lentos
+    timeout-minutes: 360 
 
     steps:
-      # --- SETUP ---
+      # --- 1. PREPARAÇÃO DO AMBIENTE ---
       - name: Checkout do código
         uses: actions/checkout@v4
 
@@ -31,33 +33,36 @@ jobs:
         run: |
           cd Oncomap/backend
           npm install
+          # Garante instalação das libs críticas
+          npm install pdf-parse tiktoken @google/generative-ai axios pg dotenv
 
-      # --- PASSO 1: COLETA ---
+      # --- 2. COLETA DE DADOS (Busca novos diários) ---
       - name: 1. Rodar Coletor Mensal
         run: |
           cd Oncomap/backend
           node src/scripts/monthly_collector.js
         env:
-          # Variáveis de banco de dados
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          # Usa DATABASE_URL para conexão direta com o Postgres via Node.js
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
-      # --- PASSO 2: ENRIQUECIMENTO (PDF) ---
-      # Este script vai pegar as novas menções inseridas acima e tentar ler o PDF
-      - name: 2. Rodar Enriquecimento PDF
+      # --- 3. ENRIQUECIMENTO FASE 1 (PDF) ---
+      # Tenta baixar e ler o PDF original (melhor qualidade)
+      - name: 2. Rodar Enriquecimento PDF (Processar Tudo)
         run: |
           cd Oncomap/backend
-          node src/scripts/enrichment_pdf.js
+          # Passa intervalo grande para garantir que pegue todos os novos IDs
+          node src/scripts/enrichment_pdf.js 1 1000000
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          # CRUCIAL: Sua chave do Gemini precisa estar nos Secrets do GitHub
           GEMINI_API_KEYS: ${{ secrets.GEMINI_API_KEYS }}
 
-      # --- PASSO 3: ENRIQUECIMENTO (TXT / Fallback) ---
-      # Este script pega o que o PDF falhou ou pulou e tenta ler via TXT
-      - name: 3. Rodar Enriquecimento TXT (Fallback)
+      # --- 4. ENRIQUECIMENTO FASE 2 (TXT / Fallback) ---
+      # Pega o que o PDF falhou e tenta ler via TXT/Excerpt
+      - name: 3. Rodar Enriquecimento TXT (Fallback Geral)
         run: |
           cd Oncomap/backend
-          node src/scripts/enrichment_txt.js
+          # Passa intervalo grande para cobrir todo o banco
+          node src/scripts/enrichment_txt.js 1 1000000
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           GEMINI_API_KEYS: ${{ secrets.GEMINI_API_KEYS }}
