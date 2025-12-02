@@ -1,110 +1,134 @@
-# Guia de Contribuição para o OncoMap
+# Guia de Contribuição - OncoMap
 
-Olá! Ficamos muito felizes com o seu interesse em contribuir para o projeto OncoMap. Toda ajuda é bem-vinda!
-
-Este guia contém as diretrizes para garantir que o processo de contribuição seja o mais simples e organizado possível, tanto para você quanto para nós.
+Obrigado por considerar contribuir para o OncoMap! 🎉
+Este documento contém diretrizes para garantir que o processo de contribuição seja suave e eficaz para todos.
 
 ## Código de Conduta
 
 Para garantir um ambiente aberto e acolhedor, adotamos um [Código de Conduta](https://github.com/unb-mds/2025-2-OncoMap/blob/main/software_livre/CODE_OF_CONDUCT.md) que se aplica a todos os contribuidores. Por favor, leia-o antes de participar.
 
+## 🚀 Como Rodar o Projeto Localmente
 
-## Como Começar
-
-Para começar, você precisará configurar o ambiente de desenvolvimento localmente. O projeto é dividido em `frontend` (React) e `backend` (Node.js).
+Este guia detalha os passos para configurar o ambiente de desenvolvimento (Backend Node.js e Frontend).
 
 ### Pré-requisitos
 
-- **Git:** Para clonar o repositório.
-- **Node.js:** Versão LTS 20 ou superior.
-  - Verifique suas versões com `node -v` e `npm -v`.
+Certifique-se de ter instalado em sua máquina:
 
-### 1. Fork e Clone do Repositório
+* **Git:** [Download](https://git-scm.com/downloads)
+* **Node.js (v20+):** [Download](https://nodejs.org/en/download/)
+* **Conta no Supabase:** (Para configurar o banco de dados localmente, se necessário)
+* **Docker (Opcional):** Caso prefira rodar via container.
+    * *Linux (Debian/Ubuntu):* Instale o Docker Compose rodando:
+        ```bash
+        sudo apt install docker-compose
+        ```
 
-Primeiro, faça um **Fork** do repositório para a sua conta do GitHub e depois clone o seu fork para a sua máquina:
+---
+
+### 1. Clonar o Repositório
+
+Clone o projeto para sua máquina local:
 
 ```bash
-git clone [https://github.com/SEU_USUARIO/2025-2-OncoMap.git](https://github.com/SEU_USUARIO/2025-2-OncoMap.git)
+git clone [https://github.com/unb-mds/2025-2-OncoMap.git](https://github.com/unb-mds/2025-2-OncoMap.git)
 cd 2025-2-OncoMap
-2. Configurando o Backend
-Bash
+```
 
-# Navegue até a pasta do backend
-cd backend
+### 2. Instalação Geral
 
-# Instale as dependências
-npm install
+Instale as dependências:
 
-# Crie o arquivo de variáveis de ambiente
-# (No Windows, você pode criar o arquivo .env manualmente)
-touch .env
+```bash
+# Na raiz do projeto (2025-2-OncoMap/)
+npm run install:all
+```
 
-# Adicione o seguinte conteúdo ao arquivo .env
-PORT=5000
-NODE_ENV=development
+### 3. Configuração do Backend
 
-# Inicie o servidor de desenvolvimento
+O backend é responsável pela coleta de dados (Puppeteer/Axios) e enriquecimento (Gemini AI).
+
+#### 3.1 Variáveis de Ambiente: Entre na pasta do backend e crie o arquivo `.env` baseado no exemplo:`
+
+```bash
+cd Oncomap/backend
+cp .env.example .env
+```
+> 💡 Preencha o `.env` com suas credenciais do Supabase e Gemini API. Se não tiver acesso, solicite aos mantenedores.
+
+### 4. Rodar o Frontend e Backend
+
+```bash
+# Na raiz do projeto (2025-2-OncoMap/)
 npm run dev
-O backend estará rodando em http://localhost:5000.
+```
+Isso iniciará o Backend e o Frontend simultaneamente no mesmo terminal.
 
-3. Configurando o Frontend
-Em um novo terminal, navegue até a pasta do frontend a partir da raiz do projeto:
+## 5. Se deseja rodar pelo Docker
+Caso prefira rodar via container.
 
-Bash
+```bash
+# Na raiz do projeto (2025-2-OncoMap/)
+npm run docker
+```
 
-# Navegue até a pasta do frontend
-cd frontend
+## 🐛 Como abrir Issues (Relatar Bugs ou Sugerir Melhorias)
 
-# Instale as dependências
-npm install
+Antes de criar uma issue, por favor:
+1.  **Verifique se a issue já existe:** Use a busca do GitHub para ver se alguém já relatou o problema ou sugeriu a funcionalidade.
+2.  **Seja claro e descritivo:**
+    * Use um título objetivo.
+    * Descreva o comportamento esperado vs. o comportamento atual.
+    * Se possível, inclua capturas de tela ou logs de erro.
+    * Para bugs, descreva os passos para reproduzir o erro.
 
-# Inicie o servidor de desenvolvimento
-npm run dev
-O frontend estará rodando em http://localhost:5173 (ou outra porta indicada no terminal) e se conectará ao backend.
+## 🔁 Como enviar um Pull Request (PR)
 
-Enviando sua Contribuição
-Para enviar código, siga o fluxo padrão do GitHub.
+1.  **Fork o repositório:** Crie uma cópia do projeto na sua conta.
+2.  **Crie uma Branch:** Nunca trabalhe na branch `main` diretamente.
+    * `git switch -c feature/minha-nova-funcionalidade`
+    * `git switch -c fix/correcao-bug`
+3.  **Faça suas alterações:** Escreva código limpo e testável.
+4.  **Teste:** Se você alterou scripts de backend, rode-os localmente para garantir que não quebraram.
+5.  **Commit:** Siga o padrão de commits (veja abaixo).
+6.  **Push:** Envie para o seu fork (`git push origin feature/minha-nova-funcionalidade`).
+7.  **Abra o PR:** No GitHub, abra o Pull Request para a branch `main` do repositório original.
+    * Preencha o template do PR descrevendo o que foi feito.
+    * Link a issue relacionada (ex: `Closes #12`).
 
-1. Crie uma Nova Branch
-Nunca trabalhe diretamente na branch main. Crie uma branch específica para sua alteração:
+## 📝 Padrões de Commit
 
-Bash
+Prezamos muito por um histórico de projeto limpo e legível. Commits claros facilitam a revisão de código e ajudam a entender a evolução do projeto ao longo do tempo.
 
-# A partir da branch 'main', crie sua nova branch
-git checkout -b tipo/nome-da-sua-feature
+**Idealmente, seguimos a convenção do [Conventional Commits](https://www.conventionalcommits.org/pt-br/).**
 
-# Exemplos de nome:
-# git checkout -b feat/tela-de-login
-# git checkout -b fix/bug-no-cadastro
-Use prefixos como feat/ para novas funcionalidades e fix/ para correção de bugs.
+**Estrutura:** `tipo(escopo): descrição curta`
 
-2. Faça suas Alterações
-Escreva um código limpo e claro.
+### Tipos permitidos:
+* `feat`: Uma nova funcionalidade (ex: novo script de coleta, botão no frontend).
+* `fix`: Correção de bug.
+* `docs`: Alterações apenas na documentação (README, CONTRIBUTING).
+* `style`: Alterações que não afetam o código (espaços, formatação, ponto e vírgula).
+* `refactor`: Mudança de código que não corrige bug nem adiciona funcionalidade.
+* `perf`: Mudança de código para melhorar performance.
+* `test`: Adição ou correção de testes.
+* `build`: Alterações no sistema de build ou dependências externas (npm, docker, github actions).
+* `ci`: Alterações nos arquivos de configuração de CI (GitHub Workflows).
+* `chore`: Outras alterações que não modificam arquivos src ou testes (ex: .gitignore, .env.example).
 
-Siga os padrões já existentes no projeto.
+### Exemplos:
+* `feat(coletor): adiciona suporte para coleta via puppeteer`
+* `fix(api): corrige erro 403 no axios`
+* `docs: atualiza instruções de setup no README`
+* `ci(actions): adiciona pipeline mensal de coleta`
 
-Recomendamos o uso do Prettier para formatação automática do código, conforme sugerido na documentação.
+## 🎨 Estilo de Código
 
-3. Envie suas Alterações (Commit & Push)
-Faça commits pequenos e com mensagens claras, explicando o que foi feito.
+* **JavaScript (Node.js):**
+    * Use `const` e `let` (evite `var`).
+    * Use `async/await` em vez de `.then()` encadeados quando possível.
+    * Mantenha a indentação consistente (2 ou 4 espaços).
+    * Sempre trate erros em blocos `try/catch`.
 
-Bash
 
-# Adicione os arquivos modificados
-git add .
-
-# Faça o commit
-git commit -m "feat: Adiciona funcionalidade de login com e-mail"
-
-# Envie para o seu fork no GitHub
-git push origin tipo/nome-da-sua-feature
-4. Abra um Pull Request
-Vá até o repositório original no GitHub. Você verá um aviso para criar um Pull Request a partir da sua branch recém-enviada.
-
-Dê um título claro ao seu Pull Request.
-
-Na descrição, explique o que você fez e por que fez. Se estiver corrigindo uma Issue, mencione o número dela (ex: Corrige #5).
-
-Após o envio, um dos mantenedores do projeto irá revisar seu código e poderá solicitar alterações antes de integrá-lo.
-
-Obrigado por sua contribuição!
+---
