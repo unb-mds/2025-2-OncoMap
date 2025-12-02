@@ -1,5 +1,5 @@
-// Oncomap/backend/src/scripts/enrichment.js
-// VERSÃO: PDF-Direto + Roteador + Range de ID + Pular Longos (v9.1 - Bug de Contagem Corrigido)
+// Oncomap/backend/src/scripts/enrichment_pdf.js
+// VERSÃO: AUTO (Sem Range de ID) - Processa tudo que está pendente
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const db = require('../config/database');
 const axios = require('axios');
@@ -47,8 +47,7 @@ const DELAY_BETWEEN_MENTIONS = 1000;
 
 const tokenizer = get_encoding("cl100k_base");
 
-// --- FUNÇÕES (getGeminiPrompt, extractJsonFromString) ---
-
+// --- FUNÇÕES DE PROMPT E EXTRAÇÃO ---
 function getGeminiPrompt(textContent, mentionId, municipalityName) {
      return `
       **Tarefa:** VOCÊ É UM ANALISTA FINANCEIRO ESPECIALIZADO EM ORÇAMENTO PÚBLICO DE SAÚDE ONCOLÓGICA. Analise CUIDADOSAMENTE o seguinte texto extraído de um Diário Oficial Municipal brasileiro. Seu objetivo é:
@@ -113,11 +112,6 @@ function extractJsonFromString(text) {
     return null;
 }
 
-// REMOVIDA A FUNÇÃO splitTextIntoChunksByToken
-
-/**
- * Processa o texto (UM ÚNICO CHUNK) com a API do Gemini.
- */
 async function processSingleText(textContent, mentionId, municipalityName) {
      let attempt = 0;
      let keysRotatedThisChunk = 0;
@@ -179,53 +173,51 @@ async function processSingleText(textContent, mentionId, municipalityName) {
                 }
             }
         }
-    } // Fim do while
+    } 
     console.error(`    -> ❌ Excedido retries para chunk 1/1 (ID ${mentionId}).`);
     return null;
 }
 
 /**
- * Função principal do script - MODIFICADA PARA PULAR TEXTOS LONGOS
+ * Função principal do script - MODIFICADA PARA AUTOMÁTICO (SEM ARGS)
  */
-async function enrichData(startId, endId) {
-    console.log('✅ Iniciando script de enriquecimento (v9.1 - PDF-Direto + Pular Longos + BugFix)...');
-    console.log(`🎯 Processando menções no intervalo de ID: ${startId} a ${endId}`);
+async function enrichData() {
+    console.log('✅ Iniciando script de enriquecimento PDF (Modo Automático)...');
+    console.log(`🎯 Buscando TODAS as menções pendentes de análise PDF...`);
 
-    // CORREÇÃO: Movidos os contadores de TOTAL para fora do try/catch
     let totalProcessadasComSucesso = 0;
     let totalProcessadasComFalha = 0;
-    let totalPuladosPorTamanho = 0; // Novo contador
+    let totalPuladosPorTamanho = 0;
 
     try {
         while (true) {
             let mentionsToProcess = null;
             try {
+                // MODIFICAÇÃO AQUI: Removemos o WHERE id >= $1...
+                // Agora pegamos tudo que é NULL e tem source_url
                 mentionsToProcess = await db.query(
                     `SELECT id, source_url, municipality_name 
                      FROM mentions 
-                     WHERE id >= $1 AND id <= $2
-                     AND gemini_analysis IS NULL 
+                     WHERE gemini_analysis IS NULL 
                      AND source_url IS NOT NULL
                      ORDER BY id ASC 
-                     LIMIT 100`, 
-                    [startId, endId]
+                     LIMIT 100`
                 );
             } catch(dbError) {
                 console.error("❌ Erro fatal ao buscar menções no banco. Abortando.", dbError.message);
-                throw dbError; // Lança para o catch principal
+                throw dbError; 
             }
 
             if (mentionsToProcess.rows.length === 0) {
-                console.log('🎉 Nenhuma menção nova para processar *neste intervalo*. Trabalho concluído.');
+                console.log('🎉 Nenhuma menção nova para processar. Trabalho concluído.');
                 break; 
             }
             
-            console.log(`\nℹ️  Encontrado lote de ${mentionsToProcess.rows.length} menções para processar (Começando pelo ID ${mentionsToProcess.rows[0].id})...`);
+            console.log(`\nℹ️  Encontrado lote de ${mentionsToProcess.rows.length} menções pendentes...`);
 
-            // CORREÇÃO: Contadores de LOTE definidos aqui
             let successCount = 0;
             let failureCount = 0;
-            let puladosNesteLote = 0; // Contador específico para este lote
+            let puladosNesteLote = 0;
             
             for (const [index, mention] of mentionsToProcess.rows.entries()) {
                 console.log(`\n[Lote: ${index + 1}/${mentionsToProcess.rows.length}] Iniciando processamento da menção ID: ${mention.id} (${mention.municipality_name})...`);
@@ -237,7 +229,6 @@ async function enrichData(startId, endId) {
                 let success = false;
 
                 try {
-                    // 1. Baixar o PDF
                     console.log(`  -> Baixando PDF de: ${mention.source_url}`);
                     const response = await axios.get(mention.source_url, { 
                         responseType: 'arraybuffer',
@@ -245,7 +236,6 @@ async function enrichData(startId, endId) {
                     });
                     const pdfBuffer = response.data;
                     
-                    // 2. Parsear o PDF
                     console.log(`  -> PDF baixado. Extraindo texto...`);
                     const data = await pdfParse(pdfBuffer);
                     textToAnalyze = data.text;
@@ -256,7 +246,6 @@ async function enrichData(startId, endId) {
                          finalAnalysisData = { error: 'Texto extraído do PDF estava vazio.', source: sourceUsed, chunked: false };
                          success = false;
                     } else {
-                        // 3. Contagem de Tokens
                         let tokenCount = 0;
                         try {
                             tokenCount = tokenizer.encode(textToAnalyze).length;
@@ -267,7 +256,6 @@ async function enrichData(startId, endId) {
                         }
 
                         if (!finalAnalysisData.error) {
-                            // --- LÓGICA DE PULAR SE MUITO LONGO ---
                             if (tokenCount > MAX_TOKENS_PARA_PROCESSAR) {
                                 console.warn(`  -> ⚠️ TEXTO MUITO LONGO (${tokenCount} tokens > ${MAX_TOKENS_PARA_PROCESSAR}). Pulando análise.`);
                                 finalAnalysisData = { 
@@ -277,11 +265,10 @@ async function enrichData(startId, endId) {
                                     approx_tokens: tokenCount 
                                 };
                                 success = false;
-                                puladosNesteLote++; // CORREÇÃO: Incrementa o contador do LOTE
+                                puladosNesteLote++;
                             
                             } else {
-                                // --- Processamento Normal (Texto Curto) ---
-                                console.log(`  -> Texto curto (${tokenCount} tokens <= ${MAX_TOKENS_PARA_PROCESSAR}). Processando diretamente...`);
+                                console.log(`  -> Texto curto (${tokenCount} tokens). Processando...`);
                                 const result = await processSingleText(textToAnalyze, mention.id, mention.municipality_name);
                                 
                                 if (result) {
@@ -302,93 +289,68 @@ async function enrichData(startId, endId) {
                         } 
                     }
 
-                    // ---- Salvar no Banco (VERSÃO CORRIGIDA) ----
                     await db.query(
                         `UPDATE mentions SET gemini_analysis = $1, extracted_value = $2 WHERE id = $3`,
                         [JSON.stringify(finalAnalysisData), finalCalculatedTotal, mention.id]
                     );
 
                     if(success){
-                         console.log(`  -> Sucesso final (fonte: ${sourceUsed})! Total calculado: R$ ${finalCalculatedTotal.toFixed(2)}`);
+                         console.log(`  -> Sucesso final! Total calculado: R$ ${finalCalculatedTotal.toFixed(2)}`);
                          successCount++;
                     } else {
-                          console.error(`  -> Falha final no processamento da menção ID ${mention.id} (Razão: ${finalAnalysisData.error || 'Erro desconhecido'}).`);
+                          console.error(`  -> Falha final no processamento da menção ID ${mention.id}.`);
                           failureCount++;
                     }
 
                 } catch (error) {
                     if (error.message === "ALL_KEYS_RATE_LIMITED") {
-                        console.error("Erro pego no loop principal: ALL_KEYS_RATE_LIMITED. Relançando para parar o script.");
+                        console.error("Erro pego no loop principal: ALL_KEYS_RATE_LIMITED.");
                         throw error;
                     }
                     
-                    console.error(`❌ ERRO INESPERADO no loop principal da menção ID ${mention.id}:`, error.message);
+                    console.error(`❌ ERRO INESPERADO no loop principal ID ${mention.id}:`, error.message);
                      try {
                          await db.query(
                              `UPDATE mentions SET gemini_analysis = $1, extracted_value = 0.00 WHERE id = $2`,
                              [JSON.stringify({ error: `Erro inesperado: ${error.message}`, source: sourceUsed, chunked: false }), mention.id]
                          );
-                     } catch (dbError) {
-                         console.error(`❌ ERRO AO SALVAR ERRO NO BANCO para ID ${mention.id}:`, dbError.message);
-                     }
+                     } catch (dbError) { console.error("Erro DB:", dbError.message); }
                      failureCount++;
                 }
 
                 await delay(DELAY_BETWEEN_MENTIONS);
-            } // Fim do loop FOR
+            } 
 
-            console.log(`\n📊 Lote de ${mentionsToProcess.rows.length} finalizado!`);
-            console.log(`   - Sucessos neste lote: ${successCount}`);
-            console.log(`   - Falhas neste lote: ${failureCount}`);
-            // CORREÇÃO: Loga o contador do LOTE
-            console.log(`   - Pulados por tamanho: ${puladosNesteLote}`); 
-            
-            // CORREÇÃO: Agrega os contadores do LOTE aos totais GERAIS
+            console.log(`\n📊 Lote finalizado! Sucessos: ${successCount} | Falhas: ${failureCount} | Pulados: ${puladosNesteLote}`);
             totalProcessadasComSucesso += successCount;
             totalProcessadasComFalha += failureCount;
             totalPuladosPorTamanho += puladosNesteLote; 
             
             await delay(5000); 
 
-        } // Fim do loop WHILE(true)
+        } 
     } catch (error) {
         if (error.message === "ALL_KEYS_RATE_LIMITED") {
-            console.error("\n🚫 PROCESSO INTERROMPIDO: Todas as chaves de API atingiram o limite de taxa. Tente novamente mais tarde.");
+            console.error("\n🚫 PROCESSO INTERROMPIDO: Rate Limit.");
         } else {
-            console.error("\n💥 Falha fatal e inesperada no processo do coletor:", error);
+            console.error("\n💥 Falha fatal:", error);
         }
         tokenizer.free();
         process.exit(1);
-    } // Fim do try/catch principal
+    } 
 
-    console.log(`\n🎉 Processo de enriquecimento finalizado para o intervalo de IDs!`);
-    console.log(`   - TOTAL de Sucessos: ${totalProcessadasComSucesso}`);
-    console.log(`   - TOTAL de Falhas: ${totalProcessadasComFalha}`);
-    // CORREÇÃO: Loga o contador TOTAL
-    console.log(`   - TOTAL de Pulados por Tamanho: ${totalPuladosPorTamanho}`);
+    console.log(`\n🎉 Processo PDF AUTOMÁTICO finalizado!`);
+    console.log(`   - TOTAL Sucessos: ${totalProcessadasComSucesso}`);
+    console.log(`   - TOTAL Falhas: ${totalProcessadasComFalha}`);
+    console.log(`   - TOTAL Pulados: ${totalPuladosPorTamanho}`);
 
     tokenizer.free();
 }
 
-// --- 5. INÍCIO DA EXECUÇÃO (COM ARGUMENTOS) ---
-const args = process.argv.slice(2);
-const startId = parseInt(args[0], 10);
-const endId = parseInt(args[1], 10);
-
-if (isNaN(startId) || isNaN(endId)) {
-    console.error("❌ Erro: Por favor, forneça um ID inicial e um ID final.");
-    console.log("   Exemplo: node src/scripts/enrichment.js 1 500");
-    process.exit(1);
-}
-if (startId > endId) {
-    console.error("❌ Erro: O ID inicial deve ser menor ou igual ao ID final.");
-    process.exit(1);
-}
-
-// Executa a função principal com os IDs
-enrichData(startId, endId).catch(error => {
-    // Este catch agora é redundante por causa do try/catch principal, mas o mantemos por segurança.
-    if (error.message !== "ALL_KEYS_RATE_LIMITED") { // Evita log duplicado
+// --- EXECUÇÃO SEM ARGUMENTOS ---
+// O script agora roda direto, sem precisar de ID inicial/final
+enrichData().catch(error => {
+    if (error.message !== "ALL_KEYS_RATE_LIMITED") {
         console.error("\n💥 Falha fatal (catch final):", error);
     }
     tokenizer.free();

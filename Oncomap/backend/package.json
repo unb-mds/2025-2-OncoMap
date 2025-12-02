@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js",
+    "dev": "nodemon server.js && npm run setup",
     "setup": "sudo bash setup-ubuntu.sh",
     "test": "jest",
     "test:watch": "jest --watch",

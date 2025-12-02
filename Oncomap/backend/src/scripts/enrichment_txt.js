@@ -1,10 +1,9 @@
 // Oncomap/backend/src/scripts/enrichment_txt.js
-// VERSÃO: TXT-Fallback + Roteador + Range de ID + Chunking (v9.1-txt)
+// VERSÃO: AUTO (Sem Range de ID) - TXT-Fallback + Chunking
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const db = require('../config/database');
 const axios = require('axios');
 require('dotenv').config();
-// NÃO precisamos de 'pdf-parse' aqui
 
 // --- 1. CONFIGURAÇÃO DO ROTEADOR DE CHAVES ---
 const apiKeys = (process.env.GEMINI_API_KEYS || "")
@@ -39,13 +38,10 @@ updateModelInstance();
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-// --- CONSTANTES DE CONTROLE ---
 const MAX_CHARS_PER_CHUNK = 1000000;
 const MAX_RETRIES = 3;
 const DELAY_BETWEEN_MENTIONS = 1000;
-const DELAY_BETWEEN_CHUNKS = 2000; // Pausa entre chunks do *mesmo* diário
-
-// --- FUNÇÕES (getGeminiPrompt, extractJsonFromString) ---
+const DELAY_BETWEEN_CHUNKS = 2000;
 
 function getGeminiPrompt(textContent, mentionId, municipalityName) {
      return `
@@ -97,7 +93,6 @@ function getGeminiPrompt(textContent, mentionId, municipalityName) {
 }
 
 function extractJsonFromString(text) {
-    // Cole sua função de extração de JSON aqui
     if (!text) return null;
     const match = text.match(/\{[\sS]*\}/);
     let potentialJson = null;
@@ -112,10 +107,6 @@ function extractJsonFromString(text) {
     return null;
 }
 
-/**
- * Divide o texto em chunks baseados em número de CARACTERES.
- * Muito mais seguro quando a contagem de tokens não é confiável.
- */
 function splitTextIntoChunksByChars(text, maxChars) {
     const chunks = [];
     if (text.length <= maxChars) {
@@ -126,15 +117,10 @@ function splitTextIntoChunksByChars(text, maxChars) {
     for (let i = 0; i < text.length; i += maxChars) {
         chunks.push(text.substring(i, i + maxChars));
     }
-    
     console.log(`    -> Dividido em ${chunks.length} chunks.`);
     return chunks;
 }
 
-
-/**
- * Processa um ÚNICO CHUNK de texto com a API do Gemini.
- */
 async function processSingleChunk(chunkText, mentionId, municipalityName, chunkIndex, totalChunks) {
      let attempt = 0;
      let keysRotatedThisChunk = 0;
@@ -157,7 +143,6 @@ async function processSingleChunk(chunkText, mentionId, municipalityName, chunkI
             if (jsonString) {
                 try {
                     const chunkAnalysis = JSON.parse(jsonString);
-                    // Retorna apenas os dados numéricos para agregação
                     return {
                         total_gasto_oncologico: parseFloat(chunkAnalysis.total_gasto_oncologico) || 0,
                         medicamentos: parseFloat(chunkAnalysis.medicamentos) || 0,
@@ -201,18 +186,18 @@ async function processSingleChunk(chunkText, mentionId, municipalityName, chunkI
                 }
             }
         }
-    } // Fim do while
+    } 
     console.error(`    -> ❌ Excedido retries para chunk ${chunkIndex + 1}/${totalChunks} (ID ${mentionId}).`);
     return null;
 }
 
 
 /**
- * Função principal do script - FOCO NO TXT + CHUNKING
+ * Função principal do script - MODIFICADA PARA AUTOMÁTICO (SEM ARGS)
  */
-async function enrichData(startId, endId) {
-    console.log('✅ Iniciando script de enriquecimento (v9.1-TXT - Fallback + Chunking)...');
-    console.log(`🎯 Processando menções no intervalo de ID: ${startId} a ${endId}`);
+async function enrichData() {
+    console.log('✅ Iniciando script de enriquecimento TXT (Modo Automático)...');
+    console.log(`🎯 Buscando TODAS as menções pendentes de análise TXT...`);
 
     let totalProcessadasComSucesso = 0;
     let totalProcessadasComFalha = 0;
@@ -222,32 +207,27 @@ async function enrichData(startId, endId) {
         while (true) {
             let mentionsToProcess = null;
             try {
-                // --- QUERY SQL MODIFICADA PARA O FLUXO DE TXT ---
-                // 1. A análise TXT ainda não foi feita (gemini_analysis_txt IS NULL)
-                // 2. A análise PDF falhou (gemini_analysis->>'error' IS NOT NULL) OU nem foi tentada (gemini_analysis IS NULL)
-                // 3. E existe uma fonte de TXT (txt_url IS NOT NULL OU excerpt IS NOT NULL)
-                // 4. E está no intervalo de IDs
+                // MODIFICAÇÃO AQUI: Removemos o WHERE id >= $1...
+                // Agora pegamos tudo que tem gemini_analysis_txt NULL e tem TXT ou Excerpt
                 mentionsToProcess = await db.query(
                     `SELECT id, txt_url, excerpt, municipality_name 
                      FROM mentions 
-                     WHERE id >= $1 AND id <= $2
-                     AND gemini_analysis_txt IS NULL 
+                     WHERE gemini_analysis_txt IS NULL 
                      AND (txt_url IS NOT NULL OR excerpt IS NOT NULL)
                      ORDER BY id ASC 
-                     LIMIT 100`, 
-                    [startId, endId]
+                     LIMIT 100`
                 );
             } catch(dbError) {
                 console.error("❌ Erro fatal ao buscar menções no banco. Abortando.", dbError.message);
-                throw dbError; // Lança para o catch principal
+                throw dbError; 
             }
 
             if (mentionsToProcess.rows.length === 0) {
-                console.log('🎉 Nenhuma menção nova (de TXT) para processar *neste intervalo*. Trabalho concluído.');
+                console.log('🎉 Nenhuma menção nova (de TXT) para processar. Trabalho concluído.');
                 break; 
             }
             
-            console.log(`\nℹ️  Encontrado lote de ${mentionsToProcess.rows.length} menções para processar (Começando pelo ID ${mentionsToProcess.rows[0].id})...`);
+            console.log(`\nℹ️  Encontrado lote de ${mentionsToProcess.rows.length} menções pendentes...`);
 
             let successCount = 0;
             let failureCount = 0;
@@ -263,7 +243,6 @@ async function enrichData(startId, endId) {
                 let success = false;
 
                 try {
-                    // --- 1. LÓGICA DE FONTE TXT ---
                     if (mention.txt_url) {
                         try {
                             console.log(`  -> Baixando TXT de: ${mention.txt_url}`);
@@ -272,7 +251,7 @@ async function enrichData(startId, endId) {
                             sourceUsed = 'txt';
                             console.log(`  -> Texto baixado (${textToAnalyze.length} caracteres).`);
                         } catch (txtError) {
-                            console.warn(`  -> Aviso: Falha ao baixar .txt (${txtError.message}). Usando excerpt como fallback.`);
+                            console.warn(`  -> Aviso: Falha ao baixar .txt. Usando excerpt.`);
                             textToAnalyze = mention.excerpt;
                             sourceUsed = 'excerpt (fallback)';
                         }
@@ -283,12 +262,11 @@ async function enrichData(startId, endId) {
                     }
 
                     if (!textToAnalyze || textToAnalyze.trim() === '') {
-                         console.warn('  -> Aviso: Fonte de texto (txt/excerpt) está vazia. Marcando como falha.');
-                         finalAnalysisData = { error: 'Fonte de texto (txt/excerpt) estava vazia.', source: sourceUsed, chunked: false };
+                         console.warn('  -> Aviso: Fonte de texto vazia. Marcando como falha.');
+                         finalAnalysisData = { error: 'Fonte de texto vazia.', source: sourceUsed, chunked: false };
                          success = false;
                     } else {
-                    // 2. Lógica de Chunking por Caracteres (Mais segura)
-                    // A função já lida com texto curto retornando apenas 1 chunk.
+                    
                     const chunks = splitTextIntoChunksByChars(textToAnalyze, MAX_CHARS_PER_CHUNK);
                     const isChunked = chunks.length > 1;
                     if (isChunked) chunkedNesteLote++;
@@ -299,13 +277,12 @@ async function enrichData(startId, endId) {
                         detalhes_extraidos: [],
                         _meta: {
                             chunks_processed: 0, chunks_failed: 0, 
-                            approx_tokens: Math.ceil(textToAnalyze.length / 4), // Estimativa simples
+                            approx_tokens: Math.ceil(textToAnalyze.length / 4), 
                             source: sourceUsed, chunked: isChunked, total_chunks: chunks.length
                         }
                     };
 
                     for (let i = 0; i < chunks.length; i++) {
-                        // Nota: Passamos 'chunks.length' para o log saber o total correto
                         const chunkResult = await processSingleChunk(chunks[i], mention.id, mention.municipality_name, i, chunks.length);
                         
                         if (chunkResult) {
@@ -339,7 +316,6 @@ async function enrichData(startId, endId) {
                     }
                 }
 
-                    // ---- Salvar no Banco (NAS COLUNAS _TXT) ----
                     await db.query(
                         `UPDATE mentions SET gemini_analysis_txt = $1, extracted_value_txt = $2 WHERE id = $3`,
                         [JSON.stringify(finalAnalysisData), finalCalculatedTotal, mention.id]
@@ -349,75 +325,55 @@ async function enrichData(startId, endId) {
                          console.log(`  -> Sucesso final (fonte: ${sourceUsed}${finalAnalysisData._meta.chunked ? ', chunked' : ''})! Total: R$ ${finalCalculatedTotal.toFixed(2)}`);
                          successCount++;
                     } else {
-                          console.error(`  -> Falha final no processamento da menção ID ${mention.id} (Razão: ${finalAnalysisData.error || 'Erro desconhecido'}).`);
+                          console.error(`  -> Falha final no processamento da menção ID ${mention.id}.`);
                           failureCount++;
                     }
 
                 } catch (error) {
                     if (error.message === "ALL_KEYS_RATE_LIMITED") {
-                        console.error("Erro pego no loop principal: ALL_KEYS_RATE_LIMITED. Relançando para parar o script.");
+                        console.error("Erro pego no loop principal: ALL_KEYS_RATE_LIMITED.");
                         throw error;
                     }
-                    console.error(`❌ ERRO INESPERADO no loop principal da menção ID ${mention.id}:`, error.message);
+                    console.error(`❌ ERRO INESPERADO no loop principal ID ${mention.id}:`, error.message);
                      try {
                          await db.query(
                              `UPDATE mentions SET gemini_analysis_txt = $1, extracted_value_txt = 0.00 WHERE id = $2`,
                              [JSON.stringify({ error: `Erro inesperado: ${error.message}`, source: sourceUsed, chunked: false }), mention.id]
                          );
-                     } catch (dbError) {
-                         console.error(`❌ ERRO AO SALVAR ERRO NO BANCO para ID ${mention.id}:`, dbError.message);
-                     }
+                     } catch (dbError) { console.error("Erro DB:", dbError.message); }
                      failureCount++;
                 }
 
                 await delay(DELAY_BETWEEN_MENTIONS);
-            } // Fim do loop FOR
+            } 
 
-            console.log(`\n📊 Lote de ${mentionsToProcess.rows.length} finalizado!`);
-            console.log(`   - Sucessos neste lote: ${successCount}`);
-            console.log(`   - Falhas neste lote: ${failureCount}`);
-            console.log(`   - Menções com Chunking: ${chunkedNesteLote}`);
-            
+            console.log(`\n📊 Lote finalizado! Sucessos: ${successCount} | Falhas: ${failureCount} | Chunked: ${chunkedNesteLote}`);
             totalProcessadasComSucesso += successCount;
             totalProcessadasComFalha += failureCount;
             totalProcessadasComChunking += chunkedNesteLote;
             
             await delay(5000); 
 
-        } // Fim do loop WHILE(true)
+        } 
     } catch (error) {
         if (error.message === "ALL_KEYS_RATE_LIMITED") {
-            console.error("\n🚫 PROCESSO INTERROMPIDO: Todas as chaves de API atingiram o limite de taxa. Tente novamente mais tarde.");
+            console.error("\n🚫 PROCESSO INTERROMPIDO: Rate Limit.");
         } else {
-            console.error("\n💥 Falha fatal e inesperada no processo do coletor:", error);
+            console.error("\n💥 Falha fatal:", error);
         }
         process.exit(1);
-    } // Fim do try/catch principal
+    } 
 
-    console.log(`\n🎉 Processo de enriquecimento (TXT) finalizado para o intervalo de IDs!`);
-    console.log(`   - TOTAL de Sucessos: ${totalProcessadasComSucesso}`);
-    console.log(`   - TOTAL de Falhas: ${totalProcessadasComFalha}`);
-    console.log(`   - TOTAL de Menções com Chunking: ${totalProcessadasComChunking}`);
+    console.log(`\n🎉 Processo TXT AUTOMÁTICO finalizado!`);
+    console.log(`   - TOTAL Sucessos: ${totalProcessadasComSucesso}`);
+    console.log(`   - TOTAL Falhas: ${totalProcessadasComFalha}`);
+    console.log(`   - TOTAL Chunked: ${totalProcessadasComChunking}`);
 
 }
 
-// --- 5. INÍCIO DA EXECUÇÃO (COM ARGUMENTOS) ---
-const args = process.argv.slice(2);
-const startId = parseInt(args[0], 10);
-const endId = parseInt(args[1], 10);
-
-if (isNaN(startId) || isNaN(endId)) {
-    console.error("❌ Erro: Por favor, forneça um ID inicial e um ID final.");
-    console.log("   Exemplo: node src/scripts/enrichment_txt.js 1 500");
-    process.exit(1);
-}
-if (startId > endId) {
-    console.error("❌ Erro: O ID inicial deve ser menor ou igual ao ID final.");
-    process.exit(1);
-}
-
-// Executa a função principal com os IDs
-enrichData(startId, endId).catch(error => {
+// --- EXECUÇÃO SEM ARGUMENTOS ---
+// O script agora roda direto
+enrichData().catch(error => {
     if (error.message !== "ALL_KEYS_RATE_LIMITED") {
         console.error("\n💥 Falha fatal (catch final):", error);
     }
