@@ -42,6 +42,7 @@
     "@types/react-router-hash-link": "^2.4.9",
     "@types/react-scroll": "^1.8.10",
     "@vitejs/plugin-react-swc": "^4.0.0",
+    "@vitest/coverage-v8": "^4.0.15",
     "eslint": "^9.33.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
