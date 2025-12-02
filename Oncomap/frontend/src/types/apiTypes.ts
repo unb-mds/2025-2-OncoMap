@@ -47,3 +47,11 @@ export interface DetalhesMunicipio {
   categories: CategoriasInvestimento;
   recent_mentions: MencaoDetalhada[];
 }
+
+export interface DetalhesEstado {
+  uf: string;
+  ibge: string;
+  name: string;
+  total_invested: number;
+  categories: CategoriasInvestimento; 
+}

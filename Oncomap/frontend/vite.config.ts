@@ -9,5 +9,6 @@ export default defineConfig({
     environment: 'jsdom',    // Simula o navegador para os componentes React
     setupFiles: './src/setupTests.ts', // Arquivo onde importamos o jest-dom
     css: true,               // (Opcional) Processa CSS nos testes, útil se usar módulos CSS
+    include: ['tests/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
   },
 })
