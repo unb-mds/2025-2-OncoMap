@@ -4,7 +4,7 @@ import TabelaInfo from '../src/components/MapaPage/TabelaInfo';
 import { mapService } from '../src/services/mapService';
 import type { DadosRegiao, DetalhesMunicipio, DetalhesEstado } from '../src/types/apiTypes';
 
-// --- CORREÇÃO 1: Mock do scrollIntoView ---
+// Mock essencial para JSDOM
 window.HTMLElement.prototype.scrollIntoView = vi.fn();
 
 // --- MOCKS DE DADOS ---
@@ -53,9 +53,10 @@ const mockDetalhesMunicipio: DetalhesMunicipio = {
     outros_relacionados: 0
   },
   recent_mentions: []
+  // REMOVIDO: details: [] (Isso causava o erro)
 };
 
-// --- CORREÇÃO 2: Mock do Serviço usando vi.mock direto ---
+// Mock do Serviço
 vi.mock('../src/services/mapService', () => ({
   mapService: {
     getDetalhesEstado: vi.fn(),
@@ -105,7 +106,6 @@ describe('Componente TabelaInfo', () => {
   });
 
   it('deve renderizar a visão do ESTADO quando estadoCodarea é fornecido', async () => {
-    // CORREÇÃO 3: Usando o Mocked Function corretamente
     vi.mocked(mapService.getDetalhesEstado).mockResolvedValue(mockDetalhesEstado);
 
     render(
@@ -128,7 +128,6 @@ describe('Componente TabelaInfo', () => {
   });
 
   it('deve carregar DETALHES DO MUNICÍPIO ao clicar na linha', async () => {
-    // CORREÇÃO 3: Usando o Mocked Function corretamente
     vi.mocked(mapService.getDetalhesEstado).mockResolvedValue(mockDetalhesEstado);
     vi.mocked(mapService.getDetalhesMunicipio).mockResolvedValue(mockDetalhesMunicipio);
 
@@ -149,7 +148,6 @@ describe('Componente TabelaInfo', () => {
     expect(mapService.getDetalhesMunicipio).toHaveBeenCalledWith('3509502');
 
     await waitFor(() => {
-      // Verifica se mudou para a tela do município (Equipamentos = 300)
       expect(screen.getByText(/300,00/)).toBeInTheDocument();
     });
   });
