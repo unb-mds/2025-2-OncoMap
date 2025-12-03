@@ -40,7 +40,6 @@ const cleanGeminiResponse = (text) => {
     return text.replace(/```html/g, '').replace(/```/g, '').trim();
 };
 
-// --- GERAÇÃO DO PDF (LAYOUT FLUIDO E SEM BURACOS) ---
 const createPdf = async (htmlContent) => {
     const finalHtml = `
         <html>
@@ -97,7 +96,6 @@ const createPdf = async (htmlContent) => {
     return pdf.generatePdf({ content: finalHtml }, options);
 };
 
-// --- 1. RELATÓRIO POR REGIÃO ---
 const generateRegionReport = async (req, res) => {
     const { regionName } = req.params;
     const states = getStatesByRegion(regionName);
@@ -182,7 +180,6 @@ const generateRegionReport = async (req, res) => {
     }
 };
 
-// --- 2. RELATÓRIO POR ESTADO ---
 const generateStateReport = async (req, res) => {
     const { uf } = req.params;
     try {
@@ -262,7 +259,6 @@ const generateStateReport = async (req, res) => {
     }
 };
 
-// --- 3. RELATÓRIO MUNICIPAL ---
 const generateMunicipalityReport = async (req, res) => {
     const { ibge } = req.params;
     try {
