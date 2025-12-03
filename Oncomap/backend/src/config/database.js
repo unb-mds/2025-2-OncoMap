@@ -5,12 +5,9 @@ const poolConfig = {
   connectionString: process.env.DATABASE_URL,
 };
 
-// CORREÇÃO: O Supabase (Nuvem) exige SSL obrigatório.
-// Como estamos usando a variável DATABASE_URL no .env, assumimos que é um banco externo.
-// Então ativamos o SSL para garantir a conexão, mesmo rodando local no Docker.
 if (process.env.DATABASE_URL) {
   poolConfig.ssl = {
-    rejectUnauthorized: false // Aceita certificados autoassinados (comum no Supabase)
+    rejectUnauthorized: false 
   };
 }
 

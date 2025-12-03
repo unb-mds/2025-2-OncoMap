@@ -1,26 +1,17 @@
-// Oncomap/backend/src/scripts/monthly_collector.js
-
 const puppeteer = require('puppeteer');
 const db = require('../config/database');
 require('dotenv').config();
 
-// --- CONFIGURAÇÕES ---
 const QD_API_BASE = "https://queridodiario.ok.org.br/api/gazettes";
 const KEYWORDS_QUERYSTRING = 'quimioterapia,radioterapia,oncologia,oncológico,"tratamento de câncer"';
 const LOOKBACK_DAYS = 30; 
 
-/**
- * Retorna a data de X dias atrás no formato AAAA-MM-DD
- */
 function getStartDate(days) {
     const data = new Date();
     data.setDate(data.getDate() - days);
     return data.toISOString().split('T')[0];
 }
 
-/**
- * Função principal do coletor mensal.
- */
 async function runMonthlyCollector() {
     console.log('✅ Iniciando o coletor MENSAL (Técnica "Cavalo de Troia")...');
     const since = getStartDate(LOOKBACK_DAYS);
@@ -42,20 +33,16 @@ async function runMonthlyCollector() {
 
         const page = await browser.newPage();
         
-        // User-Agent de um PC comum
         await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
 
-        // 1. ACESSA O SITE OFICIAL (Não a API!)
-        // Isso cria uma sessão legítima e pega os cookies necessários
         const siteUrl = 'https://queridodiario.ok.org.br/';
         console.log(`🌍 Acessando a Home Page para autenticar: ${siteUrl}`);
         
         await page.goto(siteUrl, {
-            waitUntil: 'networkidle0', // Espera o site carregar tudo
+            waitUntil: 'networkidle0',
             timeout: 60000
         });
 
-        // 2. PREPARA A URL DA API
         const params = new URLSearchParams({
             querystring: KEYWORDS_QUERYSTRING,
             published_since: since,
@@ -64,8 +51,6 @@ async function runMonthlyCollector() {
         const apiUrl = `${QD_API_BASE}?${params.toString()}`;
         console.log(`🔎 Buscando dados internamente na API: ${apiUrl}`);
 
-        // 3. EXECUTA O FETCH DE DENTRO DO NAVEGADOR
-        // Aqui está a mágica: o 'fetch' roda DENTRO da página carregada, herdando a legitimidade dela.
         const data = await page.evaluate(async (url) => {
             const response = await fetch(url);
             if (!response.ok) {
@@ -137,5 +122,4 @@ async function runMonthlyCollector() {
     }
 }
 
-// Executa a função
 runMonthlyCollector().catch(console.error);
