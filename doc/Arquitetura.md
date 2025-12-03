@@ -1,173 +1,231 @@
 # Documentação de Arquitetura do Projeto (OncoMap)
 
-Este documento detalha as decisões técnicas, a estrutura de código, o esquema de dados e o fluxo de inteligência artificial do sistema.
+Este documento centraliza as decisões técnicas, a estrutura de código, o
+esquema de dados, o fluxo de inteligência artificial e as estratégias de
+garantia de qualidade (QA) do sistema.
 
----
+------------------------------------------------------------------------
 
 ## 1. Visão Geral do Sistema (System Context)
-O **OncoMap** é uma plataforma de inteligência de dados que monitora e visualiza investimentos públicos em oncologia e saúde. O sistema coleta menções em diários oficiais, categoriza os gastos via IA e permite a geração de relatórios de auditoria automatizados.
 
-**Arquitetura de Alto Nível:**
-* **Frontend:** SPA em React focada em visualização geoespacial interativa.
-* **Backend:** API RESTful em Node.js que orquestra banco de dados, IA (Gemini) e geração de documentos (PDF).
+O **OncoMap** é uma plataforma de inteligência de dados que monitora e
+visualiza investimentos públicos em oncologia. O sistema coleta menções
+em diários oficiais (via API do **Querido Diário**), categoriza os
+gastos via IA (Gemini/Groq) e permite a geração de relatórios de
+auditoria automatizados.
 
----
+**Arquitetura de Alto Nível:** \* **Frontend:** SPA em React focada em
+visualização geoespacial interativa com Leaflet. \* **Backend:** API
+RESTful que gerencia coleta de dados (ETL), processamento de arquivos e
+integração com LLMs.
+
+------------------------------------------------------------------------
 
 ## 2. Arquitetura Frontend
 
 ### 2.1. Stack Tecnológica
-| Tecnologia | Versão | Função |
-| :--- | :--- | :--- |
-| **React** | ^19.0 | Biblioteca de UI principal. |
-| **Vite** | ^7.0 | Build tool de alta performance. |
-| **React Router** | ^7.0 | Gerenciamento de rotas e navegação. |
-| **Deck.gl** | ^9.0 | Renderização de mapas e camadas de dados massivos. |
 
-### 2.2. Estrutura de Diretórios
+Baseado no `package.json`:
 
-```text
-frontend/src/
-├── assets/          # Imagens e ícones estáticos
-├── components/      # Componentes React
-│   ├── Geral/       # UI Kit (Botões, Navbars, Loaders)
-│   ├── HomePage/    # Componentes da Landing Page/Dashboard inicial
-│   └── MapaPage/    # Mapas, Tooltips e Layers do Deck.gl
-├── data/            # Arquivos estáticos (GeoJSONs)
-├── pages/           # Vistas (Views)
-│   ├── HomePage.tsx # Rota "/"
-│   └── MapaPage.tsx # Rota "/mapa"
-├── style/           # CSS Modules e estilos globais
-├── App.tsx          # Definição de Rotas (Router)
-└── main.tsx         # Entry Point
-```
+| Tecnologia      | Versão | Função / Decisão |
+|-----------------|--------|------------------|
+| **React**        | ^19.1 | Biblioteca de UI principal. |
+| **Vite**         | ^7.1  | Build tool e servidor de desenvolvimento. |
+| **TypeScript**   | ~5.8  | Tipagem estática para robustez. |
+| **React Leaflet**| ^5.0  | **Mapas:** Renderização de mapas interativos (Substituindo Deck.gl). |
+| **React Router** | ^7.9  | Roteamento declarativo no cliente. |
+| **jsPDF**        | ^3.0  | Geração de relatórios PDF no navegador. |
+| **Vitest**       | ^4.0  | Framework de testes automatizados. |
+
+### 2.2. Estrutura de Diretórios (Logical View)
+
+Organização modular baseada na estrutura atual:
+
+    frontend/
+    ├── src/
+    │   ├── assets/          # Recursos estáticos globais
+    │   ├── components/      # Biblioteca de Componentes de UI
+    │   │   ├── Geral/       # Componentes reutilizáveis (Botões, Navbars)
+    │   │   ├── HomePage/    # Componentes da Landing Page
+    │   │   └── MapaPage/    # Componentes de visualização (Mapa Leaflet, Tabelas)
+    │   ├── data/            # Mocks e arquivos estáticos (GeoJSONs)
+    │   ├── pages/           # Vistas Principais (Route Handlers)
+    │   ├── services/        # Camada de comunicação com API (Axios)
+    │   ├── types/           # Definições de Tipos TypeScript globais
+    │   ├── App.tsx          # Configuração de Rotas
+    │   └── main.tsx         # Ponto de entrada (Entry Point)
+    ├── tests/               # Testes Unitários e de Integração
+    └── package.json
 
 ## 3. Arquitetura Backend
 
 ### 3.1. Stack Tecnológica
 
-| Tecnologia | Versão | Função |
-| :--- | :--- | :--- |
-| **Node.js** | 18+ | Runtime. |
-| **Express** | ^5.0 | Framework de API. |
-| **PostgreSQL** | ^8.16 | Banco de dados relacional (Hospedado no Supabase). |
-| **Google Gen AI** | ^0.24 | Modelo `gemini-2.0-flash-lite` para análise de contexto. |
-| **Puppeteer** | - | Via `html-pdf-node` para renderização de PDFs. |
+Baseado no DEVELOPMENT.md e package-lock.json:
+
+| Tecnologia      | Versão | Função / Decisão |
+|-----------------|--------|------------------|
+| Node.js         | 20+    | Runtime JavaScript (LTS). |
+| Express         | ^5.1   | Framework Web (API REST). |
+| PostgreSQL      | ^8.16  | Banco de dados relacional (Supabase). |
+| Sequelize       | ^6.37  | ORM para modelagem e migrations. |
+| Google Gen AI   | ^0.24  | IA Principal: Modelo gemini-2.0-flash-lite. |
+| Groq SDK        | -      | IA Secundária: Inferência rápida com Llama 3. |
+| Puppeteer       | v21+   | Crawler para coleta de dados e geração de PDFs. |
+| Jest            | -      | Framework de testes de backend. |
+
 
 ### 3.2. Estrutura de Diretórios
 
-O backend segue uma estrutura que separa a API, configurações e utilitários.
-Plaintext
-
-```text
-backend/src/
-├── api/
-│   ├── controllers/ # Lógica de controle e regras de negócio
-│   └── routes/      # Definição de endpoints específicos da API
-├── config/          # Configurações de ambiente e banco de dados
-├── data/            # Arquivos temporários de dados
-├── database/        # Migrations e seeders do Sequelize
-├── mocks/           # Dados falsos para testes
-├── routes/          # Rotas principais ou globais da aplicação
-├── scripts/         # Scripts de automação
-├── testscripts/     # Scripts auxiliares de teste
-├── utils/           # Funções utilitárias (Helpers)
-├── app.js           # Configuração dos middlewares do Express
-└── server.js        # Inicialização do servidor HTTP
-```
+    backend/src/
+    ├── api/
+    │   ├── controllers/ # Regras de negócio (Report, Stats, Map)
+    │   └── routes/      # Endpoints da API
+    ├── config/          # Configurações (DB, Env)
+    ├── database/        # Migrations e Seeders
+    ├── mocks/           # Dados falsos para testes locais
+    ├── scripts/         # Scripts de ETL (Coleta Mensal, Enriquecimento)
+    ├── utils/           # Helpers e Parsers
+    └── app.js           # Configuração do Express
 
 ### 3.3. Modelo de Dados (Database Schema)
 
-O sistema baseia-se em uma tabela central de fatos chamada `mentions`. As queries SQL nos controllers indicam a seguinte estrutura:
+Tabela central de fatos identificada no sistema:
 
-**Tabela: `mentions`**
+**Tabela: mentions**
 
-| Coluna | Tipo | Descrição |
-| :--- | :--- | :--- |
-| `id` | SERIAL | Identificador único. |
-| `municipality_ibge_code` | VARCHAR | Código IBGE do município (ex: '3550308'). |
-| `municipality_name` | VARCHAR | Nome do município. |
-| `state_uf` | CHAR(2) | Sigla do Estado (ex: 'SP'). |
-| `publication_date` | DATE | Data da publicação no diário oficial. |
-| `source_url` | TEXT | Link para a fonte original. |
-| `final_extracted_value` | NUMERIC | Valor monetário final validado. |
-| `extracted_value` | NUMERIC | Valor extraído (fallback). |
-| `extracted_value_txt` | NUMERIC | Valor extraído via texto (fallback secundário). |
-| `gemini_analysis` | JSONB | Objeto com categorização (medicamentos, obras, etc). |
-| `gemini_analysis_txt` | JSONB | Objeto de análise secundária. |
+| Coluna                   | Tipo     | Descrição                                           |
+|--------------------------|----------|-----------------------------------------------------|
+| id                       | SERIAL   | Identificador único.                                |
+| municipality_ibge_code   | VARCHAR  | Código IBGE do município.                           |
+| municipality_name        | VARCHAR  | Nome do município.                                  |
+| state_uf                 | CHAR(2)  | Sigla do Estado.                                    |
+| publication_date         | DATE     | Data da publicação no diário oficial.               |
+| source_url               | TEXT     | Link original do Diário Oficial.                    |
+| final_extracted_value    | NUMERIC  | Valor monetário validado.                           |
+| gemini_analysis          | JSONB    | Objeto com categorização (medicamentos, obras, etc) |
 
-### 3.4. API Endpoints (Definição de Rotas)
 
-#### 🗺️ Mapas & Visualização (mapRoutes.js)
+### 3.4. API Endpoints
 
-`GET /api/map/regiao/:regiaoSlug` - Agrega dados de investimento por macro-região.
+**🗺️ Mapas & Visualização (`mapRoutes.js`)**
 
-`GET /api/map/estado/:codIbge` - Detalhes consolidados de um estado via código IBGE.
+-   `GET /api/v1/map/regiao/:regiaoSlug` --- Agrega dados por
+    macro-região.
+-   `GET /api/v1/map/estado/:codIbge` --- Detalhes consolidados de um
+    estado.
+-   `GET /api/v1/map/municipio/:ibge` --- Lista de investimentos de um
+    município.
 
-`GET /api/map/municipio/:ibge` - Lista de investimentos e menções de um município específico.
+**📄 Relatórios & IA (`reportRoutes.js`)**
 
-#### 📊 Estatísticas (statsRoutes.js)
+-   `GET /api/report/region/:regionName/pdf` --- Gera PDF de auditoria
+    regional via IA.
+-   `GET /api/report/municipality/:ibge/pdf` --- Gera PDF de auditoria
+    municipal via IA.
 
-`GET /api/stats/general` - Visão macro de totais por Estado e Município.
-
-`GET /api/stats/state/:uf` - Estatísticas específicas por sigla de UF (ex: 'SP').
-
-`GET /api/stats/municipality/:ibge` - Detalhamento estatístico por IBGE.
-
-#### 📄 Relatórios & IA (reportRoutes.js)
-
-`GET /api/report/region/:regionName/pdf` - Gera PDF de auditoria regional via IA.
-
-`GET /api/report/state/:uf/pdf` - Gera PDF de auditoria estadual via IA.
-
-`GET /api/report/municipality/:ibge/pdf` - Gera PDF de auditoria municipal via IA.
+------------------------------------------------------------------------
 
 ## 4. Pipeline de Inteligência Artificial (AI Flow)
 
-1. O sistema utiliza um fluxo avançado de RAG (Retrieval-Augmented Generation) para criar relatórios:
+1.  **Coleta (ETL):** Scripts (`monthly_collector.js`) buscam diários na
+    API do Querido Diário.\
+2.  **Processamento:** O Backend baixa os PDFs e extrai o texto bruto.\
+3.  **Enriquecimento:**
+    -   O texto é enviado ao Gemini (ou Groq) com um prompt de "Auditor
+        Público".\
+    -   A IA extrai valores, categorias e gera resumos.\
+4.  **Visualização:**\
+    O dado estruturado é salvo no PostgreSQL e servido via API para o
+    Mapa.
 
-2. Agregação de Dados: O Backend executa queries SQL complexas para somar valores por ano e categoria.
+------------------------------------------------------------------------
 
-3. Engenharia de Prompt: Os dados estruturados são inseridos em um prompt de contexto onde o Gemini atua como um "Auditor Sênior de Contas Públicas".
+## 5. Qualidade e Testes (Quality Assurance)
 
-4. Geração de Conteúdo: O modelo gera uma análise HTML com tabelas, conclusões e diagnósticos financeiros.
+### Frontend (Vitest)
 
-5. Renderização de PDF: O HTML gerado é processado pelo html-pdf-node (Puppeteer headless) gerando um arquivo binário para download.
+-   Foco: Serviços (`mapService`), Roteamento (`App`) e Integração
+    (`MapaPage`).\
+-   Cobertura: Monitorada via v8 (**Meta: \>60%** em componentes
+    lógicos).
 
-## 5. Setup e Execução
+### Backend (Jest)
+
+-   Foco: Controllers e Utilitários (`regionMap`, `statsController`).\
+-   Cobertura: Monitorada via Jest Coverage (**Meta: \>85%** em
+    controllers críticos).
+
+### Ferramentas de Linting
+
+-   **ESLint:** Configuração rigorosa para Node.js e React
+    (`eslint.config.js`).\
+-   **Regras:** Sem `any` implícito, sem variáveis não utilizadas, uso
+    obrigatório de `async/await`.
+
+------------------------------------------------------------------------
+
+## 6. Setup e Execução
 
 ### Pré-requisitos
-* Node.js v18+
-* PostgreSQL (Local ou Supabase)
-* Chave de API do Google Gemini (`GEMINI_API_KEY`) no arquivo `.env`
+
+-   **Node.js:** v20.x (LTS) ou superior.\
+-   **Banco de Dados:** PostgreSQL (Supabase).\
+-   **Variáveis:** Arquivo `.env` configurado com `DATABASE_URL`,
+    `GEMINI_API_KEY` e `QUERIDO_DIARIO_API_URL`.
+
+### Instalação Rápida (Monorepo)
+
+Na raiz do projeto, execute:
+
+``` bash
+npm run install:all
+```
 
 ### Rodando o Backend
-1. Entre na pasta: `cd backend`
 
-2. Instale as dependências: `npm install`
+1.  Entre na pasta:
 
-3. Instale dependências do sistema (Linux/Puppeteer):
-```bash
-npm run setup
-```
-4. Inicie o servidor: `npm run dev`
-
-### Rodando o Frontend
-
-1. Entre na pasta: 
-```bash
-cd frontend
+``` bash
+cd backend
 ```
 
-2. Instale as dependências: 
-```bash
+2.  Instalar as dependências:
+
+``` bash
 npm install
 ```
 
-3. Inicie o servidor:
-```bash
+3.  Instale dependências do sistema (Linux/Puppeteer):
+
+``` bash
+npm run setup
+```
+
+3.  Inicie o servidor:
+
+``` bash
 npm run dev
 ```
 
-4. O sistema estará acessível em: `http://localhost:3001`
+### Rodando o Frontend
 
+1.  Entre na pasta:
 
+``` bash
+cd frontend
+```
+
+2.  Instalar as dependências:
+
+``` bash
+npm install
+```
+
+3.  Inicie o servidor:
+
+``` bash
+npm run dev
+```
+
+Acesse em: **http://localhost:3001**
