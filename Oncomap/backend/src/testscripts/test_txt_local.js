@@ -1,14 +1,11 @@
-// Oncomap/backend/src/scripts/test_txt_local.js
-// VERSÃO: Teste Local (sem salvar no DB) do script TXT-Fallback + Roteador + Chunking (v9.1-txt)
 const fs = require('fs');
 const path = require('path');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
-const db = require('../config/database'); // <- Necessário para LER as menções
+const db = require('../config/database');
 const axios = require('axios');
 require('dotenv').config();
 const { get_encoding } = require("tiktoken");
 
-// --- 1. CONFIGURAÇÃO DO ROTEADOR DE CHAVES ---
 const apiKeys = (process.env.GEMINI_API_KEYS || "")
     .split(',')
     .map(key => key.trim())
@@ -37,11 +34,9 @@ function switchToNextKey() {
 }
 
 updateModelInstance();
-// --- FIM DO ROTEADOR DE CHAVES ---
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-// --- CONSTANTES DE CONTROLE ---
 const MAX_TOKENS_PARA_PROCESSAR_POR_CHUNK = 800000; 
 const MAX_RETRIES = 3;
 const DELAY_BETWEEN_MENTIONS = 1000;
@@ -49,7 +44,6 @@ const DELAY_BETWEEN_CHUNKS = 2000;
 
 const tokenizer = get_encoding("cl100k_base");
 
-// --- FUNÇÕES (getGeminiPrompt, extractJsonFromString) ---
 function getGeminiPrompt(textContent, mentionId, municipalityName) {
      return `
       **Tarefa:** VOCÊ É UM ANALISTA FINANCEIRO ESPECIALIZADO EM ORÇAMENTO PÚBLICO DE SAÚDE ONCOLÓGICA. Analise CUIDADOSAMENTE o seguinte texto extraído de um Diário Oficial Municipal brasileiro. Seu objetivo é:
@@ -100,7 +94,6 @@ function getGeminiPrompt(textContent, mentionId, municipalityName) {
 }
 
 function extractJsonFromString(text) {
-    // Cole sua função de extração de JSON aqui
     if (!text) return null;
     const match = text.match(/\{[\sS]*\}/);
     let potentialJson = null;
@@ -118,9 +111,7 @@ function extractJsonFromString(text) {
     return null;
 }
 
-// --- FUNÇÕES DE LÓGICA (splitTextIntoChunksByToken, processSingleChunk) ---
 function splitTextIntoChunksByToken(text, maxTokens, tokenizerInstance) {
-    // Cole a função splitTextIntoChunksByToken completa aqui
     const chunks = [];
     const tokens = tokenizerInstance.encode(text);
     if (tokens.length <= maxTokens) return [text];
@@ -138,7 +129,6 @@ function splitTextIntoChunksByToken(text, maxTokens, tokenizerInstance) {
 }
 
 async function processSingleChunk(chunkText, mentionId, municipalityName, chunkIndex, totalChunks) {
-    // Cole a função processSingleChunk completa aqui (com lógica de retry e roteador de chaves)
      let attempt = 0;
      let keysRotatedThisChunk = 0;
     while (attempt < MAX_RETRIES) {
@@ -202,23 +192,15 @@ async function processSingleChunk(chunkText, mentionId, municipalityName, chunkI
 }
 
 
-/**
- * Função Principal de Teste (v9.1-txt-local)
- */
 async function testTxtLogicLocally() {
-    // --- Arquivo de Saída Local ---
     const outputFilePath = path.resolve(__dirname, 'sample_txt_output.json');
 
-    // --- !IMPORTANTE! EDITE OS IDs QUE VOCÊ QUER TESTAR ---
-    // Coloque aqui os IDs de menções que você sabe que *não* têm PDF,
-    // mas que *têm* um .txt_url ou um 'excerpt' bom.
-    const IDS_PARA_TESTAR = [12269, 12270]; // <-- EDITE AQUI
+    const IDS_PARA_TESTAR = [12269, 12270];
     
     console.log('✅ Iniciando teste local do script TXT-Fallback (v9.1)...');
     console.log(`🎯 Processando ${IDS_PARA_TESTAR.length} menções de teste.`);
     console.log(`💾 Resultados serão salvos em: ${outputFilePath}`);
 
-    // Limpa o arquivo de saída
     try {
         fs.writeFileSync(outputFilePath, '', 'utf8');
     } catch (e) {
@@ -231,11 +213,10 @@ async function testTxtLogicLocally() {
     let totalProcessadasComChunking = 0;
 
     try {
-        // Busca os dados das menções de teste no banco
         const mentionsToTest = await db.query(
             `SELECT id, txt_url, excerpt, municipality_name 
              FROM mentions 
-             WHERE id = ANY($1::int[])`, // Use $1 para a array de IDs
+             WHERE id = ANY($1::int[])`,
             [IDS_PARA_TESTAR]
         );
 
@@ -254,7 +235,6 @@ async function testTxtLogicLocally() {
             let success = false;
 
             try {
-                // --- 1. LÓGICA DE FONTE TXT (A mesma do script de produção) ---
                 if (mention.txt_url) {
                     try {
                         console.log(`  -> Baixando TXT de: ${mention.txt_url}`);
@@ -277,7 +257,6 @@ async function testTxtLogicLocally() {
                      finalAnalysisData = { error: 'Fonte de texto (txt/excerpt) estava vazia.', source: sourceUsed, chunked: false };
                      success = false;
                 } else {
-                    // 2. Contagem de Tokens
                     let tokenCount = 0;
                     try {
                         tokenCount = tokenizer.encode(textToAnalyze).length;
@@ -287,12 +266,11 @@ async function testTxtLogicLocally() {
                     }
 
                     if (!finalAnalysisData.error) {
-                        // 3. Lógica de Chunking (A mesma do script de produção)
                         const chunks = splitTextIntoChunksByToken(textToAnalyze, MAX_TOKENS_PARA_PROCESSAR_POR_CHUNK, tokenizer);
                         const isChunked = chunks.length > 1;
                         if (isChunked) totalProcessadasComChunking++;
 
-                        const aggregatedResults = { /* ... (inicializa zerado) ... */
+                        const aggregatedResults = { 
                             total_gasto_oncologico: 0, medicamentos: 0, equipamentos: 0, estadia_paciente: 0,
                             obras_infraestrutura: 0, servicos_saude: 0, outros_relacionados: 0,
                             detalhes_extraidos: [],
@@ -335,8 +313,6 @@ async function testTxtLogicLocally() {
                     }
                 }
 
-                // ---- 4. SALVAR LOCALMENTE (A MUDANÇA PRINCIPAL) ----
-                // NÃO SALVAMOS NO BANCO DE DADOS
                 const jsonLine = JSON.stringify(finalAnalysisData);
                 fs.appendFileSync(outputFilePath, jsonLine + '\n', 'utf8');
                 
@@ -361,7 +337,7 @@ async function testTxtLogicLocally() {
             }
 
             await delay(DELAY_BETWEEN_MENTIONS);
-        } // Fim do loop FOR
+        }
 
     } catch (error) {
         if (error.message === "ALL_KEYS_RATE_LIMITED") {
@@ -382,8 +358,6 @@ async function testTxtLogicLocally() {
     tokenizer.free();
 }
 
-// --- 5. INÍCIO DA EXECUÇÃO ---
-// Não precisamos de argumentos de ID, pois estão definidos na constante
 testTxtLogicLocally().catch(error => {
     if (error.message !== "ALL_KEYS_RATE_LIMITED") {
         console.error("\n💥 Falha fatal (catch final):", error);
