@@ -1,8 +1,6 @@
-// Oncomap/backend/src/tests/controllers/statsController.test.js
 const statsController = require('../../api/controllers/statsController');
 const db = require('../../config/database');
 
-// Mock do Banco de Dados
 jest.mock('../../config/database');
 
 describe('Stats Controller', () => {
@@ -17,12 +15,8 @@ describe('Stats Controller', () => {
         jest.clearAllMocks();
     });
 
-    /**
-     * TESTE 1: getGeneralStats
-     */
     describe('getGeneralStats', () => {
         test('Deve retornar estatísticas gerais corretamente (200)', async () => {
-            // Mock dos retornos das duas queries (Estados e Municípios)
             const mockStates = { rows: [{ state_uf: 'SP', total_value: '100.50' }] };
             const mockCities = { rows: [{ municipality_ibge_code: '1', municipality_name: 'Teste', state_uf: 'SP', total_value: '50.00' }] };
             
@@ -48,13 +42,9 @@ describe('Stats Controller', () => {
         });
     });
 
-    /**
-     * TESTE 2: getStateSpecificStats
-     */
     describe('getStateSpecificStats', () => {
         test('Deve retornar dados do estado com sucesso (200)', async () => {
             req.params.uf = 'SP';
-            // Simula retorno com dados para testar o reduce (soma)
             db.query.mockResolvedValue({ 
                 rows: [
                     { municipality_name: 'A', municipality_ibge_code: '1', total_value: '100.00' },
@@ -65,7 +55,6 @@ describe('Stats Controller', () => {
             await statsController.getStateSpecificStats(req, res);
 
             expect(res.status).toHaveBeenCalledWith(200);
-            // Verifica se somou 100 + 200
             expect(res.json).toHaveBeenCalledWith(expect.objectContaining({
                 total_invested: 300.00
             }));
@@ -73,7 +62,7 @@ describe('Stats Controller', () => {
 
         test('Deve retornar 404 se estado não tiver dados', async () => {
             req.params.uf = 'AC';
-            db.query.mockResolvedValue({ rows: [] }); // Array vazio
+            db.query.mockResolvedValue({ rows: [] });
 
             await statsController.getStateSpecificStats(req, res);
 
@@ -88,15 +77,10 @@ describe('Stats Controller', () => {
         });
     });
 
-    /**
-     * TESTE 3: getMunicipalitySpecificStats
-     * CRÍTICO: Este teste cobre a lógica de soma de categorias JSON
-     */
     describe('getMunicipalitySpecificStats', () => {
         test('Deve somar categorias corretamente (200)', async () => {
             req.params.ibge = '3550308';
 
-            // DADOS RICOS: Incluímos JSONs completos para forçar o código a entrar nos IFs de soma
             const mockRows = [
                 {
                     municipality_name: 'São Paulo',
@@ -118,12 +102,11 @@ describe('Stats Controller', () => {
                     publication_date: '2025-01-02',
                     source_url: 'http://pdf2.com',
                     gemini_analysis: {
-                        medicamentos: 100, // Soma deve dar 150 (50+100)
+                        medicamentos: 100,
                         servicos_saude: 100
                     }
                 },
                 {
-                    // Caso onde analysis é null (para testar resiliência)
                     final_extracted_value: '50.00',
                     gemini_analysis: null 
                 }
@@ -137,12 +120,11 @@ describe('Stats Controller', () => {
             
             const responseData = res.json.mock.calls[0][0];
             
-            // Verificações de Soma
-            expect(responseData.total_invested).toBe(350); // 100 + 200 + 50
-            expect(responseData.categories.medicamentos).toBe(150); // 50 + 100
+            expect(responseData.total_invested).toBe(350);
+            expect(responseData.categories.medicamentos).toBe(150); 
             expect(responseData.categories.equipamentos).toBe(50);
             expect(responseData.categories.servicos_saude).toBe(100);
-            expect(responseData.categories.estadia_paciente).toBe(0); // Garante que inicializou com 0
+            expect(responseData.categories.estadia_paciente).toBe(0); 
         });
 
         test('Deve retornar 404 se município não existir', async () => {
