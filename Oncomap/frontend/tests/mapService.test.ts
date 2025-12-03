@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { mapService } from '../src/services/mapService';
-import api from '../src/services/api'; 
+import api from '../src/services/api';
 
-
+// Mock do módulo 'api' (axios)
 vi.mock('../src/services/api', () => ({
   default: {
     get: vi.fn(),
@@ -11,11 +11,10 @@ vi.mock('../src/services/api', () => ({
 
 describe('mapService', () => {
   beforeEach(() => {
-    vi.clearAllMocks(); 
+    vi.clearAllMocks();
   });
 
   it('getDadosRegiao deve chamar a API com a URL correta e retornar os dados', async () => {
-    
     const mockResponse = {
       data: {
         regiao: 'sudeste',
@@ -23,15 +22,11 @@ describe('mapService', () => {
       }
     };
 
-    
     vi.mocked(api.get).mockResolvedValue(mockResponse);
 
-    
     const resultado = await mapService.getDadosRegiao('Sudeste');
 
-    
     expect(api.get).toHaveBeenCalledWith('/api/v1/map/regiao/sudeste');
-
     expect(resultado).toEqual(mockResponse.data);
   });
 
@@ -45,11 +40,9 @@ describe('mapService', () => {
   });
 
   it('deve lançar erro se a API falhar', async () => {
-
     const erroAPI = new Error('Falha no Servidor');
     vi.mocked(api.get).mockRejectedValue(erroAPI);
 
-   
     await expect(mapService.getDetalhesEstado('35')).rejects.toThrow('Falha no Servidor');
   });
 });
