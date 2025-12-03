@@ -1,0 +1,68 @@
+{{ define "main" }}
+    
+    {{/* O Hero padronizado (do baseof.html) já aparece aqui */}}
+
+    <section class="content-list">
+        <div class="container">
+            
+            <div class="content">
+
+                {{/* 1. PEGA TODAS AS PÁGINAS RECURSIVAMENTE */}}
+                {{ $allPages := .RegularPagesRecursive }}
+                
+                {{ if $allPages }}
+                    
+                    {{/* 2. EXTRAI MANUALMENTE OS DIRETÓRIOS ÚNICOS (Evita o erro do GroupBy) */}}
+                    {{ $dirs := slice }}
+                    {{ range $allPages }}
+                        {{ $dirs = $dirs | append .File.Dir }}
+                    {{ end }}
+                    {{ $uniqueDirs := $dirs | uniq | sort }}
+
+                    {{/* 3. ITERA SOBRE CADA DIRETÓRIO ÚNICO */}}
+                    {{ range $uniqueDirs }}
+                        
+                        {{ $currentDir := . }}
+                        
+                        {{/* 4. FILTRA AS PÁGINAS QUE PERTENCEM A ESTE DIRETÓRIO */}}
+                        {{ $pagesInDir := where $allPages "File.Dir" "eq" $currentDir }}
+                        
+                        {{/* 5. DEFINE O TÍTULO DO GRUPO */}}
+                        {{ $groupTitle := $currentDir }}
+                        {{ $groupTitle = replace $groupTitle "doc/" "" }}
+                        
+                        {{ if or (eq $currentDir "doc") (eq $currentDir "doc/") }}
+                             {{ $groupTitle = "Páginas Principais da Documentação" }}
+                        {{ else }}
+                             {{ $groupTitle = $groupTitle | humanize | title }}
+                        {{ end }}
+
+                        {{/* 6. RENDERIZA O GRUPO */}}
+                        <h2>{{ $groupTitle }}</h2>
+                        
+                        <ul class="page-list organized-list">
+                            {{ range $pagesInDir.ByTitle }}
+                                <li>
+                                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                                    {{/* Opcional: Mostra o caminho para debug visual */}}
+                                    <span class="path-hint">({{ .File.Dir }})</span>
+                                    
+                                    {{ if .Params.subtitulo }}
+                                        <p>{{ .Params.subtitulo }}</p>
+                                    {{ end }}
+                                </li>
+                            {{ end }}
+                        </ul>
+
+                    {{ end }}
+
+                {{ else }}
+                    <p>Nenhum documento encontrado nesta seção.</p>
+                {{ end }}
+                
+            </div>
+
+        </div>
+    </section>
+
+{{ end }}

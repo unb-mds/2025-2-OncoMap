@@ -1,0 +1,13 @@
+{{ define "main" }}
+
+    <div class="container page-single">
+        
+        {{/* REMOVIDO: <h1>{{ .Title }}</h1> */}}
+        {{/* Motivo: Os arquivos de doc já trazem seu próprio título no conteúdo */}}
+        
+        <div class="content">
+            {{ .Content }}
+        </div>
+    </div>
+
+{{ end }}

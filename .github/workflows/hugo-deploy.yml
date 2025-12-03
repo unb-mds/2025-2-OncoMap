@@ -4,10 +4,9 @@ on:
   push:
     branches:
       - main      
-      - gh-pages  
 
 permissions:
-  contents: write 
+  contents: write
 
 jobs:
   build-deploy:
@@ -16,13 +15,11 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
     
     steps:
-      - name: Checkout Hugo Source Code
+      - name: Checkout Source Code
         uses: actions/checkout@v4
         with:
-          repository: ${{ github.repository }}
           submodules: true 
-          fetch-depth: 0    
-          ref: gh-pages     
+          fetch-depth: 0
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -42,18 +39,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          cd Git-pages
           python ./scripts/fetch_issues.py
           python ./scripts/fetch_milestones.py
           python ./scripts/fetch_atas.py
           python ./scripts/fetch_doc.py
 
       - name: Build Hugo Site
-        run: hugo --minify
+        run: hugo --minify --source Git-pages
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages-deploy 
-          publish_dir: ./public
+          publish_branch: gh-pages-deploy
+          publish_dir: ./Git-pages/public 
           commit_message: "Auto-deploy triggered by commit on ${{ github.ref_name }}"

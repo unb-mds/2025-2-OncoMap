@@ -1,0 +1,25 @@
+{{ define "main" }}
+    
+    {{/* O Hero padronizado (do baseof.html) já aparece aqui */}}
+    
+    <section class="content-single">
+        <div class="container">
+            
+            {{ if .Params.ata }}
+                {{ with .Site.GetPage (printf "atas/%s" .Params.ata) }}
+                    <div class="ata-link">
+                        <a href="{{ .RelPermalink }}" class="button-link-ata">
+                            → Ver {{ .Title }}
+                        </a>
+                    </div>
+                {{ end }}
+            {{ end }}
+
+            <div class="content">
+                {{ .Content }}
+            </div>
+
+        </div>
+    </section>
+    
+{{ end }}

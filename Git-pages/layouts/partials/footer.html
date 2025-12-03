@@ -1,0 +1,41 @@
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            
+            <div class="footer-column about">
+                <h3>{{ .Site.Title }}</h3>
+                <p>Mapa de investimento em saúde oncológica</p>
+            </div>
+            
+            <div class="footer-column links">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="{{ "/" | relURL }}">Início</a></li>
+                    <li><a href="{{ "/sprints" | relURL }}">Sprints</a></li>
+                    <li><a href="{{ "/" | relURL }}">Início</a></li>
+                    <li><a href="{{ "/requisitos/" | relURL }}">Requisitos</a></li>
+                    <li><a href="{{ "/arquitetura/" | relURL }}">Arquitetura</a></li>
+                    <li><a href="{{ "/instalação/" | relURL }}">Instalação</a></li>
+                    <li><a href="{{ "/doc/" | relURL }}">Documentação</a></li>
+                    <li><a href="{{ "/sprints/" | relURL }}">Sprints</a></li>
+                    <li><a href="{{ "/diversos/" | relURL }}">Diversos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column contact">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; {{ now.Year }} {{ .Site.Title }}. Todos os direitos reservados.</p>
+            <p>Desenvolvido pela equipe UnB-MDS</p>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><script src="/2025-2-OncoMap/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=2025-2-OncoMap/livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+        
+            Poonode | OncoMap
+        
+    </title>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/2025-2-OncoMap/css/doc-page-bundle.min.css">
+
+
+
+</head>
+<body>
+
+    <nav class="navbar">
+
+    <a class="navbar-brand" href="http://localhost:1313/2025-2-OncoMap/">
+        OncoMap
+    </a>
+
+    <ul class="navbar-links">
+        <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+    </ul>
+
+    <div class="navbar-right">
+        <a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a>
+    </div>
+
+</nav>
+
+    <section class="hero">
+    <div class="container">
+        <h1>Poonode</h1>
+        
+        
+        
+        </div>
+</section>
+
+    <main>
+        
+
+    <div class="container page-single">
+        
+        
+        
+        
+        <div class="content">
+            <h1 id="funcionalidades-do-nodejsjavascript">Funcionalidades do Node.js/JavaScript</h1>
+<h2 id="1-bind">1. <code>.bind</code></h2>
+<p>Cria uma nova função com o <code>this</code> fixado ao valor especificado.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">saudacao</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Olá, </span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">nome</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pessoa</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">nome</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Artur&#34;</span> };
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">saudacaoPessoa</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">saudacao</span>.<span style="color:#a6e22e">bind</span>(<span style="color:#a6e22e">pessoa</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">saudacaoPessoa</span>(); <span style="color:#75715e">// &#34;Olá, Artur&#34;
+</span></span></span></code></pre></div><hr>
+<h2 id="2-call">2. <code>.call</code></h2>
+<p>Executa uma função, especificando o valor de <code>this</code> e argumentos individualmente.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">apresentar</span>(<span style="color:#a6e22e">cidade</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">nome</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> mora em </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">cidade</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pessoa</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">nome</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Maria&#34;</span> };
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">apresentar</span>.<span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">pessoa</span>, <span style="color:#e6db74">&#34;Recife&#34;</span>); <span style="color:#75715e">// &#34;Maria mora em Recife&#34;
+</span></span></span></code></pre></div><hr>
+<h2 id="3-apply">3. <code>.apply</code></h2>
+<p>Parecido com <code>.call</code>, mas os argumentos são passados em <strong>array</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">somar</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">somar</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">null</span>, [<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">7</span>])); <span style="color:#75715e">// 12
+</span></span></span></code></pre></div><hr>
+<h2 id="4-objectsetprototypeof">4. <code>Object.setPrototypeOf</code></h2>
+<p>Define o protótipo (herança) de um objeto.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">animal</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">falar</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Som genérico&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cachorro</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">nome</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Rex&#34;</span> };
+</span></span><span style="display:flex;"><span>Object.<span style="color:#a6e22e">setPrototypeOf</span>(<span style="color:#a6e22e">cachorro</span>, <span style="color:#a6e22e">animal</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">cachorro</span>.<span style="color:#a6e22e">falar</span>(); <span style="color:#75715e">// &#34;Som genérico&#34;
+</span></span></span></code></pre></div><hr>
+<h2 id="5-class-e-new">5. <code>class</code> e <code>new</code></h2>
+<p>Sintaxe de classe para criar objetos e instanciar com <code>new</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Pessoa</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">nome</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">nome</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">nome</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">p1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Pessoa</span>(<span style="color:#e6db74">&#34;Lucas&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">p1</span>.<span style="color:#a6e22e">nome</span>); <span style="color:#75715e">// &#34;Lucas&#34;
+</span></span></span></code></pre></div><hr>
+<h2 id="6-objectcreate">6. <code>Object.create()</code></h2>
+<p>Cria um novo objeto com o protótipo especificado.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">animal</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tipo</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Mamífero&#34;</span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">gato</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">animal</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">gato</span>.<span style="color:#a6e22e">nome</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Mingau&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">gato</span>.<span style="color:#a6e22e">tipo</span>); <span style="color:#75715e">// &#34;Mamífero&#34;
+</span></span></span></code></pre></div><hr>
+<h2 id="7-getters-e-setters">7. Getters e Setters</h2>
+<p>Permitem acessar e modificar propriedades de forma controlada.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Retangulo</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">l</span>, <span style="color:#a6e22e">a</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">l</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">l</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">get</span> <span style="color:#a6e22e">area</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">l</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">a</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">set</span> <span style="color:#a6e22e">largura</span>(<span style="color:#a6e22e">valor</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">l</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">valor</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">r</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Retangulo</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">area</span>); <span style="color:#75715e">// 50
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">largura</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">area</span>); <span style="color:#75715e">// 100
+</span></span></span></code></pre></div><hr>
+<h2 id="8-métodos-estáticos">8. Métodos Estáticos</h2>
+<p>Pertencem à classe, não à instância.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Matematica</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">soma</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">Matematica</span>.<span style="color:#a6e22e">soma</span>(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">7</span>)); <span style="color:#75715e">// 12
+</span></span></span></code></pre></div><hr>
+<h2 id="9-polimorfismo">9. Polimorfismo</h2>
+<p>Capacidade de métodos terem comportamentos diferentes em classes diferentes.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Animal</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">falar</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Som genérico&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cachorro</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Animal</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">falar</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Au au&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Gato</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Animal</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">falar</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Miau&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">animais</span> <span style="color:#f92672">=</span> [<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Cachorro</span>(), <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Gato</span>()];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">animais</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">a</span> =&gt; <span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">falar</span>());
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// &#34;Au au&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// &#34;Miau&#34;
+</span></span></span></code></pre></div><hr>
+<h2 id="10-modificadores-de-acesso--e-outros">10. Modificadores de Acesso (<code>#</code> e outros)</h2>
+<p>Em JavaScript moderno, o <code>#</code> é usado para criar <strong>campos privados</strong> em classes. Esses campos só podem ser acessados dentro da própria classe.</p>
+<ul>
+<li><strong>Público (default):</strong> acessível de qualquer lugar.</li>
+<li><strong>Privado (<code>#</code>):</strong> acessível apenas dentro da classe.</li>
+<li><strong>Protegido (convenção <code>_</code>):</strong> não existe nativamente, mas é usado como convenção para indicar que não deve ser acessado diretamente.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ContaBancaria</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">saldo</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#75715e">// campo privado
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">depositar</span>(<span style="color:#a6e22e">valor</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">saldo</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">valor</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">getSaldo</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">saldo</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">conta</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ContaBancaria</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">conta</span>.<span style="color:#a6e22e">depositar</span>(<span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">conta</span>.<span style="color:#a6e22e">getSaldo</span>()); <span style="color:#75715e">// 100
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">conta</span>.<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">saldo</span>); <span style="color:#75715e">// Erro: campo privado
+</span></span></span></code></pre></div>
+        </div>
+    </div>
+
+
+    </main>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            
+            <div class="footer-column about">
+                <h3>OncoMap</h3>
+                <p>Mapa de investimento em saúde oncológica</p>
+            </div>
+            
+            <div class="footer-column links">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column contact">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2025 OncoMap. Todos os direitos reservados.</p>
+            <p>Desenvolvido pela equipe UnB-MDS</p>
+        </div>
+    </div>
+</footer>
+    
+    <script src="http://localhost:1313/2025-2-OncoMap/js/app.js"></script>
+</body>
+</html>

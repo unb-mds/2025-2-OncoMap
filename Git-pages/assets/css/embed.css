@@ -1,0 +1,59 @@
+/* --- Estilos da Página de Embed (Requisitos) --- */
+
+.content-embed {
+    background-color: #fff; /* Fundo branco para o iframe/diagrama */
+}
+
+.content-embed iframe,
+.content-embed img {
+    display: block;
+    border: none;
+    width: 100%;
+    height: 80vh; /* 80% da altura da tela */
+}
+
+.content-embed img {
+    height: auto;
+    object-fit: contain;
+}
+
+/* Nova Seção de Blocos de Texto (fundo cinza) */
+.text-sections-area {
+    background-color: #f4f7f6; /* O mesmo cinza claro do 'main' */
+    padding: 4rem 0; /* Espaçamento vertical */
+}
+
+/* Caixa branca para cada bloco de texto */
+.text-block {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem; /* Espaço entre os blocos */
+}
+
+.text-block:last-child {
+    margin-bottom: 0;
+}
+
+.text-block h2 {
+    font-size: 1.8rem;
+    color: #333;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+/* O conteúdo de texto (que vem do markdown) */
+.text-block-content {
+    line-height: 1.7;
+}
+
+.text-block-content ul {
+    padding-left: 20px;
+}
+
+.text-block-content li {
+    margin-bottom: 0.5rem;
+}

@@ -1,0 +1,10 @@
+baseURL = "https://unb-mds.github.io/2025-2-OncoMap/"
+languageCode = "pt-br"
+title = "OncoMap"
+
+canonifyURLs = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

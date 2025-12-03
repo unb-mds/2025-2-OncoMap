@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><script src="/2025-2-OncoMap/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=2025-2-OncoMap/livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+        
+            [BUG] - Ajustes de CSS na Navbar/Footer e Lógica de Zoom Sincronizado no Mapa | OncoMap
+        
+    </title>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/2025-2-OncoMap/css/issues-page-bundle.min.css">
+
+
+
+</head>
+<body>
+
+    <nav class="navbar">
+
+    <a class="navbar-brand" href="http://localhost:1313/2025-2-OncoMap/">
+        OncoMap
+    </a>
+
+    <ul class="navbar-links">
+        <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+    </ul>
+
+    <div class="navbar-right">
+        <a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a>
+    </div>
+
+</nav>
+
+    <section class="hero">
+    <div class="container">
+        <h1>[BUG] - Ajustes de CSS na Navbar/Footer e Lógica de Zoom Sincronizado no Mapa</h1>
+        
+        
+        
+        </div>
+</section>
+
+    <main>
+        
+
+    <div class="container page-single">
+        <h1>[BUG] - Ajustes de CSS na Navbar/Footer e Lógica de Zoom Sincronizado no Mapa</h1>
+        
+        <div class="content">
+            <h2 id="-descrição-do-bug">🐛 Descrição do Bug</h2>
+<p>Foram identificados problemas de consistência visual e usabilidade no Frontend. Especificamente: o layout da MapaPage apresenta espaçamento excessivo à direita em telas grandes; a lista de estados na tabela lateral não interage com o mapa (não dá zoom); a Navbar fixa sobrepõe os títulos das seções ao navegar por âncoras; e o menu mobile/footer apresentam comportamentos de responsividade indesejados (menu ocupando tela toda ou footer sumindo).</p>
+<hr>
+<h2 id="-passos-para-reproduzir">🔄 Passos para Reproduzir</h2>
+<ul>
+<li>
+<p>Problema 1 - Mapa e Tabela:</p>
+<ul>
+<li>
+<p>Acesse a página /mapa.</p>
+</li>
+<li>
+<p>Em um monitor largo, observe que o container do mapa tenta ocupar 100% da largura, criando um espaço vazio excessivo à direita da tabela.</p>
+</li>
+<li>
+<p>Selecione uma região (ex: Norte).</p>
+</li>
+<li>
+<p>Na lista lateral da tabela, clique no nome de um estado (ex: Amazonas).</p>
+</li>
+<li>
+<p>Observe que a tabela muda, mas o mapa não realiza o zoom automático no estado.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Problema 2 - Navbar e Responsividade:</p>
+<ul>
+<li>
+<p>Na Home, clique no link &ldquo;Sobre&rdquo; ou &ldquo;Quem somos&rdquo;.</p>
+</li>
+<li>
+<p>Observe que o título da seção fica escondido atrás da Navbar fixa.</p>
+</li>
+<li>
+<p>Reduza a tela para tamanho mobile (&lt; 768px).</p>
+</li>
+<li>
+<p>Abra o menu hambúrguer: ele ocupa a tela inteira, impedindo a visualização do contexto.</p>
+</li>
+<li>
+<p>Verifique o rodapé: em algumas resoluções mobile, ele desaparece (display: none).</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="-comportamento-esperado">✅ Comportamento Esperado</h2>
+<ol>
+<li>
+<p>MapaPage: O conteúdo (Mapa + Tabela) deve ser centralizado com max-width (1440px), mantendo padding assimétrico para acomodar o botão de menu lateral.</p>
+</li>
+<li>
+<p>nteração: Ao clicar no nome de um estado na TabelaInfo, o mapa deve receber o comando e realizar o zoom (flyToBounds) automaticamente, unificando a navegação.</p>
+</li>
+<li>
+<p>Navbar: Deve possuir efeito Glassmorphism, scroll suave com compensação de altura (scroll-padding-top) para não cobrir títulos, e o menu mobile deve ser um dropdown que não ocupe 100% da altura da tela.</p>
+</li>
+<li>
+<p>Footer: Deve permanecer visível e responsivo em todas as resoluções.</p>
+</li>
+</ol>
+<hr>
+<h2 id="-comportamento-atual">💥 Comportamento Atual</h2>
+<ol>
+<li>
+<p>Layout: O content-wrapper estica indefinidamente (width 100%), quebrando o design em telas ultrawide.</p>
+</li>
+<li>
+<p>Lógica: A lista de estados é apenas informativa (texto), sem função de clique para controlar o mapa.</p>
+</li>
+<li>
+<p>UI: A Navbar fixa corta o topo das seções. O botão &ldquo;Explorar&rdquo; (CTA) tem padding insuficiente, fazendo o texto tocar nas bordas.</p>
+</li>
+<li>
+<p>Mobile: O CSS antigo esconde o footer em telas &lt; 768px e o menu mobile usa um estilo de &ldquo;gaveta&rdquo; intrusivo.</p>
+</li>
+</ol>
+<hr>
+<h2 id="-ambiente-de-execução">💻 Ambiente de Execução</h2>
+<ul>
+<li>
+<p>Sistema Operacional: Linux / Windows</p>
+</li>
+<li>
+<p>Navegador: Google Chrome / Firefox</p>
+</li>
+<li>
+<p>Versão da Aplicação: Desenvolvimento (Localhost)</p>
+</li>
+<li>
+<p>Dispositivo: Desktop &amp; Mobile (Responsividade)</p>
+</li>
+</ul>
+<hr>
+<h2 id="adicional-contexto-adicional-opcional">adicional Contexto Adicional (Opcional)</h2>
+<p>As alterações envolvem refatoração nos seguintes arquivos:</p>
+<pre><code>- src/pages/MapaPage.tsx (CSS e Lógica de State)
+
+- src/components/MapaPage/mapa.tsx (Centralização do useEffect de zoom)
+
+- src/components/MapaPage/TabelaInfo.tsx (Conversão de lista para botões clicáveis)
+
+- src/style/Navbar.css (Glassmorphism e Menu Dropdown)
+
+- src/style/Footer.css (Correção de display none)
+</code></pre>
+
+        </div>
+    </div>
+
+
+    </main>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            
+            <div class="footer-column about">
+                <h3>OncoMap</h3>
+                <p>Mapa de investimento em saúde oncológica</p>
+            </div>
+            
+            <div class="footer-column links">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column contact">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2025 OncoMap. Todos os direitos reservados.</p>
+            <p>Desenvolvido pela equipe UnB-MDS</p>
+        </div>
+    </div>
+</footer>
+    
+    <script src="http://localhost:1313/2025-2-OncoMap/js/app.js"></script>
+</body>
+</html>

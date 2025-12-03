@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><script src="/2025-2-OncoMap/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=2025-2-OncoMap/livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+        
+            Objetosnode | OncoMap
+        
+    </title>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/2025-2-OncoMap/css/doc-page-bundle.min.css">
+
+
+
+</head>
+<body>
+
+    <nav class="navbar">
+
+    <a class="navbar-brand" href="http://localhost:1313/2025-2-OncoMap/">
+        OncoMap
+    </a>
+
+    <ul class="navbar-links">
+        <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+    </ul>
+
+    <div class="navbar-right">
+        <a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a>
+    </div>
+
+</nav>
+
+    <section class="hero">
+    <div class="container">
+        <h1>Objetosnode</h1>
+        
+        
+        
+        </div>
+</section>
+
+    <main>
+        
+
+    <div class="container page-single">
+        
+        
+        
+        
+        <div class="content">
+            <h1 id="-resumo-de-objetos-do-nodejs--javascript">📑 Resumo de Objetos do Node.js / JavaScript</h1>
+<h2 id="-manipulação-de-objetos">🔹 Manipulação de Objetos</h2>
+<ul>
+<li>
+<p><strong><code>for...in</code></strong>
+Percorre todas as propriedades enumeráveis de um objeto (incluindo herdadas da cadeia de protótipos). <br>
+Útil para iterar chaves de um objeto.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Ana&#34;</span>, <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">25</span> };
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">key</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">user</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">user</span>[<span style="color:#a6e22e">key</span>]); <span style="color:#75715e">// name Ana / age 25
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div></li>
+<li>
+<p><strong><code>typeof</code></strong>
+Retorna uma string com o tipo de um valor ou variável.
+Em objetos, retorna &ldquo;object&rdquo;.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">typeof</span> { <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span> }; <span style="color:#75715e">// &#34;object&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">typeof</span> <span style="color:#66d9ef">null</span>;     <span style="color:#75715e">// &#34;object&#34; (curiosidade histórica do JS)
+</span></span></span></code></pre></div></li>
+<li>
+<p><strong><code>Object.keys()</code></strong>
+Retorna um array com as chaves próprias de um objeto.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>Object.<span style="color:#a6e22e">keys</span>({ <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> }); <span style="color:#75715e">// [&#34;a&#34;, &#34;b&#34;]
+</span></span></span></code></pre></div></li>
+<li>
+<p><strong><code>Object.values()</code></strong>
+Retorna um array com os valores das chaves de um objeto.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>Object.<span style="color:#a6e22e">values</span>({ <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> }); <span style="color:#75715e">// [1, 2]
+</span></span></span></code></pre></div></li>
+<li>
+<p><strong><code>Object.entries()</code></strong>
+Retorna um array de arrays, com cada par [chave, valor].</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>Object.<span style="color:#a6e22e">entries</span>({ <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> });
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// [[&#34;a&#34;, 1], [&#34;b&#34;, 2]]
+</span></span></span></code></pre></div></li>
+<li>
+<p><strong><code>Object.assign()</code></strong>
+Copia propriedades de um ou mais objetos para outro.
+Muito usado para clonar ou fundir objetos.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj1</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span> };
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj2</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> };
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">assign</span>({}, <span style="color:#a6e22e">obj1</span>, <span style="color:#a6e22e">obj2</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// { a: 1, b: 2 }
+</span></span></span></code></pre></div></li>
+<li>
+<p><strong><code>Object.defineProperty()</code></strong>
+Define ou modifica uma propriedade com características específicas (enumerável, configurável, gravável).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> {};
+</span></span><span style="display:flex;"><span>Object.<span style="color:#a6e22e">defineProperty</span>(<span style="color:#a6e22e">obj</span>, <span style="color:#e6db74">&#34;secret&#34;</span>, {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">123</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">writable</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">enumerable</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">secret</span>); <span style="color:#75715e">// 123
+</span></span></span></code></pre></div></li>
+<li>
+<p><strong><code>Semelhanças com JSON</code></strong>
+Um objeto em JS é estrutura viva (com métodos e referências).
+JSON é texto em formato estruturado, usado para transmissão de dados.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Ana&#34;</span> };
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">json</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;{&#34;name&#34;:&#34;Ana&#34;}&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">obj</span>;  <span style="color:#75715e">// &#34;object&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">json</span>; <span style="color:#75715e">// &#34;string&#34;
+</span></span></span></code></pre></div></li>
+</ul>
+<h3 id="require-vs-import">require() vs import</h3>
+<ul>
+<li>
+<p><strong><code>require()</code></strong>
+Sintaxe do CommonJS (usada nativamente no Node.js).
+Carrega módulos de forma síncrona.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;fs&#34;</span>);
+</span></span></code></pre></div></li>
+<li>
+<p><strong><code>import</code></strong>
+Sintaxe do ESM (ECMAScript Modules).
+Recurso mais novo, usado também no navegador.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">fs</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;fs&#34;</span>;
+</span></span></code></pre></div></li>
+</ul>
+<h4 id="diferença-principal">Diferença principal:</h4>
+<p>require() → executa na hora da chamada.
+import → carregado antes da execução, com suporte a tree-shaking.</p>
+<ul>
+<li>
+<p><strong><code>.exports</code></strong>
+Em Node.js, é como um objeto especial que define o que será exportado de um módulo.
+Pode ser usado de duas formas:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// exportando várias coisas
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">soma</span>, <span style="color:#a6e22e">multiplica</span> };
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// exportando algo único
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">soma</span>;
+</span></span></code></pre></div></li>
+<li>
+<p><strong><code>JSON.stringify()</code></strong>
+Converte um objeto em string JSON.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span> }); <span style="color:#75715e">// &#39;{&#34;a&#34;:1}&#39;
+</span></span></span></code></pre></div></li>
+<li>
+<p><strong><code>JSON.parse()</code></strong>
+Converte uma string JSON em objeto.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#e6db74">&#39;{&#34;a&#34;:1}&#39;</span>); <span style="color:#75715e">// { a: 1 }
+</span></span></span></code></pre></div></li>
+<li>
+<p><strong><code>.find()</code></strong>
+Método de arrays, mas útil em arrays de objetos.
+Retorna o primeiro elemento que satisfaz a condição.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">users</span> <span style="color:#f92672">=</span> [{ <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span> }, { <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> }];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">u</span> =&gt; <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">2</span>); <span style="color:#75715e">// { id: 2 }
+</span></span></span></code></pre></div></li>
+<li>
+<p><strong><code>.hasOwnProperty()</code></strong>
+Verifica se a propriedade pertence diretamente ao objeto (não herdada do protótipo).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span> };
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">hasOwnProperty</span>(<span style="color:#e6db74">&#34;a&#34;</span>); <span style="color:#75715e">// true
+</span></span></span></code></pre></div></li>
+<li>
+<p><strong><code>.sort()</code></strong>
+Ordena um array de strings ou números, mas também pode ser usado com objetos.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>].<span style="color:#a6e22e">sort</span>(); <span style="color:#75715e">// [1, 2, 3]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>[<span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#e6db74">&#34;a&#34;</span>].<span style="color:#a6e22e">sort</span>(); <span style="color:#75715e">// [&#34;a&#34;, &#34;b&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">users</span> <span style="color:#f92672">=</span> [{ <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">20</span> }, { <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">15</span> }];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">sort</span>((<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; <span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">age</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// [{ age: 15 }, { age: 20 }]
+</span></span></span></code></pre></div></li>
+</ul>
+
+        </div>
+    </div>
+
+
+    </main>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            
+            <div class="footer-column about">
+                <h3>OncoMap</h3>
+                <p>Mapa de investimento em saúde oncológica</p>
+            </div>
+            
+            <div class="footer-column links">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column contact">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2025 OncoMap. Todos os direitos reservados.</p>
+            <p>Desenvolvido pela equipe UnB-MDS</p>
+        </div>
+    </div>
+</footer>
+    
+    <script src="http://localhost:1313/2025-2-OncoMap/js/app.js"></script>
+</body>
+</html>

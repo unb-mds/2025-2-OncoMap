@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><script src="/2025-2-OncoMap/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=2025-2-OncoMap/livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+        
+            Etapa5 Estrutura App | OncoMap
+        
+    </title>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/2025-2-OncoMap/css/doc-page-bundle.min.css">
+
+
+
+</head>
+<body>
+
+    <nav class="navbar">
+
+    <a class="navbar-brand" href="http://localhost:1313/2025-2-OncoMap/">
+        OncoMap
+    </a>
+
+    <ul class="navbar-links">
+        <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+    </ul>
+
+    <div class="navbar-right">
+        <a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a>
+    </div>
+
+</nav>
+
+    <section class="hero">
+    <div class="container">
+        <h1>Etapa5 Estrutura App</h1>
+        
+        
+        
+        </div>
+</section>
+
+    <main>
+        
+
+    <div class="container page-single">
+        
+        
+        
+        
+        <div class="content">
+            <h1 id="etapa-5--estrutura-do-app-react-router--context-api">Etapa 5 — Estrutura do app (React Router &amp; Context API)</h1>
+<p>Nesta etapa você vai aprender a estruturar a aplicação em <strong>páginas/rotas</strong> com o <strong>React Router</strong> e a compartilhar estado entre vários componentes com a <strong>Context API</strong>. Vou explicar tudo como para um iniciante, com exemplos práticos e boas práticas.</p>
+<hr>
+<h2 id="1-organização-de-pastas-sugerida">1) Organização de pastas sugerida</h2>
+<p>Exemplo de estrutura para um projeto React pequeno/médio:</p>
+<pre tabindex="0"><code>src/
+├── App.jsx
+├── index.jsx
+├── pages/
+│   ├── Home.jsx
+│   ├── Login.jsx
+│   └── Profile.jsx
+├── components/
+│   ├── Header.jsx
+│   └── Footer.jsx
+├── routes/            # opcional: rotas organizadas aqui
+│   └── AppRoutes.jsx
+├── context/
+│   ├── AuthContext.jsx
+│   └── CartContext.jsx
+├── hooks/
+│   └── useLocalStorage.js
+└── services/
+    └── api.js
+</code></pre><p><em>Colocar providers em <code>context/</code> e hooks reutilizáveis em <code>hooks/</code> ajuda a manter o projeto organizado.</em></p>
+<hr>
+<h2 id="2-react-router-v6--conceitos-básicos">2) React Router (v6) — conceitos básicos</h2>
+<h3 id="instalação">Instalação</h3>
+<pre tabindex="0"><code>npm install react-router-dom
+</code></pre><h3 id="roteamento-simples-appjsx">Roteamento simples (App.jsx)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#75715e">// App.jsx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">BrowserRouter</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react-router-dom&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">AppRoutes</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./routes/AppRoutes&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AuthProvider</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./context/AuthContext&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">App</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">BrowserRouter</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">AuthProvider</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">AppRoutes</span> /&gt;
+</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">AuthProvider</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">BrowserRouter</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="definindo-rotas-approutesjsx">Definindo rotas (AppRoutes.jsx)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#75715e">// routes/AppRoutes.jsx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Routes</span>, <span style="color:#a6e22e">Route</span>, <span style="color:#a6e22e">Navigate</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react-router-dom&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Home</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;../pages/Home&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Login</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;../pages/Login&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Profile</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;../pages/Profile&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">NotFound</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;../pages/NotFound&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">RequireAuth</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./RequireAuth&#34;</span>; <span style="color:#75715e">// componente que protege rotas
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">AppRoutes</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">Routes</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">Route</span> <span style="color:#a6e22e">path</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#a6e22e">element</span><span style="color:#f92672">=</span>{&lt;<span style="color:#f92672">Home</span> /&gt;} /&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">Route</span> <span style="color:#a6e22e">path</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/login&#34;</span> <span style="color:#a6e22e">element</span><span style="color:#f92672">=</span>{&lt;<span style="color:#f92672">Login</span> /&gt;} /&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      {<span style="color:#75715e">/* rota protegida */</span>}
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">Route</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">path</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/profile&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">element</span><span style="color:#f92672">=</span>{
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">RequireAuth</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">Profile</span> /&gt;
+</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">RequireAuth</span>&gt;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      /&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      {<span style="color:#75715e">/* 404 - rota coringa */</span>}
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">Route</span> <span style="color:#a6e22e">path</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;*&#34;</span> <span style="color:#a6e22e">element</span><span style="color:#f92672">=</span>{&lt;<span style="color:#f92672">NotFound</span> /&gt;} /&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">Routes</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="links-e-navegação">Links e navegação</h3>
+<ul>
+<li>Usar <code>&lt;Link to=&quot;/caminho&quot;&gt;</code> para links que não recarregam a página.</li>
+<li>Usar <code>useNavigate()</code> para navegação programática.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Link</span>, <span style="color:#a6e22e">useNavigate</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react-router-dom&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Header</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">navigate</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useNavigate</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">header</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">nav</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">Link</span> <span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/&#34;</span>&gt;<span style="color:#a6e22e">Home</span>&lt;/<span style="color:#f92672">Link</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">Link</span> <span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/profile&#34;</span>&gt;<span style="color:#a6e22e">Profile</span>&lt;/<span style="color:#f92672">Link</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">nav</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{() =&gt; <span style="color:#a6e22e">navigate</span>(<span style="color:#e6db74">&#34;/login&#34;</span>)}&gt;<span style="color:#a6e22e">Entrar</span>&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">header</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="parâmetros-de-rota-useparams">Parâmetros de rota (<code>useParams</code>)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#75715e">// Rota: /product/:id
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useParams</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react-router-dom&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">ProductPage</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">id</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">useParams</span>(); <span style="color:#75715e">// id da URL
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// buscar produto por id...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> &lt;<span style="color:#f92672">div</span>&gt;<span style="color:#a6e22e">Produto</span> {<span style="color:#a6e22e">id</span>}&lt;/<span style="color:#f92672">div</span>&gt;;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="localização-atual-uselocation">Localização atual (<code>useLocation</code>)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useLocation</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react-router-dom&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">ShowLocation</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">location</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useLocation</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">pathname</span>); <span style="color:#75715e">// caminho atual
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="redirecionamento-navigate">Redirecionamento (<code>Navigate</code>)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#75715e">// redireciona para /login
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">return</span> &lt;<span style="color:#f92672">Navigate</span> <span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/login&#34;</span> <span style="color:#a6e22e">replace</span> /&gt;;
+</span></span></code></pre></div><hr>
+<h2 id="3-protegendo-rotas--requireauth-ex-redireciona-ao-login">3) Protegendo rotas — RequireAuth (ex.: redireciona ao login)</h2>
+<p>Exemplo de componente que verifica se o usuário está autenticado e, se não estiver, redireciona para <code>/login</code>. Vale usar com Context (AuthContext) para checar <code>user</code> ou <code>token</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#75715e">// routes/RequireAuth.jsx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useContext</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Navigate</span>, <span style="color:#a6e22e">useLocation</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react-router-dom&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AuthContext</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;../context/AuthContext&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">RequireAuth</span>({ <span style="color:#a6e22e">children</span> }) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">user</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">useContext</span>(<span style="color:#a6e22e">AuthContext</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">location</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useLocation</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">user</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// redireciona ao login e guarda a rota atual em state para depois voltar
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> &lt;<span style="color:#f92672">Navigate</span> <span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/login&#34;</span> <span style="color:#a6e22e">state</span><span style="color:#f92672">=</span>{{ <span style="color:#a6e22e">from</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">location</span> }} <span style="color:#a6e22e">replace</span> /&gt;;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">children</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>No Login, você pode usar <code>useLocation()</code> para ler <code>location.state.from</code> e navegar de volta após autenticar.</p>
+<hr>
+<h2 id="4-context-api--estado-global-simples">4) Context API — estado global simples</h2>
+<h3 id="quando-usar-context">Quando usar Context?</h3>
+<ul>
+<li>Para dados que vários componentes precisam: usuário autenticado, tema (claro/escuro), carrinho de compras, idioma (i18n).</li>
+<li>Evite colocar <em>todo</em> estado no context — não é um substituto para gerenciamento complexo (como Redux), mas é ótimo para casos leves a médios.</li>
+</ul>
+<h3 id="criando-um-authcontext-simples">Criando um AuthContext simples</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#75715e">// context/AuthContext.jsx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">createContext</span>, <span style="color:#a6e22e">useState</span>, <span style="color:#a6e22e">useEffect</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">AuthContext</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createContext</span>(<span style="color:#66d9ef">null</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">AuthProvider</span>({ <span style="color:#a6e22e">children</span> }) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">setUser</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#66d9ef">null</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// exemplo: persistir usuário no localStorage
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">useEffect</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">saved</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">getItem</span>(<span style="color:#e6db74">&#34;user&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">saved</span>) <span style="color:#a6e22e">setUser</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">saved</span>));
+</span></span><span style="display:flex;"><span>  }, []);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">login</span>(<span style="color:#a6e22e">userData</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setUser</span>(<span style="color:#a6e22e">userData</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">setItem</span>(<span style="color:#e6db74">&#34;user&#34;</span>, <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">userData</span>));
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">logout</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setUser</span>(<span style="color:#66d9ef">null</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">removeItem</span>(<span style="color:#e6db74">&#34;user&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">AuthContext.Provider</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{{ <span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">login</span>, <span style="color:#a6e22e">logout</span> }}&gt;
+</span></span><span style="display:flex;"><span>      {<span style="color:#a6e22e">children</span>}
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">AuthContext.Provider</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="consumindo-o-contexto">Consumindo o contexto</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#75715e">// qualquer componente
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useContext</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AuthContext</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;../context/AuthContext&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Profile</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">logout</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">useContext</span>(<span style="color:#a6e22e">AuthContext</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">user</span>) <span style="color:#66d9ef">return</span> &lt;<span style="color:#f92672">p</span>&gt;<span style="color:#a6e22e">Carregando</span>...&lt;/<span style="color:#f92672">p</span>&gt;;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">h2</span>&gt;<span style="color:#a6e22e">Olá</span>, {<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">name</span>}&lt;/<span style="color:#f92672">h2</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">logout</span>}&gt;<span style="color:#a6e22e">Sair</span>&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="5-context-com-usereducer--exemplo-para-carrinho">5) Context com <code>useReducer</code> — exemplo para carrinho</h2>
+<p>Quando o estado tem lógica mais complexa (múltiplas ações), <code>useReducer</code> é uma boa alternativa dentro do provider.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#75715e">// context/CartContext.jsx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">createContext</span>, <span style="color:#a6e22e">useReducer</span>, <span style="color:#a6e22e">useContext</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">CartContext</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createContext</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cartReducer</span>(<span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">action</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">action</span>.<span style="color:#a6e22e">type</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;ADD&#34;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// se o item existir, incrementa quantidade
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">exists</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">i</span> =&gt; <span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">action</span>.<span style="color:#a6e22e">payload</span>.<span style="color:#a6e22e">id</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">exists</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>          ...<span style="color:#a6e22e">state</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">items</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">i</span> =&gt;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">action</span>.<span style="color:#a6e22e">payload</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">?</span> { ...<span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">qty</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">qty</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> } <span style="color:#f92672">:</span> <span style="color:#a6e22e">i</span>
+</span></span><span style="display:flex;"><span>          ),
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> { ...<span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">items</span><span style="color:#f92672">:</span> [...<span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">items</span>, { ...<span style="color:#a6e22e">action</span>.<span style="color:#a6e22e">payload</span>, <span style="color:#a6e22e">qty</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span> }] };
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;REMOVE&#34;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> { ...<span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">items</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">i</span> =&gt; <span style="color:#a6e22e">i</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">!==</span> <span style="color:#a6e22e">action</span>.<span style="color:#a6e22e">payload</span>.<span style="color:#a6e22e">id</span>) };
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;CLEAR&#34;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> { ...<span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">items</span><span style="color:#f92672">:</span> [] };
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">state</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">CartProvider</span>({ <span style="color:#a6e22e">children</span> }) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">dispatch</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useReducer</span>(<span style="color:#a6e22e">cartReducer</span>, { <span style="color:#a6e22e">items</span><span style="color:#f92672">:</span> [] });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">add</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">item</span>) =&gt; <span style="color:#a6e22e">dispatch</span>({ <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;ADD&#34;</span>, <span style="color:#a6e22e">payload</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">item</span> });
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">remove</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">id</span>) =&gt; <span style="color:#a6e22e">dispatch</span>({ <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;REMOVE&#34;</span>, <span style="color:#a6e22e">payload</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">id</span> } });
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">clear</span> <span style="color:#f92672">=</span> () =&gt; <span style="color:#a6e22e">dispatch</span>({ <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;CLEAR&#34;</span> });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">CartContext.Provider</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{{ <span style="color:#a6e22e">cart</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">add</span>, <span style="color:#a6e22e">remove</span>, <span style="color:#a6e22e">clear</span> }}&gt;
+</span></span><span style="display:flex;"><span>      {<span style="color:#a6e22e">children</span>}
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">CartContext.Provider</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// hook utilitário
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">useCart</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">useContext</span>(<span style="color:#a6e22e">CartContext</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Uso: envolver <code>CartProvider</code> no topo (App) e usar <code>useCart()</code> nos componentes que precisam.</p>
+<hr>
+<h2 id="6-boas-práticas-e-dicas">6) Boas práticas e dicas</h2>
+<ul>
+<li><strong>Coloque providers o mais alto possível</strong> (ex.: em <code>index.jsx</code> ou <code>App.jsx</code>) para que toda a árvore possa consumir o contexto.</li>
+<li><strong>Separe contextos por responsabilidade</strong> (AuthContext, CartContext) — evite um único contexto gigante.</li>
+<li><strong>Não coloque valores que mudam muito</strong> (como contadores atualizados a cada segundo) no context — isso causa re-renders amplos.</li>
+<li><strong>Memoize valores quando necessário</strong>: se você passar objetos no <code>value</code> do provider, use <code>useMemo</code> para evitar re-renders desnecessários:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useMemo</span>(() =&gt; ({ <span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">login</span>, <span style="color:#a6e22e">logout</span> }), [<span style="color:#a6e22e">user</span>]);
+</span></span></code></pre></div></li>
+<li><strong>Proteja rotas privadas</strong> com um componente como <code>RequireAuth</code> e mantenha a lógica de autenticação no <code>AuthContext</code>.</li>
+<li><strong>Persistência</strong>: use <code>localStorage</code> ou IndexedDB com cuidado; sincronize com <code>useEffect</code> e trate erros.</li>
+<li><strong>Teste</strong>: componentes que usam context ficam mais fáceis de testar se você puder injetar providers com valores de teste.</li>
+</ul>
+<hr>
+<h2 id="7-erros-comuns-e-como-evitar">7) Erros comuns e como evitar</h2>
+<ul>
+<li><strong>Esquecer <code>BrowserRouter</code></strong> — sem ele, <code>Routes</code> e <code>Link</code> não funcionam.</li>
+<li><strong>Paths com espaços</strong> — cuidado ao construir <code>to=&quot;/states&quot;</code> (sem espaços). Espaços geram <code>%20</code>.</li>
+<li><strong>Colocar muita lógica no provider</strong> — prefira dividir responsabilidades e extrair lógica para hooks.</li>
+<li><strong>Passar funções recreadas no <code>value</code> do provider</strong> — use <code>useCallback</code>/<code>useMemo</code> quando necessário para estabilidade de referência.</li>
+<li><strong>Usar Context para tudo</strong> — o prop drilling às vezes é aceitável; não transforme context em anti-padrão (ex.: para dados locais e altamente mutáveis).</li>
+</ul>
+<hr>
+<h2 id="8-exercícios-práticos-sugeridos">8) Exercícios práticos sugeridos</h2>
+<ol>
+<li>Crie rotas para <code>/</code>, <code>/login</code>, <code>/profile</code> e uma página 404. Proteja <code>/profile</code> com <code>RequireAuth</code>.</li>
+<li>Implemente <code>AuthContext</code> com <code>login</code>/<code>logout</code> e persista no <code>localStorage</code>. No login, redirecione de volta para a página que o usuário tentou acessar.</li>
+<li>Crie <code>CartContext</code> usando <code>useReducer</code> com ações <code>ADD</code>, <code>REMOVE</code>, <code>CLEAR</code> e um componente que mostra o total de itens.</li>
+<li>Experimente <code>useNavigate</code> para redirecionar após ação (ex.: após checkout ir para <code>/obrigado</code>).</li>
+<li>Meça re-renders: coloque <code>console.log</code> no componente Header e veja se ele é re-renderizado ao adicionar itens no carrinho; otimize com <code>useMemo</code>/<code>useCallback</code> se necessário.</li>
+</ol>
+<hr>
+<p>Se quiser, eu posso gerar exemplos prontos em arquivos <code>.jsx</code> (por exemplo <code>AuthContext.jsx</code>, <code>RequireAuth.jsx</code>, <code>AppRoutes.jsx</code>) para você testar no seu projeto. Quer que eu gere os arquivos de exemplo agora?</p>
+
+        </div>
+    </div>
+
+
+    </main>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            
+            <div class="footer-column about">
+                <h3>OncoMap</h3>
+                <p>Mapa de investimento em saúde oncológica</p>
+            </div>
+            
+            <div class="footer-column links">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column contact">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2025 OncoMap. Todos os direitos reservados.</p>
+            <p>Desenvolvido pela equipe UnB-MDS</p>
+        </div>
+    </div>
+</footer>
+    
+    <script src="http://localhost:1313/2025-2-OncoMap/js/app.js"></script>
+</body>
+</html>

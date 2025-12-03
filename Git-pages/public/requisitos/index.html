@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><script src="/2025-2-OncoMap/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=2025-2-OncoMap/livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+        
+            Requisitos | OncoMap
+        
+    </title>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/2025-2-OncoMap/css/-page-bundle.min.css">
+
+
+
+</head>
+<body>
+
+    <nav class="navbar">
+
+    <a class="navbar-brand" href="http://localhost:1313/2025-2-OncoMap/">
+        OncoMap
+    </a>
+
+    <ul class="navbar-links">
+        <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+    </ul>
+
+    <div class="navbar-right">
+        <a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a>
+    </div>
+
+</nav>
+
+    <section class="hero">
+    <div class="container">
+        <h1>Requisitos</h1>
+        
+        
+            <p class="subtitle">Mapa de Épicos, Funcionalidades e Histórias de Usuário</p>
+        
+        
+        </div>
+</section>
+
+    <main>
+        
+    
+    
+
+    <section class="content-embed">
+        
+    </section>
+
+    
+    <section class="text-sections-area">
+        <div class="container">
+            
+            
+            <div class="text-block">
+                <h2>Visão Geral</h2>
+                
+                <div class="text-block-content">
+                    <h3 id="documentação-completa-dos-requisitos-organizados-por-tipo-e-prioridade">Documentação completa dos requisitos, organizados por tipo e prioridade:</h3>
+<ul>
+<li><strong>Story Maps:</strong> Mapeamento visual das histórias de usuário</li>
+<li><strong>Requisitos Funcionais:</strong> Funcionalidades específicas do sistema</li>
+<li><strong>Requisitos Não Funcionais:</strong> Qualidades e restrições do sistema</li>
+<li><strong>Personas:</strong> Perfis dos usuários do sistema</li>
+</ul>
+
+                </div>
+            </div>
+            
+            <div class="text-block">
+                <h2>StoryMap</h2>
+                
+                <div class="text-block-content">
+                    <img src="http://localhost:1313/2025-2-OncoMap/images/requisitos.png" alt="StoryMap" style="width: 100%;">
+<h3 id="objetivos-principais">Objetivos Principais:</h3>
+<ul>
+<li>Mapeamento completo das funcionalidades</li>
+<li>Organização por personas e jornadas</li>
+<li>Priorização por valor de negócio</li>
+<li>Visualização da experiência do usuário</li>
+</ul>
+
+                </div>
+            </div>
+            
+            <div class="text-block">
+                <h2>Personas</h2>
+                
+                <div class="text-block-content">
+                    <h3 id="usuários-primários">Usuários Primários:</h3>
+<ul>
+<li><strong>Pesquisadores</strong> Educacionais: Analistas que buscam dados sobre investimentos</li>
+<li><strong>Gestores Públicos:</strong> Tomadores de decisão em políticas educacionais</li>
+<li><strong>Jornalistas:</strong> Profissionais que cobrem saude pública</li>
+</ul>
+<h3 id="usuários-secundários">Usuários Secundários:</h3>
+<ul>
+<li><strong>Comunidade</strong> Assunto comunitário</li>
+<li><strong>ONGs:</strong> Organizações focadas em saúde</li>
+<li><strong>Consultores:</strong> Especialistas em políticas públicas</li>
+</ul>
+
+                </div>
+            </div>
+            
+            <div class="text-block">
+                <h2>Requisitos Funcionais</h2>
+                
+                <div class="text-block-content">
+                    <ul>
+<li><strong>RF 01:</strong> Busca por Palavras-Chave: O sistema deve permitir a busca por palavras-chave relacionadas à saúde oncológica (ex: &ldquo;oncologia&rdquo;, &ldquo;câncer&rdquo;, &ldquo;quimioterapia&rdquo;, &ldquo;radioterapia&rdquo;).</li>
+<li><strong>RF 02:</strong> Filtragem de Resultados: O sistema deve permitir que os resultados da busca sejam filtrados por:
+<ul>
+<li>Município e/ou Estado.</li>
+<li>Período de tempo (data de início e fim).</li>
+</ul>
+</li>
+<li><strong>RF 03:</strong> Extração de Valores Monetários: O sistema deve ser capaz de identificar e extrair valores monetários (em Reais, R$) de licitações e contratos encontrados nos diários.</li>
+<li><strong>RF 04:</strong> Classificação de Investimentos: O sistema deve processar os dados extraídos para classificá-los automaticamente por tipo de investimento, conforme as categorias definidas: Medicamentos, Equipamentos, Obras, Serviços de Saúde, etc.</li>
+<li><strong>RF 05:</strong> Exibição em Painel (Dashboard): O sistema deve exibir os resultados da busca em um painel de controle central.</li>
+<li><strong>RF 06:</strong> Tabela Detalhada: O painel deve conter uma tabela detalhada com informações de cada licitação/contrato, incluindo, no mínimo: município, valor, data e descrição.</li>
+<li><strong>RF 07:</strong> Gráficos Interativos: O sistema deve conter gráficos interativos que mostrem a distribuição dos investimentos (ex: total de gastos por município ou por categoria).</li>
+<li><strong>RF 08:</strong> Exportação de Dados: O sistema deve permitir a exportação dos dados da tabela e dos relatórios em formatos comuns, como CSV e PDF.</li>
+</ul>
+
+                </div>
+            </div>
+            
+            <div class="text-block">
+                <h2>Requisitos não Funcionais</h2>
+                
+                <div class="text-block-content">
+                    <ul>
+<li><strong>RNF 01: Usabilidade</strong>
+<ul>
+<li>A interface do usuário deve ser intuitiva e de fácil navegação, mesmo para usuários sem conhecimento técnico.</li>
+<li>A visualização dos resultados (tabelas, gráficos) deve ser clara e facilitar a interpretação.</li>
+<li>O processo de busca e exportação deve ser simples e direto.</li>
+</ul>
+</li>
+<li><strong>RNF 02: Desempenho</strong>
+<ul>
+<li>As buscas no sistema devem retornar resultados em um tempo aceitável (meta: inferior a 5 segundos).</li>
+<li>O processamento e a exibição dos dados no painel devem ser eficientes, mesmo com múltiplos filtros aplicados.</li>
+</ul>
+</li>
+<li><strong>RNF 03: Confiabilidade</strong>
+<ul>
+<li>A extração de dados de licitações e contratos deve ser precisa, evitando erros de leitura de valores e datas.</li>
+<li>A integridade dos dados deve ser mantida, garantindo consistência com as fontes dos diários oficiais.</li>
+</ul>
+</li>
+<li><strong>RNF 04: Escalabilidade</strong>
+<ul>
+<li>A arquitetura do sistema deve permitir a inclusão de novos diários oficiais sem a necessidade de grandes mudanças estruturais.</li>
+<li>O sistema deve ser capaz de suportar um aumento no volume de buscas e de usuários simultâneos no futuro.</li>
+</ul>
+</li>
+</ul>
+
+                </div>
+            </div>
+            
+
+        </div>
+    </section>
+    
+
+
+    </main>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            
+            <div class="footer-column about">
+                <h3>OncoMap</h3>
+                <p>Mapa de investimento em saúde oncológica</p>
+            </div>
+            
+            <div class="footer-column links">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column contact">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2025 OncoMap. Todos os direitos reservados.</p>
+            <p>Desenvolvido pela equipe UnB-MDS</p>
+        </div>
+    </div>
+</footer>
+    
+    <script src="http://localhost:1313/2025-2-OncoMap/js/app.js"></script>
+</body>
+</html>

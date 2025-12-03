@@ -1,0 +1,21 @@
+{{ define "main" }}
+
+    {{/* O Hero padronizado (do baseof.html) já aparece aqui */}}
+
+    <section class="content-issue">
+        <div class="container">
+
+            {{ if .Params.milestone }}
+                <div class="issue-meta">
+                    <strong>Milestone:</strong> {{ .Params.milestone }}
+                </div>
+            {{ end }}
+
+            <div class="content">
+                {{ .Content }}
+            </div>
+
+        </div>
+    </section>
+
+{{ end }}

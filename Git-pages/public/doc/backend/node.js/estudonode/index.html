@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><script src="/2025-2-OncoMap/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=2025-2-OncoMap/livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+        
+            Estudonode | OncoMap
+        
+    </title>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/2025-2-OncoMap/css/doc-page-bundle.min.css">
+
+
+
+</head>
+<body>
+
+    <nav class="navbar">
+
+    <a class="navbar-brand" href="http://localhost:1313/2025-2-OncoMap/">
+        OncoMap
+    </a>
+
+    <ul class="navbar-links">
+        <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+    </ul>
+
+    <div class="navbar-right">
+        <a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a>
+    </div>
+
+</nav>
+
+    <section class="hero">
+    <div class="container">
+        <h1>Estudonode</h1>
+        
+        
+        
+        </div>
+</section>
+
+    <main>
+        
+
+    <div class="container page-single">
+        
+        
+        
+        
+        <div class="content">
+            <h1 id="estudo-nodejs">Estudo Node.js</h1>
+<h2 id="tipos-de-dados">Tipos de dados</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Tipo</th>
+          <th>Descrição</th>
+          <th>Exemplo</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>Number</code></td>
+          <td>Números inteiros ou decimais</td>
+          <td><code>let idade = 25;</code> <code>let preco = 19.99;</code></td>
+      </tr>
+      <tr>
+          <td><code>String</code></td>
+          <td>Texto, caracteres entre aspas</td>
+          <td><code>let nome = &quot;Artur&quot;;</code></td>
+      </tr>
+      <tr>
+          <td><code>Boolean</code></td>
+          <td>Verdadeiro ou falso</td>
+          <td><code>let ativo = true;</code></td>
+      </tr>
+      <tr>
+          <td><code>Undefined</code></td>
+          <td>Variável declarada mas sem valor</td>
+          <td><code>let valor;</code></td>
+      </tr>
+      <tr>
+          <td><code>Null</code></td>
+          <td>Valor intencionalmente vazio</td>
+          <td><code>let resultado = null;</code></td>
+      </tr>
+      <tr>
+          <td><code>BigInt</code></td>
+          <td>Números muito grandes</td>
+          <td><code>let numeroGrande = 12345678901234567890n;</code></td>
+      </tr>
+      <tr>
+          <td><code>Symbol</code></td>
+          <td>Valor único e imutável, geralmente para identificação</td>
+          <td><code>let id = Symbol(&quot;id&quot;);</code></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="tipos-de-referência">Tipos de referência</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Tipo</th>
+          <th>Descrição</th>
+          <th>Exemplo</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>Object</code></td>
+          <td>Estrutura que armazena múltiplos valores e propriedades</td>
+          <td><code>let pessoa = { nome: &quot;Ana&quot;, idade: 30 };</code></td>
+      </tr>
+      <tr>
+          <td><code>Array</code></td>
+          <td>Lista de valores</td>
+          <td><code>let frutas = [&quot;maçã&quot;, &quot;banana&quot;, &quot;laranja&quot;];</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>• Objetos e arrays são amplamente usados para armazenar dados de usuários, configurações e respostas de APIs.</p>
+<h2 id="variáveis">Variáveis</h2>
+<h3 id="existem-3-tipos-de-variáveis">Existem 3 tipos de variáveis:</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Palavra-chave</th>
+          <th>Escopo</th>
+          <th>Mutável?</th>
+          <th>Exemplo</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>var</code></td>
+          <td>Função</td>
+          <td>Sim</td>
+          <td><code>var x = 10;</code></td>
+      </tr>
+      <tr>
+          <td><code>let</code></td>
+          <td>Bloco</td>
+          <td>Sim</td>
+          <td><code>let y = 20;</code></td>
+      </tr>
+      <tr>
+          <td><code>const</code></td>
+          <td>Bloco</td>
+          <td>Não</td>
+          <td><code>const z = 30;</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>• Em Node.js o <code>var</code> vem caindo em desuso ao longo do tempo e hoje em dia quase não é utilizado</p>
+<h2 id="funções">Funções</h2>
+<h3 id="funções-são-blocos-de-código-reutilizáveis-existem-três-principais-formas">Funções são blocos de código reutilizáveis. Existem três principais formas:</h3>
+<h4 id="tradicional">Tradicional</h4>
+<pre tabindex="0"><code>function soma(a, b) {
+  return a + b;
+}
+console.log(soma(2,3)); // 5
+</code></pre><h4 id="anônima-atribuída-a-variável">Anônima atribuída a variável</h4>
+<pre tabindex="0"><code>const multiplicar = function(a, b) {
+  return a * b;
+};
+console.log(multiplicar(2,3)); // 6
+</code></pre><h4 id="arrow-function">Arrow function</h4>
+<pre tabindex="0"><code>const dividir = (a, b) =&gt; a / b;
+console.log(dividir(6,2)); // 3
+</code></pre><p>• Arrow functions são ideais para callbacks e funções assíncronas, como eventos e leitura de arquivos.</p>
+
+        </div>
+    </div>
+
+
+    </main>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            
+            <div class="footer-column about">
+                <h3>OncoMap</h3>
+                <p>Mapa de investimento em saúde oncológica</p>
+            </div>
+            
+            <div class="footer-column links">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column contact">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2025 OncoMap. Todos os direitos reservados.</p>
+            <p>Desenvolvido pela equipe UnB-MDS</p>
+        </div>
+    </div>
+</footer>
+    
+    <script src="http://localhost:1313/2025-2-OncoMap/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+/* assets/css/doc.css */
+
+/* --- Container Principal --- */
+.content-list {
+    padding: 60px 0;
+    background-color: #f8f9fa; /* Fundo cinza bem claro para destacar os cartões brancos */
+    min-height: 80vh;
+}
+
+.content-list .content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Cabeçalho da Página (Título Principal) --- */
+.list-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.list-header h2 {
+    font-size: 2.5rem;
+    color: #1e4d46; /* Verde do tema */
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.list-description {
+    text-align: center;
+    color: #555;
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+    line-height: 1.6;
+}
+
+/* --- Títulos dos Grupos (Pastas) --- */
+/* Seleciona os H2 que são criados pelo loop (Backend, Frontend, etc) */
+.content > h2 { 
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+/* Adiciona um ícone de pasta antes do título do grupo */
+.content > h2::before {
+    content: "📂";
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+/* --- Lista de Itens (Grid de Cartões) --- */
+.organized-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    /* Cria um grid responsivo: cartões se ajustam automaticamente */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* --- O Cartão Individual (li) --- */
+.organized-list li {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.3s ease; /* Animação suave */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Efeito Hover (passar o mouse) */
+.organized-list li:hover {
+    transform: translateY(-5px); /* Sobe um pouquinho */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Sombra suave */
+    border-color: #1e4d46; /* Borda fica verde */
+}
+
+/* --- O Link do Documento (Título) --- */
+.organized-list li a {
+    text-decoration: none;
+    color: #1e4d46;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.organized-list li a::before {
+    content: "📄 "; /* Ícone de documento */
+}
+
+.organized-list li a:hover {
+    text-decoration: underline;
+}
+
+/* --- Subtítulo / Descrição --- */
+.organized-list li p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* Dica visual do caminho (opcional, se você descomentar no HTML) */
+.path-hint {
+    display: block;
+    font-size: 0.75rem;
+    color: #999;
+    margin-top: 5px;
+    font-style: italic;
+}
