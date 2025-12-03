@@ -1,10 +1,7 @@
-// backend/src/api/controllers/statsController.js
 const db = require('../../config/database');
 
-// 1. Estatísticas Gerais (Totais por Estado e Município)
 const getGeneralStats = async (req, res) => {
     try {
-        // Query para somar totais por ESTADO (UF)
         const statesQuery = `
             SELECT 
                 state_uf,
@@ -15,7 +12,6 @@ const getGeneralStats = async (req, res) => {
             ORDER BY total_value DESC;
         `;
 
-        // Query para somar totais por MUNICÍPIO
         const municipalitiesQuery = `
             SELECT 
                 municipality_ibge_code,
@@ -56,7 +52,6 @@ const getGeneralStats = async (req, res) => {
     }
 };
 
-// 2. Detalhes de um Estado Específico
 const getStateSpecificStats = async (req, res) => {
     const { uf } = req.params;
 
@@ -96,7 +91,6 @@ const getStateSpecificStats = async (req, res) => {
     }
 };
 
-// 3. Detalhes de um Município Específico
 const getMunicipalitySpecificStats = async (req, res) => {
     const { ibge } = req.params;
 
@@ -163,7 +157,6 @@ const getMunicipalitySpecificStats = async (req, res) => {
     }
 };
 
-// Exportando TODAS as funções corretamente
 module.exports = {
     getGeneralStats,
     getStateSpecificStats,

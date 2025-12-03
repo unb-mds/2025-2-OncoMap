@@ -3,7 +3,7 @@ import '../../style/SobreNos.css';
 
 const teamMembers = [
   { name: 'Felipe Henriques', role: 'Líder Técnico', img: 'https://placehold.co/150x150/0d4b55/FFF?text=FH' },
-  { name: 'Arthur Sampaio', role: 'Arquiteto Backend', img: 'https://i.imgur.com/eBOUX2i.png' }, // Exemplo com imagem real
+  { name: 'Arthur Sampaio', role: 'Arquiteto Backend', img: 'https://i.imgur.com/eBOUX2i.png' },
   { name: 'João Pedro', role: 'Desenvolvedor Backend', img: 'https://placehold.co/150x150/0d4b55/FFF?text=JP' },
   { name: 'Samara Albuquerque', role: 'Desenvolvedora Frontend', img: 'https://placehold.co/150x150/0d4b55/FFF?text=SA' },
   { name: 'Felipe Henriques', role: 'Líder Técnico', img: 'https://placehold.co/150x150/0d4b55/FFF?text=FH' },

@@ -6,7 +6,6 @@ import '../../style/Navbar.css';
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Controla o scroll do body quando menu está aberto
   useEffect(() => {
     if (menuOpen) {
       document.body.classList.add('menu-open');
@@ -14,13 +13,11 @@ const Navbar = () => {
       document.body.classList.remove('menu-open');
     }
 
-    // Cleanup
     return () => {
       document.body.classList.remove('menu-open');
     };
   }, [menuOpen]);
 
-  // Fecha o menu quando a tela fica grande
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 992) {

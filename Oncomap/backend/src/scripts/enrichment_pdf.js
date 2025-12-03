@@ -1,5 +1,3 @@
-// Oncomap/backend/src/scripts/enrichment_pdf.js
-// VERSÃO: AUTO (Sem Range de ID) - Processa tudo que está pendente
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const db = require('../config/database');
 const axios = require('axios');
@@ -7,7 +5,6 @@ require('dotenv').config();
 const { get_encoding } = require("tiktoken");
 const pdfParse = require('pdf-parse');
 
-// --- 1. CONFIGURAÇÃO DO ROTEADOR DE CHAVES ---
 const apiKeys = (process.env.GEMINI_API_KEYS || "")
     .split(',')
     .map(key => key.trim())
@@ -36,18 +33,15 @@ function switchToNextKey() {
 }
 
 updateModelInstance();
-// --- FIM DO ROTEADOR DE CHAVES ---
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-// --- CONSTANTES DE CONTROLE ---
 const MAX_TOKENS_PARA_PROCESSAR = 800000;
 const MAX_RETRIES = 3;
 const DELAY_BETWEEN_MENTIONS = 1000;
 
 const tokenizer = get_encoding("cl100k_base");
 
-// --- FUNÇÕES DE PROMPT E EXTRAÇÃO ---
 function getGeminiPrompt(textContent, mentionId, municipalityName) {
      return `
       **Tarefa:** VOCÊ É UM ANALISTA FINANCEIRO ESPECIALIZADO EM ORÇAMENTO PÚBLICO DE SAÚDE ONCOLÓGICA. Analise CUIDADOSAMENTE o seguinte texto extraído de um Diário Oficial Municipal brasileiro. Seu objetivo é:
@@ -107,8 +101,13 @@ function extractJsonFromString(text) {
         potentialJson = text.replace(/^```json\s*/, '').replace(/```$/, '').trim();
     }
     if (potentialJson && potentialJson.startsWith('{') && potentialJson.endsWith('}')) {
-       try { JSON.parse(potentialJson); return potentialJson; } catch (e) {}
-    }
+   try { 
+       JSON.parse(potentialJson); 
+       return potentialJson; 
+   } catch { 
+       return null; 
+   }
+}
     return null;
 }
 
@@ -178,9 +177,6 @@ async function processSingleText(textContent, mentionId, municipalityName) {
     return null;
 }
 
-/**
- * Função principal do script - MODIFICADA PARA AUTOMÁTICO (SEM ARGS)
- */
 async function enrichData() {
     console.log('✅ Iniciando script de enriquecimento PDF (Modo Automático)...');
     console.log(`🎯 Buscando TODAS as menções pendentes de análise PDF...`);
@@ -193,8 +189,6 @@ async function enrichData() {
         while (true) {
             let mentionsToProcess = null;
             try {
-                // MODIFICAÇÃO AQUI: Removemos o WHERE id >= $1...
-                // Agora pegamos tudo que é NULL e tem source_url
                 mentionsToProcess = await db.query(
                     `SELECT id, source_url, municipality_name 
                      FROM mentions 
@@ -347,8 +341,6 @@ async function enrichData() {
     tokenizer.free();
 }
 
-// --- EXECUÇÃO SEM ARGUMENTOS ---
-// O script agora roda direto, sem precisar de ID inicial/final
 enrichData().catch(error => {
     if (error.message !== "ALL_KEYS_RATE_LIMITED") {
         console.error("\n💥 Falha fatal (catch final):", error);

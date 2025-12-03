@@ -50,6 +50,9 @@ A maneira mais fácil de rodar a aplicação completa é utilizando **Docker Com
 
 ### Pré-requisitos
 * [Docker](https://www.docker.com/) instalado.
+```bash
+sudo apt install docker-compose
+```
 * Uma chave de API do [Google AI Studio](https://aistudio.google.com/).
 
 ### Passo a Passo
@@ -68,22 +71,27 @@ A maneira mais fácil de rodar a aplicação completa é utilizando **Docker Com
 3.  **Configure o Backend:**
     Crie um arquivo `.env` dentro da pasta `Oncomap/backend/` com o seguinte conteúdo:
     ```ini
-    PORT=3001
-    
-    # Conexão com o Banco (Supabase - Pooler URL para compatibilidade IPv4)
-    # Formato: postgres://usuario:[senha]@host-pooler:6543/postgres
-    DATABASE_URL=sua_string_de_conexao_aqui
-    
-    # Inteligência Artificial
-    GEMINI_API_KEY=sua_chave_gemini_aqui
-    # (Opcional) Chaves extras para evitar rate-limit
-    GEMINI_API_KEYS=chave1,chave2,chave3
+    # --- Configurações do Servidor ---
+    PORT=3000
+
+    # Conexão direta com Postgres (para o arquivo config/database.js)
+    DATABASE_URL="postgresql://postgres:sua_senha@db.seu-id-projeto.supabase.co:5432/postgres"
+
+    # --- API QUERIDO DIÁRIO ---
+    QUERIDO_DIARIO_API_URL=https://queridodiario.ok.org.br/API
+
+    # --- API GROQ (Sanity) ---
+    GROQ_API_KEY="sua_chave_groq_aqui"
+
+    # --- Inteligência Artificial (Google Gemini) ---
+    GEMINI_API_KEYS="chave_gemini_1,chave_gemini_2,chave_gemini_3"
+    GEMINI_API_KEY="chave_gemini_1"
     ```
 
 4.  **Suba os containers:**
     Na raiz do projeto (onde está o `docker-compose.yml`), execute:
     ```bash
-    docker-compose up --build
+    npm run docker:up
     ```
 
 5.  **Acesse a aplicação:**
@@ -103,7 +111,7 @@ O coração do OncoMap são os scripts de ETL (Extração, Transformação e Car
 *Para rodar os scripts manualmente (fora do Docker):*
 ```bash
 cd Oncomap/backend
-node src/scripts/enrichment_pdf.js 1 1000  # Processa do ID 1 ao 1000
+npm run db:enrich:pdf #Processa menções pendentes baixando e lendo o PDF original via Gemini.
 ```
 
 ---

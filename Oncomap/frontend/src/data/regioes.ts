@@ -37,7 +37,10 @@ interface EstadoProperties {
   codarea: string;
   regiao?: string; 
   centroide?: [number, number];
-  [key: string]: any; 
+  name?: string;
+  nome?: string;
+  sigla?: string;
+  [key: string]: unknown; 
 }
 
 type EstadoFeature = Feature<Geometry, EstadoProperties>;

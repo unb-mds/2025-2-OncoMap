@@ -26,7 +26,7 @@ export interface MencaoDetalhada {
   date: string;
   value: number;
   url: string;
-  details: any[];
+  details: string[];
 }
 
 export interface CategoriasInvestimento {
@@ -46,4 +46,12 @@ export interface DetalhesMunicipio {
   total_invested: number;
   categories: CategoriasInvestimento;
   recent_mentions: MencaoDetalhada[];
+}
+
+export interface DetalhesEstado {
+  uf: string;
+  ibge: string;
+  name: string;
+  total_invested: number;
+  categories: CategoriasInvestimento; 
 }

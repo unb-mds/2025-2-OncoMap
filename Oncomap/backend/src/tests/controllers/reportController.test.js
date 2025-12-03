@@ -1,12 +1,8 @@
-// Oncomap/backend/src/tests/controllers/reportController.test.js
-
-// 1. DEFINIMOS OS MOCKS ANTES DE TUDO
 const mockGenerateContent = jest.fn();
 const mockGetGenerativeModel = jest.fn().mockReturnValue({
   generateContent: mockGenerateContent
 });
 
-// Mock da biblioteca do Google
 jest.mock('@google/generative-ai', () => {
   return {
     GoogleGenerativeAI: jest.fn().mockImplementation(() => {
@@ -17,12 +13,10 @@ jest.mock('@google/generative-ai', () => {
   };
 });
 
-// Outros Mocks
 jest.mock('../../config/database');
 jest.mock('html-pdf-node');
 jest.mock('../../utils/regionMap');
 
-// 2. AGORA IMPORTAMOS O CONTROLLER (Depois dos mocks)
 const reportController = require('../../api/controllers/reportController');
 const db = require('../../config/database');
 const pdf = require('html-pdf-node');
@@ -46,7 +40,6 @@ describe('Report Controller', () => {
     test('Deve gerar PDF com sucesso para uma região', async () => {
       req.params.regionName = 'sudeste';
 
-      // Configura mocks
       getStatesByRegion.mockReturnValue(['SP', 'RJ']);
       db.query.mockResolvedValue({
         rows: [{ state_uf: 'SP', total_value: '1000.00' }]
@@ -56,10 +49,8 @@ describe('Report Controller', () => {
       });
       pdf.generatePdf.mockResolvedValue(Buffer.from('PDF'));
 
-      // Executa
       await reportController.generateRegionReport(req, res);
 
-      // Verifica
       expect(mockGenerateContent).toHaveBeenCalled();
       expect(res.setHeader).toHaveBeenCalledWith('Content-Type', 'application/pdf');
       expect(res.send).toHaveBeenCalled();

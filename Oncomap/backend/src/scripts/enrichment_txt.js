@@ -1,11 +1,8 @@
-// Oncomap/backend/src/scripts/enrichment_txt.js
-// VERSÃO: AUTO (Sem Range de ID) - TXT-Fallback + Chunking
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const db = require('../config/database');
 const axios = require('axios');
 require('dotenv').config();
 
-// --- 1. CONFIGURAÇÃO DO ROTEADOR DE CHAVES ---
 const apiKeys = (process.env.GEMINI_API_KEYS || "")
     .split(',')
     .map(key => key.trim())
@@ -34,7 +31,6 @@ function switchToNextKey() {
 }
 
 updateModelInstance();
-// --- FIM DO ROTEADOR DE CHAVES ---
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -102,8 +98,13 @@ function extractJsonFromString(text) {
         potentialJson = text.replace(/^```json\s*/, '').replace(/```$/, '').trim();
     }
     if (potentialJson && potentialJson.startsWith('{') && potentialJson.endsWith('}')) {
-       try { JSON.parse(potentialJson); return potentialJson; } catch (e) {}
+    try { 
+        JSON.parse(potentialJson); 
+        return potentialJson; 
+    } catch { 
+        return null; 
     }
+}
     return null;
 }
 
@@ -192,9 +193,6 @@ async function processSingleChunk(chunkText, mentionId, municipalityName, chunkI
 }
 
 
-/**
- * Função principal do script - MODIFICADA PARA AUTOMÁTICO (SEM ARGS)
- */
 async function enrichData() {
     console.log('✅ Iniciando script de enriquecimento TXT (Modo Automático)...');
     console.log(`🎯 Buscando TODAS as menções pendentes de análise TXT...`);
@@ -207,8 +205,6 @@ async function enrichData() {
         while (true) {
             let mentionsToProcess = null;
             try {
-                // MODIFICAÇÃO AQUI: Removemos o WHERE id >= $1...
-                // Agora pegamos tudo que tem gemini_analysis_txt NULL e tem TXT ou Excerpt
                 mentionsToProcess = await db.query(
                     `SELECT id, txt_url, excerpt, municipality_name 
                      FROM mentions 
@@ -250,7 +246,7 @@ async function enrichData() {
                             textToAnalyze = response.data;
                             sourceUsed = 'txt';
                             console.log(`  -> Texto baixado (${textToAnalyze.length} caracteres).`);
-                        } catch (txtError) {
+                        } catch {
                             console.warn(`  -> Aviso: Falha ao baixar .txt. Usando excerpt.`);
                             textToAnalyze = mention.excerpt;
                             sourceUsed = 'excerpt (fallback)';
@@ -371,8 +367,6 @@ async function enrichData() {
 
 }
 
-// --- EXECUÇÃO SEM ARGUMENTOS ---
-// O script agora roda direto
 enrichData().catch(error => {
     if (error.message !== "ALL_KEYS_RATE_LIMITED") {
         console.error("\n💥 Falha fatal (catch final):", error);

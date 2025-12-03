@@ -1,10 +1,6 @@
-// backend/src/setup_municipalities.js
-
 const db = require('../src/config/database');
 const allMunicipalities = require('../src/data/municipios.json');
 
-// 1. O MAPA DE TRADUÇÃO
-// Este objeto servirá como nosso "dicionário" para converter o código da UF para a sigla.
 const ufCodeToAbbreviation = {
     11: 'RO', 12: 'AC', 13: 'AM', 14: 'RR', 15: 'PA', 16: 'AP', 17: 'TO',
     21: 'MA', 22: 'PI', 23: 'CE', 24: 'RN', 25: 'PB', 26: 'PE', 27: 'AL',
@@ -18,16 +14,12 @@ async function populateMunicipalities() {
     let skippedCount = 0;
 
     for (const city of allMunicipalities) {
-        // 2. TRADUZIR O CÓDIGO PARA SIGLA
-        // Usamos o mapa para encontrar a sigla correspondente ao 'codigo_uf' do JSON.
         const stateAbbreviation = ufCodeToAbbreviation[city.codigo_uf];
 
-        // Adicionamos uma verificação de segurança. Se, por algum motivo, não encontrarmos
-        // a sigla, pulamos este município para não causar um erro.
         if (!stateAbbreviation) {
             console.warn(`  -> Aviso: Não foi possível encontrar a sigla para o código UF: ${city.codigo_uf} (Município: ${city.nome}). Pulando.`);
             skippedCount++;
-            continue; // Pula para a próxima iteração do loop
+            continue;
         }
 
         const insertQuery = `
@@ -36,8 +28,6 @@ async function populateMunicipalities() {
             ON CONFLICT (ibge_code) DO NOTHING;
         `;
 
-        // 3. USAR A SIGLA TRADUZIDA NA INSERÇÃO
-        // Agora passamos a variável 'stateAbbreviation' em vez do inexistente 'city.uf'.
         const result = await db.query(insertQuery, [city.codigo_ibge, city.nome, stateAbbreviation]);
         
         if (result.rowCount > 0) {

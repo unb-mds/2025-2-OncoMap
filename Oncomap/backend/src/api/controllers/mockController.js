@@ -1,8 +1,6 @@
-// backend/src/controllers/mockController.js
 const fs = require('fs');
 const path = require('path');
 
-// Função auxiliar para ler o nosso mock
 const readMockFile = (fileName) => {
     try {
         const filePath = path.join(__dirname, '..', 'mocks', fileName);
@@ -14,7 +12,6 @@ const readMockFile = (fileName) => {
     }
 };
 
-// Controller que envia todos os dados de investimentos das regiões
 const getDadosInvestimentos = (req, res) => {
     console.log('Requisição recebida para dados de investimentos...');
 

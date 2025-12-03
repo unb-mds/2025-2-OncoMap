@@ -1,16 +1,10 @@
-// Oncomap/backend/src/scripts/monthly_collector.js
-
 const puppeteer = require('puppeteer');
 const db = require('../config/database');
 require('dotenv').config();
 
-// --- CONFIGURAÇÕES ---
-// Nota: Usamos a URL base, os parâmetros montaremos na navegação
 const QD_API_BASE = "https://queridodiario.ok.org.br/api/gazettes";
 const KEYWORDS_QUERYSTRING = 'quimioterapia,radioterapia,oncologia,oncológico,"tratamento de câncer"';
 const LOOKBACK_DAYS = 30; 
-
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 function getStartDate(days) {
     const data = new Date();
@@ -19,52 +13,52 @@ function getStartDate(days) {
 }
 
 async function runMonthlyCollector() {
-    console.log('✅ Iniciando o coletor MENSAL (Via Puppeteer Browser)...');
+    console.log('✅ Iniciando o coletor MENSAL (Técnica "Cavalo de Troia")...');
     const since = getStartDate(LOOKBACK_DAYS);
     let browser = null;
 
     try {
         console.log(`🔎 Iniciando navegador Chrome...`);
         
-        // 1. Inicia o Puppeteer com configurações para rodar no Docker/GitHub Actions
         browser = await puppeteer.launch({
-            headless: "new", // Modo invisível novo
+            headless: "new",
             args: [
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
-                '--disable-dev-shm-usage', // Evita erros de memória em containers
-                '--disable-blink-features=AutomationControlled' // Tenta esconder que é um robô
+                '--disable-dev-shm-usage',
+                '--disable-blink-features=AutomationControlled',
+                '--window-size=1920,1080'
             ]
         });
 
         const page = await browser.newPage();
+        
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
 
-        // 2. Define um User-Agent real
-        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36');
+        const siteUrl = 'https://queridodiario.ok.org.br/';
+        console.log(`🌍 Acessando a Home Page para autenticar: ${siteUrl}`);
+        
+        await page.goto(siteUrl, {
+            waitUntil: 'networkidle0',
+            timeout: 60000
+        });
 
-        // 3. Monta a URL com os parâmetros query string
-        // Precisamos codificar os caracteres especiais (espaços, aspas) para a URL
         const params = new URLSearchParams({
             querystring: KEYWORDS_QUERYSTRING,
             published_since: since,
             size: '500'
         });
-        
-        const fullUrl = `${QD_API_BASE}?${params.toString()}`;
-        console.log(`🔎 Acessando URL da API: ${fullUrl}`);
+        const apiUrl = `${QD_API_BASE}?${params.toString()}`;
+        console.log(`🔎 Buscando dados internamente na API: ${apiUrl}`);
 
-        // 4. Navega até a API e espera o JSON
-        const response = await page.goto(fullUrl, {
-            waitUntil: 'networkidle0', // Espera a rede acalmar
-            timeout: 60000 // 60 segundos de timeout
-        });
+        const data = await page.evaluate(async (url) => {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`Erro na API interna: ${response.status}`);
+            }
+            return response.json();
+        }, apiUrl);
 
-        if (!response.ok()) {
-            throw new Error(`Erro na requisição Puppeteer: Status ${response.status()}`);
-        }
-
-        // 5. Extrai o JSON da resposta
-        const data = await response.json();
         const gazettes = data.gazettes;
 
         if (!gazettes || gazettes.length === 0) {
@@ -112,8 +106,6 @@ async function runMonthlyCollector() {
             } catch (dbError) {
                 console.error(`  -> ❌ Erro DB:`, dbError.message);
             }
-            // Pequena pausa não é necessária aqui pois o DB é local/rápido, mas mantemos por segurança
-            // await delay(10); 
         }
 
         console.log('\n🎉 Coleta mensal finalizada!');
@@ -122,7 +114,7 @@ async function runMonthlyCollector() {
 
     } catch (error) {
         console.error("💥 Erro fatal no coletor mensal (Puppeteer):", error.message);
-        process.exit(1); // Força erro no Actions
+        process.exit(1);
     } finally {
         if (browser) {
             await browser.close();

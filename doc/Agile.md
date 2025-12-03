@@ -46,7 +46,7 @@ Para garantir a organização, utilizamos o GitHub como fonte única da verdade 
 1.  **Issues:** Cada User Story é cadastrada como uma *Issue* no GitHub.
 2.  **Labels:** Utilizamos labels para categorizar o tipo de trabalho:
     * `backend`, `frontend`
-    * `bug`, `feature`, `documentation`
+    * `bug`, `feature`, `task`
 3.  **Pull Requests (PRs):** Todo PR deve ser explicitamente linkado a uma Issue.
     * *Exemplo:* No corpo do PR, utilizamos a keyword "Closes #12" para fechar automaticamente a Issue correspondente.
 4.  **Commits:** Mensagens de commit seguem o padrão [Conventional Commits](https://www.conventionalcommits.org/), facilitando a leitura do histórico e geração de changelogs.
@@ -104,10 +104,7 @@ Adotamos uma estratégia baseada em **Feature Branch Workflow** para manter a es
 
 * **`main`**: Código em produção. Deve estar sempre estável, testado e pronto para deploy.
 * **`develop` (ou `dev`)**: Branch de integração. Onde as funcionalidades se encontram para testes conjuntos antes de ir para a main.
-* **`feature/*`**: Branches temporárias criadas a partir da `dev` para cada nova funcionalidade.
-    * Exemplo: `feature/implementar-pdf-parse`, `feature/criar-rotas-stats`.
-* **`fix/*`**: Branches para correção de bugs urgentes ou não.
-    * Exemplo: `fix/erro-403-github-actions`, `fix/ajuste-porta-docker`.
+* **`Branchs Locais`**: Branchs com nomes específicos das tarefas que iriam ser realizadas.
 
 **Regra de Proteção:** Nenhum commit é feito diretamente na `main`. Todo código deve passar por um Pull Request (PR), passar pelos testes automatizados (CI) e ser revisado por pelo menos um outro membro do grupo.
 

@@ -1,10 +1,7 @@
-// backend/src/api/routes/mapRoutes.js
-
 const express = require('express');
 const router = express.Router();
 const db = require('../../config/database'); 
 
-// --- CONFIGURAÇÕES E MAPAS ---
 
 const regionMap = {
     'sudeste': ['SP', 'RJ', 'MG', 'ES'],
@@ -21,7 +18,6 @@ const ufToCode = {
     'SC': '42', 'RS': '43', 'MS': '50', 'MT': '51', 'GO': '52', 'DF': '53'
 };
 
-// Inverte o mapa ufToCode para podermos buscar a UF pelo Código (ex: '35' -> 'SP')
 const codeToUf = Object.entries(ufToCode).reduce((acc, [key, value]) => {
     acc[value] = key;
     return acc;
@@ -34,7 +30,6 @@ const codeToName = {
     '42': 'Santa Catarina', '43': 'Rio Grande do Sul', '50': 'Mato Grosso do Sul', '51': 'Mato Grosso', '52': 'Goiás', '53': 'Distrito Federal'
 };
 
-// --- ROTA 1: VISÃO GERAL DA REGIÃO ---
 router.get('/regiao/:regiaoSlug', async (req, res) => {
     const { regiaoSlug } = req.params;
     const chaveRegiao = regiaoSlug.toLowerCase().trim();
@@ -61,7 +56,6 @@ router.get('/regiao/:regiaoSlug', async (req, res) => {
 
         const estadosAgrupados = {};
 
-        // Inicializa estrutura
         estadosDaRegiao.forEach(uf => {
             const codigo = ufToCode[uf];
             if (codigo) {
@@ -107,7 +101,6 @@ router.get('/regiao/:regiaoSlug', async (req, res) => {
     }
 });
 
-// --- ROTA 2: DETALHES DO MUNICÍPIO ---
 router.get('/municipio/:ibge', async (req, res) => {
     const { ibge } = req.params;
     try {
@@ -135,7 +128,6 @@ router.get('/municipio/:ibge', async (req, res) => {
             let somaCategoriasLinha = 0;
 
             if (analysis) {
-                // Coleta valores individuais para somar
                 const vMedicamentos = parseFloat(analysis.medicamentos || 0);
                 const vEquipamentos = parseFloat(analysis.equipamentos || 0);
                 const vObras = parseFloat(analysis.obras_infraestrutura || 0);
@@ -143,7 +135,6 @@ router.get('/municipio/:ibge', async (req, res) => {
                 const vEstadia = parseFloat(analysis.estadia_paciente || 0);
                 const vOutros = parseFloat(analysis.outros_relacionados || 0);
 
-                // Adiciona ao acumulador geral
                 categoriesSummary.medicamentos += vMedicamentos;
                 categoriesSummary.equipamentos += vEquipamentos;
                 categoriesSummary.obras_infraestrutura += vObras;
@@ -151,13 +142,9 @@ router.get('/municipio/:ibge', async (req, res) => {
                 categoriesSummary.estadia_paciente += vEstadia;
                 categoriesSummary.outros_relacionados += vOutros;
 
-                // Calcula quanto foi categorizado nesta linha específica
                 somaCategoriasLinha = vMedicamentos + vEquipamentos + vObras + vServicos + vEstadia + vOutros;
             }
 
-            // CORREÇÃO MATEMÁTICA:
-            // Se o valor total da nota é maior que a soma das categorias encontradas pela IA,
-            // a diferença é adicionada em "Outros" para que a conta feche perfeitamente.
             const diferenca = valorLinha - somaCategoriasLinha;
             if (diferenca > 0.01) {
                 categoriesSummary.outros_relacionados += diferenca;
@@ -183,11 +170,9 @@ router.get('/municipio/:ibge', async (req, res) => {
     }
 });
 
-// --- ROTA 3: DETALHES DO ESTADO ---
 router.get('/estado/:codIbge', async (req, res) => {
     const { codIbge } = req.params;
     
-    // Converte código IBGE (ex: 35) para UF (ex: SP)
     const uf = codeToUf[codIbge];
 
     if (!uf) return res.status(400).json({ error: "Código de estado inválido." });
@@ -236,8 +221,6 @@ router.get('/estado/:codIbge', async (req, res) => {
                 somaCategoriasLinha = vMedicamentos + vEquipamentos + vObras + vServicos + vEstadia + vOutros;
             }
 
-            // CORREÇÃO MATEMÁTICA PARA O ESTADO:
-            // Joga a sobra não categorizada para "Outros"
             const diferenca = valorLinha - somaCategoriasLinha;
             if (diferenca > 0.01) {
                 categoriesSummary.outros_relacionados += diferenca;
