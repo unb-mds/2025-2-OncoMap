@@ -1,16 +1,12 @@
-# Excluir dependências (serão reinstaladas dentro do contêiner)
 node_modules
 
-# Excluir pastas de build/transpilação de desenvolvimento local
 dist
 build
 tmp
 
-# Excluir arquivos de configuração e logs
 .env
 npm-debug.log*
 
-# Excluir arquivos de versionamento e IDEs
 .git
 .gitignore
 .vscode

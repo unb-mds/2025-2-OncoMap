@@ -1,7 +1,5 @@
-#!/bin/bash
 echo "🔧 Instalando dependências do Chrome para Ubuntu..."
 
-# Atualiza e instala as libs que o Puppeteer exige no Linux
 sudo apt-get update && sudo apt-get install -y \
     ca-certificates \
     fonts-liberation \
