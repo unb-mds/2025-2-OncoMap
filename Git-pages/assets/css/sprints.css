@@ -1,0 +1,109 @@
+/* --- Estilos da Lista de Sprints (content-list) --- */
+
+/* O 'main' já define o fundo #f4f7f6 */
+/* .content-list { */
+    /* O padding vertical já vem de '.content-sections', '.content-list', etc. */
+/* } */
+
+.list-header {
+    margin-bottom: 2rem;
+}
+
+.list-header h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333; /* Cor escura padrão */
+    margin: 0;
+    border-bottom: 2px solid #ddd; /* Linha sutil como na imagem */
+    padding-bottom: 10px;
+}
+
+/* O Grid que segura os cards */
+.card-grid-sprints {
+    display: grid;
+    /* Cria 3 colunas, mas no mínimo de 300px,
+       se ajustando para 2 ou 1 em telas menores */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* O Card Individual da Sprint */
+.card-sprint {
+    background-color: #fff; /* Fundo branco do card */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: flex; /* Para alinhar o header e o body internamente */
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* O cabeçalho do card (Título + Data) */
+.card-sprint-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.card-sprint-header h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.card-sprint-header .date {
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* O corpo do card (Botão Acessar) */
+.card-sprint-body {
+    padding: 20px;
+    text-align: left;
+}
+
+/* O botão "Acessar" */
+.button-access {
+    background-color: #96E072; /* Verde claro */
+    color: #f4f7f6; /* Texto claro */
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+.button-access:hover {
+    background-color: #3E8914; /* Verde mais escuro */
+    text-decoration: none;
+}
+
+/* --- Estilos da Página de Sprint Individual --- */
+
+/* A caixa que segura o link "Ver Ata..." */
+.ata-link {
+    /* Espaço entre o link e a caixa branca de conteúdo */
+    margin-bottom: 1.5rem; 
+    text-align: left;
+}
+
+/* O botão/link "Ver Ata..." */
+.button-link-ata {
+    display: inline-block;
+    background-color: #fff; /* Fundo branco, como um botão sutil */
+    color: #3E8914; /* Texto verde */
+    border: 1px solid #ddd;
+    padding: 10px 18px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.button-link-ata:hover {
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-decoration: none;
+}

@@ -1,0 +1,109 @@
+/* Seu 'body' está perfeito */
+body {
+    font-family: poppins;
+    margin: 0;
+    padding: 0;
+    background-color: #18464a;
+}
+
+/* A tag <nav> agora tem a classe .navbar */
+.navbar {
+    color: #f4f7f6;
+    display: flex;
+    justify-content: space-between; /* (left, center, right) */
+    align-items: center;
+    padding: 1rem 2rem; /* Aumentei um pouco o padding lateral */
+    font-size: 1.2rem;    /* Ajustei o tamanho base */
+    
+    /* Centraliza o conteúdo na página */
+    margin: 0 auto;
+}
+
+/* O Logo (Esquerda) */
+.navbar-brand, .navbar-right {
+    font-size: 1.5rem; /* Maior que os outros */
+    font-weight: bold;
+    color: #f4f7f6;
+    text-decoration: none;
+}
+
+/* A Lista de Links (Centro) */
+.navbar-links {
+    list-style: none; /* Remove bolinhas */
+    display: flex;
+    gap: 1.5rem; /* Espaço entre os links */
+    margin: 0;
+    padding: 0;
+}
+
+/* Links do Centro e da Direita */
+.navbar-links a,
+.navbar-right a {
+    color: #f4f7f6;
+    text-decoration: none;
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Efeito Hover */
+.navbar-links a:hover,
+.navbar-right a:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+/* ... Seu CSS para .hero, main, footer ... */
+
+/* Seu estilo base para o Hero, com um padding maior */
+.hero {
+    color: #f4f7f6;
+    text-align: center;
+    padding: 5rem 1rem; /* Aumentei o padding para dar mais altura, como na imagem */
+    
+    /* O fundo já vem do 'body' */
+    /* background-color: #18464a; */
+}
+
+/* O container que centraliza o conteúdo */
+.hero .container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* O Título Principal (ex: "OncoMap - Mapa...") */
+.hero h1 {
+    font-size: 3rem; /* Bem grande */
+    font-weight: bold;
+    line-height: 1.2; /* Para o título não ficar muito espaçado se quebrar a linha */
+    margin: 0 0 1rem 0; /* Tira margem de cima, adiciona pequena margem embaixo */
+}
+
+/* O Subtítulo (ex: "Transparência...") */
+.hero .subtitle {
+    font-size: 1.5rem; /* Menor que o título, mas maior que o texto normal */
+    font-weight: 300; /* Mais fino */
+    margin: 0;
+    opacity: 0.9; /* Um pouco mais sutil */
+}
+
+main {
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+.container {
+    margin: 0rem 15rem;
+    padding: 1rem;
+}
+
+.content-selection {
+    align-items: center;
+    padding: 4rem 0;
+}
+
+footer {
+    color: #f4f7f6;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

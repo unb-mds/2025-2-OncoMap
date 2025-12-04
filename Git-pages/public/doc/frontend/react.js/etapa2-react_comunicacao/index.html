@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><script src="/2025-2-OncoMap/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=2025-2-OncoMap/livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+        
+            Etapa2 React Comunicacao | OncoMap
+        
+    </title>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/2025-2-OncoMap/css/doc-page-bundle.min.css">
+
+
+
+</head>
+<body>
+
+    <nav class="navbar">
+
+    <a class="navbar-brand" href="http://localhost:1313/2025-2-OncoMap/">
+        OncoMap
+    </a>
+
+    <ul class="navbar-links">
+        <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+    </ul>
+
+    <div class="navbar-right">
+        <a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a>
+    </div>
+
+</nav>
+
+    <section class="hero">
+    <div class="container">
+        <h1>Etapa2 React Comunicacao</h1>
+        
+        
+        
+        </div>
+</section>
+
+    <main>
+        
+
+    <div class="container page-single">
+        
+        
+        
+        
+        <div class="content">
+            <h1 id="etapa-2--comunicação-entre-componentes-props-state-e-eventos">Etapa 2 — Comunicação entre componentes (Props, State e Eventos)</h1>
+<p>Bem-vindo(a) à etapa onde o React começa a <strong>ficar interativo</strong>. Aqui você vai aprender <strong>como os componentes conversam entre si</strong> e <strong>como a interface reage às ações do usuário</strong>.</p>
+<hr>
+<h2 id="1-props--passando-dados-do-pai-para-o-filho">1) Props — passando dados do pai para o filho</h2>
+<p><strong>O que são?</strong><br>
+<em>Props</em> (propriedades) são <strong>dados que o componente pai envia para o componente filho</strong>.<br>
+Dentro do filho, as props são <strong>somente leitura</strong> (imutáveis).</p>
+<h3 id="11-exemplo-básico">1.1 Exemplo básico</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#75715e">// Botao.jsx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Botao</span>(<span style="color:#a6e22e">props</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> &lt;<span style="color:#f92672">button</span>&gt;{<span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">texto</span>}&lt;/<span style="color:#f92672">button</span>&gt;;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// App.jsx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Botao</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./Botao&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">App</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">h1</span>&gt;<span style="color:#a6e22e">Exemplo</span> <span style="color:#a6e22e">de</span> <span style="color:#a6e22e">Props</span>&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">Botao</span> <span style="color:#a6e22e">texto</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Clique aqui&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">Botao</span> <span style="color:#a6e22e">texto</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Enviar formulário&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="12-desestruturação-mais-comum-no-dia-a-dia">1.2 Desestruturação (mais comum no dia a dia)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Botao</span>({ <span style="color:#a6e22e">texto</span> }) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> &lt;<span style="color:#f92672">button</span>&gt;{<span style="color:#a6e22e">texto</span>}&lt;/<span style="color:#f92672">button</span>&gt;;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="13-tipos-comuns-de-props">1.3 Tipos comuns de props</h3>
+<ul>
+<li><strong>string/number/boolean</strong>: <code>&lt;Preco valor={19.9} /&gt;</code></li>
+<li><strong>array/objeto</strong>: <code>&lt;Lista itens={['a','b']} /&gt;</code></li>
+<li><strong>funções (callbacks)</strong>: <code>&lt;Form onSubmit={handleSubmit} /&gt;</code></li>
+<li><strong>elementos/JSX</strong> pelo <code>children</code>: <code>&lt;Card&gt;&lt;p&gt;Conteúdo&lt;/p&gt;&lt;/Card&gt;</code></li>
+</ul>
+<h3 id="14-children-prop-componente-embrulhador">1.4 Children prop (componente “embrulhador”)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#75715e">// Card.jsx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Card</span>({ <span style="color:#a6e22e">children</span> }) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card&#34;</span>&gt;{<span style="color:#a6e22e">children</span>}&lt;/<span style="color:#f92672">div</span>&gt;;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// App.jsx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>&lt;<span style="color:#f92672">Card</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">h2</span>&gt;<span style="color:#a6e22e">Título</span>&lt;/<span style="color:#f92672">h2</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">p</span>&gt;<span style="color:#a6e22e">Qualquer</span> <span style="color:#a6e22e">conteúdo</span> <span style="color:#a6e22e">aqui</span> <span style="color:#a6e22e">dentro</span> <span style="color:#a6e22e">vai</span> <span style="color:#a6e22e">para</span> <span style="color:#a6e22e">o</span> <span style="color:#a6e22e">children</span>.&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">Card</span>&gt;
+</span></span></code></pre></div><h3 id="15-passando-funções-via-props-filho--aciona-algo-no-pai">1.5 Passando <strong>funções</strong> via props (filho → aciona algo no pai)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#75715e">// Produto.jsx (filho)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Produto</span>({ <span style="color:#a6e22e">nome</span>, <span style="color:#a6e22e">onAdicionar</span> }) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">span</span>&gt;{<span style="color:#a6e22e">nome</span>}&lt;/<span style="color:#f92672">span</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">onAdicionar</span>}&gt;<span style="color:#a6e22e">Adicionar</span>&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// App.jsx (pai)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useState</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Produto</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./Produto&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">App</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">quantidade</span>, <span style="color:#a6e22e">setQuantidade</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">adicionarAoCarrinho</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setQuantidade</span>(<span style="color:#a6e22e">q</span> =&gt; <span style="color:#a6e22e">q</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">h1</span>&gt;<span style="color:#a6e22e">Carrinho</span><span style="color:#f92672">:</span> {<span style="color:#a6e22e">quantidade</span>}&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">Produto</span> <span style="color:#a6e22e">nome</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Teclado&#34;</span> <span style="color:#a6e22e">onAdicionar</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">adicionarAoCarrinho</span>} /&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">Produto</span> <span style="color:#a6e22e">nome</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Mouse&#34;</span> <span style="color:#a6e22e">onAdicionar</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">adicionarAoCarrinho</span>} /&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p><strong>Por que isso é importante?</strong> Props levam <strong>dados e funções</strong> para baixo na árvore. Quando o filho precisa “avisar” algo ao pai, ele <strong>chama a função</strong> recebida por props.</p></blockquote>
+<hr>
+<h2 id="2-state--valores-que-mudam-com-o-tempo">2) State — valores que mudam com o tempo</h2>
+<p><strong>O que é?</strong><br>
+O <em>state</em> é a <strong>memória interna</strong> de um componente. Quando o state muda, o React <strong>re-renderiza</strong> e a interface é atualizada.</p>
+<h3 id="21-sintaxe-básica-com-usestate">2.1 Sintaxe básica com <code>useState</code></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useState</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Contador</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">numero</span>, <span style="color:#a6e22e">setNumero</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#ae81ff">0</span>); <span style="color:#75715e">// 0 = valor inicial
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">p</span>&gt;<span style="color:#a6e22e">Você</span> <span style="color:#a6e22e">clicou</span> {<span style="color:#a6e22e">numero</span>} <span style="color:#a6e22e">vezes</span>&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{() =&gt; <span style="color:#a6e22e">setNumero</span>(<span style="color:#a6e22e">numero</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)}&gt;<span style="color:#a6e22e">Clique</span>&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="22-atualização-baseada-no-valor-anterior-forma-segura">2.2 Atualização baseada no valor anterior (<strong>forma segura</strong>)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">setNumero</span>((<span style="color:#a6e22e">anterior</span>) =&gt; <span style="color:#a6e22e">anterior</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+</span></span></code></pre></div><blockquote>
+<p>Use essa forma quando a atualização depender do valor anterior. Evita bugs com atualizações em lote.</p></blockquote>
+<h3 id="23-não-mutar-o-state-diretamente">2.3 <strong>Não mutar</strong> o state diretamente</h3>
+<ul>
+<li>
+<p><strong>Errado (objeto):</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">estado</span>.<span style="color:#a6e22e">usuario</span>.<span style="color:#a6e22e">nome</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Ana&#34;</span>; <span style="color:#75715e">// não faça isso
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">setEstado</span>(<span style="color:#a6e22e">estado</span>);           <span style="color:#75715e">// não dispara re-render corretamente
+</span></span></span></code></pre></div></li>
+<li>
+<p><strong>Certo (cópia imutável):</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">setEstado</span>(<span style="color:#a6e22e">prev</span> =&gt; ({
+</span></span><span style="display:flex;"><span>  ...<span style="color:#a6e22e">prev</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">usuario</span><span style="color:#f92672">:</span> { ...<span style="color:#a6e22e">prev</span>.<span style="color:#a6e22e">usuario</span>, <span style="color:#a6e22e">nome</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Ana&#34;</span> }
+</span></span><span style="display:flex;"><span>}));
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Listas (adicionar/remover/editar)</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#75715e">// adicionar
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">setItens</span>(<span style="color:#a6e22e">prev</span> =&gt; [...<span style="color:#a6e22e">prev</span>, <span style="color:#a6e22e">novoItem</span>]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// remover
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">setItens</span>(<span style="color:#a6e22e">prev</span> =&gt; <span style="color:#a6e22e">prev</span>.<span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">item</span> =&gt; <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">!==</span> <span style="color:#a6e22e">id</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// editar
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">setItens</span>(<span style="color:#a6e22e">prev</span> =&gt; <span style="color:#a6e22e">prev</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">it</span> =&gt; <span style="color:#a6e22e">it</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">?</span> { ...<span style="color:#a6e22e">it</span>, <span style="color:#a6e22e">nome</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Novo&#34;</span> } <span style="color:#f92672">:</span> <span style="color:#a6e22e">it</span>));
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="24-inputs-controlados-state--input">2.4 Inputs controlados (state + input)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useState</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Formulario</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">nome</span>, <span style="color:#a6e22e">setNome</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#e6db74">&#34;&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">handleSubmit</span>(<span style="color:#a6e22e">e</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">preventDefault</span>(); <span style="color:#75715e">// evita reload da página
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">`Olá, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">nome</span><span style="color:#e6db74">}</span><span style="color:#e6db74">!`</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">onSubmit</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">handleSubmit</span>}&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">input</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">nome</span>}
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{(<span style="color:#a6e22e">e</span>) =&gt; <span style="color:#a6e22e">setNome</span>(<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">value</span>)}
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Digite seu nome&#34;</span>
+</span></span><span style="display:flex;"><span>      /&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span>&gt;<span style="color:#a6e22e">Enviar</span>&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">form</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="25-lifting-state-up-subir-o-estado-para-o-pai">2.5 <strong>Lifting state up</strong> (subir o estado para o pai)</h3>
+<p>Quando <strong>dois ou mais componentes</strong> precisam do <strong>mesmo dado</strong>, mova o state para o <strong>ancestral comum</strong> e passe props para os filhos.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#75715e">// Filtro.jsx (filho - apenas emite eventos)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Filtro</span>({ <span style="color:#a6e22e">termo</span>, <span style="color:#a6e22e">onChange</span> }) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">input</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">termo</span>}
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{(<span style="color:#a6e22e">e</span>) =&gt; <span style="color:#a6e22e">onChange</span>(<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">value</span>)}
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Filtrar produtos&#34;</span>
+</span></span><span style="display:flex;"><span>    /&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Lista.jsx (filho - recebe dados filtrados)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Lista</span>({ <span style="color:#a6e22e">itens</span> }) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>      {<span style="color:#a6e22e">itens</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">p</span>) =&gt; &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">id</span>}&gt;{<span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">nome</span>}&lt;/<span style="color:#f92672">li</span>&gt;)}
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// App.jsx (pai - guarda o state compartilhado)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useState</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Filtro</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./Filtro&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Lista</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./Lista&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">TODOS</span> <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>  { <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">nome</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Teclado&#34;</span> },
+</span></span><span style="display:flex;"><span>  { <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">nome</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Mouse&#34;</span> },
+</span></span><span style="display:flex;"><span>  { <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span>, <span style="color:#a6e22e">nome</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Monitor&#34;</span> },
+</span></span><span style="display:flex;"><span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">App</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">termo</span>, <span style="color:#a6e22e">setTermo</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#e6db74">&#34;&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">filtrados</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">TODOS</span>.<span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">p</span> =&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">nome</span>.<span style="color:#a6e22e">toLowerCase</span>().<span style="color:#a6e22e">includes</span>(<span style="color:#a6e22e">termo</span>.<span style="color:#a6e22e">toLowerCase</span>())
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">Filtro</span> <span style="color:#a6e22e">termo</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">termo</span>} <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">setTermo</span>} /&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">Lista</span> <span style="color:#a6e22e">itens</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">filtrados</span>} /&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="3-eventos--reagindo-a-ações-do-usuário">3) Eventos — reagindo a ações do usuário</h2>
+<h3 id="31-eventos-mais-usados">3.1 Eventos mais usados</h3>
+<ul>
+<li><code>onClick</code> — clique em botão/elemento</li>
+<li><code>onChange</code> — mudança em inputs</li>
+<li><code>onSubmit</code> — envio de formulário</li>
+<li><code>onKeyDown</code>, <code>onKeyUp</code>, <code>onMouseEnter</code>, etc.</li>
+</ul>
+<h3 id="32-exemplos-práticos">3.2 Exemplos práticos</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span>&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{() =&gt; <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;Clicou!&#34;</span>)}&gt;<span style="color:#a6e22e">Clique</span>&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span></code></pre></div><p>Passando <strong>parâmetros</strong> para o handler:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">remover</span>(<span style="color:#a6e22e">id</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;remover&#34;</span>, <span style="color:#a6e22e">id</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{() =&gt; <span style="color:#a6e22e">remover</span>(<span style="color:#ae81ff">42</span>)}&gt;<span style="color:#a6e22e">Remover</span> <span style="color:#a6e22e">item</span> <span style="color:#ae81ff">42</span>&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span></code></pre></div><p>Formulário com <code>preventDefault</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">handleSubmit</span>(<span style="color:#a6e22e">e</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">preventDefault</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// ...enviar dados
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">onSubmit</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">handleSubmit</span>}&gt;...&lt;/<span style="color:#f92672">form</span>&gt;
+</span></span></code></pre></div><h3 id="33-dica-nomeie-callbacks-que-vêm-por-props-com-onalgo">3.3 Dica: nomeie callbacks que vêm por props com <code>onAlgo</code></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#75715e">// Filho
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Item</span>({ <span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">nome</span>, <span style="color:#a6e22e">onRemover</span> }) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{() =&gt; <span style="color:#a6e22e">onRemover</span>(<span style="color:#a6e22e">id</span>)}&gt;<span style="color:#a6e22e">Remover</span> {<span style="color:#a6e22e">nome</span>}&lt;/<span style="color:#f92672">button</span>&gt;;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Pai
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>&lt;<span style="color:#f92672">Item</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span>{<span style="color:#ae81ff">7</span>} <span style="color:#a6e22e">nome</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Mouse&#34;</span> <span style="color:#a6e22e">onRemover</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">handleRemover</span>} /&gt;
+</span></span></code></pre></div><hr>
+<h2 id="4-exemplo-integrado-props--state--eventos">4) Exemplo integrado (props + state + eventos)</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#75715e">// ContadorComPasso.jsx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useState</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">ContadorComPasso</span>({ <span style="color:#a6e22e">passoInicial</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> }) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">valor</span>, <span style="color:#a6e22e">setValor</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">passo</span>, <span style="color:#a6e22e">setPasso</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#a6e22e">passoInicial</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">h3</span>&gt;<span style="color:#a6e22e">Valor</span><span style="color:#f92672">:</span> {<span style="color:#a6e22e">valor</span>}&lt;/<span style="color:#f92672">h3</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">label</span>&gt;
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Passo</span><span style="color:#f92672">:</span> 
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">input</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;number&#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">passo</span>}
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{(<span style="color:#a6e22e">e</span>) =&gt; <span style="color:#a6e22e">setPasso</span>(Number(<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">value</span>) <span style="color:#f92672">||</span> <span style="color:#ae81ff">0</span>)}
+</span></span><span style="display:flex;"><span>        /&gt;
+</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">label</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{() =&gt; <span style="color:#a6e22e">setValor</span>(<span style="color:#a6e22e">v</span> =&gt; <span style="color:#a6e22e">v</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">passo</span>)}&gt;<span style="color:#f92672">+</span> {<span style="color:#a6e22e">passo</span>}&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{() =&gt; <span style="color:#a6e22e">setValor</span>(<span style="color:#a6e22e">v</span> =&gt; <span style="color:#a6e22e">v</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">passo</span>)}&gt;<span style="color:#f92672">-</span> {<span style="color:#a6e22e">passo</span>}&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{() =&gt; <span style="color:#a6e22e">setValor</span>(<span style="color:#ae81ff">0</span>)}&gt;<span style="color:#a6e22e">Zerar</span>&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// App.jsx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">ContadorComPasso</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./ContadorComPasso&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">App</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">h1</span>&gt;<span style="color:#a6e22e">Demo</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Props</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">State</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">Eventos</span>&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">ContadorComPasso</span> <span style="color:#a6e22e">passoInicial</span><span style="color:#f92672">=</span>{<span style="color:#ae81ff">2</span>} /&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">ContadorComPasso</span> <span style="color:#a6e22e">passoInicial</span><span style="color:#f92672">=</span>{<span style="color:#ae81ff">5</span>} /&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="5-erros-comuns-e-como-evitar">5) Erros comuns (e como evitar)</h2>
+<ol>
+<li>
+<p><strong>Espaço nas rotas/links</strong> gerando <code>%20</code><br>
+Use <code>to=&quot;/states&quot;</code> (sem espaço antes).</p>
+</li>
+<li>
+<p><strong>Mutação direta do state</strong> (não re-renderiza corretamente)<br>
+Sempre crie <strong>cópias</strong> (<code>{ ...obj }</code>, <code>[...array]</code>).</p>
+</li>
+<li>
+<p><strong>Atualização baseada no valor anterior sem função</strong><br>
+Prefira <code>setX(prev =&gt; prev + 1)</code> quando depender do valor anterior.</p>
+</li>
+<li>
+<p><strong>Esquecer <code>key</code> ao renderizar listas</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#a6e22e">itens</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">item</span> =&gt; &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">id</span>}&gt;{<span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">nome</span>}&lt;/<span style="color:#f92672">li</span>&gt;)
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Inputs “descontrolados”</strong><br>
+Lembre de passar <code>value</code> + <code>onChange</code> quando quiser controlar o campo via state.</p>
+</li>
+</ol>
+<hr>
+<h2 id="6-exercícios-rápidos">6) Exercícios rápidos</h2>
+<ol>
+<li>Crie um componente <strong>Botao</strong> que receba as props <code>texto</code> e <code>onClick</code>, e use-o várias vezes no App.</li>
+<li>Faça um <strong>contador</strong> com botões de <code>+1</code> e <code>-1</code> usando <code>useState</code>.</li>
+<li>Crie um <strong>formulário controlado</strong> com campos <code>nome</code> e <code>email</code> que exibe os valores abaixo do form em tempo real.</li>
+<li>Faça um componente <strong>Produto</strong> (filho) com botão “Adicionar”, que chama uma função no <strong>App</strong> (pai) para <strong>aumentar o total do carrinho</strong>.</li>
+<li>Implemente um <strong>filtro de lista</strong>: um input no pai e uma lista de itens filtrados no filho (use <em>lifting state up</em>).</li>
+</ol>
+<hr>
+<h3 id="para-onde-ir-depois">Para onde ir depois?</h3>
+<ul>
+<li><strong>Renderização condicional</strong> (<code>cond ? &lt;A/&gt; : &lt;B/&gt;</code> e <code>cond &amp;&amp; &lt;A/&gt;</code>)</li>
+<li><strong>useEffect</strong> para buscar dados de API</li>
+<li><strong>Context API</strong> para evitar <em>prop drilling</em> quando muitos níveis precisam do mesmo dado</li>
+</ul>
+<hr>
+<blockquote>
+<p>Dominando <strong>props</strong>, <strong>state</strong> e <strong>eventos</strong>, você já consegue criar interfaces reativas, controlar formulários e fazer componentes realmente reutilizáveis.</p></blockquote>
+
+        </div>
+    </div>
+
+
+    </main>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            
+            <div class="footer-column about">
+                <h3>OncoMap</h3>
+                <p>Mapa de investimento em saúde oncológica</p>
+            </div>
+            
+            <div class="footer-column links">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column contact">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2025 OncoMap. Todos os direitos reservados.</p>
+            <p>Desenvolvido pela equipe UnB-MDS</p>
+        </div>
+    </div>
+</footer>
+    
+    <script src="http://localhost:1313/2025-2-OncoMap/js/app.js"></script>
+</body>
+</html>

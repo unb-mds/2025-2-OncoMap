@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><script src="/2025-2-OncoMap/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=2025-2-OncoMap/livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+        
+            Requisitos Naofuncionais | OncoMap
+        
+    </title>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/2025-2-OncoMap/css/doc-page-bundle.min.css">
+
+
+
+</head>
+<body>
+
+    <nav class="navbar">
+
+    <a class="navbar-brand" href="http://localhost:1313/2025-2-OncoMap/">
+        OncoMap
+    </a>
+
+    <ul class="navbar-links">
+        <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+    </ul>
+
+    <div class="navbar-right">
+        <a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a>
+    </div>
+
+</nav>
+
+    <section class="hero">
+    <div class="container">
+        <h1>Requisitos Naofuncionais</h1>
+        
+        
+        
+        </div>
+</section>
+
+    <main>
+        
+
+    <div class="container page-single">
+        
+        
+        
+        
+        <div class="content">
+            <h1 id="requisitos">Requisitos</h1>
+<hr>
+<h2 id="entendendo-o-domínio-do-problema">Entendendo o domínio do problema</h2>
+<p>Para ocorrer o levantamento dos requisitos é necessário que aconteça, antes, um aprofundamento no que consiste o projeto. O querido diário é uma gigante fonte de dados integrada sobre os diários oficiais municipais brasileiros, o que facilita bastante muita coisa, pois, junta a grande quantidade de municípios e sites governamentais, e além disso, junta a grande variedade de formatos desses diários, já que não exite uma regulamentação para uma padronização.</p>
+<hr>
+<p>O problema a ser resolvido consite na análise dos investimentos em saúde oncológica nos municípios, para isso é necessário uma organização e padronização para extração dos dados necessários da fonte de dados do &ldquo;Querido diário&rdquo;.</p>
+<hr>
+<p>A análise será em volta de todos os gastos com licitações e contratações do município que tenham ligação direta com a saúde oncológica.</p>
+<p><strong>Detalhamento da análise</strong></p>
+<p>O investimento em saúde oncológica, para o nosso projeto, pode ser segmentado da seguinte forma:</p>
+<ol>
+<li><strong>Licitações para Aquisição de Bens e Serviços</strong>:</li>
+</ol>
+<ul>
+<li><strong>Medicamentos</strong>: Gastos com medicamentos quimioterápicos, imunoterápicos e outros fármacos usados no tratamento do câncer.</li>
+<li><strong>Equipamentos</strong>: Licitações para compra de equipamentos médicos, como aparelhos de radioterapia, ressonância magnética ou mamógrafos.</li>
+<li><strong>Materiais de Consumo</strong>: Compra de seringas, sondas e outros materiais hospitalares específicos para pacientes oncológicos.</li>
+</ul>
+<ol start="2">
+<li><strong>Contratos de Serviços de Saúde</strong>:</li>
+</ol>
+<ul>
+<li><strong>Clínicas e Hospitais</strong>: Contratos com instituições privadas para a realização de consultas, exames ou procedimentos de alta complexidade.</li>
+<li><strong>Profissionais</strong>: Contratação de médicos oncologistas, enfermeiros, fisioterapeutas e outros profissionais especializados para atuar na rede pública.</li>
+</ul>
+<ol start="3">
+<li><strong>Investimento em Infraestrutura</strong>:</li>
+</ol>
+<ul>
+<li><strong>Obras</strong>: Licitações e contratos para construção, reforma ou expansão de unidades de saúde especializadas em oncologia.</li>
+</ul>
+<hr>
+<h2 id="levantamento-de-requisitos-não-funcionais-rnf">Levantamento de Requisitos Não Funcionais (RNF)</h2>
+<p>Os Requisitos Não Funcionais são essenciais para garantir que a aplicação seja confiável, eficiente e útil para os usuários. Para o projeto, os principais RNF estão focados na qualidade, desempenho e usabilidade. Dividindo os RNF em tópicos, teremos:</p>
+<ol>
+<li><strong>Requisitos de Usabilidade</strong></li>
+</ol>
+<p>A interface do usuário deve ser intuitiva e de fácil navegação para qualquer pessoa, independentemente de sua familiaridade com dados públicos. O sistema deve permitir que o usuário:</p>
+<ul>
+<li><strong>Realize buscas de forma simples</strong>, com opções de filtro claras para município, tipo de investimento e período.</li>
+<li><strong>Visualize os resultados de forma clara</strong>, como em tabelas, gráficos ou mapas, facilitando a interpretação dos dados.</li>
+<li><strong>Exporte os relatórios</strong> e dados extraídos em formatos comuns, como CSV ou PDF.</li>
+</ul>
+<ol start="2">
+<li><strong>Requisitos de Desempenho</strong></li>
+</ol>
+<p>Devido ao grande volume de diários oficiais e à quantidade de informações a serem processadas, o desempenho do sistema é crítico para uma boa experiência do usuário. O sistema deve:</p>
+<ul>
+<li><strong>Realizar buscas rapidamente</strong>, retornando os resultados em um tempo aceitável (por exemplo, em menos de 5 segundos).</li>
+<li><strong>Processar e exibir os dados de forma eficiente</strong>, sem travar ou ter lentidão, mesmo ao lidar com múltiplos filtros aplicados simultaneamente.</li>
+</ul>
+<ol start="3">
+<li><strong>Requisitos de Confiabilidade</strong></li>
+</ol>
+<p>A confiabilidade garante que os dados extraídos são precisos e consistentes. Uma vez que a base de dados é heterogênea e não padronizada, este requisito é fundamental. O sistema deve:</p>
+<ul>
+<li><strong>Garantir que a extração dos dados</strong> das licitações e contratos seja precisa, evitando erros na leitura de valores financeiros e de datas.</li>
+<li><strong>Manter a integridade dos dados</strong>, assegurando que as informações sobre medicamentos, equipamentos, obras, e outros itens estejam corretas e sejam consistentes com os diários oficiais.</li>
+</ul>
+<ol start="4">
+<li><strong>Requisitos de Escalabilidade</strong></li>
+</ol>
+<p>A plataforma Querido Diário está em constante expansão e o volume de dados só tende a crescer. Por isso, a arquitetura do sistema precisa ser capaz de lidar com esse aumento. O sistema deve:</p>
+<ul>
+<li><strong>Permitir a inclusão de novos diários</strong> oficiais sem a necessidade de grandes mudanças estruturais.</li>
+<li><strong>Suportar um aumento</strong> no número de usuários simultâneos e no volume de buscas.</li>
+</ul>
+
+        </div>
+    </div>
+
+
+    </main>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            
+            <div class="footer-column about">
+                <h3>OncoMap</h3>
+                <p>Mapa de investimento em saúde oncológica</p>
+            </div>
+            
+            <div class="footer-column links">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column contact">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2025 OncoMap. Todos os direitos reservados.</p>
+            <p>Desenvolvido pela equipe UnB-MDS</p>
+        </div>
+    </div>
+</footer>
+    
+    <script src="http://localhost:1313/2025-2-OncoMap/js/app.js"></script>
+</body>
+</html>

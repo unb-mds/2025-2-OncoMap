@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><script src="/2025-2-OncoMap/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=2025-2-OncoMap/livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+        
+            Typescript | OncoMap
+        
+    </title>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/2025-2-OncoMap/css/doc-page-bundle.min.css">
+
+
+
+</head>
+<body>
+
+    <nav class="navbar">
+
+    <a class="navbar-brand" href="http://localhost:1313/2025-2-OncoMap/">
+        OncoMap
+    </a>
+
+    <ul class="navbar-links">
+        <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+    </ul>
+
+    <div class="navbar-right">
+        <a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a>
+    </div>
+
+</nav>
+
+    <section class="hero">
+    <div class="container">
+        <h1>Typescript</h1>
+        
+        
+        
+        </div>
+</section>
+
+    <main>
+        
+
+    <div class="container page-single">
+        
+        
+        
+        
+        <div class="content">
+            <h1 id="estudo-de-typescript">Estudo de TypeScript</h1>
+<p>O <strong>TypeScript</strong> é um superset do JavaScript que adiciona <strong>tipagem estática</strong> e recursos avançados para facilitar o desenvolvimento de aplicações mais seguras e organizadas.</p>
+<hr>
+<h2 id="1-configuração-inicial">1. Configuração Inicial</h2>
+<p>Instalar TypeScript globalmente:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install -g typescript
+</span></span></code></pre></div><p>Verificar versão:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tsc -v
+</span></span></code></pre></div><p>Criar arquivo de configuração:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tsc --init
+</span></span></code></pre></div><hr>
+<h2 id="2-tipos-básicos">2. Tipos Básicos</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">dados</span>: <span style="color:#66d9ef">unknown</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dados</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;texto&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dados</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">42</span>;
+</span></span></code></pre></div><hr>
+<h2 id="3-funções">3. Funções</h2>
+<h3 id="tipagem-de-parâmetros-e-retorno">Tipagem de parâmetros e retorno</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">soma</span>(<span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">number</span>, <span style="color:#a6e22e">b</span>: <span style="color:#66d9ef">number</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">number</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="parâmetros-opcionais-e-padrão">Parâmetros opcionais e padrão</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">saudacao</span>(<span style="color:#a6e22e">nome</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">saudacao</span>: <span style="color:#66d9ef">string</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Olá&#34;</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">saudacao</span><span style="color:#e6db74">}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">nome</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="4-objetos-e-interfaces">4. Objetos e Interfaces</h2>
+<h3 id="tipando-objetos">Tipando objetos</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">pessoa</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">nome</span>: <span style="color:#66d9ef">string</span>; <span style="color:#a6e22e">idade</span>: <span style="color:#66d9ef">number</span> } <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nome</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;João&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">idade</span>: <span style="color:#66d9ef">25</span>
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="interfaces">Interfaces</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Usuario</span> {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nome</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ativo?</span>: <span style="color:#66d9ef">boolean</span>; <span style="color:#75715e">// opcional
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">usuario1</span>: <span style="color:#66d9ef">Usuario</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">1</span>,
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nome</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Carlos&#34;</span>
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h2 id="5-classes">5. Classes</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Animal</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">nome</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">contructor</span>(<span style="color:#a6e22e">nome</span>: <span style="color:#66d9ef">string</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">nome</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">nome</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fazersom</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Som genérico...&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">cachorro</span> <span style="color:#a6e22e">extend</span> <span style="color:#a6e22e">Animal</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fazersom</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Au Au&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">dog</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">cachorro</span>(<span style="color:#e6db74">&#34;Rex&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dog</span>.<span style="color:#a6e22e">fazersom</span>();
+</span></span></code></pre></div><hr>
+<h2 id="6-generics">6. Generics</h2>
+<p>Generics permitem reutilizar código de foma tipada.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">identidade</span>&lt;<span style="color:#f92672">T</span>&gt;(<span style="color:#a6e22e">valor</span>: <span style="color:#66d9ef">T</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">T</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">valor</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">identidade</span>&lt;<span style="color:#f92672">number</span>&gt;(<span style="color:#ae81ff">10</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">texto</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">identidade</span>&lt;<span style="color:#f92672">string</span>&gt;(<span style="color:#e6db74">&#34;Olá&#34;</span>);
+</span></span></code></pre></div><hr>
+<h2 id="7-tipos-avançados">7. Tipos Avançados</h2>
+<h2 id="union-types">Union Types</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">id</span> : <span style="color:#66d9ef">number</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abc123&#34;</span>;
+</span></span></code></pre></div><h2 id="types-alias">Types Alias</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Pessoa</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">nome</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Funcionario</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">salario</span>: <span style="color:#66d9ef">number</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">trabalhador</span>: <span style="color:#66d9ef">Pessoa</span> <span style="color:#f92672">&amp;</span> <span style="color:#a6e22e">Funcionario</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">nome</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Ana&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">salario</span>: <span style="color:#66d9ef">10.000</span>
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h2 id="8-módulos">8. Módulos</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#75715e">// arquivo: math.ts
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">soma</span>(<span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">number</span>, <span style="color:#a6e22e">b</span>: <span style="color:#66d9ef">number</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">number</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// arquivo: app.ts
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">soma</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;./math&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">soma</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>));
+</span></span></code></pre></div><hr>
+<h2 id="9-compilação">9. Compilação</h2>
+<p>Compilar arquivo TS para JS:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tsc arquivo.ts
+</span></span></code></pre></div><p>Compilar projeto (usando <code>tsconfig.json</code>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tsc
+</span></span></code></pre></div><p>Rodar em tempo real com <code>ts-node</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npx ts-node arquivo.ts
+</span></span></code></pre></div><hr>
+<h2 id="10-boas-práticas">10. Boas Práticas</h2>
+<p>✔ <strong>Prefira <code>unknown</code> ao invés de <code>any</code></strong> → força verificação de tipo.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">processa</span>(<span style="color:#a6e22e">dado</span>: <span style="color:#66d9ef">unknown</span>) {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">dado</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;string&#34;</span>) {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">dado</span>.<span style="color:#a6e22e">toUpperCase</span>());
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>✔ <strong>Use interfaces ou types para tipar objetos</strong> → melhora a legibilidade.</p>
+<p>✔ <strong>Sempre tipar parâmetros e retornos de funções</strong> → evita comportamento inesperado.</p>
+<p>✔ <strong>Organize seu código em módulos</strong> → melhora a manutenção.</p>
+<p>✔ <strong>Ative opções de segurança no <code>tsconfig.json</code></strong> como <code>strict</code> e <code>noImplicitAny</code>.</p>
+<hr>
+<h2 id="11-erros-comuns">11. Erros Comuns</h2>
+<p>❌ <strong>Usar <code>any</code> em todo lugar</strong>
+Isso anula os benefícios do TypeScript.</p>
+<p>❌ <strong>Não inicializar variáveis obrigatórias em classes</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Pessoa</span> {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nome</span>: <span style="color:#66d9ef">string</span>; <span style="color:#75715e">// erro se não for inicializado
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">constructor</span>(<span style="color:#a6e22e">nome</span>: <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">nome</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">nome</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>❌ <strong>Misturar tipagem dinâmica e estática de forma confusa</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">valor</span>: <span style="color:#66d9ef">number</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">string</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">valor</span>.<span style="color:#a6e22e">toFixed</span>(); <span style="color:#75715e">// erro, pois também pode ser string
+</span></span></span></code></pre></div><p>✅ Solução: usar <em>type guards</em>.</p>
+<p>❌ <strong>Esquecer de compilar antes de rodar</strong>
+Lembre-se de que o navegador não entende TypeScript diretamente.</p>
+<hr>
+<h2 id="12-conclusão">12. Conclusão</h2>
+<p>O TypeScript ajuda a:</p>
+<ul>
+<li>Evitar erros comuns de tipagem.</li>
+<li>Melhorar a manutenção de projetos grandes.</li>
+<li>Aumentar a produtividade com autocompletar e IntelliSense.</li>
+</ul>
+<blockquote>
+<p>Dica: comece tipando aos poucos, em projetos pequenos, e vá avançando para conceitos como <strong>decorators, namespaces e utility types</strong> quando dominar os fundamentos.</p></blockquote>
+
+        </div>
+    </div>
+
+
+    </main>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            
+            <div class="footer-column about">
+                <h3>OncoMap</h3>
+                <p>Mapa de investimento em saúde oncológica</p>
+            </div>
+            
+            <div class="footer-column links">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column contact">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2025 OncoMap. Todos os direitos reservados.</p>
+            <p>Desenvolvido pela equipe UnB-MDS</p>
+        </div>
+    </div>
+</footer>
+    
+    <script src="http://localhost:1313/2025-2-OncoMap/js/app.js"></script>
+</body>
+</html>

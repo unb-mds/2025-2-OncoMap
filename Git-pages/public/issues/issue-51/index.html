@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><script src="/2025-2-OncoMap/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=2025-2-OncoMap/livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+        
+            [TASK] Definição e Estruturação do Pipeline de Coleta e Tratamento de Dados | OncoMap
+        
+    </title>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/2025-2-OncoMap/css/issues-page-bundle.min.css">
+
+
+
+</head>
+<body>
+
+    <nav class="navbar">
+
+    <a class="navbar-brand" href="http://localhost:1313/2025-2-OncoMap/">
+        OncoMap
+    </a>
+
+    <ul class="navbar-links">
+        <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+    </ul>
+
+    <div class="navbar-right">
+        <a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a>
+    </div>
+
+</nav>
+
+    <section class="hero">
+    <div class="container">
+        <h1>[TASK] Definição e Estruturação do Pipeline de Coleta e Tratamento de Dados</h1>
+        
+        
+        
+        </div>
+</section>
+
+    <main>
+        
+
+    <div class="container page-single">
+        <h1>[TASK] Definição e Estruturação do Pipeline de Coleta e Tratamento de Dados</h1>
+        
+        <div class="content">
+            <h2 id="-descrição">🎯 Descrição</h2>
+<p>Definir e estruturar a arquitetura completa do pipeline de ETL (Extract, Transform, Load). O objetivo desta semana foi criar o alicerce do nosso novo backend, planejando cada etapa do fluxo de dados, desde a busca da informação bruta até o seu armazenamento estruturado.</p>
+<hr>
+<h2 id="-objetivo">✅ Objetivo</h2>
+<p>O problema que esta funcionalidade resolve é a <strong>falta de um plano de implementação claro para a aquisição de dados</strong>. Antes de escrever o código final, precisamos de uma arquitetura bem definida para garantir que o sistema seja robusto, modular e escalável.</p>
+<p>Esta funcionalidade é crucial porque ela <strong>transforma a ideia do pipeline de dados em um plano de engenharia executável</strong>. Ao final desta semana, teremos um &ldquo;blueprint&rdquo; (planta baixa) completo do backend, permitindo que a equipe desenvolva os componentes de forma organizada e eficiente nas próximas etapas.</p>
+<hr>
+<h2 id="-detalhes-do-plano-de-ação">📝 Detalhes do Plano de Ação</h2>
+<p>O trabalho foi focado em planejar e estruturar as 4 fases do pipeline.</p>
+<h3 id="fase-1-coleta-de-fontes-de-dados"><strong>Fase 1: Coleta de Fontes de Dados</strong></h3>
+<ul>
+<li><strong>Tarefa:</strong> Definir o processo para consumir a API externa do &ldquo;Querido Diário&rdquo;.</li>
+<li><strong>Entregável:</strong> Detalhar os parâmetros de busca necessários (município, datas, palavras-chave) e a estrutura de dados esperada como resposta. Modelar como a lógica de paginação será tratada para garantir a coleta de todos os dados relevantes.</li>
+</ul>
+<h3 id="fase-2-processamento-dos-arquivos"><strong>Fase 2: Processamento dos Arquivos</strong></h3>
+<ul>
+<li><strong>Tarefa:</strong> Planejar o método para download e extração de conteúdo dos arquivos (PDFs) retornados pela API.</li>
+<li><strong>Entregável:</strong> Documentar o fluxo que recebe um link, baixa o arquivo e extrai seu conteúdo textual. Mapear possíveis pontos de falha (ex: arquivo corrompido, link quebrado).</li>
+</ul>
+<h3 id="fase-3-extração-de-informações-estruturadas"><strong>Fase 3: Extração de Informações Estruturadas</strong></h3>
+<ul>
+<li><strong>Tarefa:</strong> Desenvolver a estratégia para transformar o texto bruto extraído em dados estruturados (ex: empresa, CNPJ, valor).</li>
+<li><strong>Entregável:</strong> Criar um &ldquo;prompt&rdquo; modelo bem definido, que servirá de base para a extração de informações via IA. Definir o formato exato do JSON de saída que esperamos após o tratamento.</li>
+</ul>
+<h3 id="fase-4-armazenamento-no-banco-de-dados"><strong>Fase 4: Armazenamento no Banco de Dados</strong></h3>
+<ul>
+<li><strong>Tarefa:</strong> Modelar como os dados estruturados serão armazenados.</li>
+<li><strong>Entregável:</strong> Definir o esquema da tabela final no banco de dados (nomes das colunas, tipos de dados, restrições). Documentar o processo de conexão e inserção dos dados.</li>
+</ul>
+<hr>
+<h2 id="-critérios-de-aceitação">📊 Critérios de Aceitação</h2>
+<p>Para considerar esta etapa de planejamento concluída, os seguintes pontos foram alcançados:</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> O esquema da tabela do banco de dados para armazenar os dados finais foi definido e documentado.</li>
+<li><input checked="" disabled="" type="checkbox"> Um plano de implementação para as próximas semanas foi criado, quebrando o desenvolvimento do pipeline em tarefas menores e mais gerenciáveis (ex: criar script de coleta, criar processador de PDF, etc.).</li>
+<li><input checked="" disabled="" type="checkbox"> A documentação do projeto (como o <code>README.md</code> e o documento de arquitetura) foi revisada e as seções que precisam ser alteradas foram identificadas e marcadas para atualização futura.</li>
+<li><input checked="" disabled="" type="checkbox"> A decisão de migrar a tecnologia do backend e a nova arquitetura proposta foram apresentadas e validadas pela equipe.</li>
+</ul>
+
+        </div>
+    </div>
+
+
+    </main>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            
+            <div class="footer-column about">
+                <h3>OncoMap</h3>
+                <p>Mapa de investimento em saúde oncológica</p>
+            </div>
+            
+            <div class="footer-column links">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column contact">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2025 OncoMap. Todos os direitos reservados.</p>
+            <p>Desenvolvido pela equipe UnB-MDS</p>
+        </div>
+    </div>
+</footer>
+    
+    <script src="http://localhost:1313/2025-2-OncoMap/js/app.js"></script>
+</body>
+</html>

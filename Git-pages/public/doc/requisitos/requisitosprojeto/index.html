@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><script src="/2025-2-OncoMap/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=2025-2-OncoMap/livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+        
+            Requisitosprojeto | OncoMap
+        
+    </title>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/2025-2-OncoMap/css/doc-page-bundle.min.css">
+
+
+
+</head>
+<body>
+
+    <nav class="navbar">
+
+    <a class="navbar-brand" href="http://localhost:1313/2025-2-OncoMap/">
+        OncoMap
+    </a>
+
+    <ul class="navbar-links">
+        <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+    </ul>
+
+    <div class="navbar-right">
+        <a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a>
+    </div>
+
+</nav>
+
+    <section class="hero">
+    <div class="container">
+        <h1>Requisitosprojeto</h1>
+        
+        
+        
+        </div>
+</section>
+
+    <main>
+        
+
+    <div class="container page-single">
+        
+        
+        
+        
+        <div class="content">
+            <h1 id="documento-de-requisitos-de-software-radar-de-investimento-de-saúde-oncológica">Documento de Requisitos de Software: Radar de Investimento de Saúde Oncológica</h1>
+<h2 id="versão-010-escopo-do-mvp">Versão: 0.1.0 (Escopo do MVP)</h2>
+<h2 id="data-09-de-setembro-de-2025">Data: 09 de Setembro de 2025</h2>
+<ol>
+<li><strong>Visão Geral do Projeto</strong></li>
+</ol>
+<ul>
+<li>
+<p>O projeto <strong>Radar de Investimento de Saúde Oncológica</strong> visa analisar e dar transparência aos investimentos públicos em saúde oncológica nos municípios brasileiros. A solução irá extrair, padronizar e organizar dados da plataforma <strong>Querido Diário</strong>, que agrega uma vasta quantidade de diários oficiais municipais em formatos não padronizados.</p>
+</li>
+<li>
+<p>O problema central a ser resolvido é a dificuldade em rastrear e analisar os gastos com licitações e contratações ligadas à oncologia (medicamentos, equipamentos, serviços e obras), devido à heterogeneidade e falta de padronização das fontes de dados.</p>
+</li>
+</ul>
+<ol start="2">
+<li><strong>Requisitos Funcionais (RF)</strong></li>
+</ol>
+<ul>
+<li>Os requisitos funcionais descrevem o que o sistema deve fazer. Eles estão organizados em Épicos e Histórias de Usuário para fornecer contexto, seguidos pelos requisitos formais detalhados.</li>
+</ul>
+<p><strong>ÉPICO 1: Busca e Análise de Dados</strong></p>
+<ul>
+<li>Conjunto de funcionalidades que permitem ao usuário encontrar, extrair e classificar as informações relevantes dentro do grande volume de dados dos diários oficiais.</li>
+</ul>
+<p><strong>História de Usuário 1.1: Busca e Filtragem de Informações</strong></p>
+<p>Como um usuário (pesquisador, cidadão):</p>
+<ul>
+<li>Eu quero poder buscar por palavras-chave e aplicar filtros (município, período), para que eu possa encontrar licitações e contratos específicos sobre saúde oncológica de forma rápida e precisa.</li>
+</ul>
+<p><strong>RF01: Busca por Palavras-Chave:</strong> O sistema deve permitir a busca por palavras-chave relacionadas à saúde oncológica (ex: &ldquo;oncologia&rdquo;, &ldquo;câncer&rdquo;, &ldquo;quimioterapia&rdquo;, &ldquo;radioterapia&rdquo;).</p>
+<p><strong>RF02: Filtragem de Resultados:</strong> O sistema deve permitir que os resultados da busca sejam filtrados por:</p>
+<ul>
+<li>
+<p>Município e/ou Estado.</p>
+</li>
+<li>
+<p>Período de tempo (data de início e fim).</p>
+</li>
+</ul>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ul>
+<li>
+<p>A busca deve funcionar combinando palavras-chave e filtros.</p>
+</li>
+<li>
+<p>A interface de filtros deve ser clara e de fácil utilização.</p>
+</li>
+</ul>
+<p><strong>História de Usuário 1.2: Extração e Classificação de Dados Financeiros</strong></p>
+<p>Como um analista:</p>
+<ul>
+<li>Eu quero que o sistema extraia e classifique automaticamente os valores monetários e o tipo de investimento, para que eu possa entender como os recursos estão sendo distribuídos sem análise manual.</li>
+</ul>
+<p><strong>RF03: Extração de Valores Monetários:</strong> O sistema deve ser capaz de identificar e extrair valores monetários (em Reais, R$) de licitações e contratos encontrados nos diários.</p>
+<p><strong>RF04: Classificação de Investimentos:</strong> O sistema deve processar os dados extraídos para classificá-los automaticamente por tipo de investimento, conforme as categorias definidas: Medicamentos, Equipamentos, Obras, Serviços de Saúde, etc.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ul>
+<li>
+<p>A precisão na extração de valores deve ser alta.</p>
+</li>
+<li>
+<p>Toda despesa identificada deve ser associada a uma categoria de investimento.</p>
+</li>
+</ul>
+<p><strong>ÉPICO 2: Visualização e Geração de Relatórios</strong></p>
+<ul>
+<li>Conjunto de funcionalidades para apresentar os dados de forma clara, compreensível e útil para o usuário final.</li>
+</ul>
+<p><strong>História de Usuário 2.1: Visualização de Dados em Painel</strong></p>
+<p>Como um usuário:</p>
+<ul>
+<li>Eu quero visualizar os resultados da busca em um painel de controle (dashboard) com tabelas e gráficos, para que eu possa analisar e interpretar facilmente as informações coletadas.</li>
+</ul>
+<p><strong>RF05: Exibição em Painel (Dashboard):</strong> O sistema deve exibir os resultados da busca em um painel de controle central.</p>
+<p><strong>RF06: Tabela Detalhada:</strong> O painel deve conter uma tabela detalhada com informações de cada licitação/contrato, incluindo, no mínimo: município, valor, data e descrição.</p>
+<p><strong>RF07: Gráficos Interativos:</strong> O sistema deve conter gráficos interativos que mostrem a distribuição dos investimentos (ex: total de gastos por município ou por categoria).</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ul>
+<li>
+<p>O painel deve ser atualizado dinamicamente conforme os filtros aplicados.</p>
+</li>
+<li>
+<p>Os gráficos devem ser de fácil interpretação.</p>
+</li>
+</ul>
+<p><strong>História de Usuário 2.2: Exportação de Dados</strong></p>
+<p>Como um analista:</p>
+<p>Eu quero poder exportar os dados e os relatórios gerados, para que eu possa realizar análises mais aprofundadas em outras ferramentas ou compartilhar os resultados.</p>
+<p><strong>RF08: Exportação de Dados:</strong> O sistema deve permitir a exportação dos dados da tabela e dos relatórios em formatos comuns, como CSV e PDF.</p>
+<p><strong>Critérios de Aceitação:</strong></p>
+<ul>
+<li>
+<p>A exportação deve refletir os filtros atualmente aplicados.</p>
+</li>
+<li>
+<p>O arquivo gerado deve ser íntegro e legível.</p>
+</li>
+</ul>
+<p><strong>3. Requisitos Não Funcionais (RNF)</strong></p>
+<ul>
+<li>Os requisitos não funcionais definem as características de qualidade do sistema, garantindo uma boa experiência de uso.</li>
+</ul>
+<p><strong>RNF01: Usabilidade</strong></p>
+<ul>
+<li>
+<p>A interface do usuário deve ser intuitiva e de fácil navegação, mesmo para usuários sem conhecimento técnico.</p>
+</li>
+<li>
+<p>A visualização dos resultados (tabelas, gráficos) deve ser clara e facilitar a interpretação.</p>
+</li>
+<li>
+<p>O processo de busca e exportação deve ser simples e direto.</p>
+</li>
+</ul>
+<p><strong>RNF02: Desempenho</strong></p>
+<ul>
+<li>
+<p>As buscas no sistema devem retornar resultados em um tempo aceitável (meta: inferior a 5 segundos).</p>
+</li>
+<li>
+<p>O processamento e a exibição dos dados no painel devem ser eficientes, mesmo com múltiplos filtros aplicados.</p>
+</li>
+</ul>
+<p><strong>RNF03: Confiabilidade</strong></p>
+<ul>
+<li>
+<p>A extração de dados de licitações e contratos deve ser precisa, evitando erros de leitura de valores e datas.</p>
+</li>
+<li>
+<p>A integridade dos dados deve ser mantida, garantindo consistência com as fontes dos diários oficiais.</p>
+</li>
+</ul>
+<p><strong>RNF04: Escalabilidade</strong></p>
+<ul>
+<li>
+<p>A arquitetura do sistema deve permitir a inclusão de novos diários oficiais sem a necessidade de grandes mudanças estruturais.</p>
+</li>
+<li>
+<p>O sistema deve ser capaz de suportar um aumento no volume de buscas e de usuários simultâneos no futuro.</p>
+</li>
+</ul>
+<p><strong>4. Escopo para o MVP (Produto Mínimo Viável)</strong></p>
+<ul>
+<li>Com base na priorização, a primeira versão do produto focará nas funcionalidades essenciais para entregar valor e validar a solução.</li>
+</ul>
+<p><strong>Funcionalidades INCLUÍDAS no MVP:</strong></p>
+<ul>
+<li>
+<p>Busca por Palavras-Chave e Filtros (RF01, RF02).</p>
+</li>
+<li>
+<p>Extração e Classificação de Dados (RF03, RF04).</p>
+</li>
+<li>
+<p>Visualização em Tabela Detalhada (RF06).</p>
+</li>
+</ul>
+<p><strong>Funcionalidades para Versões Futuras (PÓS-MVP):</strong></p>
+<ul>
+<li>
+<p>Dashboard com Gráficos Interativos (RF05, RF07).</p>
+</li>
+<li>
+<p>Exportação de Dados em CSV e PDF (RF08).</p>
+</li>
+<li>
+<p>Filtros avançados e novas categorias de análise.</p>
+</li>
+</ul>
+<p><strong>5. Restrições e Premissas do Projeto</strong></p>
+<ul>
+<li>
+<p><strong>Padrões de Software Livre:</strong> O projeto seguirá as melhores práticas e padrões de desenvolvimento de software livre, incluindo licenciamento e guias de contribuição.</p>
+</li>
+<li>
+<p><strong>Fonte de Dados Primária:</strong> A única fonte de dados para o sistema será a plataforma &ldquo;Querido Diário&rdquo;.</p>
+</li>
+<li>
+<p><strong>Guia para Protótipos:</strong> Os protótipos de interface (baixa e alta fidelidade) devem priorizar a clareza e simplicidade, focando em uma jornada de usuário fluida desde a busca até a visualização dos resultados.</p>
+</li>
+</ul>
+<p><strong>6. Artefatos Relacionados</strong></p>
+<ul>
+<li><strong>User Story Map:</strong> O planejamento visual dos requisitos e do escopo do MVP pode ser acessado no <a href="https://www.figma.com/board/8Jsltq8BOL65CsMoRWFjik/Template-MDS--Copy-?node-id=0-1&amp;p=f&amp;t=Mh9B7fFd33lW6I0P-0">board do Figma</a>.</li>
+<li><strong>Controle da Tarefa:</strong> A criação e o desenvolvimento do Story Map foram rastreados através da seguinte <a href="https://github.com/unb-mds/2025-2-OncoMap/issues/33">issue no GitHub</a>.</li>
+</ul>
+
+        </div>
+    </div>
+
+
+    </main>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            
+            <div class="footer-column about">
+                <h3>OncoMap</h3>
+                <p>Mapa de investimento em saúde oncológica</p>
+            </div>
+            
+            <div class="footer-column links">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column contact">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2025 OncoMap. Todos os direitos reservados.</p>
+            <p>Desenvolvido pela equipe UnB-MDS</p>
+        </div>
+    </div>
+</footer>
+    
+    <script src="http://localhost:1313/2025-2-OncoMap/js/app.js"></script>
+</body>
+</html>

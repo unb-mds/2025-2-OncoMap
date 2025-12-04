@@ -1,0 +1,249 @@
+/* Seu 'body' está perfeito */
+body {
+    font-family: poppins;
+    margin: 0;
+    padding: 0;
+    background-color: #134611;
+}
+
+/* A tag <nav> agora tem a classe .navbar */
+.navbar {
+    color: #f4f7f6;
+    display: flex;
+    justify-content: space-between; /* (left, center, right) */
+    align-items: center;
+    padding: 1rem 2rem; /* Aumentei um pouco o padding lateral */
+    font-size: 1.2rem;    /* Ajustei o tamanho base */
+    
+    /* Centraliza o conteúdo na página */
+    margin: 0 auto;
+}
+
+/* O Logo (Esquerda) */
+.navbar-brand, .navbar-right {
+    font-size: 1.5rem; /* Maior que os outros */
+    font-weight: bold;
+    color: #f4f7f6;
+    text-decoration: none;
+}
+
+/* A Lista de Links (Centro) */
+.navbar-links {
+    list-style: none; /* Remove bolinhas */
+    display: flex;
+    gap: 1rem; /* Espaço entre os links */
+    margin: 0;
+    padding: 0;
+}
+
+/* Links do Centro e da Direita */
+.navbar-links a,
+.navbar-right a {
+    color: #f4f7f6;
+    text-decoration: none;
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Efeito Hover */
+.navbar-links a:hover,
+.navbar-right a:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+/* ... Seu CSS para .hero, main, footer ... */
+
+/* Seu estilo base para o Hero, com um padding maior */
+.hero {
+    color: #f4f7f6;
+    text-align: center;
+    padding: 5rem 1rem; /* Aumentei o padding para dar mais altura, como na imagem */
+    
+    /* O fundo já vem do 'body' */
+    /* background-color: #18464a; */
+}
+
+/* O container que centraliza o conteúdo */
+.hero .container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* O Título Principal (ex: "OncoMap - Mapa...") */
+.hero h1 {
+    font-size: 3rem; /* Bem grande */
+    font-weight: bold;
+    line-height: 1.2; /* Para o título não ficar muito espaçado se quebrar a linha */
+    margin: 0 0 1rem 0; /* Tira margem de cima, adiciona pequena margem embaixo */
+}
+
+/* O Subtítulo (ex: "Transparência...") */
+.hero .subtitle {
+    font-size: 1.5rem; /* Menor que o título, mas maior que o texto normal */
+    font-weight: 300; /* Mais fino */
+    margin: 0;
+    opacity: 0.9; /* Um pouco mais sutil */
+}
+
+main {
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+/*
+/* ==== INÍCIO DA CORREÇÃO ====
+*/
+
+/* O container que centraliza e limita a largura */
+.container {
+    max-width: 1000px;  /* Largura máxima do conteúdo */
+    margin: 0 auto;       /* Centraliza (auto nas laterais) */
+    padding: 0 1.5rem;    /* Espaçamento interno (para não colar nas bordas) */
+}
+
+/* Espaçamento para TODAS as seções de conteúdo
+   Isso adiciona o "respiro" (espaço em branco) acima e abaixo do conteúdo principal
+*/
+.content-sections,
+.content-single,
+.content-issue,
+.content-list {
+    padding: 4rem 0; /* 4rem (aprox 64px) em cima e embaixo, 0 nas laterais */
+}
+
+/*
+/* ==== FIM DA CORREÇÃO ====
+*/
+
+
+.footer {
+    background-color: #134611; /* Cor escura do body */
+    color: #f4f7f6;
+    padding-top: 3rem; /* Mais espaço no topo */
+    font-size: 0.95rem;
+}
+
+.footer-grid {
+    display: grid;
+    /* 3 colunas: a primeira (about) é um pouco maior */
+    grid-template-columns: 1.5fr 1fr 1fr; 
+    gap: 2rem;
+    padding-bottom: 3rem; /* Espaço antes da linha inferior */
+}
+
+.footer-column h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.footer-column p {
+    margin: 0;
+    line-height: 1.6;
+    opacity: 0.8;
+    max-width: 300px; /* Limita a largura da descrição */
+}
+
+.footer-column ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-column li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-column a {
+    color: #f4f7f6;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.footer-column a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* A linha inferior do footer (copyright) */
+.footer-bottom {
+    /* Linha sutil de separação */
+    border-top: 1px solid rgba(244, 247, 246, 0.2); 
+    padding: 1.5rem 0;
+}
+
+/* Reutiliza o layout flex para alinhar o texto */
+.footer-bottom .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* --- Estilos de Página Única (Single) --- */
+/* (Aplica-se ao Guia de Config.) */
+
+.content-single .content {
+    background-color: #fff; /* A caixa branca */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilos para o conteúdo markdown (h2, ul, etc.) */
+.content-single .content h2 {
+    font-size: 1.8rem;
+    color: #333;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-top: 2.5rem; /* Espaço entre as seções "Descrição" e "Issues" */
+    margin-bottom: 1.5rem;
+}
+
+.content-single .content h2:first-child {
+    margin-top: 0; /* Remove a margem extra do primeiro H2 */
+}
+
+.content-single .content ul {
+    padding-left: 20px; /* Alinha a lista de issues */
+    line-height: 1.7;
+}
+
+.content :not(pre) > code {
+    background-color: #e3effd; 
+    color: #1a5c20; 
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+/* --- BLOCO DE CÓDIGO (grande) --- */
+/* A classe .highlight é gerada pelo Hugo ao redor do código */
+.content .highlight,
+.content pre {
+    background-color: #444444 !important; /* !important vence o Hugo */
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Garante que o pre interno fique transparente para usar a cor do pai */
+.content .highlight pre {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 20px;
+    margin: 0;
+    overflow-x: auto; /* Barra de rolagem se o código for longo */
+}
+
+/* Ajusta a cor do texto base (atenção: syntax highlighting pode ter cores próprias) */
+.content pre code {
+    color: #f8f8f2 !important; 
+    font-family: 'Consolas', monospace;
+}

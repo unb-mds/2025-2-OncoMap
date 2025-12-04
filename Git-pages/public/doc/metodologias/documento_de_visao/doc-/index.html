@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><script src="/2025-2-OncoMap/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=2025-2-OncoMap/livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+        
+            Doc  | OncoMap
+        
+    </title>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/2025-2-OncoMap/css/doc-page-bundle.min.css">
+
+
+
+</head>
+<body>
+
+    <nav class="navbar">
+
+    <a class="navbar-brand" href="http://localhost:1313/2025-2-OncoMap/">
+        OncoMap
+    </a>
+
+    <ul class="navbar-links">
+        <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+    </ul>
+
+    <div class="navbar-right">
+        <a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a>
+    </div>
+
+</nav>
+
+    <section class="hero">
+    <div class="container">
+        <h1>Doc </h1>
+        
+        
+        
+        </div>
+</section>
+
+    <main>
+        
+
+    <div class="container page-single">
+        
+        
+        
+        
+        <div class="content">
+            <ol>
+<li>Introdução</li>
+</ol>
+<p>Objetivo: Apresentar o projeto de forma clara, objetiva e concisa.</p>
+<p>O que incluir</p>
+<p>Tema: Uma frase curta que define o assunto do projeto.
+Ex.: “Sistema de gerenciamento de tarefas acadêmicas.”</p>
+<p>Objetivo do projeto:</p>
+<p>Geral: declaração sucinta do propósito.</p>
+<p>Específicos: lista de metas mensuráveis (ex.: permitir cadastro de usuários; gerar relatórios semanais).</p>
+<p>Delimitação do problema (escopo):</p>
+<p>Dentro do projeto: funcionalidades principais que serão entregues.</p>
+<p>Fora do projeto: explicitamente o que não será contemplado nesta fase.</p>
+<p>Justificativa: Motivação acadêmica ou prática (por que este projeto é relevante? impacto esperado?).</p>
+<p>Método de trabalho: Processo de desenvolvimento (ex.: Ágil - Scrum, RUP, Kanban), linguagens, framework(s), ferramentas de modelagem.</p>
+<p>Organização do documento: Breve descrição dos capítulos e anexos deste documento.</p>
+<p>Glossário: Indicação de onde estão os termos importantes (ver seção Glossário
+).</p>
+<ol start="2">
+<li>Descrição geral do sistema</li>
+</ol>
+<p>Visão de alto nível: contexto, público-alvo e regras de negócio.</p>
+<p>Pontos essenciais</p>
+<p>Descrição do problema: Quem é afetado? Qual o impacto atual? Qual solução proposta?
+Ex.: Estudantes perdem prazos; proposta: sistema com notificações e painel de prazos.</p>
+<p>Principais envolvidos:</p>
+<p>Usuários: tipos e características (ex.: Administrador — gerencia usuários; Aluno — cria e acompanha tarefas).</p>
+<p>Desenvolvedores/Stakeholders: PO (Product Owner), Desenvolvedores, Testadores, Analistas.</p>
+<p>Regras de negócio:</p>
+<p>Restrições (ex.: somente docentes aprovados podem publicar provas).</p>
+<p>Volumes esperados (nº de usuários simultâneos).</p>
+<p>Tolerância a falhas, SLAs (ex.: disponibilidade 99,9%).</p>
+<ol start="3">
+<li>Requisitos do sistema</li>
+</ol>
+<p>Requisitos são a base do projeto — escreva de forma clara para facilitar implementação e testes.</p>
+<p>3.1 Requisitos funcionais</p>
+<p>Liste as funções que o sistema deve executar. Recomenda-se padronizar cada item.</p>
+<p>Template de requisito funcional (use uma tabela ou seção por requisito):</p>
+<p>RF-001 — Nome do Caso de Uso</p>
+<ul>
+<li>Descrição: Breve resumo do que faz.</li>
+<li>Atores: [Ex.: Aluno, Administrador]</li>
+<li>Pré-condições: [o que precisa existir]</li>
+<li>Fluxo principal:
+<ol>
+<li>Ação A</li>
+<li>Ação B</li>
+</ol>
+</li>
+<li>Pós-condições: [estado do sistema após conclusão]</li>
+<li>Exceções / Fluxos alternativos: [erros, caminhos secundários]</li>
+<li>Observações: [regras especiais, restrições]</li>
+</ul>
+<p>3.2 Requisitos não-funcionais</p>
+<p>Segurança: exemplo — autenticação via OAuth 2.0; criptografia de dados sensíveis.</p>
+<p>Desempenho: latência máxima aceitável (ex.: resposta API ≤ 200 ms).</p>
+<p>Disponibilidade: ex.: 99,9% uptime.</p>
+<p>Escalabilidade: tipo de dimensionamento esperado.</p>
+<p>Usabilidade: métricas (ex.: tarefa X deve ser completada em ≤ 3 passos).</p>
+<p>Portabilidade: navegadores/plataformas suportadas.</p>
+<p>Para cada RNF, especifique métrica/valor (ex.: latência ≤ 200 ms; disponibilidade 99,9%).</p>
+<p>3.3 Protótipo / Interface</p>
+<p>Protótipos de telas com objetivo de cada tela, navegação e regras de validação.</p>
+<p>Formato sugerido: imagens ou links (Figma/Adobe XD) + descrição de cada componente.</p>
+<p>Regras de validação e restrições de campo (ex.: senha mínimo 8 caracteres; formatos de data).</p>
+<p>3.4 Métricas e cronograma</p>
+<p>Estimativas: pontos de função / story points / horas por tarefa.</p>
+<p>Cronograma: usar tabela ou diagrama (Gantt). Exemplo de tabela resumida:</p>
+<p>Tarefa	Responsável	Início	Fim	Esforço (dias)
+Levantamento de requisitos	PO/Analista	2025-09-01	2025-09-07	5
+Protótipos	UX	2025-09-08	2025-09-14	5
+Implementação Módulo A	Dev	2025-09-15	2025-09-30	12
+4. Análise e design</p>
+<p>Transformar requisitos em solução técnica documentada.</p>
+<p>4.1 Arquitetura do sistema</p>
+<p>Topologia (ex.: 3-tiers, microservices).</p>
+<p>Componentes: front-end, API, banco de dados, mensageria.</p>
+<p>Hardware mínimo e configuração de rede (se aplicável).</p>
+<p>4.2 Modelo de domínio</p>
+<p>Diagrama conceitual / diagrama de classes inicial: entidades, atributos e relacionamentos.</p>
+<p>4.3 Diagramas de interação</p>
+<p>Diagrama de sequência: validação de comportamentos ao longo do tempo.</p>
+<p>Diagrama de colaboração/comunicação: links entre objetos e mensagens.</p>
+<p>4.4 Diagrama de classes (final)</p>
+<p>Todas as classes detalhadas com atributos e métodos. Relações: associação, agregação, herança etc.</p>
+<p>4.5 Diagrama de atividades</p>
+<p>Fluxos de trabalho, decisões, concorrência e sincronização (útil para processos complexos).</p>
+<p>4.6 Diagrama de estados</p>
+<p>Para entidades com ciclos de vida complexos (ex.: pedido — criado → pago → enviado → entregue).</p>
+<p>4.7 Diagrama de componentes</p>
+<p>Organização física dos componentes de software e dependências entre eles.</p>
+<p>4.8 Modelo de dados</p>
+<p>Modelo lógico (ER) com normalização.</p>
+<p>Criação física: scripts SQL, índices e constraints.</p>
+<p>Dicionário de dados: tabela com nome, coluna, tipo, descrição, restrições e valores padrão.</p>
+<p>Exemplo de dicionário (resumo):</p>
+<p>Tabela	Coluna	Tipo	Descrição	Restrições
+usuario	id	UUID	Identificador do usuário	PK, not null
+usuario	email	varchar(255)	E-mail do usuário	unique, not null
+4.9 Ambiente de desenvolvimento</p>
+<p>Linguagens, frameworks, SGBD, IDEs, ferramentas CI/CD, versão mínima das dependências.</p>
+<p>4.10 Sistemas e componentes externos</p>
+<p>Integrações com APIs externas, serviços de pagamento, bibliotecas terceiras e contratos de API.</p>
+<ol start="5">
+<li>Implementação</li>
+</ol>
+<p>Boas práticas e mapeamento do design para código.</p>
+<p>Recomendações</p>
+<p>Cabeçalhos claros: em funções (descrição, autor, data).</p>
+<p>Nomes padronizados: convenção clara (camelCase / snake_case).</p>
+<p>Comentários úteis: explicar por que, não somente o que.</p>
+<p>Tratamento de erros: centralizado e com logs.</p>
+<p>Padrões de projeto: usar quando apropriado (Factory, Repository, Adapter).</p>
+<p>Encapsulamento de dados: usar repositórios ou DAO.</p>
+<p>Revisões de código: PRs, code review checklist.</p>
+<p>Integração contínua: pipeline com lint, testes e builds.</p>
+<ol start="6">
+<li>Testes</li>
+</ol>
+<p>Plano para validar que o produto atende aos requisitos.</p>
+<p>6.1 Plano de testes (mínimo)</p>
+<p>Para cada teste inclua:</p>
+<p>Nº do teste: TEST-001</p>
+<p>Descrição: o que se testa</p>
+<p>Pré-condições: ambiente, dados iniciais</p>
+<p>Passos: passos claros e reproduzíveis</p>
+<p>Resultado esperado: critérios objetivos</p>
+<p>Critério de aceitação: aprovado/reprovado</p>
+<p>Tipos de teste</p>
+<p>Unitários</p>
+<p>Integração</p>
+<p>Sistema</p>
+<p>Usabilidade</p>
+<p>Performance (carga / stress / volume)</p>
+<p>Segurança</p>
+<p>Instalação / Implantação</p>
+<p>6.2 Execução do plano</p>
+<p>Registro dos resultados com: nº do teste, resultado obtido, executor, ambiente, comentários e evidências (prints, logs).</p>
+<p>Manter um repositório de evidências (ex.: pasta /evidences/tests/).</p>
+<ol start="7">
+<li>Implantação</li>
+</ol>
+<p>Como levar o sistema para produção.</p>
+<p>Itens essenciais</p>
+<p>Diagrama de implantação: servidores, containers, balanceadores.</p>
+<p>Manual de instalação passo a passo: pré-requisitos, scripts, configuração, variáveis de ambiente.</p>
+<p>Procedimentos de rollback: passos claros para reverter versão (script de rollback + checagens).</p>
+<p>Plano de contingência: como agir em caso de falhas críticas.</p>
+<ol start="8">
+<li>Manual do usuário</li>
+</ol>
+<p>Guia prático para usuários finais com instruções passo a passo.</p>
+<p>Conteúdo sugerido:</p>
+<p>Introdução ao sistema</p>
+<p>Requisitos do sistema (hardware / software)</p>
+<p>Tela principal e descrição das funcionalidades</p>
+<p>Fluxos comuns (ex.: cadastrar tarefa, gerar relatório)</p>
+<p>Resolução de problemas comuns (FAQ)</p>
+<p>Contatos de suporte / SLA de atendimento</p>
+<p>Use imagens/prints e pequenos vídeos quando for útil.</p>
+<ol start="9">
+<li>Conclusões e considerações finais</li>
+</ol>
+<p>Resultado esperado do projeto.</p>
+<p>Limitações identificadas.</p>
+<p>Melhorias e trabalhos futuros sugeridos.</p>
+<p>Avaliação do atendimento aos objetivos iniciais (checklist de sucesso).</p>
+<ol start="10">
+<li>Referências</li>
+</ol>
+<p>Drive com material de apoio:</p>
+<p><a href="https://drive.google.com/drive/folders/1GMGh38wmcre1ksEaF_D3QHBz4T-eze9X">https://drive.google.com/drive/folders/1GMGh38wmcre1ksEaF_D3QHBz4T-eze9X</a></p>
+<p>Vídeo de referência:</p>
+<p><a href="https://www.youtube.com/watch?v=l9rdjLqmIVc">https://www.youtube.com/watch?v=l9rdjLqmIVc</a></p>
+
+        </div>
+    </div>
+
+
+    </main>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            
+            <div class="footer-column about">
+                <h3>OncoMap</h3>
+                <p>Mapa de investimento em saúde oncológica</p>
+            </div>
+            
+            <div class="footer-column links">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column contact">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2025 OncoMap. Todos os direitos reservados.</p>
+            <p>Desenvolvido pela equipe UnB-MDS</p>
+        </div>
+    </div>
+</footer>
+    
+    <script src="http://localhost:1313/2025-2-OncoMap/js/app.js"></script>
+</body>
+</html>

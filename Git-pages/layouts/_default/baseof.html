@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "pt-br" }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+        {{ if .IsHome }}
+            {{ .Site.Title }}
+        {{ else }}
+            {{ .Title }} | {{ .Site.Title }}
+        {{ end }}
+    </title>
+    
+{{/* --- Carregamento de CSS com Hugo Pipes --- */}}
+    
+    {{/* 1. Carrega o CSS principal */}}
+    {{ $style := resources.Get "css/style.css" }}
+    
+    {{/* 2. Cria uma lista de CSS a serem combinados */}}
+    {{ $cssBundle := slice $style }}
+    
+    {{/* 3. Adiciona CSS específico da seção */}}
+    {{ if eq .Section "sprints" }}
+        {{ $sprintCSS := resources.Get "css/sprints.css" }}
+        {{ $cssBundle = $cssBundle | append $sprintCSS }}
+    {{ end }}
+    
+    {{ if eq .Section "issues" }}
+        {{ $issueCSS := resources.Get "css/issues.css" }}
+        {{ $cssBundle = $cssBundle | append $issueCSS }}
+    {{ end }}
+
+    {{ if eq .Section "doc" }}
+        {{ $docCSS := resources.Get "css/doc.css" }}
+        {{ $cssBundle = $cssBundle | append $docCSS }}
+    {{ end }}
+    
+    {{/* 4. Adiciona CSS se o layout for "embed" */}}
+    {{ if eq .Params.layout "embed" }}
+        {{ $embedCSS := resources.Get "css/embed.css" }}
+        {{ $cssBundle = $cssBundle | append $embedCSS }}
+    {{ end }}
+    
+    {{/* 5. Combina tudo em um arquivo com nome único (baseado na Seção e no Tipo) */}}
+    {{ $nomeBundle := printf "css/%s-%s-bundle.css" .Section .Kind }}
+    {{ $bundle := $cssBundle | resources.Concat $nomeBundle | resources.Minify }}
+    
+    {{/* 6. Gera a tag <link> */}}
+    <link rel="stylesheet" href="{{ $bundle.RelPermalink }}">
+
+{{/* --- Fim do Bloco CSS --- */}}
+
+</head>
+<body>
+
+    {{ partial "navbar.html" . }}
+
+    {{ partial "hero.html" . }}
+
+    <main>
+        {{ block "main" . }}
+        {{ end }}
+    </main>
+
+    {{ partial "footer.html" . }}
+    
+    <script src="{{ "js/app.js" | relURL }}"></script>
+</body>
+</html>

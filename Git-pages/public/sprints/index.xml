@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sprints on OncoMap</title>
+    <link>http://localhost:1313/2025-2-OncoMap/sprints/</link>
+    <description>Recent content in Sprints on OncoMap</description>
+    <generator>Hugo</generator>
+    <language>pt-br</language>
+    <lastBuildDate>Fri, 21 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/2025-2-OncoMap/sprints/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sprint_12</title>
+      <link>http://localhost:1313/2025-2-OncoMap/sprints/sprint-13/</link>
+      <pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2025-2-OncoMap/sprints/sprint-13/</guid>
+      <description>&lt;h2 id=&#34;issues&#34;&gt;Issues&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-91/&#34;&gt;91 - Dev&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-90/&#34;&gt;90 - [BUG] -Correcções de Bug no frontend&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-89/&#34;&gt;89 - [TASK] - ATualizar valores finais no banco de dados&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-88/&#34;&gt;88 - feat: Implementa responsividade na Homepage e corrige bug visual no Mapa&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-87/&#34;&gt;87 - [Fix] Remover borda de foco (outline) ao clicar nas regiões&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-86/&#34;&gt;86 - [FEATURE] FAzendo a responsividade da pagina inicial&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-85/&#34;&gt;85 - Dev&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-84/&#34;&gt;84 - [FEATURE] Script Mensal&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-83/&#34;&gt;83 - Feat: responsividade da Navbar&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-82/&#34;&gt;82 - [FEATURE]fazendo a responsividade na navbar&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Sprint_11</title>
+      <link>http://localhost:1313/2025-2-OncoMap/sprints/sprint-12/</link>
+      <pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2025-2-OncoMap/sprints/sprint-12/</guid>
+      <description>&lt;h2 id=&#34;issues&#34;&gt;Issues&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-81/&#34;&gt;81 - [TASK] - PAleta de cores&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-80/&#34;&gt;80 - [FEATURE] - Continuando a melhoria no git pages&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-79/&#34;&gt;79 - Implementação script para txt&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-78/&#34;&gt;78 - Dev&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-77/&#34;&gt;77 - [Feat] Fazendo a responsividade do frontend&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Sprint 10</title>
+      <link>http://localhost:1313/2025-2-OncoMap/sprints/sprint-11/</link>
+      <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2025-2-OncoMap/sprints/sprint-11/</guid>
+      <description>&lt;h2 id=&#34;issues&#34;&gt;Issues&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-76/&#34;&gt;76 - atulização do projeto (nome dos estados )&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-75/&#34;&gt;75 - [BUG] - NOMECLATURA DOS ESTADOS&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-74/&#34;&gt;74 - Correções no layout do frontend&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-73/&#34;&gt;73 - [FEATURE]Melhoria na página do Git Pages&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-72/&#34;&gt;72 - [Fix] Concertando alguns problemas no layout do Frontend&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Sprint 9</title>
+      <link>http://localhost:1313/2025-2-OncoMap/sprints/sprint-10/</link>
+      <pubDate>Sun, 26 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2025-2-OncoMap/sprints/sprint-10/</guid>
+      <description>&lt;h2 id=&#34;issues&#34;&gt;Issues&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-71/&#34;&gt;71 - [TASK] - Add .txt ao db&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-70/&#34;&gt;70 - [TASK] - Enrichment.js&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-69/&#34;&gt;69 - Dev&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-68/&#34;&gt;68 - [TASK] - Definir metodo de tratamento dos dados&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Sprint 8</title>
+      <link>http://localhost:1313/2025-2-OncoMap/sprints/sprint-9/</link>
+      <pubDate>Sun, 19 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2025-2-OncoMap/sprints/sprint-9/</guid>
+      <description>&lt;h2 id=&#34;issues&#34;&gt;Issues&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-67/&#34;&gt;67 - [FIX] Concertando o zoom dos municipios&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-66/&#34;&gt;66 - [FIX] Concertando o zoom do mapa&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-65/&#34;&gt;65 - Tabela Municipios &lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-64/&#34;&gt;64 - Alimentação da tabela municipalities_status no DB&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-63/&#34;&gt;63 - [FEATURE]Criação Do Figma para Celular&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-62/&#34;&gt;62 - build - Organizacao da estrutura das pastas&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-61/&#34;&gt;61 - [TASK] - Criação de tabelas para os municipios&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-60/&#34;&gt;60 - [FEATURE] Alimentacao do municipalities_status&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-59/&#34;&gt;59 - Dev&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-58/&#34;&gt;58 - [FEATURE] Teste da alimentacao do banco de dados&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-52/&#34;&gt;52 - [FEATURE]Configurar e Conectar Banco de Dados com Supabase&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-51/&#34;&gt;51 - [TASK] Definição e Estruturação do Pipeline de Coleta e Tratamento de Dados&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Sprint 7</title>
+      <link>http://localhost:1313/2025-2-OncoMap/sprints/sprint-8/</link>
+      <pubDate>Mon, 13 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2025-2-OncoMap/sprints/sprint-8/</guid>
+      <description>&lt;h2 id=&#34;issues&#34;&gt;Issues&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-56/&#34;&gt;56 - Bug fix&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-55/&#34;&gt;55 - Funçao dos municipios&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-54/&#34;&gt;54 - Funcao municipios&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-53/&#34;&gt;53 - [TASK] Correção de Bugs na Home Page&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-50/&#34;&gt;50 - Dev&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-49/&#34;&gt;49 - Criação de templates&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Sprint 5</title>
+      <link>http://localhost:1313/2025-2-OncoMap/sprints/sprint-6/</link>
+      <pubDate>Mon, 29 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2025-2-OncoMap/sprints/sprint-6/</guid>
+      <description>&lt;h2 id=&#34;issues&#34;&gt;Issues&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-46/&#34;&gt;46 - Início do codigo do projeto&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-45/&#34;&gt;45 - docs: Revisão completa e atualização do README.md&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-44/&#34;&gt;44 - Template de Pull request&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-42/&#34;&gt;42 - Página inicial do projeto&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-41/&#34;&gt;41 - GitHub Pages&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-40/&#34;&gt;40 - Alimentação de DataBase e criação de endpoints&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-39/&#34;&gt;39 - Criando Template da pull request&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-38/&#34;&gt;38 - Software livre&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Sprint 4</title>
+      <link>http://localhost:1313/2025-2-OncoMap/sprints/sprint-5/</link>
+      <pubDate>Wed, 24 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2025-2-OncoMap/sprints/sprint-5/</guid>
+      <description>&lt;h2 id=&#34;issues&#34;&gt;Issues&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-37/&#34;&gt;37 - DataBase Local e testes no Postman sobre API&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-36/&#34;&gt;36 - Protótipo de Alta Fidelidade&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-35/&#34;&gt;35 - Figma de alta resolução&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-34/&#34;&gt;34 - Docker e Docker compose&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-33/&#34;&gt;33 - Estruturação do User Story Map no Figma&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-32/&#34;&gt;32 - Prototipo de Baixa Fidelidade&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-31/&#34;&gt;31 - Criação do ReadMe&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Sprint  3</title>
+      <link>http://localhost:1313/2025-2-OncoMap/sprints/sprint-4/</link>
+      <pubDate>Mon, 15 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2025-2-OncoMap/sprints/sprint-4/</guid>
+      <description>&lt;h2 id=&#34;issues&#34;&gt;Issues&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-30/&#34;&gt;30 - Node.js(POO)&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-29/&#34;&gt;29 - Organização das atas de reunião&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-28/&#34;&gt;28 - Projeto de baixa fidelidade&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-27/&#34;&gt;27 - Criação do ambiente para o frontend e backend&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-26/&#34;&gt;26 - Organização das pastas do repositorio no github&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-25/&#34;&gt;25 - Levantamento e Documentação dos Requisitos para a Release 1 (MVP)&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-24/&#34;&gt;24 - Node.js (Excessões)&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-23/&#34;&gt;23 - Template ata de reunião&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Sprint 2</title>
+      <link>http://localhost:1313/2025-2-OncoMap/sprints/sprint-3/</link>
+      <pubDate>Sun, 07 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2025-2-OncoMap/sprints/sprint-3/</guid>
+      <description>&lt;h2 id=&#34;issues&#34;&gt;Issues&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-22/&#34;&gt;22 - Node.js (Objetos)&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-21/&#34;&gt;21 - Node.js (array)&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-20/&#34;&gt;20 - Levantamento Requisitos funcionais&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-19/&#34;&gt;19 - API Querido Diario&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-18/&#34;&gt;18 - Estudo de React mais Typescript&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-17/&#34;&gt;17 - Estudo de Typescript&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-16/&#34;&gt;16 - Figma&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-15/&#34;&gt;15 - Documento de visao&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-14/&#34;&gt;14 - Template do diagrama de Fishbone&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-13/&#34;&gt;13 - Diagrama de Fishbone&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Sprint 1</title>
+      <link>http://localhost:1313/2025-2-OncoMap/sprints/sprint-2/</link>
+      <pubDate>Sun, 31 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2025-2-OncoMap/sprints/sprint-2/</guid>
+      <description>&lt;h2 id=&#34;issues&#34;&gt;Issues&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-12/&#34;&gt;12 - Estudo de Node.js&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-11/&#34;&gt;11 - API&amp;rsquo;s e Uso geral&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-10/&#34;&gt;10 - Requisitos Não Funcionais&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-9/&#34;&gt;9 - Requisitos Funcionais&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-8/&#34;&gt;8 - Estudo de React para o projeto&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-7/&#34;&gt;7 - Banco de dados&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Sprint 0</title>
+      <link>http://localhost:1313/2025-2-OncoMap/sprints/sprint-1/</link>
+      <pubDate>Sun, 24 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2025-2-OncoMap/sprints/sprint-1/</guid>
+      <description>&lt;h2 id=&#34;issues&#34;&gt;Issues&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-6/&#34;&gt;6 - Linux / Ubuntu&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-5/&#34;&gt;5 - Resumo de requisitos de software&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-4/&#34;&gt;4 - Scrum e Kanban &lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-3/&#34;&gt;3 - Sugestão Arquitetura Backend&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-2/&#34;&gt;2 - Sugestão de arquitetura e tecnologia para o frontend&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/2025-2-OncoMap/issues/issue-1/&#34;&gt;1 - Git e GitHub&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

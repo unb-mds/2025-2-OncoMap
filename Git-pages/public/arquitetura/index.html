@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><script src="/2025-2-OncoMap/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=2025-2-OncoMap/livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+        
+            Arquitetura | OncoMap
+        
+    </title>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/2025-2-OncoMap/css/-page-bundle.min.css">
+
+
+
+</head>
+<body>
+
+    <nav class="navbar">
+
+    <a class="navbar-brand" href="http://localhost:1313/2025-2-OncoMap/">
+        OncoMap
+    </a>
+
+    <ul class="navbar-links">
+        <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+    </ul>
+
+    <div class="navbar-right">
+        <a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a>
+    </div>
+
+</nav>
+
+    <section class="hero">
+    <div class="container">
+        <h1>Arquitetura</h1>
+        
+        
+            <p class="subtitle">Documentação da Arquitetura do projeto OncoMap</p>
+        
+        
+        </div>
+</section>
+
+    <main>
+        
+    
+    
+
+    <section class="content-embed">
+        
+    </section>
+
+    
+    <section class="text-sections-area">
+        <div class="container">
+            
+            
+            <div class="text-block">
+                <h2>Arquitetura Lógica da Solução</h2>
+                
+                <div class="text-block-content">
+                    <p>A solução <strong>OncoMap</strong> segue um modelo de <strong>Arquitetura em Camadas</strong> (Tiered Architecture), separando a interface do usuário (Frontend) da lógica de negócios (Backend) e do armazenamento de dados (Banco de Dados).</p>
+<p>Abaixo está o diagrama de alto nível que ilustra a interação entre os principais componentes do sistema.</p>
+<ul>
+<li><strong>Frontend (Apresentação):</strong> Responsável pela interface e experiência do usuário.</li>
+<li><strong>Backend (Lógica de Negócios):</strong> Servidor API RESTful que orquestra as regras de negócio e a persistência de dados.</li>
+<li><strong>Banco de Dados (Persistência):</strong> Armazena todas as informações clínicas e de usuário.</li>
+</ul>
+
+                </div>
+            </div>
+            
+            <div class="text-block">
+                <h2>Stack Tecnológico</h2>
+                
+                <div class="text-block-content">
+                    <p>As seguintes tecnologias foram escolhidas para compor o projeto, visando <strong>desempenho, escalabilidade e facilidade de manutenção</strong>:</p>
+<h3 id="-frontend-interface">🖥️ Frontend (Interface)</h3>
+<p><img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&amp;logo=react&amp;logoColor=61DAFB" alt="React">
+<img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&amp;logo=vite&amp;logoColor=white" alt="Vite">
+<img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&amp;logo=typescript&amp;logoColor=white" alt="TypeScript"></p>
+<h3 id="-backend-api-e-lógica">⚙️ Backend (API e Lógica)</h3>
+<p><img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&amp;logo=node.js&amp;logoColor=white" alt="NodeJS">
+<img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge" alt="Express">
+<img src="https://img.shields.io/badge/Puppeteer-40B5A4?style=for-the-badge&amp;logo=puppeteer&amp;logoColor=white" alt="Puppeteer"></p>
+<h3 id="-dados--ia">🗄️ Dados &amp; IA</h3>
+<p><img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&amp;logo=postgresql&amp;logoColor=white" alt="PostgreSQL">
+<img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&amp;logo=supabase&amp;logoColor=white" alt="Supabase">
+<img src="https://img.shields.io/badge/Google%20Gemini-8E75B2?style=for-the-badge&amp;logo=googlebard&amp;logoColor=white" alt="Gemini"></p>
+<h3 id="-devops--qa">🛠️ DevOps &amp; QA</h3>
+<p><img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&amp;logo=docker&amp;logoColor=white" alt="Docker">
+<img src="https://img.shields.io/badge/Jest-323330?style=for-the-badge&amp;logo=Jest&amp;logoColor=white" alt="Jest">
+<img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&amp;logo=github-actions&amp;logoColor=white" alt="GitHub Actions"></p>
+
+                </div>
+            </div>
+            
+            <div class="text-block">
+                <h2>Estrutura de Componentes</h2>
+                
+                <div class="text-block-content">
+                    <pre tabindex="0"><code>.
+└── 2025-2-OncoMap/
+    ├── .github/workflows/           # CI/CD (Pipeline Mensal)
+    ├── Oncomap/
+    │   ├── backend/
+    │   │   ├── src/
+    │   │   │   ├── api/             # Controllers e Rotas (Express)
+    │   │   │   ├── config/          # Configuração de Banco e Env
+    │   │   │   ├── scripts/         # Pipeline de Dados (Coleta + IA)
+    │   │   │   ├── tests/           # Testes Unitários (Jest)
+    │   │   │   └── utils/           # Funções auxiliares
+    │   │   ├── Dockerfile
+    │   │   └── server.js
+    │   └── frontend/                # Aplicação React + Vite
+    │   │   ├── src/
+    │   │   └── Dockerfile
+    ├── docker-compose.yml           # Orquestração dos containers
+    └── README.md
+</code></pre>
+                </div>
+            </div>
+            
+            <div class="text-block">
+                <h2>Diagrama</h2>
+                
+                <div class="text-block-content">
+                    <img src="http://localhost:1313/2025-2-OncoMap/images/arquitetura/diagrama1.png" alt="Diagrama 1" style="width: 70%; display: block; margin-left: auto; margin-right: auto;">
+<img src="http://localhost:1313/2025-2-OncoMap/images/arquitetura/diagrama2.png" alt="Diagrama 2" style="width: 70%; display: block; margin-left: auto; margin-right: auto;">
+<img src="http://localhost:1313/2025-2-OncoMap/images/arquitetura/diagrama3.png" alt="Diagrama 3" style="width: 70%; display: block; margin-left: auto; margin-right: auto;">
+
+                </div>
+            </div>
+            
+
+        </div>
+    </section>
+    
+
+
+    </main>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            
+            <div class="footer-column about">
+                <h3>OncoMap</h3>
+                <p>Mapa de investimento em saúde oncológica</p>
+            </div>
+            
+            <div class="footer-column links">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column contact">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2025 OncoMap. Todos os direitos reservados.</p>
+            <p>Desenvolvido pela equipe UnB-MDS</p>
+        </div>
+    </div>
+</footer>
+    
+    <script src="http://localhost:1313/2025-2-OncoMap/js/app.js"></script>
+</body>
+</html>

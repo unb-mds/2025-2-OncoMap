@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><script src="/2025-2-OncoMap/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=2025-2-OncoMap/livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+        
+            Etapa6 Organizacao Boas Praticas | OncoMap
+        
+    </title>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/2025-2-OncoMap/css/doc-page-bundle.min.css">
+
+
+
+</head>
+<body>
+
+    <nav class="navbar">
+
+    <a class="navbar-brand" href="http://localhost:1313/2025-2-OncoMap/">
+        OncoMap
+    </a>
+
+    <ul class="navbar-links">
+        <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+    </ul>
+
+    <div class="navbar-right">
+        <a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a>
+    </div>
+
+</nav>
+
+    <section class="hero">
+    <div class="container">
+        <h1>Etapa6 Organizacao Boas Praticas</h1>
+        
+        
+        
+        </div>
+</section>
+
+    <main>
+        
+
+    <div class="container page-single">
+        
+        
+        
+        
+        <div class="content">
+            <h1 id="etapa-6--organização-e-boas-práticas-para-iniciantes-em-react">Etapa 6 — Organização e Boas Práticas (para iniciantes em React)</h1>
+<p>Nesta etapa você aprende <strong>como organizar seu projeto</strong> e seguir boas práticas que deixam o código mais fácil de ler, escalar e manter. Tudo explicado de forma simples, com exemplos práticos.</p>
+<hr>
+<h2 id="1-estrutura-de-pastas-recomendada">1) Estrutura de pastas recomendada</h2>
+<p>Para projetos pequenos a médios, uma estrutura simples e clara ajuda muito:</p>
+<pre tabindex="0"><code>src/
+├── components/      # Componentes reutilizáveis e pequenos
+│   ├── Button/
+│   │   ├── Button.jsx
+│   │   └── Button.module.css
+│   └── Header.jsx
+├── pages/           # Páginas (rotas)
+│   ├── Home.jsx
+│   └── Profile.jsx
+├── hooks/           # Custom hooks (useFetch, useLocalStorage...)
+├── context/         # Providers / Context API
+├── services/        # chamadas API, helpers de rede
+├── styles/          # estilos globais (variables.css, reset.css)
+├── utils/           # funções utilitárias
+├── assets/          # imagens, fontes, ícones
+├── routes/          # definição de rotas (opcional)
+└── App.jsx
+</code></pre><p>Dica: prefira <strong>pastas pequenas e com responsabilidade única</strong> (cada pasta com um propósito claro).</p>
+<hr>
+<h2 id="2-componentes-organização-e-padrão">2) Componentes: organização e padrão</h2>
+<ul>
+<li><strong>Componentes pequenos e focados</strong>: cada componente faz uma coisa (ex.: <code>Button</code>, <code>Avatar</code>, <code>ProductCard</code>).</li>
+<li><strong>Nomes com PascalCase</strong>: <code>MyButton</code>, <code>UserProfile</code>.</li>
+<li><strong>Arquivos por componente</strong>: quando o componente tem CSS próprio ou testes, crie uma pasta com <code>index</code> ou <code>Component.jsx</code>.</li>
+</ul>
+<p>Exemplo de componente simples com CSS module:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#75715e">// components/Button/Button.jsx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">styles</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./Button.module.css&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Button</span>({ <span style="color:#a6e22e">children</span>, <span style="color:#a6e22e">onClick</span> }) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">styles</span>.<span style="color:#a6e22e">btn</span>} <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">onClick</span>}&gt;
+</span></span><span style="display:flex;"><span>      {<span style="color:#a6e22e">children</span>}
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#75715e">/* components/Button/Button.module.css */</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">btn</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">8</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">16</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border-radius</span>: <span style="color:#ae81ff">6</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">cursor</span>: <span style="color:#66d9ef">pointer</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="3-separação-entre-apresentação-e-lógica">3) Separação entre apresentação e lógica</h2>
+<ul>
+<li><strong>Presentational components</strong>: apenas UI (p. ex. <code>UserCard</code>).</li>
+<li><strong>Container components / hooks</strong>: contém lógica (busca de API, transformação de dados).</li>
+</ul>
+<p>Exemplo: mover fetch para um hook</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#75715e">// hooks/useUsers.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useState</span>, <span style="color:#a6e22e">useEffect</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">useUsers</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">users</span>, <span style="color:#a6e22e">setUsers</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>([]);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">useEffect</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#34;/api/users&#34;</span>).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">r</span> =&gt; <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">json</span>()).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">setUsers</span>);
+</span></span><span style="display:flex;"><span>  }, []);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">users</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#75715e">// components/UserList.jsx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useUsers</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;../hooks/useUsers&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">UserList</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">users</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useUsers</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>      {<span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">u</span> =&gt; &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">id</span>}&gt;{<span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">name</span>}&lt;/<span style="color:#f92672">li</span>&gt;)}
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="4-estilos-opções-e-recomendações">4) Estilos: opções e recomendações</h2>
+<ul>
+<li><strong>CSS Modules</strong>: isolam estilos por componente (<code>.module.css</code>). Bom para projetos pequenos/medios.</li>
+<li><strong>Tailwind CSS</strong>: utilitário para desenvolvimento rápido (precisa configuração).</li>
+<li><strong>Styled Components / Emotion</strong>: CSS-in-JS (boa para componentes com estilos dinâmicos).</li>
+<li><strong>Global styles</strong>: variáveis, reset e tipografia em <code>src/styles/</code>.</li>
+</ul>
+<p>Evite misturar muitos paradigmas de estilo sem necessidade. Escolha um e mantenha-se consistente.</p>
+<hr>
+<h2 id="5-tipagem-proptypes-vs-typescript">5) Tipagem: PropTypes vs TypeScript</h2>
+<ul>
+<li><strong>PropTypes</strong> (runtime): boa para checagem simples em projetos JS.</li>
+<li><strong>TypeScript</strong> (compile-time): mais verboso no início, mas previne muitos bugs e é recomendado para projetos maiores.</li>
+</ul>
+<p>Exemplo com PropTypes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">PropTypes</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;prop-types&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Greeting</span>({ <span style="color:#a6e22e">name</span> }) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> &lt;<span style="color:#f92672">p</span>&gt;<span style="color:#a6e22e">Olá</span>, {<span style="color:#a6e22e">name</span>}&lt;/<span style="color:#f92672">p</span>&gt;;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Greeting</span>.<span style="color:#a6e22e">propTypes</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">PropTypes</span>.<span style="color:#a6e22e">string</span>.<span style="color:#a6e22e">isRequired</span>,
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h2 id="6-performance-básica">6) Performance básica</h2>
+<ul>
+<li>Use <code>React.memo</code> para componentes puros que recebem props estáveis.</li>
+<li>Use <code>useCallback</code> para funções passadas a filhos, evitando recriações desnecessárias.</li>
+<li>Use <code>useMemo</code> para cálculos pesados.</li>
+<li>Carregamento preguiçoso com <code>React.lazy</code> + <code>Suspense</code> para dividir bundle (code splitting).</li>
+</ul>
+<p>Exemplo de <code>React.lazy</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Suspense</span>, <span style="color:#a6e22e">lazy</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">BigComponent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lazy</span>(() =&gt; <span style="color:#66d9ef">import</span>(<span style="color:#e6db74">&#34;./BigComponent&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">App</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">Suspense</span> <span style="color:#a6e22e">fallback</span><span style="color:#f92672">=</span>{&lt;<span style="color:#f92672">div</span>&gt;<span style="color:#a6e22e">Carregando</span>...&lt;/<span style="color:#f92672">div</span>&gt;}&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">BigComponent</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">Suspense</span>&gt;
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="7-tratamento-de-erros-error-boundaries">7) Tratamento de erros (Error Boundaries)</h2>
+<p>Componentes de classe podem ser Error Boundaries — capturam erros em renderização do filho.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#75715e">// ErrorBoundary.jsx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ErrorBoundary</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">React</span>.<span style="color:#a6e22e">Component</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">state</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">hasError</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span> };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">getDerivedStateFromError</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">hasError</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> };
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">componentDidCatch</span>(<span style="color:#a6e22e">error</span>, <span style="color:#a6e22e">info</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>, <span style="color:#a6e22e">info</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">render</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">hasError</span>) <span style="color:#66d9ef">return</span> &lt;<span style="color:#f92672">h2</span>&gt;<span style="color:#a6e22e">Algo</span> <span style="color:#a6e22e">deu</span> <span style="color:#a6e22e">errado</span>.&lt;/<span style="color:#f92672">h2</span>&gt;;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">children</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Use em volta de partes propensas a falhas.</p>
+<hr>
+<h2 id="8-testes-básicos">8) Testes básicos</h2>
+<ul>
+<li><strong>Unit tests</strong> com Jest + React Testing Library.</li>
+<li>Escreva testes para componentes importantes (renderização, interações, callbacks).</li>
+</ul>
+<p>Exemplo de teste simples:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#75715e">// __tests__/Greeting.test.jsx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">render</span>, <span style="color:#a6e22e">screen</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@testing-library/react&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Greeting</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;../components/Greeting&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;exibe saudação&#34;</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">render</span>(&lt;<span style="color:#f92672">Greeting</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Giovani&#34;</span> /&gt;);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">getByText</span>(<span style="color:#e6db74">/Olá, Giovani/i</span>)).<span style="color:#a6e22e">toBeInTheDocument</span>();
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><hr>
+<h2 id="9-linting-e-formatação">9) Linting e formatação</h2>
+<ul>
+<li>Use <strong>ESLint</strong> (com regras para React) e <strong>Prettier</strong> para formatação automática.</li>
+<li>Adicione scripts no <code>package.json</code> para rodar lint e formatar:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;scripts&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;lint&#34;</span>: <span style="color:#e6db74">&#34;eslint &#39;src/**&#39; --fix&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;format&#34;</span>: <span style="color:#e6db74">&#34;prettier --write &#39;src/**&#39;&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="10-variáveis-de-ambiente-e-builds">10) Variáveis de ambiente e builds</h2>
+<ul>
+<li>No <strong>Create React App</strong> use <code>REACT_APP_...</code> (ex.: <code>REACT_APP_API_URL</code>).</li>
+<li>No <strong>Vite</strong> use <code>VITE_...</code>.</li>
+<li>Nunca commit informações sensíveis (chaves privadas) no repositório; use variáveis em ambiente do deploy.</li>
+<li>Para gerar a build: <code>npm run build</code> → pasta <code>build/</code> ou <code>dist/</code> pronta para deploy.</li>
+</ul>
+<hr>
+<h2 id="11-deploy-opções-fáceis">11) Deploy (opções fáceis)</h2>
+<ul>
+<li><strong>Vercel</strong>, <strong>Netlify</strong>, <strong>Surge</strong>: deploy simples conectando ao GitHub.</li>
+<li><strong>Heroku / Render</strong> também são opções.</li>
+<li>Apenas envie a pasta <code>build/</code> (ou configure o serviço para rodar <code>npm run build</code>).</li>
+</ul>
+<hr>
+<h2 id="12-boas-práticas-de-código">12) Boas práticas de código</h2>
+<ul>
+<li>Nomeie claramente (BotaoPrimary ao invés de <code>Btn1</code>).</li>
+<li>Componentes pequenos e com responsabilidade única.</li>
+<li>Evite duplicação: crie componentes reutilizáveis.</li>
+<li>Extraia lógica complexa para hooks ou funções utilitárias.</li>
+<li>Documente componentes com comentários e README do projeto.</li>
+</ul>
+<hr>
+<h2 id="13-checklist-antes-de-abrir-pr--enviar-projeto">13) Checklist antes de abrir PR / enviar projeto</h2>
+<ul>
+<li><input disabled="" type="checkbox"> Código lintado e formatado.</li>
+<li><input disabled="" type="checkbox"> Componentes testados (mínimo).</li>
+<li><input disabled="" type="checkbox"> Variáveis de ambiente configuradas.</li>
+<li><input disabled="" type="checkbox"> Componentes com acessibilidade básica (labels, aria).</li>
+<li><input disabled="" type="checkbox"> Build funcionando (<code>npm run build</code>).</li>
+</ul>
+<hr>
+<h2 id="14-recursos-rápidos-para-continuar-aprendendo">14) Recursos rápidos para continuar aprendendo</h2>
+<ul>
+<li>Documentação oficial do React (com conceitos e guias).</li>
+<li>React Testing Library (testes).</li>
+<li>ESLint + Prettier (qualidade de código).</li>
+<li>TypeScript (tipagem estática).</li>
+</ul>
+<hr>
+<blockquote>
+<p>Seguindo essas práticas você deixa seu projeto mais profissional, mais fácil de manter e menos sujeito a bugs. Se quiser, eu posso gerar um <strong>template mínimo de projeto</strong> com essa estrutura (arquivos <code>.jsx</code>, CSS e scripts <code>package.json</code>) pronto para você clonar. Quer que eu gere esse template agora?</p></blockquote>
+
+        </div>
+    </div>
+
+
+    </main>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            
+            <div class="footer-column about">
+                <h3>OncoMap</h3>
+                <p>Mapa de investimento em saúde oncológica</p>
+            </div>
+            
+            <div class="footer-column links">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column contact">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2025 OncoMap. Todos os direitos reservados.</p>
+            <p>Desenvolvido pela equipe UnB-MDS</p>
+        </div>
+    </div>
+</footer>
+    
+    <script src="http://localhost:1313/2025-2-OncoMap/js/app.js"></script>
+</body>
+</html>

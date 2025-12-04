@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><script src="/2025-2-OncoMap/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=2025-2-OncoMap/livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+        
+            Linux | OncoMap
+        
+    </title>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/2025-2-OncoMap/css/doc-page-bundle.min.css">
+
+
+
+</head>
+<body>
+
+    <nav class="navbar">
+
+    <a class="navbar-brand" href="http://localhost:1313/2025-2-OncoMap/">
+        OncoMap
+    </a>
+
+    <ul class="navbar-links">
+        <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+        <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+    </ul>
+
+    <div class="navbar-right">
+        <a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a>
+    </div>
+
+</nav>
+
+    <section class="hero">
+    <div class="container">
+        <h1>Linux</h1>
+        
+        
+        
+        </div>
+</section>
+
+    <main>
+        
+
+    <div class="container page-single">
+        
+        
+        
+        
+        <div class="content">
+            <h1 id="linux-e-ubuntu">Linux e Ubuntu</h1>
+<p>Linux é um sistema operacional de código aberto baseado no kernel Linux. Ele é amplamente usado em servidores, dispositivos móveis (como o Android) e também em desktops. Sua principal característica é a estabilidade, segurança e flexibilidade.</p>
+<p>O <strong>Ubuntu</strong> é uma das distribuições Linux mais populares, sendo amigável para iniciantes e muito utilizada em ambientes de desenvolvimento. Ele é baseado no Debian e conta com suporte da Canonical, oferecendo atualizações regulares e uma vasta comunidade.</p>
+<hr>
+<h2 id="1-instalando-o-ubuntu">1. Instalando o Ubuntu</h2>
+<p>Existem várias formas de instalar o Ubuntu:</p>
+<ol>
+<li><strong>Máquina física</strong> – usando um pendrive bootável.</li>
+<li><strong>Máquina virtual</strong> – usando softwares como VirtualBox ou VMware.</li>
+<li><strong>WSL (Windows Subsystem for Linux)</strong> – instalar Ubuntu dentro do Windows.</li>
+</ol>
+<p>Para criar um pendrive bootável, você pode usar:</p>
+<ul>
+<li><strong>Rufus (Windows)</strong></li>
+<li><strong>Etcher (Linux/Windows/Mac)</strong></li>
+</ul>
+<p>Após a instalação, ao inicializar, você verá a interface gráfica (GNOME) ou poderá trabalhar direto no <strong>terminal</strong>.</p>
+<hr>
+<h2 id="2-estrutura-de-diretórios-do-linux">2. Estrutura de diretórios do Linux</h2>
+<p>Diferente do Windows, que organiza arquivos em &ldquo;C:&rdquo;, &ldquo;D:&rdquo;, etc., no Linux tudo está dentro de <code>/</code>. Alguns diretórios importantes:</p>
+<ul>
+<li><code>/home</code> → pasta pessoal dos usuários.</li>
+<li><code>/etc</code> → arquivos de configuração do sistema.</li>
+<li><code>/bin</code> e <code>/sbin</code> → programas essenciais.</li>
+<li><code>/usr</code> → programas e bibliotecas de usuários.</li>
+<li><code>/var</code> → arquivos variáveis (logs, cache, etc.).</li>
+<li><code>/tmp</code> → arquivos temporários.</li>
+</ul>
+<hr>
+<h2 id="3-principais-comandos-do-ubuntu">3. Principais comandos do Ubuntu</h2>
+<p>O terminal é essencial no Linux. Alguns comandos básicos:</p>
+<h3 id="navegação-no-sistema-de-arquivos">Navegação no sistema de arquivos</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pwd          <span style="color:#75715e"># mostra o diretório atual</span>
+</span></span><span style="display:flex;"><span>ls           <span style="color:#75715e"># lista arquivos e pastas</span>
+</span></span><span style="display:flex;"><span>ls -la       <span style="color:#75715e"># lista detalhada (inclui arquivos ocultos)</span>
+</span></span><span style="display:flex;"><span>cd pasta     <span style="color:#75715e"># entra em uma pasta</span>
+</span></span><span style="display:flex;"><span>cd ..        <span style="color:#75715e"># volta um diretório</span>
+</span></span></code></pre></div><h3 id="manipulação-de-arquivos-e-pastas">Manipulação de arquivos e pastas</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir nome_pasta      <span style="color:#75715e"># cria uma pasta</span>
+</span></span><span style="display:flex;"><span>rmdir nome_pasta      <span style="color:#75715e"># remove pasta vazia</span>
+</span></span><span style="display:flex;"><span>rm -r nome_pasta      <span style="color:#75715e"># remove pasta e conteúdo</span>
+</span></span><span style="display:flex;"><span>touch arquivo.txt     <span style="color:#75715e"># cria um arquivo vazio</span>
+</span></span><span style="display:flex;"><span>cp origem destino     <span style="color:#75715e"># copia arquivos/pastas</span>
+</span></span><span style="display:flex;"><span>mv origem destino     <span style="color:#75715e"># move ou renomeia arquivos</span>
+</span></span><span style="display:flex;"><span>rm arquivo.txt        <span style="color:#75715e"># apaga arquivo</span>
+</span></span></code></pre></div><h3 id="usuários-e-permissões">Usuários e permissões</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>whoami                <span style="color:#75715e"># mostra usuário atual</span>
+</span></span><span style="display:flex;"><span>sudo comando          <span style="color:#75715e"># executa comando como administrador</span>
+</span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">755</span> arquivo     <span style="color:#75715e"># altera permissões</span>
+</span></span><span style="display:flex;"><span>chown usuario arquivo <span style="color:#75715e"># muda o dono de um arquivo</span>
+</span></span></code></pre></div><h3 id="processos-e-sistema">Processos e sistema</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ps aux                <span style="color:#75715e"># lista processos em execução</span>
+</span></span><span style="display:flex;"><span>kill -9 PID           <span style="color:#75715e"># encerra um processo</span>
+</span></span><span style="display:flex;"><span>top                   <span style="color:#75715e"># mostra consumo de recursos em tempo real</span>
+</span></span><span style="display:flex;"><span>htop                  <span style="color:#75715e"># versão melhorada do top (instalar: sudo apt install htop)</span>
+</span></span></code></pre></div><hr>
+<h2 id="4-gerenciamento-de-pacotes-no-ubuntu">4. Gerenciamento de pacotes no Ubuntu</h2>
+<p>O Ubuntu utiliza o <strong>APT (Advanced Package Tool)</strong> para instalar e gerenciar softwares.</p>
+<h3 id="comandos-básicos-do-apt">Comandos básicos do apt</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update                     <span style="color:#75715e"># atualiza lista de pacotes</span>
+</span></span><span style="display:flex;"><span>sudo apt upgrade                    <span style="color:#75715e"># atualiza pacotes instalados</span>
+</span></span><span style="display:flex;"><span>sudo apt install nome_do_pacote     <span style="color:#75715e"># instala um programa</span>
+</span></span><span style="display:flex;"><span>sudo apt remove nome_do_pacote      <span style="color:#75715e"># remove um programa</span>
+</span></span><span style="display:flex;"><span>sudo apt autoremove                 <span style="color:#75715e"># remove pacotes desnecessários</span>
+</span></span></code></pre></div><p>Exemplo:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install curl
+</span></span></code></pre></div><hr>
+<h2 id="5-arquivos-importantes-de-configuração">5. Arquivos importantes de configuração</h2>
+<ul>
+<li><code>.bashrc</code> – configurações do terminal (atalhos, variáveis de ambiente).</li>
+<li><code>/etc/hosts</code> – mapeamento de IPs e nomes de host.</li>
+<li><code>/etc/passwd</code> – informações dos usuários.</li>
+<li><code>/etc/fstab</code> – montagem automática de discos.</li>
+</ul>
+<hr>
+<h2 id="6-usando-o-ubuntu-para-desenvolvimento">6. Usando o Ubuntu para desenvolvimento</h2>
+<p>O Ubuntu é muito usado em ambientes de programação. Alguns pacotes úteis:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install git
+</span></span><span style="display:flex;"><span>sudo apt install build-essential   <span style="color:#75715e"># compiladores e ferramentas C/C++</span>
+</span></span><span style="display:flex;"><span>sudo apt install python3 python3-pip
+</span></span><span style="display:flex;"><span>sudo apt install nodejs npm
+</span></span><span style="display:flex;"><span>sudo apt install docker.io
+</span></span></code></pre></div><hr>
+<h2 id="7-comandos-úteis-do-dia-a-dia">7. Comandos úteis do dia a dia</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>clear              <span style="color:#75715e"># limpa a tela</span>
+</span></span><span style="display:flex;"><span>history            <span style="color:#75715e"># mostra histórico de comandos</span>
+</span></span><span style="display:flex;"><span>man comando        <span style="color:#75715e"># mostra manual de um comando</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;texto&#34;</span>       <span style="color:#75715e"># imprime texto no terminal</span>
+</span></span><span style="display:flex;"><span>cat arquivo.txt    <span style="color:#75715e"># mostra conteúdo de um arquivo</span>
+</span></span><span style="display:flex;"><span>grep palavra arquivo.txt   <span style="color:#75715e"># procura palavra em arquivo</span>
+</span></span><span style="display:flex;"><span>find / -name <span style="color:#e6db74">&#34;nome&#34;</span>        <span style="color:#75715e"># busca arquivo por nome</span>
+</span></span></code></pre></div><hr>
+<h2 id="8-links-úteis">8. Links úteis</h2>
+<ul>
+<li><a href="https://ubuntu.com/tutorials">Documentação oficial Ubuntu</a></li>
+<li><a href="https://www.guru99.com/linux-commands-cheat-sheet.html">Cheat sheet de comandos Linux</a></li>
+<li><a href="https://www.guiafoca.org/">Curso Linux Fundamentos - Guia Foca</a></li>
+<li><a href="https://www.youtube.com/watch?v=QrsDuBwgF9Y&amp;t=590s">Link vídeo de instalação do ubuntu</a></li>
+</ul>
+<hr>
+
+        </div>
+    </div>
+
+
+    </main>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            
+            <div class="footer-column about">
+                <h3>OncoMap</h3>
+                <p>Mapa de investimento em saúde oncológica</p>
+            </div>
+            
+            <div class="footer-column links">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/">Início</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/requisitos/">Requisitos</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/arquitetura/">Arquitetura</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/instala%c3%a7%c3%a3o/">Instalação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/doc/">Documentação</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/sprints/">Sprints</a></li>
+                    <li><a href="http://localhost:1313/2025-2-OncoMap/diversos/">Diversos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column contact">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="https://github.com/unb-mds/2025-2-OncoMap" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2025 OncoMap. Todos os direitos reservados.</p>
+            <p>Desenvolvido pela equipe UnB-MDS</p>
+        </div>
+    </div>
+</footer>
+    
+    <script src="http://localhost:1313/2025-2-OncoMap/js/app.js"></script>
+</body>
+</html>

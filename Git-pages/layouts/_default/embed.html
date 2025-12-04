@@ -1,0 +1,27 @@
+{{ define "main" }}
+    
+    {{/* O Hero padronizado (do baseof.html) já aparece aqui */}}
+
+    <section class="content-embed">
+        {{ .Content }}
+    </section>
+
+    {{ if .Params.blocos_de_texto }}
+    <section class="text-sections-area">
+        <div class="container">
+            
+            {{ range .Params.blocos_de_texto }}
+            <div class="text-block">
+                <h2>{{ .titulo }}</h2>
+                
+                <div class="text-block-content">
+                    {{ .texto | markdownify }}
+                </div>
+            </div>
+            {{ end }}
+
+        </div>
+    </section>
+    {{ end }}
+
+{{ end }}
