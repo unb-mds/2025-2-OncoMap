@@ -1,0 +1,220 @@
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.fonte-section {
+  padding-top: 1rem;
+  padding-bottom: 7rem;
+  background-color: #ffffff;
+  width: 100%;
+  position: relative;
+}
+
+.fonte-content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.fonte-text-side {
+  flex: 1;
+  text-align: left;
+  padding-right: 2rem;
+  animation: slideInLeft 0.8s ease-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.fonte-section-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1a4d2e;
+  margin-bottom: 2rem;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  position: relative;
+}
+
+.fonte-section-title::after {
+  content: '.';
+  color: #4CAF50;
+}
+
+.fonte-description-block p {
+  font-size: 1.15rem;
+  color: #4a5568;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.fonte-description-block strong {
+  color: #1a4d2e;
+  font-weight: 700;
+}
+
+.fonte-description-block em {
+  font-style: normal;
+  color: #4CAF50;
+  font-weight: 600;
+}
+
+.fonte-decorative-line {
+  width: 120px;
+  height: 6px;
+  background: linear-gradient(90deg, #1a4d2e 0%, #4CAF50 100%);
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
+
+.fonte-card-side {
+  flex: 1.1;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  animation: slideInRight 0.8s ease-out;
+}
+
+.highlight-card {
+  background-color: #fff;
+  border-radius: 20px;
+  border: 1px solid #1a4d2e;
+  padding: 2.5rem;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: flex-start;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.highlight-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(19, 70, 17, 0.8);
+  background-color: #fafafa;
+  cursor: default;
+}
+
+.fonte-icon-container {
+  flex-shrink: 0;
+  width: 70px;
+  height: 70px;
+  background-color: #f1f8e9;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fonte-icon {
+  font-size: 2rem;
+  color: #4CAF50;
+}
+
+.fonte-card-content {
+  flex-grow: 1;
+}
+
+.fonte-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a4d2e;
+  margin-bottom: 0.2rem;
+}
+
+.fonte-role {
+  font-size: 0.9rem;
+  color: #4CAF50;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.fonte-text-block p {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 0.8rem;
+}
+
+.fonte-text-block strong {
+  color: #1a4d2e;
+}
+
+.fonte-button {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+  border: 2px solid #4CAF50;
+}
+
+.fonte-button svg {
+  transition: transform 0.3s ease;
+}
+
+.fonte-button:hover {
+  background-color: #ffffff;
+  color: #4CAF50;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(76, 175, 80, 0.4);
+}
+
+.fonte-button:hover svg {
+  transform: translateX(5px);
+}
+
+@media (max-width: 1100px) {
+  .fonte-content-wrapper {
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+    width: 90%;
+  }
+
+  .fonte-text-side {
+    text-align: center;
+    padding-right: 0;
+    align-items: center;
+  }
+  
+  .fonte-section-title {
+    font-size: 2.5rem;
+  }
+
+  .fonte-decorative-line {
+    margin: 0.5rem auto;
+  }
+
+  .highlight-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .fonte-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
