@@ -59,6 +59,11 @@ const Navbar = () => {
               </HashLink>
             </li>
             <li>
+              <HashLink to="/#fontes" smooth onClick={handleLinkClick}>
+                Fonte
+              </HashLink>
+            </li>
+            <li>
               <HashLink to="/#quem-somos" smooth onClick={handleLinkClick}>
                 Quem somos
               </HashLink>

@@ -4,6 +4,7 @@ import Footer from '../components/Geral/footer';
 import '../style/HomePage.css'; 
 import SobreProjeto from '../components/HomePage/SobreProjeto';
 import Equipe from '../components/HomePage/Equipe'
+import Fonte from '../components/HomePage/Fonte'
 
 const HomePage = () => {
   return (
@@ -12,7 +13,8 @@ const HomePage = () => {
       <Hero />
 
       <main className="main-content-card">
-        <SobreProjeto /> 
+        <SobreProjeto />
+        <Fonte />
         <Equipe/>
       </main>
       
