@@ -162,6 +162,9 @@ const API_BASE_URL = `${import.meta.env.VITE_API_URL || "https://oncomap-backend
           </div>
 
           <h4 className="secao-titulo">Fontes (Diários Oficiais)</h4>
+          <div className="mencao-querido-diario">
+            <p>Dados Extraidos <a href="https://queridodiario.ok.org.br/" target="_blank">Querido Diário</a></p>
+          </div>
           <ul className="lista-links-scroll">
             {detalhesMunicipio.recent_mentions.length > 0 ? (
                 detalhesMunicipio.recent_mentions.map((mencao, idx) => (

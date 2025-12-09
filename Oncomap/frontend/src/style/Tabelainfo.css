@@ -380,6 +380,21 @@
   list-style: none;
 }
 
+.mencao-querido-diario {
+  font-size: 0.75rem;
+  color: #ddd;
+  opacity: 0.8;           
+  margin-bottom: 15px;     
+  font-weight: 300;        
+  letter-spacing: 0.5px;   
+}
+
+.mencao-querido-diario a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 500;
+}
+
 .lista-links-item {
   padding: 12px 15px;
   border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
